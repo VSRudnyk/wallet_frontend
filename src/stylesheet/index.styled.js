@@ -13,6 +13,8 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     text-align: center;
+    /* background-color: #e7eaf2; */
+    /* background-color: var(--background-light-grey); */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     
