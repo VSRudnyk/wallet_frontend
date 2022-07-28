@@ -67,7 +67,7 @@ export const GlobalStyle = createGlobalStyle`
 
     --baseFont: 'Circe', sans-serif;
     --secondaryFont: 'Poppins', sans-serif;
-    
+
     --regular: 400;
     --bold: 700;
 
