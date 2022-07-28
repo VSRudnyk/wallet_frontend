@@ -1,33 +1,31 @@
 @font-face {
-    font-family: 'Circe';
-    src: url('../assets/fonts/Circe-Regular.ttf') format('truetype');
-    font-weight: 400;
-  }
-  
-  @font-face {
-    font-family: 'Circe';
-    src: url('../assets/fonts/Circe-Bold.ttf') format('truetype');
-    font-weight: 700;
-  }
-  
-  @font-face {
-    font-family: 'Poppins';
-    src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
-    font-weight: 400;
-  }
-
-  @font-face {
-    font-family: 'Poppins';
-    src: url('../assets/fonts/Poppins-Bold.ttf') format('truetype');
-    font-weight: 700;
-  }
-  
-:root{
-    --baseFont: 'Circe', sans-serif;
-    --secondaryFont: 'Poppins', sans-serif;
-    
-    --regular: 400;
-    --bold: 700;
+  font-family: 'Circe';
+  src: url('../assets/fonts/Circe-Regular.ttf') format('truetype');
+  font-weight: 400;
 }
 
+@font-face {
+  font-family: 'Circe';
+  src: url('../assets/fonts/Circe-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
 
+@font-face {
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../assets/fonts/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+:root {
+  --baseFont: 'Circe', sans-serif;
+  --secondaryFont: 'Poppins', sans-serif;
+
+  --regular: 400;
+  --bold: 700;
+}
