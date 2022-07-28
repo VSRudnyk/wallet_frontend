@@ -21,11 +21,3 @@
   src: url('../assets/fonts/Poppins-Bold.ttf') format('truetype');
   font-weight: 700;
 }
-
-:root {
-  --baseFont: 'Circe', sans-serif;
-  --secondaryFont: 'Poppins', sans-serif;
-
-  --regular: 400;
-  --bold: 700;
-}
