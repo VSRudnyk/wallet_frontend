@@ -1,18 +1,13 @@
+import { Header } from 'components/Header/Header';
+import { DashboardPage } from 'pages/DashboardPage';
+import { Container } from 'stylesheet/Container.styled';
 
 
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Container>
+      <Header />
+      <DashboardPage />
+    </Container>
   );
 };
