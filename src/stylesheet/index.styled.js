@@ -24,7 +24,7 @@ export const GlobalStyle = createGlobalStyle`
   h5,
   h6,
   p {
-    margin-top: 0;
+    margin: 0;
   }
   img {
     display: block;

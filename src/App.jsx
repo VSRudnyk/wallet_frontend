@@ -1,5 +1,10 @@
+import { Header } from 'components/Header/Header';
 import { Container } from 'stylesheet/Container.styled';
 
 export const App = () => {
-  return <Container>React homework template</Container>;
+  return (
+    <Container>
+      <Header />
+    </Container>
+  );
 };
