@@ -37,9 +37,9 @@ export const LogoStyle = styled.img`
 `;
 
 export const LogoName = styled.h1`
-  font-family: 'Poppins';
+  font-family: var(--secondaryFont);
   font-style: normal;
-  font-weight: 700;
+  font-weight: var(--bold);
   font-size: 24px;
   line-height: 45px;
   display: flex;
@@ -48,9 +48,9 @@ export const LogoName = styled.h1`
 `;
 
 export const UserName = styled.p`
-  font-family: 'Circe';
+  font-family: var(--baseFont);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(--regular);
   font-size: 18px;
   line-height: 27px;
   text-align: right;
@@ -90,9 +90,9 @@ export const Logout = styled.p`
   display: none;
   @media screen and (min-width: 768px) {
     display: block;
-    font-family: 'Circe';
+    font-family: var(--baseFont);
     font-style: normal;
-    font-weight: 400;
+    font-weight: var(--reqular);
     font-size: 18px;
     line-height: 27px;
     color: var(--gray);

@@ -13,19 +13,19 @@ import {
   Logout,
 } from './Header.styled';
 
-export default function Header() {
+export const Header = () => {
   return (
     <HeaderSection>
       <HeaderContainer>
-        <div>
+        <>
           <NavLink to="/home">
             <ContainerLogo>
               <LogoStyle src={Logo} alt="Logo" />
               <LogoName>Wallet</LogoName>
             </ContainerLogo>
           </NavLink>
-        </div>
-        <div>
+        </>
+        <>
           <ContainerLogo>
             <UserName>Name</UserName>
             <LogoutButton>
@@ -33,8 +33,8 @@ export default function Header() {
               <Logout>Exit</Logout>
             </LogoutButton>
           </ContainerLogo>
-        </div>
+        </>
       </HeaderContainer>
     </HeaderSection>
   );
-}
+};
