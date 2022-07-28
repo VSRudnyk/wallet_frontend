@@ -1,0 +1,217 @@
+@import '../../stylesheet/fonts.css';
+@import'../../stylesheet/vars.css';
+
+.backDrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1200;
+}
+
+.modal {
+    position: relative;
+    margin-left:  auto;
+    margin-right:  auto;
+    border-radius: 20px;       
+    width: 540px;
+    background-color: var(--white);
+    text-align: center;
+    border: none;
+}
+
+.modal__name{
+    font-family: var(--secondaryFont);
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 45px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.buttonClose {
+    width: 20px;
+    height: 20px;
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background-color: var(--white);
+}
+
+.buttonClose__svg {
+    text-align: center;
+    width: 16px;
+    height: 16px;
+}
+
+.button__add {
+    width: 300px;
+    height: 50px;
+    border: none;
+    margin-bottom: 20px;
+    background: #24CCA7;
+    border-radius: 20px;
+    font-family: var(--baseFont);
+    font-weight: var(--secondaryFont);
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.button__close {
+    width: 300px;
+    height: 50px;
+    background: #FFFFFF;
+    border: 1px solid #4A56E2;
+    border-radius: 20px;
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4A56E2;
+    margin-bottom: 40px;
+}
+
+.inputs__box {
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.input__comment {
+    width: 394px;
+    height: 29px;
+    border-top: none;
+    border-left:none;
+    border-right:none;
+    border-bottom: 1px solid #E0E0E0;
+    padding-left: 8px;
+
+}
+
+.input__comment::placeholder {
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    color: #BDBDBD;
+    padding: 8px;
+}
+
+.input__quntity{
+    width: 190px;
+    height: 29px;
+    border-top: none;
+    border-left:none;
+    border-right:none;
+    border-bottom: 1px solid #E0E0E0;
+    margin-bottom: 40px;
+    margin-right: 32px;
+}
+
+.input__quntity::placeholder {
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    color: #BDBDBD;
+    text-align: center;
+    padding: 8px;
+}
+
+.input__calendar {
+    width: 190px;
+    height: 29px;
+    border-top: none;
+    border-left:none;
+    border-right:none;
+    border-bottom: 1px solid #E0E0E0;
+    margin-bottom: 40px;
+}
+
+.switch__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    height: 44px;
+}
+
+.switch__case {
+    box-sizing: border-box;   
+    position: relative;
+    width: 80px;
+    height: 40px;     
+    border: 1px solid #E0E0E0;
+    border-radius: 30px;
+}
+
+.switch__button {
+    border-radius: 50%;
+    position: absolute;
+    top:-2px;
+    width: 44px;
+    height: 44px;
+    background: #24CCA7;
+    box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+    justify-content: center;
+}
+
+.switch__buttonVert {
+    width: 2px;
+    height: 20px;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 12px;
+    left: 20px
+    
+}
+
+.switch__buttonGor {
+    width: 20px;
+    height: 2px;
+    background-color: #FFFFFF;
+    position: absolute;
+    left:11px ;
+    top: 21px;
+
+}
+
+.switch__income {
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: right;
+    color: #24CCA7;
+    margin-right: 20px;
+}
+
+.switch__expense {
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    color: #E0E0E0;
+    margin-left: 20px;
+}
