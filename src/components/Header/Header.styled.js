@@ -40,7 +40,7 @@ export const LogoName = styled.h1`
   font-family: var(--secondaryFont);
   font-style: normal;
   font-weight: var(--bold);
-  font-size: 24px;
+  font-size: 22px;
   line-height: 45px;
   display: flex;
   align-items: center;

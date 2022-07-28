@@ -44,9 +44,6 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     cursor: pointer;
   }
-  svg {
-    fill: inherit;
-  }
 
   :root {
     --black: #000000;
