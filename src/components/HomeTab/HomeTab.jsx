@@ -6,6 +6,8 @@ import {
   ListItem,
   TransactionsContainer,
   TransactionsContainerItem,
+  Text,
+  TempBtn,
 } from './HomeTab.styled';
 import Media from 'react-media';
 import data from './transactions.json';
@@ -17,8 +19,8 @@ const HomeTab = () => {
     if (transactions.length !== 0) {
       return;
     }
-    setTransactions([...data]);
-  }, [transactions.length]);
+    // setTransactions(state => [...state, ...data]);
+  }, [transactions]);
 
   const sortedTransactions = [...transactions]
     .map(transaction => {
@@ -45,28 +47,58 @@ const HomeTab = () => {
     }
   );
 
+  const addData = () => {
+    setTransactions(state => [...state, ...data]);
+  };
+  const removeData = () => {
+    setTransactions([]);
+  };
+
   return (
-    <Media queries={{ mobile: { maxWidth: 767 } }}>
-      {matches =>
-        matches.mobile ? (
-          <List>{transactionItems}</List>
-        ) : (
-          <TransactionsContainer>
-            <TransactionsContainerItem style={{ position: 'fixed', zIndex: 1 }}>
-              <Transaction
-                date="Date"
-                type="Type"
-                category="Category"
-                comment="Comment"
-                sum="Sum"
-                balance="Balance"
-              />
-            </TransactionsContainerItem>
-            {transactionItems}
-          </TransactionsContainer>
-        )
-      }
-    </Media>
+    <>
+      <TempBtn type="button" onClick={addData}>
+        get data
+      </TempBtn>
+      <TempBtn type="button" onClick={removeData}>
+        delete data
+      </TempBtn>
+
+      <Media queries={{ mobile: { maxWidth: 767 } }}>
+        {matches =>
+          matches.mobile ? (
+            transactions.length === 0 ? (
+              <Text>
+                You don't have any transactions yet. please use "add button"
+                below to get started.
+              </Text>
+            ) : (
+              <List>{transactionItems}</List>
+            )
+          ) : transactions.length === 0 ? (
+            <Text>
+              You don't have any transactions yet. please use "add button" below
+              to get started.
+            </Text>
+          ) : (
+            <TransactionsContainer style={{}}>
+              <TransactionsContainerItem
+                style={{ position: 'fixed', zIndex: 1 }}
+              >
+                <Transaction
+                  date="Date"
+                  type="Type"
+                  category="Category"
+                  comment="Comment"
+                  sum="Sum"
+                  balance="Balance"
+                />
+              </TransactionsContainerItem>
+              <List>{transactionItems}</List>
+            </TransactionsContainer>
+          )
+        }
+      </Media>
+    </>
   );
 };
 

@@ -1,17 +1,18 @@
 :root {
-    --black: #000000;
-    --gray: #bdbdbd;
-    --light-gray: #E0E0E0;
-    --dark-grey: #A6A6A6;
-    --backdrop: rgba(0, 0, 0, 0.25);
-    --diagram-shadow: rgba(255, 255, 255, 0.20);
-    --background-light-grey:rgba(255, 255, 255, 0.4);
-    --background-gray: #E5E5E5;
-    --white: #ffffff;
-    --green: #24CCA7;
-    --active-blue: #4A56E2;
-    --blue:#6E78E8;
-    --pink: #FF6596;
-    --vector-color:#E7E5F2;
-    --add-transaction-menu-color:rgba(255, 255, 255, 0.7);
+  --black: #000000;
+  --gray: #bdbdbd;
+  --light-gray: #e0e0e0;
+  --dark-grey: #a6a6a6;
+  --backdrop: rgba(0, 0, 0, 0.25);
+  --diagram-shadow: rgba(255, 255, 255, 0.2);
+  --background-light-grey: rgba(255, 255, 255, 0.4);
+  --background-gray: #e5e5e5;
+  --white: #ffffff;
+  --green: #24cca7;
+  --active-blue: #4a56e2;
+  --blue: #6e78e8;
+  --pink: #ff6596;
+  --vector-color: #e7e5f2;
+  --add-transaction-menu-color: rgba(255, 255, 255, 0.7);
+  --transaction-underline-color: #dcdcdf;
 }
