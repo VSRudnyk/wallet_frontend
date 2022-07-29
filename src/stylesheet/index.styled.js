@@ -54,7 +54,8 @@ export const GlobalStyle = createGlobalStyle`
     --dark-grey: #A6A6A6;
     --backdrop: rgba(0, 0, 0, 0.25);
     --diagram-shadow: rgba(255, 255, 255, 0.20);
-    --background-light-grey:rgba(255, 255, 255, 0.4);
+    /* --background-light-grey:rgba(255, 255, 255, 0.4); */
+    --background-light-grey: #e7eaf2;
     --background-gray: #E5E5E5;
     --white: #ffffff;
     --green: #24CCA7;
