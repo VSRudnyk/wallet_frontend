@@ -17,7 +17,7 @@ export const ListItem = styled.li`
 `;
 export const Span = styled.span`
   font-family: var(--baseFont);
-  font-weight: 700;
+  font-weight: var(--bold);
   font-size: 18px;
   line-height: 27px;
 `;

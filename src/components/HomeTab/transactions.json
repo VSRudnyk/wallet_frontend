@@ -5,8 +5,8 @@
     "type": "-",
     "category": "other",
     "comment": "gift for child",
-    "sum": 300.0,
-    "balance": 8900.0
+    "sum": "300.00",
+    "balance": "8900.00"
   },
   {
     "id": "2",
@@ -14,8 +14,8 @@
     "type": "+",
     "category": "home",
     "comment": "utility bills",
-    "sum": 1625.45,
-    "balance": 12499.73
+    "sum": "1625.45",
+    "balance": "12499.73"
   },
   {
     "id": "3",
@@ -23,8 +23,8 @@
     "type": "+",
     "category": "car",
     "comment": "new tires",
-    "sum": 600.0,
-    "balance": 5430.0
+    "sum": "600.00",
+    "balance": "5430.00"
   },
   {
     "id": "4",
@@ -32,8 +32,8 @@
     "type": "-",
     "category": "home",
     "comment": "utility bills",
-    "sum": 924.45,
-    "balance": 7443.81
+    "sum": "924.45",
+    "balance": "7443.81"
   },
   {
     "id": "5",
@@ -41,8 +41,8 @@
     "type": "-",
     "category": "Apartment",
     "comment": "new TV",
-    "sum": 2500.0,
-    "balance": 15640.0
+    "sum": "2500.00",
+    "balance": "15640.00"
   },
   {
     "id": "6",
@@ -50,8 +50,8 @@
     "type": "-",
     "category": "Work",
     "comment": "coffee",
-    "sum": 5.45,
-    "balance": 12400.73
+    "sum": "5.45",
+    "balance": "12400.73"
   },
   {
     "id": "7",
@@ -59,8 +59,8 @@
     "type": "-",
     "category": "Transport",
     "comment": "bought 50 rides",
-    "sum": 630.0,
-    "balance": 10430.5
+    "sum": "630.00",
+    "balance": "10430.50"
   },
   {
     "id": "8",
@@ -68,8 +68,8 @@
     "type": "+",
     "category": "Work",
     "comment": "Salary",
-    "sum": 3000.0,
-    "balance": 17443.81
+    "sum": "3000.00",
+    "balance": "17443.81"
   },
   {
     "id": "9",
@@ -77,8 +77,8 @@
     "type": "+",
     "category": "Landlord",
     "comment": "Tenants payed monthly fee",
-    "sum": 1000.0,
-    "balance": 18900.0
+    "sum": "1000.00",
+    "balance": "18900.00"
   },
   {
     "id": "10",
@@ -86,8 +86,8 @@
     "type": "-",
     "category": "Groceries",
     "comment": "Bought vegetables",
-    "sum": 225.45,
-    "balance": 18499.73
+    "sum": "225.45",
+    "balance": "18499.73"
   },
   {
     "id": "11",
@@ -95,8 +95,8 @@
     "type": "-",
     "category": "Farmacy",
     "comment": "headache medcine",
-    "sum": 600.0,
-    "balance": 15430.0
+    "sum": "600.00",
+    "balance": "15430.00"
   },
   {
     "id": "12",
@@ -104,7 +104,7 @@
     "type": "-",
     "category": "Restaurant",
     "comment": "New Year Party!!",
-    "sum": 1924.45,
-    "balance": 17443.81
+    "sum": "1924.45",
+    "balance": "17443.81"
   }
 ]

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const List = styled.ul`
   @media screen and (max-width: 767px) {
     width: 280px;
-    border: 1px solid black;
     border-radius: 10px;
 
     overflow: hidden;
@@ -16,15 +15,18 @@ export const List = styled.ul`
 `;
 
 export const ListItem = styled.li`
+  background-color: transparent;
+
   @media screen and (max-width: 767px) {
     display: flex;
     align-items: center;
     position: relative;
 
     padding: 12px 20px 8px 20px;
+    background-color: var(--transaction-item-bg-color);
 
     border-bottom: 1px solid;
-    border-bottom-color: #dcdcdf;
+    border-bottom-color: var(--transaction-underline-color);
 
     &::before {
       content: '';
@@ -46,11 +48,11 @@ export const ListItem = styled.li`
 export const TransactionDescrp = styled.p`
   font-family: var(--baseFont);
   font-style: normal;
-  font-weight: 700;
+  font-weight: var(--bold);
   font-size: 18px;
   line-height: 27px;
 
-  color: #000000;
+  color: var(--black);
   @media screen and (min-width: 768px) {
     display: none;
   }
@@ -61,7 +63,7 @@ export const TransactionData = styled.p`
   overflow: hidden;
   font-family: var(--baseFont);
   font-style: normal;
-  font-weight: 400;
+  font-weight: var(-regular);
   font-size: 16px;
   line-height: 24px;
 
