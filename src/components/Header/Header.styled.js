@@ -5,6 +5,7 @@ export const HeaderSection = styled.header`
   background-color: var(--white);
   padding-top: 15px;
   padding-bottom: 15px;
+
   @media screen and (min-width: 768px) {
     padding-top: 20px;
     padding-bottom: 20px;

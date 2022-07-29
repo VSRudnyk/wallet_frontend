@@ -3,9 +3,11 @@ import { NavLink } from 'react-router-dom';
 
 export const NavigationContainer = styled.nav`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+  margin-bottom: 15px;
   @media screen and (min-width: 768px) {
+    align-items: flex-start;
     flex-direction: column;
     margin-bottom: 28px;
   }
@@ -31,12 +33,15 @@ export const NavigationButton = styled.button`
 `;
 
 export const Link = styled(NavLink)`
-  font-family: var(--secondaryFont);
-  font-style: normal;
-  font-weight: var(--reqular);
-  font-size: 18px;
-  line-height: 27px;
-  color: var(--black);
+  & > p {
+    font-family: var(--secondaryFont);
+    font-style: normal;
+    font-weight: var(--reqular);
+    font-size: 18px;
+    line-height: 27px;
+    color: var(--black);
+  }
+
   & > svg {
     width: 38px;
     height: 38px;
