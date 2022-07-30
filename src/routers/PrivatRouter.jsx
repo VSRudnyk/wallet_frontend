@@ -1,4 +1,4 @@
-import { DiagramTab } from 'components/DiagramTab';
+// import { Table } from 'components/Table';
 import { DashboardPage } from 'pages/DashboardPage';
 import { Route, Routes } from 'react-router-dom';
 
@@ -6,7 +6,7 @@ export const Home = () => {
   return (
     <Routes>
       <Route path="*" element={<DashboardPage />} />
-      <Route path="/diagram" element={<DiagramTab />} />
+      {/* <Route path="/diagram" element={<Table />} /> */}
     </Routes>
   );
 };
