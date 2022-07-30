@@ -1,14 +1,13 @@
-import { Header } from 'components/Header/Header';
-import { DashboardPage } from 'pages/DashboardPage';
-import { Chart } from 'components/Chart/Chart';
-import { Container } from 'stylesheet/Container.styled';
+import { Routes, Route } from 'react-router-dom';
+import { Home } from 'routers/PrivatRouter';
 
 export const App = () => {
   return (
-    <Container>
-      <Header />
-      <DashboardPage />
-      <Chart />
-    </Container>
+    <>
+      <Routes>
+        <Route path="/wallet_frontend/*" element={<Home />} />
+        <Route path="*" element={<h1>NotFound </h1>} />
+      </Routes>
+    </>
   );
 };

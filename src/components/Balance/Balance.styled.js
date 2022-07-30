@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import '../../stylesheet/fonts.css';
 
 export const ContainerBalance = styled.div`
-  background: #ffffff;
+  display: ${({ page }) => (page === 'home' ? 'block' : 'none')};
+  background: var(--white);
   border-radius: 30px;
   padding-top: 8px;
   padding-bottom: 11px;
@@ -10,8 +11,8 @@ export const ContainerBalance = styled.div`
   text-align: start;
   margin-bottom: 32px;
   @media screen and (min-width: 768px) {
+    display: block;
     width: 336px;
-    margin-right: 32px;
     padding-left: 40px;
     margin-bottom: 20px;
     // ! После добавления валют убрать фиксированную ширину
@@ -19,7 +20,6 @@ export const ContainerBalance = styled.div`
   }
   @media screen and (min-width: 1280px) {
     width: 395px;
-    margin-right: 32px;
     margin-bottom: 32px;
     // ! После добавления валют задать отступ вниз от общего контейнера, а не от баланса
     // ! После добавления валют убрать фиксированную ширину

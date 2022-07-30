@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import TransactionMobile from './TransactionMobile/TransactionMobile';
 import Transaction from './Transaction';
 import {
+  HomeTabWrapper,
   List,
   ListItem,
   TransactionsContainer,
@@ -12,7 +13,7 @@ import {
 import Media from 'react-media';
 import data from './transactions.json';
 
-const HomeTab = () => {
+const HomeTab = ({ page }) => {
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
@@ -55,14 +56,13 @@ const HomeTab = () => {
   };
 
   return (
-    <>
+    <HomeTabWrapper page={page}>
       <TempBtn type="button" onClick={addData}>
         get data
       </TempBtn>
       <TempBtn type="button" onClick={removeData}>
         delete data
       </TempBtn>
-
       <Media queries={{ mobile: { maxWidth: 767 } }}>
         {matches =>
           matches.mobile ? (
@@ -98,7 +98,7 @@ const HomeTab = () => {
           )
         }
       </Media>
-    </>
+    </HomeTabWrapper>
   );
 };
 
