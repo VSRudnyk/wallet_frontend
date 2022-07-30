@@ -10,7 +10,6 @@ export const App = () => {
       <Routes>
         <Route path="/wallet_frontend/*" element={<Home />} />
         <Route path="/signup" element={<RegistrationPage />} />
-
         <Route path="*" element={<h1>NotFound </h1>} />
       </Routes>
     </>

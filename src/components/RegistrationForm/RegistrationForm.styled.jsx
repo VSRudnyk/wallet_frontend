@@ -102,10 +102,16 @@ export const LoginButton = styled.button`
 
 export const ButtonShow = styled.span`
 position: absolute;
-right: 66px;
-bottom: 60%;
 padding: 7px 15px;
 color: var(--gray);
 font-family: var(--baseFont);
 font-weight: var(--regular);
+right: 19px;
+bottom: 61%;
+@media screen and (min-width: 768px) {
+  right: 66px;
+  bottom: 60%;
+}
+
+
 `;

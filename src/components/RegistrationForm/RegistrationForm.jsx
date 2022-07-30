@@ -6,7 +6,6 @@ import { toast, ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import { PasswordStrenght } from './PasswordStrength';
-
 import {
   Input,
   InputContainer,
