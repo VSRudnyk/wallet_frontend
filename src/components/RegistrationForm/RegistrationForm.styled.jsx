@@ -11,13 +11,22 @@ export const Input = styled(Field)`
   border-right: none;
   border-left: none;
   border-image: initial;
-  border-bottom: 1px solid var(--gray);
+  border-bottom: 1px solid var(--light-gray);
   width: 280px;
   outline: none;
   transition: border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
   
   @media screen and (min-width: 767px) {
     width: 409.5px;
+  }
+
+
+  ::placeholder {
+    color: var(--gray);
+    font-family: var(--baseFont);
+    font-weight: var(--regular);
+    font-size: 18px;
+    line-height: 1;
   }
 `;
 
