@@ -1,8 +1,17 @@
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { useRegisterMutation } from '../../redux/authOperation';
-import { Formik, ErrorMessage, Field, Form } from 'formik';
+import { Formik, ErrorMessage, Form } from 'formik';
 import { toast, ToastContainer, Slide } from 'react-toastify';
+import {
+  Input,
+  InputContainer,
+  SvgAccount,
+  SvgEnvelope,
+  SvgLock,
+  RegisterButton,
+  LoginButton,
+} from './RegistrationForm.styled';
 
 export const FormRegistration = () => {
   // const navigate = useNavigate();
@@ -62,27 +71,36 @@ export const FormRegistration = () => {
         validationSchema={schema}
       >
         <Form autoComplete="off">
-          <label htmlFor="name">Name</label>
-          <Field name="name" type="text" placeholder="Enter your name" />
-          <FormError name="name" />
-          <label htmlFor="email">Email</label>
-          <Field name="email" type="email" placeholder="Enter your e-mail" />
-          <FormError name="email" />
-          <label htmlFor="password">Password</label>
-          <Field name="password" type="password" placeholder="Password" />
-          <FormError name="password" />
-          <Field
-            name="repeated_password"
-            type="password"
-            placeholder="Confirm password"
-          />
-          <FormError name="repeated_password" />
-          <button type="submit"> Create!</button>
+          <InputContainer>
+            <SvgEnvelope />
+            <Input name="email" type="email" placeholder="E-mail" />
+            <FormError name="email" />
+          </InputContainer>
+          <InputContainer>
+            <SvgLock />
+            <Input name="password" type="password" placeholder="Password" />
+            <FormError name="password" />
+          </InputContainer>
+          <InputContainer>
+            <SvgLock />
+            <Input
+              name="repeated_password"
+              type="password"
+              placeholder="Confirm password"
+            />
+            <FormError name="repeated_password" />
+          </InputContainer>
+          <InputContainer>
+            <SvgAccount />
+            <Input name="name" type="text" placeholder="First name " />
+            <FormError name="name" />
+          </InputContainer>
+          <RegisterButton type="submit"> Register</RegisterButton>
           <ToastContainer />
         </Form>
       </Formik>
       <Link to="/login">
-        <button type="button">Login</button>
+        <LoginButton type="button">Log in</LoginButton>
       </Link>
     </>
   );
