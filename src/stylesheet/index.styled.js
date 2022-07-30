@@ -17,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
     /* background-color: var(--background-light-grey); */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    
+    background-color: #E7EAF2;
   }
   h1,
   h2,
@@ -54,7 +54,8 @@ export const GlobalStyle = createGlobalStyle`
     --dark-grey: #A6A6A6;
     --backdrop: rgba(0, 0, 0, 0.25);
     --diagram-shadow: rgba(255, 255, 255, 0.20);
-    --background-light-grey:rgba(255, 255, 255, 0.4);
+    /* --background-light-grey:rgba(255, 255, 255, 0.4); */
+    --background-light-grey: #e7eaf2;
     --background-gray: #E5E5E5;
     --white: #ffffff;
     --green: #24CCA7;
@@ -63,6 +64,10 @@ export const GlobalStyle = createGlobalStyle`
     --pink: #FF6596;
     --vector-color:#E7E5F2;
     --add-transaction-menu-color:rgba(255, 255, 255, 0.7);
+
+    //transactions
+     --transaction-underline-color: #dcdcdf;
+     --transaction-item-bg-color: #ffffff;
 
     --baseFont: 'Circe', sans-serif;
     --secondaryFont: 'Poppins', sans-serif;

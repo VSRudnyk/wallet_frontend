@@ -1,10 +1,17 @@
 import styled from 'styled-components';
+import '../../stylesheet/fonts.css';
 
 export const TableWrapper = styled.div`
+    font-family: var(--baseFont);
+    font-style: normal;
+    font-weight: var(--regular);
+
+
     & ul {
         list-style: none;
     }
     border: 1px solid black;
+
     @media screen and (min-width: 320px) {
         width: 280px;
     }
@@ -28,7 +35,7 @@ export const TableTittleBtn = styled.button`
     background: none;
     font-size: 18px;
     line-height: 1.47;
-    font-weight: 700;
+    font-weight: var(--bold);
 `;
 
 export const TableContentList = styled.ul`
@@ -86,7 +93,7 @@ export const TableResultItem = styled.li`
     }
 `;
 export const ResultItemTittle = styled.span`
-
+    font-weight: var(--bold);
 `;
 export const ResultItemValue = styled.span`
     color: ${props => props.color || "#000"};

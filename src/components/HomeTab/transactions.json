@@ -1,0 +1,110 @@
+[
+  {
+    "id": "1",
+    "date": "2017-05-12",
+    "type": "-",
+    "category": "other",
+    "comment": "gift for child",
+    "sum": "300.00",
+    "balance": "8900.00"
+  },
+  {
+    "id": "2",
+    "date": "2020-11-06",
+    "type": "+",
+    "category": "home",
+    "comment": "utility bills",
+    "sum": "1625.45",
+    "balance": "12499.73"
+  },
+  {
+    "id": "3",
+    "date": "2016-04-01",
+    "type": "+",
+    "category": "car",
+    "comment": "new tires",
+    "sum": "600.00",
+    "balance": "5430.00"
+  },
+  {
+    "id": "4",
+    "date": "2021-10-03",
+    "type": "-",
+    "category": "home",
+    "comment": "utility bills",
+    "sum": "924.45",
+    "balance": "7443.81"
+  },
+  {
+    "id": "5",
+    "date": "2022-09-29",
+    "type": "-",
+    "category": "Apartment",
+    "comment": "new TV",
+    "sum": "2500.00",
+    "balance": "15640.00"
+  },
+  {
+    "id": "6",
+    "date": "2022-03-14",
+    "type": "-",
+    "category": "Work",
+    "comment": "coffee",
+    "sum": "5.45",
+    "balance": "12400.73"
+  },
+  {
+    "id": "7",
+    "date": "2022-08-01",
+    "type": "-",
+    "category": "Transport",
+    "comment": "bought 50 rides",
+    "sum": "630.00",
+    "balance": "10430.50"
+  },
+  {
+    "id": "8",
+    "date": "2022-09-30",
+    "type": "+",
+    "category": "Work",
+    "comment": "Salary",
+    "sum": "3000.00",
+    "balance": "17443.81"
+  },
+  {
+    "id": "9",
+    "date": "2022-09-29",
+    "type": "+",
+    "category": "Landlord",
+    "comment": "Tenants payed monthly fee",
+    "sum": "1000.00",
+    "balance": "18900.00"
+  },
+  {
+    "id": "10",
+    "date": "2022-10-06",
+    "type": "-",
+    "category": "Groceries",
+    "comment": "Bought vegetables",
+    "sum": "225.45",
+    "balance": "18499.73"
+  },
+  {
+    "id": "11",
+    "date": "2022-01-01",
+    "type": "-",
+    "category": "Farmacy",
+    "comment": "headache medcine",
+    "sum": "600.00",
+    "balance": "15430.00"
+  },
+  {
+    "id": "12",
+    "date": "2021-12-31",
+    "type": "-",
+    "category": "Restaurant",
+    "comment": "New Year Party!!",
+    "sum": "1924.45",
+    "balance": "17443.81"
+  }
+]
