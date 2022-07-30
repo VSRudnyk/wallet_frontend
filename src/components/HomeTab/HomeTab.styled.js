@@ -1,8 +1,16 @@
 import styled from 'styled-components';
 
+export const HomeTabWrapper = styled.div`
+  display: ${({ page }) => (page === 'currency' ? 'none' : 'block')};
+  & > button:nth-child(1) {
+    margin-right: 30px;
+  }
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
+`;
+
 export const List = styled.ul`
-  margin-left: auto;
-  margin-right: auto;
   @media (min-width: 768px) {
     margin-top: 55px;
   }
@@ -33,13 +41,8 @@ export const Span = styled.span`
 `;
 export const TransactionsContainer = styled.ul`
   position: relative;
-  width: 704px;
   border-radius: 30px;
-
-  margin-left: auto;
-  margin-right: auto;
   overflow: hidden;
-
   height: 40vh;
   overflow-y: scroll;
   scroll-behavior: smooth;
@@ -47,8 +50,7 @@ export const TransactionsContainer = styled.ul`
     display: none;
   }
 
-  @media (min-width: 1023px) {
-    width: 715px;
+  @media (min-width: 1280px) {
     &:nth-child(2) {
       margin-top: 50px;
     }
@@ -56,10 +58,12 @@ export const TransactionsContainer = styled.ul`
 `;
 
 export const TransactionsContainerItem = styled.li`
-  width: 100%;
   background-color: transparent;
-  @media (min-width: 1023px) {
-    width: 715px;
+  @media (min-width: 768px) {
+    width: 704px;
+  }
+  @media (min-width: 1280px) {
+    width: 660px;
   }
 `;
 
@@ -73,7 +77,7 @@ export const Text = styled.p`
 
 export const TempBtn = styled.button`
   background-color: var(--active-blue);
-  color: #ffffff;
+  color: var(--white);
   border: none;
   padding: 10px;
   border-radius: 10px;
@@ -82,7 +86,4 @@ export const TempBtn = styled.button`
   font-weight: var(--bold);
   font-size: 18px;
   line-height: 27px;
-  &:not(:last-child) {
-    margin-right: 30px;
-  }
 `;

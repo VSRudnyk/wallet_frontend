@@ -1,12 +1,15 @@
 import { Header } from 'components/Header/Header';
-import { DashboardPage } from 'pages/DashboardPage';
-import { Container } from 'stylesheet/Container.styled';
+import { Routes, Route } from 'react-router-dom';
+import { Home } from 'routers/PrivatRouter';
 
 export const App = () => {
   return (
-    <Container>
+    <>
       <Header />
-      <DashboardPage />
-    </Container>
+      <Routes>
+        <Route path="/wallet_frontend/*" element={<Home />} />
+        <Route path="*" element={<h1>NotFound </h1>} />
+      </Routes>
+    </>
   );
 };
