@@ -5,7 +5,7 @@ import {
   DashboardCurrencyWrapper,
   DashboardSecondSectionWrapper,
   DashboardWrapper,
-  Qwe,
+  DashboardSeparator,
 } from './DashboardPage.styled';
 import { Navigation } from 'components/Navigation/Navigation';
 import { Balance } from 'components/Balance/Balance';
@@ -34,7 +34,7 @@ export const DashboardPage = () => {
               <Currency page={page} />
             </DashboardCurrencyWrapper>
           </DashboardFirstSectionWrapper>
-          <Qwe></Qwe>
+          <DashboardSeparator></DashboardSeparator>
           <DashboardSecondSectionWrapper>
             <HomeTab page={page} />
           </DashboardSecondSectionWrapper>
