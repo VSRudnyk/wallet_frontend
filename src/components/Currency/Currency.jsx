@@ -1,5 +1,3 @@
-import { Navigation } from 'components/Navigation/Navigation';
-import { Container } from 'stylesheet/Container.styled';
 import {
   TableHeaderContainer,
   TableHeaderList,
@@ -14,8 +12,6 @@ import {
 export const Currency = ({ page }) => {
   return (
     <>
-      {/* <Container> */}
-      {/* <Navigation /> */}
       <TableWrapper page={page}>
         <TableHeaderContainer>
           <TableHeaderList>
@@ -48,7 +44,6 @@ export const Currency = ({ page }) => {
           </TableBodyList>
         </TableBodyContainer>
       </TableWrapper>
-      {/* </Container> */}
     </>
   );
 };
