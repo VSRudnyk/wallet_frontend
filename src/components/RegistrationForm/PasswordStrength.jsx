@@ -43,6 +43,7 @@ export const PasswordStrenght = ({ password }) => {
     width: '100%',
     height: '4px',
     marginTop: '0',
+    background: 'var(--light-gray)',
   });
 
   const changePasswordColor = () => ({
