@@ -15,11 +15,11 @@ export const Input = styled(Field)`
   width: 280px;
   outline: none;
   transition: border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
-  
+
   @media screen and (min-width: 767px) {
     width: 409.5px;
+    height: 32px;
   }
-
 
   ::placeholder {
     color: var(--gray);
@@ -33,18 +33,28 @@ export const Input = styled(Field)`
 export const InputContainer = styled.div`
   position: relative;
   margin-bottom: 30px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 40px;
+  }
 `;
 
 export const SvgEnvelope = styled(Envelope)`
-position: absolute;
-top: 8px;
-left: 8px;
-}
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  @media screen and (min-width: 768px) {
+    top: 2px;
+  }
 `;
 
 export const SvgLock = styled(Lock)`
-position: absolute;    top: 8px;
+position: absolute;   
+ top: 8px;
 left: 8px;
+@media screen and (min-width: 768px) {
+    top: 2px;
+  }
 }
 
 `;
@@ -53,6 +63,9 @@ export const SvgAccount = styled(Account)`
 position: absolute;
 top: 8px;
 left: 8px;
+@media screen and (min-width: 768px) {
+    top: 2px;
+  }
 }
 `;
 
@@ -70,7 +83,6 @@ export const RegisterButton = styled.button`
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: 20px;
-  margin-top: 40px;
 `;
 
 export const LoginButton = styled.button`

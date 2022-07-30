@@ -8,7 +8,8 @@ import {
   ImageContainer,
   Text,
   ImageSection,
-  Container
+  Container,
+  ContainerRegisterForm
 } from './RegistrationPage.styled';
 import Logo from '../images/Logo.svg';
 
@@ -20,6 +21,7 @@ export const RegistrationPage = () => {
         <ImageContainer />
         <Text>Finance App</Text>
       </ImageSection>
+      <ContainerRegisterForm>
       <FormContainer>
         <LogoContainer>
           <LogoReg src={Logo} alt="Logo" />
@@ -27,6 +29,7 @@ export const RegistrationPage = () => {
         </LogoContainer>
         <FormRegistration />
       </FormContainer>
+      </ContainerRegisterForm>
     </ContainerRegister>
     </Container>
   );
