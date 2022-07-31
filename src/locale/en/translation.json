@@ -1,12 +1,11 @@
 {
-  "noTransactionText": "You don't have any transactions yet. Please use add button below to get started.",
+  "noTransactionText": "You don't have transactions yet. Please use add button below to get started.",
   "date": "Date",
   "type": "Type",
   "category": "Category",
   "comment": "Comment",
   "sum": "Sum",
   "balance": "Balance",
-
   "groceries": "Groceries",
   "work": "Work",
   "apartment": "Apartment",
@@ -27,5 +26,14 @@
   "sports": "Sports",
   "hobby": "Hobby",
   "entertainment": "Entertainment",
-  "savings": "Savings"
+  "savings": "Savings",
+  "main": "Main",
+  "food": "Food",
+  "auto": "Auto",
+  "reset": "Reset",
+  "development": "Development",
+  "children": "Children",
+  "house": "House",
+  "income": "Income",
+  "expense": "Expenses"
 }

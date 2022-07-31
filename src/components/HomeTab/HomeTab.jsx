@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import TransactionMobile from './TransactionMobile/TransactionMobile';
 import Transaction from './Transaction';
+import { useGetAllTransactionsQuery } from 'redux/authOperation';
+import uniqid from 'uniqid';
+
 import {
   HomeTabWrapper,
   List,
@@ -10,7 +13,6 @@ import {
   TempBtn,
 } from './HomeTab.styled';
 import Media from 'react-media';
-import data from './transactions.json';
 
 const lngs = {
   en: { nativeName: 'English' },
@@ -18,6 +20,8 @@ const lngs = {
 };
 
 const HomeTab = ({ page }) => {
+  const { data, isLoading, isSuccess } = useGetAllTransactionsQuery();
+
   const { t, i18n } = useTranslation();
   const [transactions, setTransactions] = useState([]);
 
@@ -25,47 +29,16 @@ const HomeTab = ({ page }) => {
     if (transactions.length !== 0) {
       return;
     }
-    setTransactions(state => [...state, ...data]);
-  }, [transactions]);
+    isSuccess && setTransactions(data);
+  }, [data, isLoading, isSuccess, transactions]);
 
-  const sortedTransactions = [...transactions]
-    .map(transaction => {
-      return { ...transaction, date: new Date(transaction.date) };
-    })
-    .sort((item1, item2) => {
-      return Number(item2.date) - Number(item1.date);
-    })
-    .map(transaction => {
-      const newDate = transaction.date
-        .toISOString()
-        .substr(0, 10)
-        .split('-')
-        .reverse()
-        .join('.');
-
-      return { ...transaction, date: newDate };
-    });
-
-  const transactionItems = sortedTransactions.map(
-    ({ date, type, category, comment, sum, balance, id }) => {
-      return (
-        <ListItem key={id}>
-          <TransactionMobile
-            date={date}
-            type={type}
-            category={category}
-            comment={comment}
-            sum={sum}
-            balance={balance}
-          />
-        </ListItem>
-      );
-    }
-  );
+  const sortedTransactions = [...transactions].sort((item1, item2) => {
+    return Number(item2.date) - Number(item1.date);
+  });
 
   return (
     <HomeTabWrapper page={page}>
-      <div>
+      {/* <div>
         {Object.keys(lngs).map(lng => (
           <TempBtn
             key={lng}
@@ -75,16 +48,24 @@ const HomeTab = ({ page }) => {
             {lngs[lng].nativeName}
           </TempBtn>
         ))}
-      </div>
+      </div> */}
       <Media queries={{ mobile: { maxWidth: 767 } }}>
         {matches =>
           matches.mobile ? (
-            transactions.length === 0 ? (
+            sortedTransactions.length === 0 ? (
               <Text>{t('noTransactionText')}</Text>
             ) : (
-              <List>{transactionItems}</List>
+              <List>
+                {sortedTransactions.map(transaction => {
+                  return (
+                    <ListItem key={uniqid()}>
+                      <TransactionMobile obj={transaction} />
+                    </ListItem>
+                  );
+                })}
+              </List>
             )
-          ) : transactions.length === 0 ? (
+          ) : sortedTransactions.length === 0 ? (
             <Text>{t('noTransactionText')}</Text>
           ) : (
             <Transaction transactionList={sortedTransactions} />
