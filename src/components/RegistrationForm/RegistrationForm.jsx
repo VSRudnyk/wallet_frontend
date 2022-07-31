@@ -1,15 +1,32 @@
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { useRegisterMutation } from '../../redux/authOperation';
-import { Formik, ErrorMessage, Field, Form } from 'formik';
+import { Formik, ErrorMessage, Form } from 'formik';
 import { toast, ToastContainer, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
+import { PasswordStrenght } from './PasswordStrength';
+import {
+  Input,
+  InputContainer,
+  SvgAccount,
+  SvgEnvelope,
+  SvgLock,
+  RegisterButton,
+  LoginButton,
+  ButtonShow
+} from './RegistrationForm.styled';
+import { useNavigate } from 'react-router-dom';
 
 export const FormRegistration = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [register, { isSuccess, isError }] = useRegisterMutation();
+  const [password, setPassword] = useState('');
+  const [type, setType] = useState('password');
 
   const schema = yup.object().shape({
     name: yup.string().required(),
-    email: yup.string().email().required(),
+    email: yup.string().email().min(6).required(),
     password: yup.string().min(6).max(12).required(),
     repeated_password: yup.string().when('password', {
       is: val => (val && val.length > 0 ? true : false),
@@ -18,8 +35,6 @@ export const FormRegistration = () => {
         .oneOf([yup.ref('password')], 'Both password need to be the same'),
     }),
   });
-
-  const [register, { isSuccess, isError }] = useRegisterMutation();
 
   const defaultInitialValues = {
     name: '',
@@ -32,11 +47,18 @@ export const FormRegistration = () => {
     const { name, email, password } = values;
     register({ name, email, password });
     resetForm();
-    // navigate("/login", { replace: true })
+    navigate('/login', { replace: true });
   };
 
   const FormError = ({ name }) => {
     return <ErrorMessage name={name} render={message => <p>{message}</p>} />;
+  };
+
+  const showHide = e => {
+    e.preventDefault();
+    e.stopPropagation();
+    let currentType = type === 'input' ? 'password' : 'input';
+    setType(currentType);
   };
 
   return (
@@ -62,27 +84,44 @@ export const FormRegistration = () => {
         validationSchema={schema}
       >
         <Form autoComplete="off">
-          <label htmlFor="name">Name</label>
-          <Field name="name" type="text" placeholder="Enter your name" />
-          <FormError name="name" />
-          <label htmlFor="email">Email</label>
-          <Field name="email" type="email" placeholder="Enter your e-mail" />
-          <FormError name="email" />
-          <label htmlFor="password">Password</label>
-          <Field name="password" type="password" placeholder="Password" />
-          <FormError name="password" />
-          <Field
-            name="repeated_password"
-            type="password"
-            placeholder="Confirm password"
-          />
-          <FormError name="repeated_password" />
-          <button type="submit"> Create!</button>
+          <InputContainer>
+            <SvgEnvelope />
+            <Input name="email" type="email" placeholder="E-mail" />
+            <FormError name="email" />
+          </InputContainer>
+          <InputContainer>
+            <SvgLock />
+            <Input
+              onInput={e => setPassword(e.target.value)}
+              name="password"
+              type={type}
+              placeholder="Password"
+            />
+            <FormError name="password" />
+            <PasswordStrenght password={password} />
+          </InputContainer>
+          <ButtonShow onClick={showHide}> {type === 'input' ? 'Hide' : 'Show'}</ButtonShow>
+
+          <InputContainer>
+            <SvgLock />
+            <Input
+              name="repeated_password"
+              type="password"
+              placeholder="Confirm password"
+            />
+            <FormError name="repeated_password" />
+          </InputContainer>
+          <InputContainer>
+            <SvgAccount />
+            <Input name="name" type="text" placeholder="First name " />
+            <FormError name="name" />
+          </InputContainer>
+          <RegisterButton type="submit"> Register</RegisterButton>
           <ToastContainer />
         </Form>
       </Formik>
       <Link to="/login">
-        <button type="button">Login</button>
+        <LoginButton type="button">Log in</LoginButton>
       </Link>
     </>
   );

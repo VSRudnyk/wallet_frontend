@@ -12,20 +12,21 @@ import {
   LogoutButton,
   Logout,
 } from './Header.styled';
+import { Container } from 'stylesheet/Container.styled';
 
 export const Header = () => {
   return (
     <HeaderSection>
-      <HeaderContainer>
-        <>
-          <NavLink to="/home">
-            <ContainerLogo>
-              <LogoStyle src={Logo} alt="Logo" />
-              <LogoName>Wallet</LogoName>
-            </ContainerLogo>
-          </NavLink>
-        </>
-        <>
+      <Container>
+        <HeaderContainer>
+          <ContainerLogo>
+            <NavLink to="/home">
+              <ContainerLogo>
+                <LogoStyle src={Logo} alt="Logo" />
+                <LogoName>Wallet</LogoName>
+              </ContainerLogo>
+            </NavLink>
+          </ContainerLogo>
           <ContainerLogo>
             <UserName>Name</UserName>
             <LogoutButton>
@@ -33,8 +34,8 @@ export const Header = () => {
               <Logout>Exit</Logout>
             </LogoutButton>
           </ContainerLogo>
-        </>
-      </HeaderContainer>
+        </HeaderContainer>
+      </Container>
     </HeaderSection>
   );
 };

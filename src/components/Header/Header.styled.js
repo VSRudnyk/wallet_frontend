@@ -21,6 +21,14 @@ export const HeaderContainer = styled.div`
 export const ContainerLogo = styled.div`
   display: flex;
   align-items: center;
+  &:nth-child(1) {
+    height: 30px;
+  }
+  @media screen and (min-width: 768px) {
+    &:nth-child(1) {
+      height: 40px;
+    }
+  }
 `;
 
 export const LogoStyle = styled.img`
@@ -46,6 +54,9 @@ export const LogoName = styled.h1`
   display: flex;
   align-items: center;
   color: var(--black);
+  @media screen and (min-width: 768px) {
+    font-size: 30px;
+  }
 `;
 
 export const UserName = styled.p`

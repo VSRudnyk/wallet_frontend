@@ -1,11 +1,11 @@
-import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
 export const NavigationContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: ${({ page }) => (page === 'home' ? 15 + 'px' : 31 + 'px')};
   @media screen and (min-width: 768px) {
     align-items: flex-start;
     flex-direction: column;
@@ -45,15 +45,50 @@ export const Link = styled(NavLink)`
   & > svg {
     width: 38px;
     height: 38px;
-    fill: #6e78e8;
+    fill: var(--blue);
   }
   &.active {
     font-weight: var(--bold);
     & > svg {
-      fill: #4a56e2;
+      fill: ${({ page }) =>
+        page === 'home' ? 'var(--active-blue)' : 'var(--blue)'};
     }
-    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+    filter: ${({ page }) =>
+      page === 'home'
+        ? 'drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5))'
+        : 'none'};
   }
+  @media screen and (min-width: 768px) {
+    & > svg {
+      width: 18px;
+      height: 18px;
+    }
+    display: flex;
+    align-items: center;
+  }
+`;
+
+export const ButtonCurrency = styled.div`
+  & > p {
+    font-family: var(--secondaryFont);
+    font-style: normal;
+    font-weight: var(--reqular);
+    font-size: 18px;
+    line-height: 27px;
+    color: var(--black);
+  }
+
+  & > svg {
+    width: 38px;
+    height: 38px;
+    fill: ${({ page }) =>
+      page === 'currency' ? 'var(--active-blue)' : 'var(--blue)'};
+    filter: ${({ page }) =>
+      page === 'currency'
+        ? 'drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5))'
+        : 'none'};
+  }
+
   @media screen and (min-width: 768px) {
     & > svg {
       width: 18px;
