@@ -7,7 +7,8 @@ import {
   InputContainer,
   SvgEnvelope,
   SvgLock,
-  LoginButton
+  LoginButton,
+  RegisterButton
 } from './LoginForm.styled'
 
 export const LoginForm = () => {
@@ -66,6 +67,10 @@ export const LoginForm = () => {
       <Link to="/login">
         <LoginButton type="button">Log in</LoginButton>
       </Link>
+      <Link to="/login">
+        <RegisterButton type="button">Register</RegisterButton>
+      </Link>
+
     </>
   );
 };

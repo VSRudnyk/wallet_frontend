@@ -68,5 +68,20 @@ export const LoginButton = styled.button`
   line-height: 1;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  
+  margin-bottom: 20px;
+`;
+
+export const RegisterButton = styled.button`
+  background-color: var(--green);
+  color: var(--white);
+  width: 280px;
+  border-radius: 50px;
+  height: 50px;
+  border: none;
+  font-family: var(--baseFont);
+  font-weight: var(--regular);
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 `;
