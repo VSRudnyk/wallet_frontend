@@ -70,7 +70,12 @@ export const BodyTd = styled.td`
   font-size: 18px;
   line-height: 27px;
   word-wrap: break-word;
-  // color: ${props => (props.income === '+' ? '#24CCA7' : '#ff6596')};
+  &:first-child {
+    padding-left: 20px;
+  }
+  &:last-child {
+    padding-right: 20px;
+  }
   &::after {
     content: '';
     position: absolute;
