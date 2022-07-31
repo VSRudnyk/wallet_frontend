@@ -1,0 +1,35 @@
+@import '../../stylesheet/fonts.css';
+@import'../../stylesheet/vars.css';
+
+.switch__button {
+    border-radius: 50%;
+    position: relative;
+
+    
+    width: 44px;
+    height: 44px;
+    background: #24CCA7;
+    box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
+    justify-content: center;
+    cursor: pointer;
+}
+
+.switch__buttonVert {
+    width: 2px;
+    height: 20px;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 12px;
+    left: 22px
+    
+}
+
+.switch__buttonGor {
+    width: 20px;
+    height: 2px;
+    background-color: #FFFFFF;
+    position: absolute;
+    left:13px ;
+    top: 21px;
+
+}

@@ -53,3 +53,12 @@ export const DashboardSeparator = styled.div`
       1px 0px 0px rgba(255, 255, 255, 0.6);
   }
 `;
+
+export const ButtonAddTransactionsWrapper = styled.div`
+  outline: none;
+  border: none;
+  position: fixed;  
+  bottom: 40px; 
+  right: 40px;
+`
+;
