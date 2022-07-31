@@ -24,7 +24,6 @@ export const DashboardSection = styled.main`
 export const DashboardWrapper = styled.div`
   @media screen and (min-width: 1280px) {
     display: flex;
-    justify-content: space-between;
   }
 `;
 
@@ -45,6 +44,8 @@ export const DashboardCurrencyWrapper = styled.div``;
 export const DashboardSecondSectionWrapper = styled.div``;
 export const DashboardSeparator = styled.div`
   @media screen and (min-width: 1280px) {
+    margin-left: 69px;
+    margin-right: 89px;
     height: 100vh;
     margin-top: -46px;
     margin-bottom: -46px;

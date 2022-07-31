@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 
 export const TableWrapper = styled.div`
-  display: ${({ page }) => (page === 'currency' ? 'block' : 'none')};
   @media screen and (min-width: 768px) {
     display: block;
-    width: 336px;
-    height: 182px;
   }
   @media screen and (min-width: 1280px) {
     width: 393px;
@@ -43,11 +40,14 @@ export const TableBodyContainer = styled.div`
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
   padding: 12px 20px 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   @media screen and (min-width: 768px) {
     padding: 16px 20px 12px 20px;
   }
   @media screen and (min-width: 1280px) {
-    padding: 20px 61px 147px 58px;
+    padding: 20px 61px 20px 58px;
   }
   /* background-image: linear-gradient(
     180deg,
@@ -59,28 +59,48 @@ export const TableBodyContainer = styled.div`
 export const TableBodyList = styled.ul`
   display: flex;
   flex-direction: column;
+  height: 124px;
+  overflow: hidden;
+  overflow-y: scroll;
+  @media screen and (min-width: 768px) {
+    height: 111px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 273px;
+    height: 270px;
+  }
 `;
 
 export const TableBodyListItem = styled.li`
   display: flex;
-  align-items: flex-start;
   justify-content: space-between;
 `;
 
 export const TableBodyText = styled.p`
-  width: 33px;
-  text-align: start;
   font-family: var(--baseFont);
   font-style: normal;
   font-weight: var(--reqular);
   font-size: 16px;
   line-height: 24px;
+
+  width: 35px;
+  height: 24px;
+  &:not(:last-child) {
+    margin-right: 67px;
+  }
+
   color: var(--white);
   &:not(:last-child) {
     margin-bottom: 12px;
   }
+  @media screen and (min-width: 768px) {
+    &:not(:last-child) {
+      margin-right: 95px;
+    }
+  }
   @media screen and (min-width: 1280px) {
     &:not(:last-child) {
+      margin-right: 0;
       margin-bottom: 24px;
     }
   }

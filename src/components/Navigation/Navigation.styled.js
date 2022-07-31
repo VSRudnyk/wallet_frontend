@@ -50,14 +50,11 @@ export const Link = styled(NavLink)`
   &.active {
     font-weight: var(--bold);
     & > svg {
-      fill: ${({ page }) =>
-        page === 'home' ? 'var(--active-blue)' : 'var(--blue)'};
+      fill: var(--active-blue);
     }
-    filter: ${({ page }) =>
-      page === 'home'
-        ? 'drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5))'
-        : 'none'};
+    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
   }
+
   @media screen and (min-width: 768px) {
     & > svg {
       width: 18px;

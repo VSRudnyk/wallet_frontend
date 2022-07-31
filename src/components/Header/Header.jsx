@@ -20,7 +20,7 @@ export const Header = () => {
       <Container>
         <HeaderContainer>
           <ContainerLogo>
-            <NavLink to="/home">
+            <NavLink to="/wallet_frontend">
               <ContainerLogo>
                 <LogoStyle src={Logo} alt="Logo" />
                 <LogoName>Wallet</LogoName>
