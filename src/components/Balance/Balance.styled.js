@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import '../../stylesheet/fonts.css';
 
 export const ContainerBalance = styled.div`
-  display: ${({ page }) => (page === 'home' ? 'block' : 'none')};
   background: var(--white);
   border-radius: 30px;
   padding-top: 8px;
@@ -15,14 +14,10 @@ export const ContainerBalance = styled.div`
     width: 336px;
     padding-left: 40px;
     margin-bottom: 20px;
-    // ! После добавления валют убрать фиксированную ширину
-    // ! После добавления валют задать отступ вниз от общего контейнера, а не от баланса
   }
   @media screen and (min-width: 1280px) {
     width: 395px;
     margin-bottom: 32px;
-    // ! После добавления валют задать отступ вниз от общего контейнера, а не от баланса
-    // ! После добавления валют убрать фиксированную ширину
   }
 `;
 

@@ -7,19 +7,18 @@ import {
   DashboardWrapper,
   DashboardSeparator,
 } from './DashboardPage.styled';
+import Media from 'react-media';
+
 import { Navigation } from 'components/Navigation/Navigation';
 import { Balance } from 'components/Balance/Balance';
 import HomeTab from 'components/HomeTab/HomeTab';
 import { Currency } from 'components/Currency/Currency';
 import { Container } from 'stylesheet/Container.styled';
-import { useState } from 'react';
+import { useLocation, Outlet } from 'react-router-dom';
 
 export const DashboardPage = () => {
-  const [page, setPage] = useState('home');
-  const changeComponent = e => {
-    const { id } = e.currentTarget;
-    setPage(id);
-  };
+  const location = useLocation();
+  const { pathname } = location;
 
   return (
     <DashboardSection>
@@ -27,16 +26,33 @@ export const DashboardPage = () => {
         <DashboardWrapper>
           <DashboardFirstSectionWrapper>
             <DashboardNavAndBalWrapper>
-              <Navigation page={page} changeComponent={changeComponent} />
-              <Balance page={page} />
+              <Navigation />
+              <Balance />
+              <Media queries={{ mobile: { maxWidth: 768 } }}>
+                {matches =>
+                  matches.mobile && (
+                    <DashboardCurrencyWrapper>
+                      <Currency />
+                    </DashboardCurrencyWrapper>
+                  )
+                }
+              </Media>
             </DashboardNavAndBalWrapper>
-            <DashboardCurrencyWrapper>
-              <Currency page={page} />
-            </DashboardCurrencyWrapper>
+            <Media queries={{ table: { minWidth: 768 } }}>
+              {matches =>
+                matches.table && (
+                  <DashboardCurrencyWrapper>
+                    <Currency />
+                  </DashboardCurrencyWrapper>
+                )
+              }
+            </Media>
           </DashboardFirstSectionWrapper>
+
           <DashboardSeparator></DashboardSeparator>
+          {pathname === '/wallet_frontend/diagram' && <Outlet />}
           <DashboardSecondSectionWrapper>
-            <HomeTab page={page} />
+            {location.pathname === '/wallet_frontend/main' && <HomeTab />}
           </DashboardSecondSectionWrapper>
         </DashboardWrapper>
       </Container>
