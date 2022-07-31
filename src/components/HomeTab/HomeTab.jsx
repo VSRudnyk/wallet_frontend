@@ -1,26 +1,31 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import TransactionMobile from './TransactionMobile/TransactionMobile';
 import Transaction from './Transaction';
 import {
   HomeTabWrapper,
   List,
   ListItem,
-  TransactionsContainer,
-  TransactionsContainerItem,
   Text,
   TempBtn,
 } from './HomeTab.styled';
 import Media from 'react-media';
 import data from './transactions.json';
 
+const lngs = {
+  en: { nativeName: 'English' },
+  ua: { nativeName: 'Українська' },
+};
+
 const HomeTab = ({ page }) => {
+  const { t, i18n } = useTranslation();
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
     if (transactions.length !== 0) {
       return;
     }
-    // setTransactions(state => [...state, ...data]);
+    setTransactions(state => [...state, ...data]);
   }, [transactions]);
 
   const sortedTransactions = [...transactions]
@@ -29,6 +34,16 @@ const HomeTab = ({ page }) => {
     })
     .sort((item1, item2) => {
       return Number(item2.date) - Number(item1.date);
+    })
+    .map(transaction => {
+      const newDate = transaction.date
+        .toISOString()
+        .substr(0, 10)
+        .split('-')
+        .reverse()
+        .join('.');
+
+      return { ...transaction, date: newDate };
     });
 
   const transactionItems = sortedTransactions.map(
@@ -48,53 +63,31 @@ const HomeTab = ({ page }) => {
     }
   );
 
-  const addData = () => {
-    setTransactions(state => [...state, ...data]);
-  };
-  const removeData = () => {
-    setTransactions([]);
-  };
-
   return (
     <HomeTabWrapper page={page}>
-      <TempBtn type="button" onClick={addData}>
-        get data
-      </TempBtn>
-      <TempBtn type="button" onClick={removeData}>
-        delete data
-      </TempBtn>
+      <div>
+        {Object.keys(lngs).map(lng => (
+          <TempBtn
+            key={lng}
+            type="submit"
+            onClick={() => i18n.changeLanguage(lng)}
+          >
+            {lngs[lng].nativeName}
+          </TempBtn>
+        ))}
+      </div>
       <Media queries={{ mobile: { maxWidth: 767 } }}>
         {matches =>
           matches.mobile ? (
             transactions.length === 0 ? (
-              <Text>
-                You don't have any transactions yet. please use "add button"
-                below to get started.
-              </Text>
+              <Text>{t('noTransactionText')}</Text>
             ) : (
               <List>{transactionItems}</List>
             )
           ) : transactions.length === 0 ? (
-            <Text>
-              You don't have any transactions yet. please use "add button" below
-              to get started.
-            </Text>
+            <Text>{t('noTransactionText')}</Text>
           ) : (
-            <TransactionsContainer style={{}}>
-              <TransactionsContainerItem
-                style={{ position: 'fixed', zIndex: 1 }}
-              >
-                <Transaction
-                  date="Date"
-                  type="Type"
-                  category="Category"
-                  comment="Comment"
-                  sum="Sum"
-                  balance="Balance"
-                />
-              </TransactionsContainerItem>
-              <List>{transactionItems}</List>
-            </TransactionsContainer>
+            <Transaction transactionList={sortedTransactions} />
           )
         }
       </Media>
