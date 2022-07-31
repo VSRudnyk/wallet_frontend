@@ -2,8 +2,8 @@ import { useMemo } from 'react';
 import { useTable } from 'react-table';
 import { useTranslation } from 'react-i18next';
 import EllipsisText from 'react-ellipsis-text';
-
 import { TableContainer, Table, Thead, Th, BodyTd } from './Transaction.styled';
+
 const Transaction = ({ transactionList }) => {
   const { t } = useTranslation();
   const data = useMemo(() => transactionList, [transactionList]);
@@ -61,6 +61,23 @@ const Transaction = ({ transactionList }) => {
                 {row.cells.map(cell => {
                   const header = cell.column.Header;
                   switch (header) {
+                    case 'Date':
+                      let newValue = cell
+                        .render('Cell')
+                        .props.value.slice(2)
+                        .substring(0, 8)
+                        .split('-')
+                        .reverse()
+                        .join('.');
+                      return (
+                        <BodyTd {...cell.getCellProps()}>{newValue}</BodyTd>
+                      );
+                    case 'Type':
+                      return (
+                        <BodyTd {...cell.getCellProps()}>
+                          {t(cell.render('Cell').props.value.toLowerCase())}
+                        </BodyTd>
+                      );
                     case 'Category':
                       return (
                         <BodyTd {...cell.getCellProps()}>
@@ -80,13 +97,19 @@ const Transaction = ({ transactionList }) => {
 
                     case 'Sum':
                       const color =
-                        row.values.type === '+' ? '#24CCA7' : '#ff6596';
+                        row.values.type === 'income' ? '#24CCA7' : '#ff6596';
                       return (
                         <BodyTd
                           {...cell.getCellProps()}
                           style={{ color: color }}
                         >
-                          {cell.render('Cell')}
+                          {cell.render('Cell').props.value.toFixed(2)}
+                        </BodyTd>
+                      );
+                    case 'Balance':
+                      return (
+                        <BodyTd {...cell.getCellProps()}>
+                          {cell.render('Cell').props.value.toFixed(2)}
                         </BodyTd>
                       );
 

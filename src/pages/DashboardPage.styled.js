@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+import BackDes from '../images/BackgrDes-min.png';
+import BackTab from '../images/BackgrTablet-min.png';
+
 export const DashboardSection = styled.main`
   background-color: var(--background-gray);
   background-image: linear-gradient(
@@ -12,10 +15,18 @@ export const DashboardSection = styled.main`
   height: 100%;
   backdrop-filter: blur(50px);
   @media screen and (min-width: 768px) {
+    background: url(${BackTab});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     padding-top: 32px;
     padding-bottom: 32px;
   }
   @media screen and (min-width: 1280px) {
+    background: url(${BackDes});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     padding-top: 46px;
     padding-bottom: 46px;
   }
@@ -24,7 +35,6 @@ export const DashboardSection = styled.main`
 export const DashboardWrapper = styled.div`
   @media screen and (min-width: 1280px) {
     display: flex;
-    // justify-content: space-between;
   }
 `;
 
@@ -48,6 +58,8 @@ export const DashboardSecondSectionWrapper = styled.div`
 `;
 export const DashboardSeparator = styled.div`
   @media screen and (min-width: 1280px) {
+    margin-left: 69px;
+    margin-right: 89px;
     height: 100vh;
     margin-top: -46px;
     margin-bottom: -46px;
