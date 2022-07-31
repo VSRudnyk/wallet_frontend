@@ -21,7 +21,7 @@ export const Currency = ({ page }) => {
   const { pathname } = location;
 
   useEffect(() => {
-    axios('http://localhost:4000/api/currency').then(res => {
+    axios('https://wallet-backend-1.herokuapp.com/api/currency').then(res => {
       const arrMainCurrency = [];
       let result = null;
       for (let currencyBack of res.data.exchangeRate) {

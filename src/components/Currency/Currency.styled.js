@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import Line from '../../images/line-currency-min.png';
+
 export const TableWrapper = styled.div`
   @media screen and (min-width: 768px) {
     display: block;
@@ -49,11 +51,15 @@ export const TableBodyContainer = styled.div`
   @media screen and (min-width: 1280px) {
     padding: 20px 61px 20px 58px;
   }
-  /* background-image: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.2) -8.67%,
-    rgba(255, 255, 255, 0) 116.22%
-  ); */
+  background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.2) -8.67%,
+      rgba(255, 255, 255, 0) 116.22%
+    ),
+    url(${Line});
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
 `;
 
 export const TableBodyList = styled.ul`
