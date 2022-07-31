@@ -12,8 +12,8 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { authOperation } from './authOperation';
 import authReducer from './authSlice';
-import { loginOperation } from './login/loginOperation.jsx';
-import loginReducer from './login/loginSlice'
+import { loginOperation } from './loginOperation';
+import loginReducer from './loginSlice.jsx'
 
 const authPersistConfig = {
   key: 'auth',

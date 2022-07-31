@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { useLoginMutation } from '../../redux/login/loginOperation';
-import { Formik, ErrorMessage, Field, Form } from 'formik';
+import { useLoginMutation } from '../../redux/loginOperation';
+import { Formik, ErrorMessage, Form } from 'formik';
 import { toast, ToastContainer, } from 'react-toastify';
 import {
   Input,
@@ -8,7 +8,7 @@ import {
   SvgEnvelope,
   SvgLock,
   LoginButton
-} from './LoginFormStyled'
+} from './LoginForm.styled'
 
 export const LoginForm = () => {
 
@@ -25,8 +25,8 @@ export const LoginForm = () => {
     resetForm();
   };
 
-  const FormError = ({ password }) => {
-    return <ErrorMessage password={password} render={message => <p>{message}</p>} />;
+  const FormError = ({ name }) => {
+    return <ErrorMessage name={name} render={message => <p>{message}</p>} />;
   };
 
   return (
