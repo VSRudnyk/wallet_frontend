@@ -9,7 +9,6 @@ import { useState, useEffect } from "react"
 
 
 export const Table = ({tableData}) => {
-    console.log(tableData)
 
     const [dataToRender, setDataToRender] = useState(null);
 
@@ -91,25 +90,18 @@ export const Table = ({tableData}) => {
         setDataToRender(sortedResult);
     };
 
-function sumConverter (sum) {
-    let result = ''
-    const sumArr = sum.toString().split(".")
+    function sumConverter (sum) {
 
-    if (sumArr.length === 1) {
-        const stringNumber = sumArr[0];
-        result = stringNumber.length > 3 ? stringNumber[0] + " " + stringNumber.slice(1, stringNumber.length) + ".00" : stringNumber + ".00"
+        const sumStr = sum.toFixed(2).toString()
+    
+        if (sumStr.length > 6) {
+            
+            const result = sumStr[0] + " " + sumStr.slice(1, sumStr.length);
+            return result
+        }
+    
+        return sumStr
     }
-
-    if (sumArr.length === 2) {
-        const [stringNumberFirst, stringNumberSecond] = sumArr;
-        const modifyStringNumberFirst = stringNumberFirst.length > 3 ? stringNumberFirst[0] + " " + stringNumberFirst.slice(1, stringNumberFirst.length + ".00") : stringNumberFirst + ".00";
-        const modifyStringNumberSecond = stringNumberSecond.length === 1 ? stringNumberSecond + "0" : stringNumberSecond;
-        result = modifyStringNumberFirst + "." + modifyStringNumberSecond
-
-    }
-
-    return result
-}
 
 
     return (
@@ -140,12 +132,12 @@ function sumConverter (sum) {
 
                 <TableResultItem className="table-result-item">
                     <ResultItemTittle className="result-item-tittle">Expenses:</ResultItemTittle>
-                    <ResultItemValue className="result-item-value" color={"#FF6596"}>22 549.24</ResultItemValue>
+                    <ResultItemValue className="result-item-value" color={"var(--pink)"}>22 549.24</ResultItemValue>
                 </TableResultItem>
 
                 <TableResultItem className="table-result-item">
                     <ResultItemTittle className="result-item-tittle">Income:</ResultItemTittle>
-                    <ResultItemValue className="result-item-value" color={"#24CCA7"}>27 350.00</ResultItemValue>
+                    <ResultItemValue className="result-item-value" color={"var(--green)"}>27 350.00</ResultItemValue>
                 </TableResultItem>
 
             </TableResultList>

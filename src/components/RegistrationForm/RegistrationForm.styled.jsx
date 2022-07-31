@@ -99,3 +99,19 @@ export const LoginButton = styled.button`
   letter-spacing: 0.1em;
   text-transform: uppercase;
 `;
+
+export const ButtonShow = styled.span`
+position: absolute;
+padding: 7px 15px;
+color: var(--gray);
+font-family: var(--baseFont);
+font-weight: var(--regular);
+right: 19px;
+bottom: 61%;
+@media screen and (min-width: 768px) {
+  right: 66px;
+  bottom: 60%;
+}
+
+
+`;
