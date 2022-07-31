@@ -3,7 +3,6 @@ import '../../stylesheet/fonts.css';
 import { Field } from 'formik';
 import { ReactComponent as Envelope } from '../../images/email.svg';
 import { ReactComponent as Lock } from '../../images/lock.svg';
-import { ReactComponent as Account } from '../../images/account.svg';
 
 export const Input = styled(Field)`
   padding: 10px 55px;
@@ -15,12 +14,10 @@ export const Input = styled(Field)`
   width: 280px;
   outline: none;
   transition: border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
-
   @media screen and (min-width: 767px) {
     width: 409.5px;
     height: 32px;
   }
-
   ::placeholder {
     color: var(--gray);
     font-family: var(--baseFont);
@@ -31,9 +28,9 @@ export const Input = styled(Field)`
 `;
 
 export const InputContainer = styled.div`
+  background: red;
   position: relative;
   margin-bottom: 30px;
-
   @media screen and (min-width: 768px) {
     margin-bottom: 40px;
   }
@@ -55,34 +52,7 @@ left: 8px;
 @media screen and (min-width: 768px) {
     top: 2px;
   }
-}
 
-`;
-
-export const SvgAccount = styled(Account)`
-position: absolute;
-top: 8px;
-left: 8px;
-@media screen and (min-width: 768px) {
-    top: 2px;
-  }
-}
-`;
-
-export const RegisterButton = styled.button`
-  background-color: var(--green);
-  color: var(--white);
-  width: 280px;
-  border-radius: 50px;
-  height: 50px;
-  border: none;
-  font-family: var(--baseFont);
-  font-weight: var(--regular);
-  font-size: 18px;
-  line-height: 1;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 20px;
 `;
 
 export const LoginButton = styled.button`
@@ -98,20 +68,4 @@ export const LoginButton = styled.button`
   line-height: 1;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-`;
-
-export const ButtonShow = styled.span`
-position: absolute;
-padding: 7px 15px;
-color: var(--gray);
-font-family: var(--baseFont);
-font-weight: var(--regular);
-right: 19px;
-bottom: 61%;
-@media screen and (min-width: 768px) {
-  right: 66px;
-  bottom: 60%;
-}
-
-
 `;

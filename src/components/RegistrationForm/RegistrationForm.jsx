@@ -3,6 +3,9 @@ import * as yup from 'yup';
 import { useRegisterMutation } from '../../redux/authOperation';
 import { Formik, ErrorMessage, Form } from 'formik';
 import { toast, ToastContainer, Slide } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
+import { PasswordStrenght } from './PasswordStrength';
 import {
   Input,
   InputContainer,
@@ -11,14 +14,19 @@ import {
   SvgLock,
   RegisterButton,
   LoginButton,
+  ButtonShow
 } from './RegistrationForm.styled';
+import { useNavigate } from 'react-router-dom';
 
 export const FormRegistration = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [register, { isSuccess, isError }] = useRegisterMutation();
+  const [password, setPassword] = useState('');
+  const [type, setType] = useState('password');
 
   const schema = yup.object().shape({
     name: yup.string().required(),
-    email: yup.string().email().required(),
+    email: yup.string().email().min(6).required(),
     password: yup.string().min(6).max(12).required(),
     repeated_password: yup.string().when('password', {
       is: val => (val && val.length > 0 ? true : false),
@@ -27,8 +35,6 @@ export const FormRegistration = () => {
         .oneOf([yup.ref('password')], 'Both password need to be the same'),
     }),
   });
-
-  const [register, { isSuccess, isError }] = useRegisterMutation();
 
   const defaultInitialValues = {
     name: '',
@@ -41,11 +47,18 @@ export const FormRegistration = () => {
     const { name, email, password } = values;
     register({ name, email, password });
     resetForm();
-    // navigate("/login", { replace: true })
+    navigate('/login', { replace: true });
   };
 
   const FormError = ({ name }) => {
     return <ErrorMessage name={name} render={message => <p>{message}</p>} />;
+  };
+
+  const showHide = e => {
+    e.preventDefault();
+    e.stopPropagation();
+    let currentType = type === 'input' ? 'password' : 'input';
+    setType(currentType);
   };
 
   return (
@@ -78,9 +91,17 @@ export const FormRegistration = () => {
           </InputContainer>
           <InputContainer>
             <SvgLock />
-            <Input name="password" type="password" placeholder="Password" />
+            <Input
+              onInput={e => setPassword(e.target.value)}
+              name="password"
+              type={type}
+              placeholder="Password"
+            />
             <FormError name="password" />
+            <PasswordStrenght password={password} />
           </InputContainer>
+          <ButtonShow onClick={showHide}> {type === 'input' ? 'Hide' : 'Show'}</ButtonShow>
+
           <InputContainer>
             <SvgLock />
             <Input

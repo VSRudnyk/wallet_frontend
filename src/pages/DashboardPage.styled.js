@@ -41,7 +41,10 @@ export const DashboardFirstSectionWrapper = styled.div`
 
 export const DashboardNavAndBalWrapper = styled.div``;
 export const DashboardCurrencyWrapper = styled.div``;
-export const DashboardSecondSectionWrapper = styled.div``;
+export const DashboardSecondSectionWrapper = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+`;
 export const DashboardSeparator = styled.div`
   @media screen and (min-width: 1280px) {
     margin-left: 69px;

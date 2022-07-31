@@ -5,25 +5,15 @@ export const TableWrapper = styled.div`
     font-family: var(--baseFont);
     font-style: normal;
     font-weight: var(--regular);
+    margin: 0 auto;
 
 
     & ul {
         list-style: none;
-    }
-    border: 1px solid black;
-
-    @media screen and (min-width: 320px) {
-        width: 280px;
-    }
-    @media screen and (min-width: 768px) {
-        width: 336px;
-    }
-    @media screen and (min-width: 1280px) {
-        width: 395px;
-    }
+    }    
 `;
 export const TableTittle = styled.div`
-    background-color: #FFF;
+    background-color: var(--white);
     border-radius: 30px;
     padding: 15px 20px;
     display: flex;
@@ -47,7 +37,7 @@ export const TableContentItem = styled.li`
     justify-content: space-between;
     align-items: center;
     padding: 13px 0;
-    border-bottom: 1px solid #DCDCDF;
+    border-bottom: 1px solid var(--transaction-underline-color);
     margin-bottom: 1px;
     
 
@@ -65,16 +55,12 @@ export const CategoryColorMark = styled.span`
     width: 24px;
     height: 24px;
     margin-right: 16px;
-    background-color:${props => props.background || "#000"};
+    background-color:${props => props.background || "var(--black)"};
 `;
 export const CategoryName = styled.span`
 
 `;
 export const ItemSum = styled.span``;
-
-
-
-
 
 export const TableResultList = styled.ul`
     margin: 16px 0 0 0;
@@ -85,6 +71,7 @@ export const TableResultItem = styled.li`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     &:not(:last-child) {
         margin-bottom: 14px;
     }
@@ -96,5 +83,5 @@ export const ResultItemTittle = styled.span`
     font-weight: var(--bold);
 `;
 export const ResultItemValue = styled.span`
-    color: ${props => props.color || "#000"};
+    color: ${props => props.color || "var(--black)"};
 `;
