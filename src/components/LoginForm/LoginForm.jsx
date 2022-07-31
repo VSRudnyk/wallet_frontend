@@ -2,7 +2,13 @@ import { Link } from 'react-router-dom';
 import { useLoginMutation } from '../../redux/login/loginOperation';
 import { Formik, ErrorMessage, Field, Form } from 'formik';
 import { toast, ToastContainer, } from 'react-toastify';
-import { LoginFormStyled, Input, InputContainer, SvgEnvelope, lock, LoginButton } from './LoginFormStyled'
+import {
+  Input,
+  InputContainer,
+  SvgEnvelope,
+  SvgLock,
+  LoginButton
+} from './LoginFormStyled'
 
 export const LoginForm = () => {
 
@@ -19,8 +25,8 @@ export const LoginForm = () => {
     resetForm();
   };
 
-  const FormError = ({ name }) => {
-    return <ErrorMessage name={name} render={message => <p>{message}</p>} />;
+  const FormError = ({ password }) => {
+    return <ErrorMessage password={password} render={message => <p>{message}</p>} />;
   };
 
   return (
@@ -30,7 +36,6 @@ export const LoginForm = () => {
           theme: 'colored',
           icon: '🆗',
           autoClose: 8000,
-          hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
@@ -39,24 +44,27 @@ export const LoginForm = () => {
       {isError && toast.error('Something wrong, try again!') && (
         <ToastContainer />
           )}
-          < InputContainer >
-                <Formik
+    
+      <Formik
         initialValues={defaultInitialValues}
         onSubmit={handleSubmit}
       >
         <Form autoComplete="off">
-          <label htmlFor="email">Email </label>
-          <Field name="email" type="email" placeholder="E-mail" />
-          <FormError name="email" />
-          <label htmlFor="password">Password </label>
-          <Field name="password" type="password" placeholder="Password" />
-          <FormError name="password" />
-          <ToastContainer />
+          <InputContainer>
+            <SvgEnvelope />
+            <Input name="email" type="email" placeholder="E-mail" />
+            <FormError name="email" />
+          </InputContainer>
+          <InputContainer>
+            <SvgLock />
+            <Input name="password" type="password" placeholder="Password" />
+            <FormError name="password" />
+          </InputContainer>
+        <ToastContainer />
         </Form>
       </Formik>
-</InputContainer>
       <Link to="/login">
-        <button type="button">LogIn</button>
+        <LoginButton type="button">Log in</LoginButton>
       </Link>
     </>
   );
