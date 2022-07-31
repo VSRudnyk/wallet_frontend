@@ -3,8 +3,8 @@ import { Currency } from 'components/Currency/Currency';
 import { Header } from 'components/Header/Header';
 import { DashboardPage } from 'pages/DashboardPage';
 import { Routes, Route } from 'react-router-dom';
-import { Home } from 'routers/PrivatRouter';
-import { RegistrationPage } from 'pages/RegistrationPage';
+// import { Home } from 'routers/PrivatRouter';
+// import { RegistrationPage } from 'pages/RegistrationPage';
 
 export const App = () => {
   return (
@@ -20,7 +20,6 @@ export const App = () => {
           />
           <Route path="*" element={<h1>NotFound </h1>} />
         </Route>
-
       </Routes>
     </>
   );
