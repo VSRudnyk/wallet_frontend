@@ -1,16 +1,17 @@
 import { Header } from 'components/Header/Header';
-import { LoginForm } from 'components/LoginForm/LoginForm';
-import { FormRegistration } from 'components/RegistrationForm/RegistrationForm';
-import { DashboardPage } from 'pages/DashboardPage';
-import { Container } from 'stylesheet/Container.styled';
+import { Routes, Route } from 'react-router-dom';
+import { Home } from 'routers/PrivatRouter';
+import { RegistrationPage } from 'pages/RegistrationPage';
 
 export const App = () => {
   return (
-    <Container>
+    <>
       <Header />
-      <DashboardPage />
-      <FormRegistration />
-      <LoginForm />
-    </Container>
+      <Routes>
+        <Route path="/wallet_frontend/*" element={<Home />} />
+        <Route path="/signup" element={<RegistrationPage />} />
+        <Route path="*" element={<h1>NotFound </h1>} />
+      </Routes>
+    </>
   );
 };
