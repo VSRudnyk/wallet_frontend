@@ -77,23 +77,3 @@ const HomeTab = ({ page }) => {
 };
 
 export default HomeTab;
-
-{
-  /*
-["Apartment",
-"Home",
-"Mobile Phone",
-"Transport",
-"Work",
-"Money Transfer",
-Groceries,
-"Leisure",
-"Family",
-"Health",
-"Gifts",
-"Shopping",
-"Restaurant",
-"Other"
-]
-*/
-}
