@@ -7,6 +7,7 @@ import {
   DashboardWrapper,
   DashboardSeparator,
 } from './DashboardPage.styled';
+
 import { Navigation } from 'components/Navigation/Navigation';
 import { Balance } from 'components/Balance/Balance';
 import HomeTab from 'components/HomeTab/HomeTab';
