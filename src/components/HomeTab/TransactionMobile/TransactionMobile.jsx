@@ -79,6 +79,7 @@ const TransactionMobile = ({ obj }) => {
       default:
         break;
     }
+    return null;
   });
 
   return <List>{list}</List>;
