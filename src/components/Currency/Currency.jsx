@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { useState, useEffect } from 'react';
+import { HashLoader } from 'react-spinners';
 import Media from 'react-media';
 
 import {
@@ -12,16 +13,20 @@ import {
   TableBodyListItem,
   TableBodyText,
   TableWrapper,
+  LoaderWrapper,
 } from './Currency.styled';
 import { useLocation, Navigate } from 'react-router-dom';
 
 export const Currency = ({ page }) => {
   const [currency, setCurrency] = useState([]);
+  const [status, setStatus] = useState('pending');
+
   const location = useLocation();
   const { pathname } = location;
 
   useEffect(() => {
     axios('https://wallet-backend-1.herokuapp.com/api/currency').then(res => {
+      setStatus('pending');
       const arrMainCurrency = [];
       let result = null;
       for (let currencyBack of res.data.exchangeRate) {
@@ -44,6 +49,7 @@ export const Currency = ({ page }) => {
 
       result.reverse();
       setCurrency(result);
+      setStatus('resolve');
     });
   }, []);
   return (
@@ -89,6 +95,16 @@ export const Currency = ({ page }) => {
                         </>
                       );
                     })}
+                  {status === 'pending' && (
+                    <LoaderWrapper>
+                      <HashLoader
+                        color="#f7f7f7"
+                        loading
+                        size={35}
+                        speedMultiplier={1.5}
+                      />
+                    </LoaderWrapper>
+                  )}
                 </TableBodyList>
               </TableBodyContainer>
             </TableWrapper>
@@ -126,6 +142,17 @@ export const Currency = ({ page }) => {
                         </>
                       );
                     })}
+
+                  {status === 'pending' && (
+                    <LoaderWrapper>
+                      <HashLoader
+                        color="#f7f7f7"
+                        loading
+                        size={45}
+                        speedMultiplier={1.5}
+                      />
+                    </LoaderWrapper>
+                  )}
                 </TableBodyList>
               </TableBodyContainer>
             </TableWrapper>
