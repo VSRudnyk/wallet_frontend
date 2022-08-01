@@ -1,4 +1,4 @@
-import { DashboardPage } from 'pages/Dashboard/DashboardPage';
+import { DashboardPage } from 'pages/Dashboard';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { PrivatRoute } from './routers/PrivatRouter';
 import { PublickRoute } from 'routers/PublicRouter';
