@@ -46,8 +46,8 @@ export const ContainerRegister = styled.div`
 `;
 
 export const ImageSection = styled.div`
-  display: none;
-  @media (min-width: 767px) {
+
+@media (min-width: 767px) {
     display: flex;
     margin-bottom: 50px;
     width: 540px;

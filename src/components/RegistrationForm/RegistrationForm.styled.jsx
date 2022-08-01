@@ -30,8 +30,14 @@ export const Input = styled(Field)`
     line-height: 1;
   }
 
-
+  &:hover, &:hover {
+    box-shadow: 0 1px 0 0 var(--gray); 
+}
 `;
+
+export const FormInputContainer = styled.div`
+  margin-bottom: 40px;
+`
 
 export const InputContainer = styled.div`
   position: relative;
@@ -45,8 +51,6 @@ export const InputContainer = styled.div`
       margin-bottom: 40px;
     }
 }
-
-
 `;
 
 export const SvgEnvelope = styled(Envelope)`
@@ -65,7 +69,6 @@ left: 8px;
 @media screen and (min-width: 768px) {
     top: 2px;
   }
-
 `;
 
 export const SvgAccount = styled(Account)`
@@ -91,6 +94,17 @@ export const RegisterButton = styled.button`
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: 20px;
+  position: relative;
+  transition: 0.5s;
+
+
+  &:hover, &:focus, &:active{
+    color: var(--green);
+    background: var(--white);
+    border: 1px solid var(--green);
+    transition: 0.5s;
+  }
+
 `;
 
 export const LoginButton = styled.button`
@@ -106,6 +120,13 @@ export const LoginButton = styled.button`
   line-height: 1;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  transition: 0.5s;
+
+  &:hover, &:focus, &:active {
+    color: var(--white);
+    background-color: var(--active-blue);
+    transition: 0.5s;
+  }
 `;
 
 export const ButtonShow = styled(Eye)`

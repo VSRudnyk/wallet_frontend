@@ -12,9 +12,10 @@ import {
   SvgLock,
   RegisterButton,
   LoginButton,
-  ErrorText
+  ErrorText,
+  FormInputContainer
 } from './RegistrationForm.styled';
-import { Pass } from './pass';
+import { PasswordInput } from './PasswordInput';
 
 export const FormRegistration = () => {
   const [register, { isSuccess, isError, status, error }] = useRegisterMutation();
@@ -71,12 +72,13 @@ export const FormRegistration = () => {
         validationSchema={schema}
       >
         <Form autoComplete="off">
+          <FormInputContainer>
           <InputContainer>
             <SvgEnvelope />
             <Input name="email" type="email" placeholder="E-mail" />
             <FormError name="email" />
           </InputContainer>
-          <Pass />
+          <PasswordInput />
           <InputContainer>
             <SvgLock />
             <Input
@@ -91,6 +93,7 @@ export const FormRegistration = () => {
             <Input name="name" type="text" placeholder="First name " />
             <FormError name="name" />
           </InputContainer>
+          </FormInputContainer>
           <RegisterButton type="submit"> Register</RegisterButton>
           <ToastContainer />
         </Form>
@@ -98,6 +101,7 @@ export const FormRegistration = () => {
       <Link to="/wallet_frontend/login">
         <LoginButton type="button">Log in</LoginButton>
       </Link>
+      <ToastContainer/>
     </>
   );
 };

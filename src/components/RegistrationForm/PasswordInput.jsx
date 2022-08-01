@@ -4,7 +4,7 @@ import { PasswordStrenght } from './PasswordStrength';
 import { ErrorMessage } from 'formik';
 
 
-export const Pass = () => {
+export const PasswordInput = () => {
   const [password, setPassword] = useState('');
   const [type, setType] = useState('password');
   const showHide = e => {
@@ -29,7 +29,6 @@ export const Pass = () => {
     <FormError name="password" />
     <PasswordStrenght password={password} />
   </InputContainer>
-    
-
+  
   );
 };
