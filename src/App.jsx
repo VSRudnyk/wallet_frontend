@@ -1,25 +1,65 @@
-import { Balance } from 'components/Balance/Balance';
-import { Currency } from 'components/Currency/Currency';
-import { Header } from 'components/Header/Header';
-import { DashboardPage } from 'pages/DashboardPage';
-import { Routes, Route } from 'react-router-dom';
-// import { Home } from 'routers/PrivatRouter';
-// import { RegistrationPage } from 'pages/RegistrationPage';
-
+import { DashboardPage } from 'pages/Dashboard/DashboardPage';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { PrivatRoute } from './routers/PrivatRouter';
+import { PublickRoute } from 'routers/PublicRouter';
+import { RegistrationPage } from 'pages/RegistrationPage';
+import { LoginForm } from 'components/LoginForm/LoginForm';
 export const App = () => {
   return (
     <>
-      <Header />
       <Routes>
-        <Route path="/" element={<DashboardPage />}>
-          <Route path="/wallet_frontend/main" element={<Balance />} />
-          <Route path="/wallet_frontend/currency" element={<Currency />} />
-          <Route
-            path="/wallet_frontend/diagram"
-            element={<h1>Statistica</h1>}
-          />
-          <Route path="*" element={<h1>NotFound </h1>} />
-        </Route>
+        <Route
+          path="/wallet_frontend/register"
+          element={
+            <PublickRoute>
+              <RegistrationPage />
+            </PublickRoute>
+          }
+        />
+        <Route
+          path="/wallet_frontend/login"
+          element={
+            <PublickRoute>
+              <LoginForm />
+            </PublickRoute>
+          }
+        />
+        <Route
+          path="/wallet_frontend"
+          element={
+            true ? (
+              <Navigate to="/wallet_frontend/register" />
+            ) : (
+              <Navigate to="/wallet_frontend/home" />
+            )
+          }
+        />
+        <Route
+          path="/wallet_frontend/home"
+          element={
+            <PrivatRoute>
+              <DashboardPage />
+            </PrivatRoute>
+          }
+        />
+        <Route
+          path="/wallet_frontend/currency"
+          element={
+            <PrivatRoute>
+              <DashboardPage />
+            </PrivatRoute>
+          }
+        />
+
+        <Route
+          path="/wallet_frontend/diagram"
+          element={
+            <PrivatRoute>
+              <DashboardPage />
+            </PrivatRoute>
+          }
+        />
+        <Route path="*" element={<h1>NotFound </h1>} />
       </Routes>
     </>
   );

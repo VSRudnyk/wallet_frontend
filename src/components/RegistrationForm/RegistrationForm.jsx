@@ -17,9 +17,8 @@ import {
 import { Pass } from './pass';
 
 export const FormRegistration = () => {
-  const [register, { isSuccess, isError, error, status }] =
-    useRegisterMutation();
-  console.log(status);
+  const [register, { isSuccess, isError, status, error }] = useRegisterMutation();
+
   const schema = yup.object().shape({
     name: yup.string().required(),
     email: yup.string().email().min(6).required(),
@@ -45,7 +44,6 @@ export const FormRegistration = () => {
   const handleSubmit = ({ name, email, password }, { resetForm }) => {
     register({ name, email, password });
     resetForm();
-    return;
   };
 
   const FormError = ({ name }) => {
@@ -97,7 +95,7 @@ export const FormRegistration = () => {
           <ToastContainer />
         </Form>
       </Formik>
-      <Link to="/login">
+      <Link to="/wallet_frontend/login">
         <LoginButton type="button">Log in</LoginButton>
       </Link>
     </>
