@@ -34,7 +34,7 @@ export const ListItem = styled.li`
       left: 0;
       top: 0;
       background-color: ${props =>
-        props.type === '+' ? '#24CCA7' : '#ff6596'};
+        props.type === 'income' ? '#24CCA7' : '#ff6596'};
       width: 5px;
       height: 100%;
     }
@@ -73,5 +73,5 @@ export const TransactionData = styled.p`
 `;
 
 export const Sum = styled.span`
-  color: ${props => (props.income === '+' ? '#24CCA7' : '#ff6596')};
+  color: ${props => (props.income === 'income' ? '#24CCA7' : '#ff6596')};
 `;

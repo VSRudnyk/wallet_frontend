@@ -7,7 +7,6 @@ import {
   NavigationButton,
   Link,
   LinkName,
-  ButtonCurrency,
 } from './Navigation.styled';
 
 export const Navigation = ({ changeComponent, page }) => {
@@ -15,7 +14,7 @@ export const Navigation = ({ changeComponent, page }) => {
     <>
       <NavigationContainer page={page}>
         <NavigationButton id="home" onClick={changeComponent}>
-          <Link page={page} to="/wallet_frontend">
+          <Link to="/wallet_frontend/main">
             <HomeLink alt="Link to home page" />
             <LinkName>Home</LinkName>
           </Link>
@@ -27,9 +26,9 @@ export const Navigation = ({ changeComponent, page }) => {
           </Link>
         </NavigationButton>
         <NavigationButton id="currency" onClick={changeComponent}>
-          <ButtonCurrency page={page}>
+          <Link to="/wallet_frontend/currency">
             <CurrencyLink alt="Link to currency page" />
-          </ButtonCurrency>
+          </Link>
         </NavigationButton>
       </NavigationContainer>
     </>
