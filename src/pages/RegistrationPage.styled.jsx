@@ -20,6 +20,7 @@ export const ContainerRegister = styled.div`
   left: 0px;
   background-color: var(--white);
 
+
   @media (max-width: 767px) {
     position: fixed;
   }
@@ -45,8 +46,8 @@ export const ContainerRegister = styled.div`
 `;
 
 export const ImageSection = styled.div`
-  display: none;
-  @media (min-width: 767px) {
+
+@media (min-width: 767px) {
     display: flex;
     margin-bottom: 50px;
     width: 540px;
@@ -61,7 +62,6 @@ export const ImageSection = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-display:none;
 
 @media (min-width: 768px) {
 background-image: url(${RegImage});
@@ -79,10 +79,9 @@ display: inline-block;
   width: 452px;
   height: 413px;
 }
-}
+
 `;
 export const Text = styled.p`
-  display: none;
 
   @media (min-width: 768px) {
     color: #000000;
@@ -123,7 +122,11 @@ export const FormContainer = styled.div`
   background: #fff;
   height: 100vh;
 
-  @media screen and (min-width: 767px) {
+  @media screen and (max-width: 767px) {
+  justify-content: center;
+  }
+
+  @media screen and (min-width: 768px) {
     max-width: 540px;
     height: 616px;
     padding: 40px 65px 60px;
