@@ -24,7 +24,7 @@ export const FormRegistration = () => {
     name: yup.string().required(),
     email: yup.string().email().min(6).required(),
     password: yup.string().matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/,
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
       "must be uppercase, number and special character"
     ).min(6).max(12).required(),
     repeated_password: yup.string().when('password', {
@@ -53,7 +53,7 @@ export const FormRegistration = () => {
 
   return (
     <>
-      {status === 'fulfilled' &&
+      {isSuccess && status === 'fulfilled' &&
         toast.success('Success! Please, log in!', {
           theme: 'colored',
           icon: '🚀',
