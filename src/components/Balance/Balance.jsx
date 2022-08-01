@@ -12,7 +12,7 @@ export const Balance = ({ page }) => {
   const { pathname } = location;
   return (
     <>
-      {pathname === '/wallet_frontend/main' && (
+      {pathname === '/wallet_frontend/home' && (
         <ContainerBalance page={page}>
           <BalanceTitle>Your balance</BalanceTitle>
           <BalanceInWallet>₴ 24 000.00</BalanceInWallet>

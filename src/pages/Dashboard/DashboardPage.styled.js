@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import BackDes from '../images/BackgrDes-min.png';
-import BackTab from '../images/BackgrTablet-min.png';
+import BackDes from '../../images/BackgrDes-min.png';
+import BackTab from '../../images/BackgrTablet-min.png';
 
 export const DashboardSection = styled.main`
   background-color: var(--background-gray);

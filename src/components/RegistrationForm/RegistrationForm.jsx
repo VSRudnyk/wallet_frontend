@@ -14,12 +14,12 @@ import {
   SvgLock,
   RegisterButton,
   LoginButton,
-  ButtonShow
+  ButtonShow,
 } from './RegistrationForm.styled';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 export const FormRegistration = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [register, { isSuccess, isError }] = useRegisterMutation();
   const [password, setPassword] = useState('');
   const [type, setType] = useState('password');
@@ -47,7 +47,7 @@ export const FormRegistration = () => {
     const { name, email, password } = values;
     register({ name, email, password });
     resetForm();
-    navigate('/login', { replace: true });
+    // navigate('/login', { replace: true });
   };
 
   const FormError = ({ name }) => {
@@ -100,7 +100,10 @@ export const FormRegistration = () => {
             <FormError name="password" />
             <PasswordStrenght password={password} />
           </InputContainer>
-          <ButtonShow onClick={showHide}> {type === 'input' ? 'Hide' : 'Show'}</ButtonShow>
+          <ButtonShow onClick={showHide}>
+            {' '}
+            {type === 'input' ? 'Hide' : 'Show'}
+          </ButtonShow>
 
           <InputContainer>
             <SvgLock />
@@ -120,7 +123,7 @@ export const FormRegistration = () => {
           <ToastContainer />
         </Form>
       </Formik>
-      <Link to="/login">
+      <Link to="/wallet_frontend/login">
         <LoginButton type="button">Log in</LoginButton>
       </Link>
     </>
