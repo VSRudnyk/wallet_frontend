@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/wallet_frontend/static/css/main.c17edf70.css",
-    "main.js": "/wallet_frontend/static/js/main.210c0bc0.js",
+    "main.js": "/wallet_frontend/static/js/main.b85b6830.js",
     "static/media/Circe-Regular.ttf": "/wallet_frontend/static/media/Circe-Regular.814e4dd4329ffdb6c9ed.ttf",
     "static/media/Circe-Bold.ttf": "/wallet_frontend/static/media/Circe-Bold.63396ee791f60623acbf.ttf",
     "static/media/Poppins-Regular.ttf": "/wallet_frontend/static/media/Poppins-Regular.82a4136eb848dae8b116.ttf",
@@ -20,10 +20,10 @@
     "static/media/account.svg": "/wallet_frontend/static/media/account.16308cbda5cc95779180b76a9489318d.svg",
     "static/media/email.svg": "/wallet_frontend/static/media/email.4ef5e28347bc6cbeb00f9d53d5491b2d.svg",
     "main.c17edf70.css.map": "/wallet_frontend/static/css/main.c17edf70.css.map",
-    "main.210c0bc0.js.map": "/wallet_frontend/static/js/main.210c0bc0.js.map"
+    "main.b85b6830.js.map": "/wallet_frontend/static/js/main.b85b6830.js.map"
   },
   "entrypoints": [
     "static/css/main.c17edf70.css",
-    "static/js/main.210c0bc0.js"
+    "static/js/main.b85b6830.js"
   ]
 }
