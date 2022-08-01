@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+import { HashLoader } from 'react-spinners';
+
 import Media from 'react-media';
 
 import {
@@ -15,16 +17,20 @@ import {
   TableBodyListItem,
   TableBodyText,
   TableWrapper,
+  LoaderWrapper,
 } from './Currency.styled';
 import { useLocation, Navigate } from 'react-router-dom';
 // import { getCurrency } from './API/ApiCurrency';
 
 export const Currency = ({ page }) => {
   const [currency, setCurrency] = useState([]);
+  const [status, setStatus] = useState('pending');
+
   const location = useLocation();
   const { pathname } = location;
 
   useEffect(() => {
+    setStatus('pending');
     let data = new Date();
     let currentDate = data.getTime();
 
@@ -32,6 +38,7 @@ export const Currency = ({ page }) => {
     if (isSaveLocal) {
       const time = currentDate - isSaveLocal.date;
       if (time > 1000) {
+        setStatus('resolve');
         setCurrency(isSaveLocal.currency);
         return;
       }
@@ -66,6 +73,7 @@ export const Currency = ({ page }) => {
           currency: result.reverse(),
         };
         localStorage.setItem('currency', JSON.stringify(DateToLocal));
+        setStatus('resolve');
         return setCurrency(result.reverse());
       } catch (error) {
         console.log(error);
@@ -117,6 +125,16 @@ export const Currency = ({ page }) => {
                         </>
                       );
                     })}
+                  {status === 'pending' && (
+                    <LoaderWrapper>
+                      <HashLoader
+                        color="#f7f7f7"
+                        loading
+                        size={35}
+                        speedMultiplier={1.5}
+                      />
+                    </LoaderWrapper>
+                  )}
                 </TableBodyList>
               </TableBodyContainer>
               {/* <ToastContainer /> */}
@@ -155,6 +173,17 @@ export const Currency = ({ page }) => {
                         </>
                       );
                     })}
+
+                  {status === 'pending' && (
+                    <LoaderWrapper>
+                      <HashLoader
+                        color="#f7f7f7"
+                        loading
+                        size={45}
+                        speedMultiplier={1.5}
+                      />
+                    </LoaderWrapper>
+                  )}
                 </TableBodyList>
               </TableBodyContainer>
               {/* <ToastContainer /> */}
