@@ -62,7 +62,6 @@ export const ImageSection = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-display:none;
 
 @media (min-width: 768px) {
 background-image: url(${RegImage});
@@ -83,7 +82,6 @@ display: inline-block;
 
 `;
 export const Text = styled.p`
-  display: none;
 
   @media (min-width: 768px) {
     color: #000000;
