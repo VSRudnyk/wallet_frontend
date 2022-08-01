@@ -1,6 +1,9 @@
-import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { useState, useEffect } from 'react';
+// import { ToastContainer } from 'react-toastify';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+
 import Media from 'react-media';
 
 import {
@@ -14,6 +17,7 @@ import {
   TableWrapper,
 } from './Currency.styled';
 import { useLocation, Navigate } from 'react-router-dom';
+// import { getCurrency } from './API/ApiCurrency';
 
 export const Currency = ({ page }) => {
   const [currency, setCurrency] = useState([]);
@@ -21,30 +25,54 @@ export const Currency = ({ page }) => {
   const { pathname } = location;
 
   useEffect(() => {
-    axios('https://wallet-backend-1.herokuapp.com/api/currency').then(res => {
+    let data = new Date();
+    let currentDate = data.getTime();
+
+    const isSaveLocal = JSON.parse(localStorage.getItem('currency'));
+    if (isSaveLocal) {
+      const time = currentDate - isSaveLocal.date;
+      if (time > 1000) {
+        setCurrency(isSaveLocal.currency);
+        return;
+      }
+    }
+    async function FetchCurrency() {
       const arrMainCurrency = [];
       let result = null;
-      for (let currencyBack of res.data.exchangeRate) {
-        if (
-          currencyBack.currency === 'USD' ||
-          currencyBack.currency === 'EUR' ||
-          currencyBack.currency === 'PLZ'
-        ) {
-          arrMainCurrency.push(currencyBack);
-        }
-      }
-      result = res.data.exchangeRate.filter(
-        cur =>
-          cur.currency !== 'RUB' &&
-          cur.currency !== 'USD' &&
-          cur.currency !== 'EUR' &&
-          cur.currency !== 'PLZ'
-      );
-      result.push(...arrMainCurrency);
+      try {
+        const currency = await axios(
+          'https://wallet-backend-1.herokuapp.com/api/currency'
+        );
 
-      result.reverse();
-      setCurrency(result);
-    });
+        for (let currencyBack of currency.data.exchangeRate) {
+          if (
+            currencyBack.currency === 'USD' ||
+            currencyBack.currency === 'EUR' ||
+            currencyBack.currency === 'PLZ'
+          ) {
+            arrMainCurrency.push(currencyBack);
+          }
+        }
+        result = currency.data.exchangeRate.filter(
+          cur =>
+            cur.currency !== 'RUB' &&
+            cur.currency !== 'USD' &&
+            cur.currency !== 'EUR' &&
+            cur.currency !== 'PLZ'
+        );
+        result.push(...arrMainCurrency);
+        const DateToLocal = {
+          date: data.getTime(),
+          currency: result.reverse(),
+        };
+        localStorage.setItem('currency', JSON.stringify(DateToLocal));
+        return setCurrency(result.reverse());
+      } catch (error) {
+        console.log(error);
+        toast.error('Something wrong, try again!');
+      }
+    }
+    FetchCurrency();
   }, []);
   return (
     <>
@@ -91,6 +119,7 @@ export const Currency = ({ page }) => {
                     })}
                 </TableBodyList>
               </TableBodyContainer>
+              {/* <ToastContainer /> */}
             </TableWrapper>
           )
         }
@@ -128,6 +157,7 @@ export const Currency = ({ page }) => {
                     })}
                 </TableBodyList>
               </TableBodyContainer>
+              {/* <ToastContainer /> */}
             </TableWrapper>
           )
         }
