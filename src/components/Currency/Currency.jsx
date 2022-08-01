@@ -51,9 +51,9 @@ export const Currency = ({ page }) => {
       <Media queries={{ table: { minWidth: 768 } }}>
         {matches =>
           matches.table &&
-          pathname !== '/wallet_frontend/main' &&
+          pathname !== '/wallet_frontend/home' &&
           pathname !== '/wallet_frontend/diagram' && (
-            <Navigate to="/wallet_frontend/main" />
+            <Navigate to="/wallet_frontend/home" />
           )
         }
       </Media>

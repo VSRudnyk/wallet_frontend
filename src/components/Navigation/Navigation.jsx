@@ -14,7 +14,7 @@ export const Navigation = ({ changeComponent, page }) => {
     <>
       <NavigationContainer page={page}>
         <NavigationButton id="home" onClick={changeComponent}>
-          <Link to="/wallet_frontend/main">
+          <Link to="/wallet_frontend/home">
             <HomeLink alt="Link to home page" />
             <LinkName>Home</LinkName>
           </Link>
