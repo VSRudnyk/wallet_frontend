@@ -4,6 +4,7 @@ import { Field } from 'formik';
 import { ReactComponent as Envelope } from '../../images/email.svg';
 import { ReactComponent as Lock } from '../../images/lock.svg';
 import { ReactComponent as Account } from '../../images/account.svg';
+import { ReactComponent as Eye } from '../../images/VectorEyes.svg';
 
 export const Input = styled(Field)`
   padding: 10px 55px;
@@ -28,15 +29,24 @@ export const Input = styled(Field)`
     font-size: 18px;
     line-height: 1;
   }
+
+
 `;
 
 export const InputContainer = styled.div`
   position: relative;
-  margin-bottom: 30px;
+  
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
 
   @media screen and (min-width: 768px) {
-    margin-bottom: 40px;
-  }
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+}
+
+
 `;
 
 export const SvgEnvelope = styled(Envelope)`
@@ -100,18 +110,33 @@ export const LoginButton = styled.button`
   text-transform: uppercase;
 `;
 
-export const ButtonShow = styled.span`
+export const ButtonShow = styled(Eye)`
 position: absolute;
-padding: 7px 15px;
-color: var(--gray);
-font-family: var(--baseFont);
-font-weight: var(--regular);
-right: 19px;
-bottom: 61%;
+padding: 7px 7px;
+right: 0;
+top: 5px;
 @media screen and (min-width: 768px) {
-  right: 66px;
-  bottom: 60%;
+  right: 0;
+  top: 0;
 }
-
-
 `;
+
+export const ErrorText = styled.p`
+position: absolute;
+color: var(--dark-grey);
+font-size: 14px;
+
+`
+
+export const ErrorTextPassword = styled.p`
+margin-top: 5px;
+position: absolute;
+color: var(--dark-grey);
+font-size: 14px;
+
+
+@media screen and (max-width: 767px) {
+  margin-top: 5px;
+  color: var(--dark-grey);
+}
+`

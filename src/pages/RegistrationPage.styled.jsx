@@ -20,6 +20,7 @@ export const ContainerRegister = styled.div`
   left: 0px;
   background-color: var(--white);
 
+
   @media (max-width: 767px) {
     position: fixed;
   }
@@ -123,7 +124,11 @@ export const FormContainer = styled.div`
   background: #fff;
   height: 100vh;
 
-  @media screen and (min-width: 767px) {
+  @media screen and (max-width: 767px) {
+  justify-content: center;
+  }
+
+  @media screen and (min-width: 768px) {
     max-width: 540px;
     height: 616px;
     padding: 40px 65px 60px;

@@ -4,8 +4,6 @@ import { useRegisterMutation } from '../../redux/authOperation';
 import { Formik, ErrorMessage, Form } from 'formik';
 import { toast, ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState } from 'react';
-import { PasswordStrenght } from './PasswordStrength';
 import {
   Input,
   InputContainer,
@@ -14,25 +12,26 @@ import {
   SvgLock,
   RegisterButton,
   LoginButton,
-  ButtonShow
+  ErrorText
 } from './RegistrationForm.styled';
-import { useNavigate } from 'react-router-dom';
+import { Pass } from './pass';
 
 export const FormRegistration = () => {
-  const navigate = useNavigate();
-  const [register, { isSuccess, isError }] = useRegisterMutation();
-  const [password, setPassword] = useState('');
-  const [type, setType] = useState('password');
-
+  const [register, { isSuccess, isError, error, status }] =
+    useRegisterMutation();
+  console.log(status);
   const schema = yup.object().shape({
     name: yup.string().required(),
     email: yup.string().email().min(6).required(),
-    password: yup.string().min(6).max(12).required(),
+    password: yup.string().matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/,
+      "must be uppercase, number and special character"
+    ).min(6).max(12).required(),
     repeated_password: yup.string().when('password', {
       is: val => (val && val.length > 0 ? true : false),
       then: yup
         .string()
-        .oneOf([yup.ref('password')], 'Both password need to be the same'),
+        .oneOf([yup.ref('password')], 'both password need to be the same'),
     }),
   });
 
@@ -43,27 +42,19 @@ export const FormRegistration = () => {
     repeated_password: '',
   };
 
-  const handleSubmit = (values, { resetForm }) => {
-    const { name, email, password } = values;
+  const handleSubmit = ({ name, email, password }, { resetForm }) => {
     register({ name, email, password });
     resetForm();
-    navigate('/login', { replace: true });
+    return;
   };
 
   const FormError = ({ name }) => {
-    return <ErrorMessage name={name} render={message => <p>{message}</p>} />;
-  };
-
-  const showHide = e => {
-    e.preventDefault();
-    e.stopPropagation();
-    let currentType = type === 'input' ? 'password' : 'input';
-    setType(currentType);
+    return <ErrorMessage name={name} render={message => <ErrorText>{message}</ErrorText>} />;
   };
 
   return (
     <>
-      {isSuccess &&
+      {status === 'fulfilled' &&
         toast.success('Success! Please, log in!', {
           theme: 'colored',
           icon: '🚀',
@@ -75,9 +66,7 @@ export const FormRegistration = () => {
           progress: undefined,
           transition: Slide,
         }) && <ToastContainer />}
-      {isError && toast.error('Something wrong, try again!') && (
-        <ToastContainer />
-      )}
+      {isError && toast.error(error.data.message) && <ToastContainer />}
       <Formik
         initialValues={defaultInitialValues}
         onSubmit={handleSubmit}
@@ -89,19 +78,7 @@ export const FormRegistration = () => {
             <Input name="email" type="email" placeholder="E-mail" />
             <FormError name="email" />
           </InputContainer>
-          <InputContainer>
-            <SvgLock />
-            <Input
-              onInput={e => setPassword(e.target.value)}
-              name="password"
-              type={type}
-              placeholder="Password"
-            />
-            <FormError name="password" />
-            <PasswordStrenght password={password} />
-          </InputContainer>
-          <ButtonShow onClick={showHide}> {type === 'input' ? 'Hide' : 'Show'}</ButtonShow>
-
+          <Pass />
           <InputContainer>
             <SvgLock />
             <Input

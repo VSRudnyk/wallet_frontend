@@ -4,7 +4,6 @@ export const authOperation = createApi({
   reducerPath: 'authOperation',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://wallet-backend-1.herokuapp.com/api/auth',
-
   }),
   
   endpoints: builder => ({
