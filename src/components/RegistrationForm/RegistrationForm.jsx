@@ -23,10 +23,7 @@ export const FormRegistration = () => {
   const schema = yup.object().shape({
     name: yup.string().required(),
     email: yup.string().email().min(6).required(),
-    password: yup.string().matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
-      "must be uppercase, number and special character"
-    ).min(6).max(12).required(),
+    password: yup.string().min(6).max(12).required(),
     repeated_password: yup.string().when('password', {
       is: val => (val && val.length > 0 ? true : false),
       then: yup
