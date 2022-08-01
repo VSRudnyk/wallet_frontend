@@ -6,7 +6,7 @@ export const authOperation = createApi({
     baseUrl: 'https://wallet-backend-1.herokuapp.com/api',
     prepareHeaders: (headers, { getState }) => {
       const token =
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU1OTYzNWI3ODZkYzI3NDA5OTk3YTMiLCJzaWQiOiI2MmU2YzkwMDNmZTkzOTBmYjY0Y2Y5NmMiLCJpYXQiOjE2NTkyOTE5MDQsImV4cCI6MTY1OTI5NTUwNH0.34NaN64et7aKrddRvSg4cY31qZ0GRHvTAwITQafvXJ4';
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU1OTYzNWI3ODZkYzI3NDA5OTk3YTMiLCJzaWQiOiI2MmU3OTEzMjg0Mjk3ODVlNGU2MWRkYzkiLCJpYXQiOjE2NTkzNDMxNTQsImV4cCI6MTY1OTM0Njc1NH0.oyUjcQkSluBhKD579OtZHwLNphizBGS0OJ2Qhh5CVgc';
 
       headers.set('authorization', `Bearer ${token}`);
 
