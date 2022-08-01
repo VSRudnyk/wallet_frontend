@@ -13,20 +13,26 @@ import {
   RegisterButton,
   LoginButton,
   ErrorText,
-  FormInputContainer
+  FormInputContainer,
 } from './RegistrationForm.styled';
 import { PasswordInput } from './PasswordInput';
 
 export const FormRegistration = () => {
-  const [register, { isSuccess, isError, status, error }] = useRegisterMutation();
+  const [register, { isSuccess, isError, status, error }] =
+    useRegisterMutation();
 
   const schema = yup.object().shape({
     name: yup.string().required(),
     email: yup.string().email().min(6).required(),
-    password: yup.string().matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
-      "must be uppercase, number and special character"
-    ).min(6).max(12).required(),
+    password: yup
+      .string()
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
+        'must be uppercase, number and special character'
+      )
+      .min(6)
+      .max(12)
+      .required(),
     repeated_password: yup.string().when('password', {
       is: val => (val && val.length > 0 ? true : false),
       then: yup
@@ -48,12 +54,18 @@ export const FormRegistration = () => {
   };
 
   const FormError = ({ name }) => {
-    return <ErrorMessage name={name} render={message => <ErrorText>{message}</ErrorText>} />;
+    return (
+      <ErrorMessage
+        name={name}
+        render={message => <ErrorText>{message}</ErrorText>}
+      />
+    );
   };
 
   return (
     <>
-      {isSuccess && status === 'fulfilled' &&
+      {isSuccess &&
+        status === 'fulfilled' &&
         toast.success('Success! Please, log in!', {
           theme: 'colored',
           icon: '🚀',
@@ -73,26 +85,26 @@ export const FormRegistration = () => {
       >
         <Form autoComplete="off">
           <FormInputContainer>
-          <InputContainer>
-            <SvgEnvelope />
-            <Input name="email" type="email" placeholder="E-mail" />
-            <FormError name="email" />
-          </InputContainer>
-          <PasswordInput />
-          <InputContainer>
-            <SvgLock />
-            <Input
-              name="repeated_password"
-              type="password"
-              placeholder="Confirm password"
-            />
-            <FormError name="repeated_password" />
-          </InputContainer>
-          <InputContainer>
-            <SvgAccount />
-            <Input name="name" type="text" placeholder="First name " />
-            <FormError name="name" />
-          </InputContainer>
+            <InputContainer>
+              <SvgEnvelope />
+              <Input name="email" type="email" placeholder="E-mail" />
+              <FormError name="email" />
+            </InputContainer>
+            <PasswordInput />
+            <InputContainer>
+              <SvgLock />
+              <Input
+                name="repeated_password"
+                type="password"
+                placeholder="Confirm password"
+              />
+              <FormError name="repeated_password" />
+            </InputContainer>
+            <InputContainer>
+              <SvgAccount />
+              <Input name="name" type="text" placeholder="First name " />
+              <FormError name="name" />
+            </InputContainer>
           </FormInputContainer>
           <RegisterButton type="submit"> Register</RegisterButton>
           <ToastContainer />
@@ -101,7 +113,7 @@ export const FormRegistration = () => {
       <Link to="/wallet_frontend/login">
         <LoginButton type="button">Log in</LoginButton>
       </Link>
-      <ToastContainer/>
+      <ToastContainer />
     </>
   );
 };
