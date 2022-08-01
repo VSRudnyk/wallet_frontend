@@ -16,10 +16,10 @@ import {
   LoginButton,
   ButtonShow,
 } from './RegistrationForm.styled';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 export const FormRegistration = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [register, { isSuccess, isError }] = useRegisterMutation();
   const [password, setPassword] = useState('');
   const [type, setType] = useState('password');

@@ -10,11 +10,12 @@ import {
 import Media from 'react-media';
 import { Header } from 'components/Header/Header';
 import { Navigation } from 'components/Navigation/Navigation';
-import { Balance } from 'components/Balance/Balance';
+import { Balance } from 'components/Balance';
 import HomeTab from 'components/HomeTab/HomeTab';
 import { Currency } from 'components/Currency/Currency';
 import { Container } from 'stylesheet/Container.styled';
 import { useLocation } from 'react-router-dom';
+import { DiagramTab } from 'components/DiagramTab';
 
 export const DashboardPage = () => {
   const location = useLocation();
@@ -30,7 +31,7 @@ export const DashboardPage = () => {
               <DashboardNavAndBalWrapper>
                 <Navigation />
                 <Balance />
-                <Media queries={{ mobile: { maxWidth: 768 } }}>
+                <Media queries={{ mobile: { maxWidth: 767 } }}>
                   {matches =>
                     matches.mobile && (
                       <DashboardCurrencyWrapper>
@@ -52,7 +53,7 @@ export const DashboardPage = () => {
             </DashboardFirstSectionWrapper>
 
             <DashboardSeparator></DashboardSeparator>
-            {pathname === '/wallet_frontend/diagram' && <h1>Statistics</h1>}
+            {pathname === '/wallet_frontend/diagram' && <DiagramTab />}
             <DashboardSecondSectionWrapper>
               {location.pathname === '/wallet_frontend/home' && <HomeTab />}
             </DashboardSecondSectionWrapper>
