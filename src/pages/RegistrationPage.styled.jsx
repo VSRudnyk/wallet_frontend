@@ -80,7 +80,7 @@ display: inline-block;
   width: 452px;
   height: 413px;
 }
-}
+
 `;
 export const Text = styled.p`
   display: none;

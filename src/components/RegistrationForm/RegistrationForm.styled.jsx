@@ -65,7 +65,6 @@ left: 8px;
 @media screen and (min-width: 768px) {
     top: 2px;
   }
-}
 
 `;
 
@@ -76,7 +75,6 @@ left: 8px;
 @media screen and (min-width: 768px) {
     top: 2px;
   }
-}
 `;
 
 export const RegisterButton = styled.button`
