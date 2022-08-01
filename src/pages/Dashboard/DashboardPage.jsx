@@ -8,11 +8,11 @@ import {
   DashboardSeparator,
 } from './DashboardPage.styled';
 import Media from 'react-media';
-import { Header } from 'components/Header/Header';
-import { Navigation } from 'components/Navigation/Navigation';
+import { Header } from 'components/Header';
+import { Navigation } from 'components/Navigation';
 import { Balance } from 'components/Balance';
 import HomeTab from 'components/HomeTab/HomeTab';
-import { Currency } from 'components/Currency/Currency';
+import { Currency } from 'components/Currency';
 import { Container } from 'stylesheet/Container.styled';
 import { useLocation } from 'react-router-dom';
 import { DiagramTab } from 'components/DiagramTab';
