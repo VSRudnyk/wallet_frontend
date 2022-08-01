@@ -21,7 +21,6 @@ const TransactionMobile = ({ obj }) => {
     sum,
     balance,
   }).map(([key, value]) => {
-    console.log(key, value);
     switch (key) {
       case 'date':
         let newValue = value

@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import Logo from '../../images/Logo.svg';
 import Exit from '../../images/Exit.svg';
+import LanguageSwitcher from 'components/LanguageSwitcher';
 import {
   HeaderSection,
   LogoStyle,
@@ -29,6 +30,7 @@ export const Header = () => {
           </ContainerLogo>
           <ContainerLogo>
             <UserName>Name</UserName>
+            <LanguageSwitcher />
             <LogoutButton>
               <LogoutImg src={Exit} alt="Exit" />
               <Logout>Exit</Logout>
