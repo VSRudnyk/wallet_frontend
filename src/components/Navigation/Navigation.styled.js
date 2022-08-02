@@ -5,11 +5,9 @@ export const NavigationContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: ${({ page }) => (page === 'home' ? 15 + 'px' : 31 + 'px')};
   @media screen and (min-width: 768px) {
     align-items: flex-start;
     flex-direction: column;
-    margin-bottom: 28px;
   }
 `;
 
