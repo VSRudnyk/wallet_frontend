@@ -5,24 +5,13 @@ import Transaction from './Transaction';
 import { useGetAllTransactionsQuery } from 'redux/authOperation';
 import { v4 as uuidv4 } from 'uuid';
 
-import {
-  HomeTabWrapper,
-  List,
-  ListItem,
-  Text,
-  TempBtn,
-} from './HomeTab.styled';
+import { HomeTabWrapper, List, ListItem, Text } from './HomeTab.styled';
 import Media from 'react-media';
 
-const lngs = {
-  en: { nativeName: 'English' },
-  ua: { nativeName: 'Українська' },
-};
-
-const HomeTab = ({ page }) => {
+export const HomeTab = ({ page }) => {
   const { data, isLoading, isSuccess } = useGetAllTransactionsQuery();
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
@@ -38,7 +27,7 @@ const HomeTab = ({ page }) => {
 
   return (
     <HomeTabWrapper page={page}>
-      <div>
+      {/* <div>
         {Object.keys(lngs).map(lng => (
           <TempBtn
             key={lng}
@@ -48,7 +37,7 @@ const HomeTab = ({ page }) => {
             {lngs[lng].nativeName}
           </TempBtn>
         ))}
-      </div>
+      </div> */}
       <Media queries={{ mobile: { maxWidth: 767 } }}>
         {matches =>
           matches.mobile ? (
@@ -76,4 +65,3 @@ const HomeTab = ({ page }) => {
   );
 };
 
-export default HomeTab;

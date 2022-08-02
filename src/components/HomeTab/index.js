@@ -1,1 +1,3 @@
-export { default } from './HomeTab';
+import { HomeTab } from './HomeTab';
+
+export default HomeTab;

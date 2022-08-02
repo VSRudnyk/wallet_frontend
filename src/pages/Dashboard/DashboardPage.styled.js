@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import BackDes from '../images/BackgrDes-min.png';
-import BackTab from '../images/BackgrTablet-min.png';
+import BackDes from '../../images/BackgrDes-min.png';
+import BackTab from '../../images/BackgrTablet-min.png';
 
 export const DashboardSection = styled.main`
   background-color: var(--background-gray);
@@ -10,7 +10,7 @@ export const DashboardSection = styled.main`
     var(--background-light-grey)
   );
 
-  padding-top: 15px;
+  padding-top: 75px;
   padding-bottom: 15px;
   height: 100%;
   backdrop-filter: blur(50px);
@@ -19,7 +19,7 @@ export const DashboardSection = styled.main`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding-top: 32px;
+    padding-top: 112px;
     padding-bottom: 32px;
   }
   @media screen and (min-width: 1280px) {
@@ -27,7 +27,7 @@ export const DashboardSection = styled.main`
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding-top: 46px;
+    padding-top: 126px;
     padding-bottom: 46px;
   }
 `;
