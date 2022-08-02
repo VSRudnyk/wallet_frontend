@@ -5,17 +5,16 @@ import { ReactComponent as Envelope } from '../../images/email.svg';
 import { ReactComponent as Lock } from '../../images/lock.svg';
 import { ReactComponent as Account } from '../../images/account.svg';
 import { ReactComponent as Eye } from '../../images/VectorEyes.svg';
+import { ReactComponent as EyeClose } from '../../images/VectorEyeClose.svg';
 
 export const Input = styled(Field)`
   padding: 10px 55px;
   border-top: none;
   border-right: none;
   border-left: none;
-  border-image: initial;
   border-bottom: 1px solid var(--light-gray);
   width: 280px;
   outline: none;
-  transition: border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
 
   @media screen and (min-width: 767px) {
     width: 409.5px;
@@ -140,9 +139,23 @@ top: 5px;
 }
 `;
 
+export const ButtonHide = styled(EyeClose)`
+position: absolute;
+padding: 7px 7px;
+right: 0;
+top: 5px;
+fill: var(--gray);
+
+@media screen and (min-width: 768px) {
+  right: 0;
+  top: 0;
+}
+`;
+
+
 export const ErrorText = styled.p`
 position: absolute;
-color: var(--dark-grey);
+color: #D50C0C;
 font-size: 14px;
 
 `
@@ -150,7 +163,7 @@ font-size: 14px;
 export const ErrorTextPassword = styled.p`
 margin-top: 5px;
 position: absolute;
-color: var(--dark-grey);
+color: #D50C0C;
 font-size: 14px;
 
 

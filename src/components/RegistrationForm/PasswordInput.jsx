@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Input, InputContainer, ButtonShow, SvgLock, ErrorTextPassword } from './RegistrationForm.styled';
+import { Input, InputContainer, ButtonShow, ButtonHide, SvgLock, ErrorTextPassword } from './RegistrationForm.styled';
 import { PasswordStrenght } from './PasswordStrength';
 import { ErrorMessage } from 'formik';
 
@@ -18,7 +18,8 @@ export const PasswordInput = () => {
 
   return (
     <InputContainer>
-    <ButtonShow onClick={showHide}/>
+    {type === 'input' ? <ButtonShow onClick={showHide} /> :  <ButtonHide onClick={showHide}/> }
+    
     <SvgLock />
     <Input
       onInput={e => setPassword(e.target.value)}
