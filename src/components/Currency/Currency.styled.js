@@ -46,10 +46,12 @@ export const TableBodyContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   @media screen and (min-width: 768px) {
     padding: 16px 20px 12px 20px;
   }
   @media screen and (min-width: 1280px) {
+    /* height: 287px; */
     padding: 20px 61px 20px 58px;
   }
   background-image: linear-gradient(
@@ -68,8 +70,11 @@ export const TableBodyList = styled.ul`
   display: flex;
   flex-direction: column;
   height: 124px;
-  overflow: hidden;
+  overflow-y: hidden;
   overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
   @media screen and (min-width: 768px) {
     height: 111px;
   }
