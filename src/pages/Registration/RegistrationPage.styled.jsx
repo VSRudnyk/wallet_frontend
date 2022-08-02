@@ -79,7 +79,7 @@ export const ImageContainer = styled.div`
 `;
 export const Text = styled.p`
   @media (min-width: 768px) {
-    color: #000000;
+    color: var(--black);
     display: flex;
     margin-right: auto;
     font-family: var(--secondaryFont);
@@ -114,7 +114,7 @@ export const FormContainer = styled.div`
   align-items: center;
   margin: 0;
   padding: 36px 20px;
-  background: #fff;
+  background: var(--white);
   height: 100vh;
 
   @media screen and (max-width: 767px) {
@@ -131,7 +131,7 @@ export const FormContainer = styled.div`
   }
 `;
 
-export const LogoReg = styled.img`
+export const Logo = styled.img`
   @media screen and (max-width: 768px) {
     width: 30px;
     height: 30px;

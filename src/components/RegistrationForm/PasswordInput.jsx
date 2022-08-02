@@ -3,6 +3,7 @@ import {
   Input,
   InputContainer,
   ButtonShow,
+  ButtonHide,
   SvgLock,
   ErrorTextPassword,
 } from './RegistrationForm.styled';
@@ -38,7 +39,12 @@ export const PasswordInput = () => {
 
   return (
     <InputContainer>
-      <ButtonShow onClick={showHide} />
+      {type === 'input' ? (
+        <ButtonShow onClick={showHide} />
+      ) : (
+        <ButtonHide onClick={showHide} />
+      )}
+
       <SvgLock />
       <Input
         onInput={e => setPassword(e.target.value)}

@@ -12,8 +12,9 @@ export const DashboardSection = styled.main`
 
   padding-top: 75px;
   padding-bottom: 15px;
-  height: 100%;
   backdrop-filter: blur(50px);
+  height: 100%;
+
   @media screen and (min-width: 768px) {
     background: url(${BackTab});
     background-position: center;
@@ -68,3 +69,18 @@ export const DashboardSeparator = styled.div`
       1px 0px 0px rgba(255, 255, 255, 0.6);
   }
 `;
+
+export const ButtonAddTransactionsWrapper = styled.div`
+  outline: none;
+  border: none;
+  position: sticky;  
+   display: flex;
+  justify-content:  flex-end;
+  bottom: 20px; 
+  margin-right: 20px;
+  @media screen and (min-width: 768px) {
+    bottom: 40px; 
+    margin-right: 40px;
+  }
+`
+;
