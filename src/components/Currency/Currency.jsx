@@ -37,7 +37,7 @@ export const Currency = ({ page }) => {
     const isSaveLocal = JSON.parse(localStorage.getItem('currency'));
     if (isSaveLocal) {
       const time = currentDate - isSaveLocal.date;
-      if (time > 1000) {
+      if (time > 3600000) {
         setStatus('resolve');
         setCurrency(isSaveLocal.currency);
         return;

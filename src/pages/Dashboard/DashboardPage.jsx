@@ -7,16 +7,28 @@ import {
   DashboardWrapper,
   DashboardSeparator,
 } from './DashboardPage.styled';
-import Media from 'react-media';
-import { Header } from 'components/Header';
-import { Navigation } from 'components/Navigation';
-import { Balance } from 'components/Balance';
-import HomeTab from 'components/HomeTab/HomeTab';
-import { Currency } from 'components/Currency';
+import { lazy } from 'react';
 import { Container } from 'stylesheet/Container.styled';
 import { useLocation } from 'react-router-dom';
-import { DiagramTab } from 'components/DiagramTab';
-
+import Media from 'react-media';
+const Header = lazy(() =>
+  import('../../components/Header' /* webpackChunkName: "Header" */)
+);
+const Navigation = lazy(() =>
+  import('../../components/Navigation' /* webpackChunkName: "Navigation" */)
+);
+const Balance = lazy(() =>
+  import('../../components/Balance' /* webpackChunkName: "Balance" */)
+);
+const HomeTab = lazy(() =>
+  import('../../components/HomeTab' /* webpackChunkName: "HomeTab" */)
+);
+const Currency = lazy(() =>
+  import('../../components/Currency' /* webpackChunkName: "Currency" */)
+);
+const DiagramTab = lazy(() =>
+  import('../../components/DiagramTab' /* webpackChunkName: "DiagramTab" */)
+);
 export const DashboardPage = () => {
   const location = useLocation();
   const { pathname } = location;

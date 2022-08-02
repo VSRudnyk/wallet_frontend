@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import '../stylesheet/fonts.css';
-import eclipseGray from '../images/EllipseGray.png';
-import eclipsePink from '../images/EllipsePink.png';
-import RegImage from '../images/RegistrationPageImage.png';
+import '../../stylesheet/fonts.css';
+import eclipseGray from '../../images/EllipseGray.png';
+import eclipsePink from '../../images/EllipsePink.png';
+import RegImage from '../../images/RegistrationPageImage.png';
 
 export const Container = styled.div`
   display: block;
@@ -19,7 +19,6 @@ export const ContainerRegister = styled.div`
   justify-content: center;
   left: 0px;
   background-color: var(--white);
-
 
   @media (max-width: 767px) {
     position: fixed;
@@ -46,8 +45,7 @@ export const ContainerRegister = styled.div`
 `;
 
 export const ImageSection = styled.div`
-
-@media (min-width: 767px) {
+  @media (min-width: 767px) {
     display: flex;
     margin-bottom: 50px;
     width: 540px;
@@ -62,27 +60,24 @@ export const ImageSection = styled.div`
 `;
 
 export const ImageContainer = styled.div`
+  @media (min-width: 768px) {
+    background-image: url(${RegImage});
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 50px;
+    display: inline-block;
+    margin-right: auto;
+    height: 273px;
+    width: 250px;
+    display: inline-block;
+  }
 
-@media (min-width: 768px) {
-background-image: url(${RegImage});
-background-repeat: no-repeat;
-background-size: contain;
-margin-bottom: 50px;
-display: inline-block;
-margin-right: auto;
-height: 273px;
-width: 250px;
-display: inline-block;
-}
-
-@media (min-width: 1280px) {
-  width: 452px;
-  height: 413px;
-}
-
+  @media (min-width: 1280px) {
+    width: 452px;
+    height: 413px;
+  }
 `;
 export const Text = styled.p`
-
   @media (min-width: 768px) {
     color: #000000;
     display: flex;
@@ -123,7 +118,7 @@ export const FormContainer = styled.div`
   height: 100vh;
 
   @media screen and (max-width: 767px) {
-  justify-content: center;
+    justify-content: center;
   }
 
   @media screen and (min-width: 768px) {
@@ -166,6 +161,3 @@ export const LogoContainer = styled.div`
   margin-bottom: 60px;
   justify-content: center;
 `;
-
-
-
