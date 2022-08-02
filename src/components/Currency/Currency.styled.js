@@ -9,7 +9,7 @@ export const TableWrapper = styled.div`
   }
   @media screen and (min-width: 1280px) {
     width: 393px;
-    height: 347px;
+    /* height: 347px; */
   }
 `;
 
@@ -51,7 +51,7 @@ export const TableBodyContainer = styled.div`
     padding: 16px 20px 12px 20px;
   }
   @media screen and (min-width: 1280px) {
-    /* height: 287px; */
+    height: 282px;
     padding: 20px 61px 20px 58px;
   }
   background-image: linear-gradient(

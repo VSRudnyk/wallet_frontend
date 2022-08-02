@@ -1,11 +1,11 @@
 import {
-  DashboardSection,
   DashboardFirstSectionWrapper,
   DashboardNavAndBalWrapper,
   DashboardCurrencyWrapper,
   DashboardSecondSectionWrapper,
   DashboardWrapper,
   DashboardSeparator,
+  Dashboard,
 } from './DashboardPage.styled';
 import { lazy } from 'react';
 import { Container } from 'stylesheet/Container.styled';
@@ -36,7 +36,8 @@ export const DashboardPage = () => {
   return (
     <>
       <Header />
-      <DashboardSection>
+      {/* <main> */}
+      <Dashboard qwe={pathname}>
         <Container>
           <DashboardWrapper>
             <DashboardFirstSectionWrapper>
@@ -63,7 +64,6 @@ export const DashboardPage = () => {
                 }
               </Media>
             </DashboardFirstSectionWrapper>
-
             <DashboardSeparator></DashboardSeparator>
             {pathname === '/wallet_frontend/diagram' && <DiagramTab />}
             <DashboardSecondSectionWrapper>
@@ -71,7 +71,9 @@ export const DashboardPage = () => {
             </DashboardSecondSectionWrapper>
           </DashboardWrapper>
         </Container>
-      </DashboardSection>
+      </Dashboard>
+
+      {/* </main> */}
     </>
   );
 };
