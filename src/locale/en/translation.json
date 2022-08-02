@@ -129,5 +129,9 @@
       "e-mail": "E-mail",
       "password": "Password"
     }
+  },
+  "errorPage": {
+    "message": "This page does not exist. Follow link to return to",
+    "home": "Home"
   }
 }

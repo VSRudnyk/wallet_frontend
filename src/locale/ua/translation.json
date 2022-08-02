@@ -89,7 +89,7 @@
     "expenses": "Витрати"
   },
   "navigation": {
-    "home": "Домашня",
+    "home": "Головна",
     "statistics": "Статистика"
   },
   "registration": {
@@ -130,5 +130,9 @@
       "e-mail": "Пошта",
       "password": "Пароль"
     }
+  },
+  "errorPage": {
+    "message": "Такої сторінуи не існує. Повернутися на ",
+    "home": "Головну"
   }
 }

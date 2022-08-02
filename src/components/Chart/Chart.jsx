@@ -1,22 +1,24 @@
 import { useState } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { useTranslation } from 'react-i18next';
 import { Container, Text } from './Chart.styled';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export function Chart() {
+  const { t } = useTranslation();
   const [chartData] = useState({
     labels: [
-      'Basic expenses',
-      'Products',
-      'Car',
-      'Self care',
-      'Child care',
-      'Household products',
-      'Education',
-      'Leisure',
-      'Other expenses',
+      t('diagramTab.reduxData.basic'),
+      t('diagramTab.reduxData.products'),
+      t('diagramTab.reduxData.car'),
+      t('diagramTab.reduxData.health'),
+      t('diagramTab.reduxData.kids'),
+      t('diagramTab.reduxData.home'),
+      t('diagramTab.reduxData.education'),
+      t('diagramTab.reduxData.leisure'),
+      t('diagramTab.reduxData.other'),
     ],
     datasets: [
       {
