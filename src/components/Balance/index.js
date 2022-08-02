@@ -1,3 +1,3 @@
 import { Balance } from './Balance';
 
-export { Balance };
+export default Balance;

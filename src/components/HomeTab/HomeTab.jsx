@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { HomeTabWrapper, List, ListItem, Text } from './HomeTab.styled';
 import Media from 'react-media';
 
-const HomeTab = ({ page }) => {
+export const HomeTab = ({ page }) => {
   const { data, isLoading, isSuccess } = useGetAllTransactionsQuery();
 
   const { t } = useTranslation();
@@ -65,4 +65,3 @@ const HomeTab = ({ page }) => {
   );
 };
 
-export default HomeTab;

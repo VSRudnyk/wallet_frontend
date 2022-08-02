@@ -12,18 +12,20 @@ import {
   Container,
   ContainerRegisterForm,
 } from './RegistrationPage.styled';
-import Logo from '../images/Logo.svg';
+import Logo from '../../images/Logo.svg';
 
 export const RegistrationPage = () => {
   return (
     <Container>
       <ContainerRegister>
-      <Media query="(min-width: 768px)" render={() =>
-          (
+        <Media
+          query="(min-width: 768px)"
+          render={() => (
             <ImageSection>
-            <ImageContainer />
-            <Text>Finance App</Text>
-          </ImageSection>          )}
+              <ImageContainer />
+              <Text>Finance App</Text>
+            </ImageSection>
+          )}
         />
         <ContainerRegisterForm>
           <FormContainer>

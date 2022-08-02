@@ -1,3 +1,3 @@
 import { Currency } from './Currency.jsx';
 
-export { Currency };
+export default Currency;

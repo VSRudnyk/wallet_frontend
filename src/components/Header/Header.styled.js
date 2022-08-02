@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import '../../stylesheet/fonts.css';
 
 export const HeaderSection = styled.header`
+  position: fixed;
+  z-index: 1;
+  width: 100%;
   background-color: var(--white);
   padding-top: 15px;
   padding-bottom: 15px;
