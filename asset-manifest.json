@@ -1,9 +1,10 @@
 {
   "files": {
     "main.css": "/wallet_frontend/static/css/main.e355e638.css",
-    "main.js": "/wallet_frontend/static/js/main.9f4238ca.js",
+    "main.js": "/wallet_frontend/static/js/main.d4d68989.js",
     "PrivatRoute.js": "/wallet_frontend/static/js/PrivatRoute.bf4d4ccb.chunk.js",
-    "DashboardPage.js": "/wallet_frontend/static/js/DashboardPage.3a0fa32c.chunk.js",
+    "DashboardPage.css": "/wallet_frontend/static/css/DashboardPage.a0eb27c2.chunk.css",
+    "DashboardPage.js": "/wallet_frontend/static/js/DashboardPage.4dab1818.chunk.js",
     "PublickRoute.js": "/wallet_frontend/static/js/PublickRoute.c2b6ead9.chunk.js",
     "RegistrationPage.js": "/wallet_frontend/static/js/RegistrationPage.42860cfd.chunk.js",
     "LoginPage.js": "/wallet_frontend/static/js/LoginPage.ee6f8dcb.chunk.js",
@@ -46,9 +47,10 @@
     "static/media/account.svg": "/wallet_frontend/static/media/account.16308cbda5cc95779180b76a9489318d.svg",
     "static/media/email.svg": "/wallet_frontend/static/media/email.4ef5e28347bc6cbeb00f9d53d5491b2d.svg",
     "main.e355e638.css.map": "/wallet_frontend/static/css/main.e355e638.css.map",
-    "main.9f4238ca.js.map": "/wallet_frontend/static/js/main.9f4238ca.js.map",
+    "main.d4d68989.js.map": "/wallet_frontend/static/js/main.d4d68989.js.map",
     "PrivatRoute.bf4d4ccb.chunk.js.map": "/wallet_frontend/static/js/PrivatRoute.bf4d4ccb.chunk.js.map",
-    "DashboardPage.3a0fa32c.chunk.js.map": "/wallet_frontend/static/js/DashboardPage.3a0fa32c.chunk.js.map",
+    "DashboardPage.a0eb27c2.chunk.css.map": "/wallet_frontend/static/css/DashboardPage.a0eb27c2.chunk.css.map",
+    "DashboardPage.4dab1818.chunk.js.map": "/wallet_frontend/static/js/DashboardPage.4dab1818.chunk.js.map",
     "PublickRoute.c2b6ead9.chunk.js.map": "/wallet_frontend/static/js/PublickRoute.c2b6ead9.chunk.js.map",
     "RegistrationPage.42860cfd.chunk.js.map": "/wallet_frontend/static/js/RegistrationPage.42860cfd.chunk.js.map",
     "LoginPage.ee6f8dcb.chunk.js.map": "/wallet_frontend/static/js/LoginPage.ee6f8dcb.chunk.js.map",
@@ -71,6 +73,6 @@
   },
   "entrypoints": [
     "static/css/main.e355e638.css",
-    "static/js/main.9f4238ca.js"
+    "static/js/main.d4d68989.js"
   ]
 }
