@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import '../stylesheet/fonts.css';
-import eclipseGray from '../images/EllipseGray.png';
-import eclipsePink from '../images/EllipsePink.png';
-import LoginImage from '../images/loginPageImage_desktop.png';
+import '../../stylesheet/fonts.css';
+import eclipseGray from '../../images/EllipseGray.png';
+import eclipsePink from '../../images/EllipsePink.png';
+import LoginImage from '../../images/loginPageImage_desktop.png';
 
 export const Container = styled.div`
   display: block;
@@ -61,25 +61,24 @@ export const ImageSection = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-display:none;
+  display: none;
 
-@media (min-width: 768px) {
-background-image: url(${LoginImage});
-background-repeat: no-repeat;
-background-size: contain;
-margin-bottom: 50px;
-display: inline-block;
-margin-right: auto;
-height: 273px;
-width: 250px;
-display: inline-block;
-}
+  @media (min-width: 768px) {
+    background-image: url(${LoginImage});
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 50px;
+    display: inline-block;
+    margin-right: auto;
+    height: 273px;
+    width: 250px;
+    display: inline-block;
+  }
 
-@media (min-width: 1280px) {
-  width: 452px;
-  height: 413px;
-}
-
+  @media (min-width: 1280px) {
+    width: 452px;
+    height: 413px;
+  }
 `;
 export const Text = styled.p`
   display: none;
@@ -163,8 +162,3 @@ export const LogoContainer = styled.div`
   margin-bottom: 60px;
   justify-content: center;
 `;
-
-
-
-
-
