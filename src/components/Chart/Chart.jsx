@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import { Container, Text } from './Chart.styled';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -36,8 +37,7 @@ export function Chart() {
         hoverOffset: 5,
         borderWidth: 0,
         cutout: '70%',
-
-        radius: 150,
+        radius: '95%',
       },
     ],
   });
@@ -47,14 +47,20 @@ export function Chart() {
       legend: {
         display: false,
       },
-    },
-    elements: {
-      line: {},
-      point: {
-        radius: 100,
+      tooltip: {
+        callbacks: {
+          label: function (toolTipItem) {
+            return `${toolTipItem.label}: ₴ ${toolTipItem.formattedValue}`;
+          },
+        },
       },
     },
   });
 
-  return <Doughnut data={chartData} options={chartOption} />;
+  return (
+    <Container>
+      <Doughnut data={chartData} options={chartOption} />
+      <Text>₴ 24 000.00</Text>
+    </Container>
+  );
 }

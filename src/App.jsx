@@ -5,11 +5,12 @@ import { DashboardPage } from 'pages/DashboardPage';
 import { Routes, Route } from 'react-router-dom';
 // import { Home } from 'routers/PrivatRouter';
 // import { RegistrationPage } from 'pages/RegistrationPage';
+import { Chart } from 'components/Chart';
 
 export const App = () => {
   return (
     <>
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<DashboardPage />}>
           <Route path="/wallet_frontend/main" element={<Balance />} />
           <Route path="/wallet_frontend/currency" element={<Currency />} />
@@ -19,7 +20,8 @@ export const App = () => {
           />
           <Route path="*" element={<h1>NotFound </h1>} />
         </Route>
-      </Routes>
+      </Routes> */}
+      <Chart></Chart>
     </>
   );
 };
