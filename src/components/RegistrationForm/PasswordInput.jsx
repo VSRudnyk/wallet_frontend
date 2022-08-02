@@ -9,8 +9,10 @@ import {
 } from './RegistrationForm.styled';
 import { PasswordStrenght } from './PasswordStrength';
 import { ErrorMessage } from 'formik';
+import { useTranslation } from 'react-i18next';
 
 export const PasswordInput = () => {
+  const { t } = useTranslation();
   const [password, setPassword] = useState('');
   const [type, setType] = useState('password');
   const showHide = e => {
@@ -18,11 +20,19 @@ export const PasswordInput = () => {
     let currentType = type === 'input' ? 'password' : 'input';
     setType(currentType);
   };
+  const messageLength = str => {
+    if (str.length > 28) {
+      return t('registration.password.short');
+    }
+    return t('registration.password.required');
+  };
   const FormError = ({ name }) => {
     return (
       <ErrorMessage
         name={name}
-        render={message => <ErrorTextPassword>{message}</ErrorTextPassword>}
+        render={message => (
+          <ErrorTextPassword>{messageLength(message)}</ErrorTextPassword>
+        )}
       />
     );
   };
@@ -40,7 +50,7 @@ export const PasswordInput = () => {
         onInput={e => setPassword(e.target.value)}
         name="password"
         type={type}
-        placeholder="Password"
+        placeholder={t('registration.placeholders.password')}
       />
       <FormError name="password" />
       <PasswordStrenght password={password} />

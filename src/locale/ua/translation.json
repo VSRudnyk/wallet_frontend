@@ -36,5 +36,99 @@
   "children": "Діти",
   "house": "Будинок",
   "income": "Дохід",
-  "expense": "Витрати"
+  "expense": "Витрати",
+  "header": {
+    "name": "Ім'я",
+    "exit": "Вихід"
+  },
+  "currencyPage": {
+    "currency": "Валюта",
+    "purchase": "Купівля",
+    "sale": "Продаж"
+  },
+  "settingsComponent": {
+    "language": "Мова",
+    "exit": "Вихід"
+  },
+  "balanceComponent": {
+    "yourBalance": "Ваш баланс"
+  },
+  "diagramTab": {
+    "reduxData": {
+      "basic": "Базові витрати",
+      "products": "Товари",
+      "car": "Авто",
+      "health": "Здоров'я",
+      "kids": "Діти",
+      "home": "Дім",
+      "education": "Освіта",
+      "leisure": "Відпочинок",
+      "other": "Інше"
+    },
+    "optionData": {
+      "month": "Місяць",
+      "year": "Рік",
+      "jan": "Січень",
+      "feb": "Лютий",
+      "mar": "Березень",
+      "apr": "Квітень",
+      "may": "Травень",
+      "jun": "Червень",
+      "jul": "Липень",
+      "aug": "Серпень",
+      "sep": "Вересень",
+      "oct": "Жовтень",
+      "nov": "Листопад",
+      "dec": "Грудень"
+    }
+  },
+  "table": {
+    "category": "Категорія",
+    "sum": "Сума",
+    "income": "Дохід",
+    "expenses": "Витрати"
+  },
+  "navigation": {
+    "home": "Домашня",
+    "statistics": "Статистика"
+  },
+  "registration": {
+    "placeholders": {
+      "e-mail": "Пошта",
+      "firstname": "Ім'я",
+      "password": "Пароль",
+      "confirmpassword": "Підтвердити пароль"
+    },
+    "buttons": {
+      "register": "РЕЄСТРАЦІЯ",
+      "login": "ВХІД"
+    },
+    "password": {
+      "notequal": "паролі повинні співпадати",
+      "short": "пароль має бути не менше 6-ти символів",
+      "required": "це поле не може бути пустим"
+    },
+    "status": {
+      "success": "Реєстрація успішна!",
+      "error": "Користувач з такою поштою вже зареєстрований"
+    },
+    "required": {
+      "name": "це поле не може бути пустим",
+      "repeated_password": "це поле не може бути пустим"
+    }
+  },
+  "login": {
+    "status": {
+      "success": "Ви увійшли!",
+      "error": "Сталася помилка. Спробуйте ще раз"
+    },
+    "buttons": {
+      "register": "РЕЄСТРАЦІЯ",
+      "login": "ВХІД"
+    },
+    "placeholders": {
+      "e-mail": "Пошта",
+      "password": "Пароль"
+    }
+  }
 }
