@@ -15,7 +15,7 @@ export const ErrorPage = () => {
       </ErrorText>
 
       <ErrorContainer>
-        <img src={Error} alt="Ops, something is wrong" />
+        <img src={Error} alt={t('errorPage.alt')} />
       </ErrorContainer>
     </Container>
   );

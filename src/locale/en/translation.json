@@ -132,6 +132,7 @@
   },
   "errorPage": {
     "message": "This page does not exist. Follow link to return to",
-    "home": "Home"
+    "home": "Home",
+    "alt": "Ops, something is wrong"
   }
 }
