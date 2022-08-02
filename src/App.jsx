@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { Loader } from './components/Loader';
-import ErrorPage from './components/Error';
+import ErrorPage from './pages/Error';
 const PrivatRoute = lazy(() =>
   import('./routers/PrivatRouter' /* webpackChunkName: "PrivatRoute" */)
 );
