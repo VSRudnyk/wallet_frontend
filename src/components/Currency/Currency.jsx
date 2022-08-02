@@ -37,7 +37,7 @@ export const Currency = ({ page }) => {
     const isSaveLocal = JSON.parse(localStorage.getItem('currency'));
     if (isSaveLocal) {
       const time = currentDate - isSaveLocal.date;
-      if (time > 3600000) {
+      if (time < 3600000) {
         setStatus('resolve');
         setCurrency(isSaveLocal.currency);
         return;
@@ -74,7 +74,7 @@ export const Currency = ({ page }) => {
         };
         localStorage.setItem('currency', JSON.stringify(DateToLocal));
         setStatus('resolve');
-        return setCurrency(result.reverse());
+        return setCurrency(result);
       } catch (error) {
         console.log(error);
         toast.error('Something wrong, try again!');
