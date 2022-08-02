@@ -1,17 +1,21 @@
 import { Container } from 'stylesheet/Container.styled';
+import { useTranslation } from 'react-i18next';
 import Error from '../../images/Error.jpeg';
 import { ErrorContainer, ErrorText, BackToHome } from './Error.styled';
 
 export const ErrorPage = () => {
+  const { t } = useTranslation();
   return (
     <Container>
       <ErrorText>
-        This page does not exist. To return to the home page click on the{' '}
-        <BackToHome to="/wallet_frontend/home">Home</BackToHome>
+        {t('errorPage.message')}
+        <BackToHome to="/wallet_frontend/home">
+          {t('errorPage.home')}
+        </BackToHome>
       </ErrorText>
 
       <ErrorContainer>
-        <img src={Error} alt="Ops, something is wrong" />
+        <img src={Error} alt={t('errorPage.alt')} />
       </ErrorContainer>
     </Container>
   );
