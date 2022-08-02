@@ -1,10 +1,20 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  margin-top: 43px;
+  @media screen and (min-width: 768px) {
+    margin-top: 0px;
+  }
+`;
+
+export const ChartContainer = styled.div`
   position: relative;
   min-width: 250px;
   min-height: 250px;
-  margin-bottom: 32px;
   @media screen and (min-width: 768px) {
     margin-right: 32px;
     width: 336px;
@@ -14,6 +24,20 @@ export const Container = styled.div`
     margin-right: 32px;
     width: 288px;
     height: 288px;
+  }
+`;
+
+export const Label = styled.h2`
+  display: block;
+  font-family: var(--secondaryFont);
+  font-weight: var(--regular);
+  font-style: normal;
+  font-size: 30px;
+  line-height: 45px;
+  color: var(--black);
+  margin-bottom: 8px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 20px;
   }
 `;
 
@@ -30,19 +54,4 @@ export const Text = styled.p`
   line-height: 27px;
   color: var(--black);
   z-index: -1;
-`;
-
-export const StatisticsText = styled.h2`
-  font-family: var(--secondaryFont);
-  font-style: normal;
-  font-weight: var(--reqular);
-  font-size: 30px;
-  line-height: 45px;
-  color: var(--black);
-  margin-top: 43px;
-  text-align: start;
-  @media screen and (min-width: 768px) {
-    margin-top: 0;
-    margin-bottom: 10px;
-  }
 `;

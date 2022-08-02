@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-import { Container, Text, StatisticsText } from './Chart.styled';
 import { useTranslation } from 'react-i18next';
+import { Container, ChartContainer, Text, Label } from './Chart.styled';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -61,10 +61,11 @@ export function Chart() {
 
   return (
     <Container>
-      <StatisticsText>Statistics</StatisticsText>
-
-      <Doughnut data={chartData} options={chartOption} />
-      <Text>₴ 24 000.00</Text>
+      <Label>Statistics</Label>
+      <ChartContainer>
+        <Doughnut data={chartData} options={chartOption} />
+        <Text>₴ 24 000.00</Text>
+      </ChartContainer>
     </Container>
   );
 }

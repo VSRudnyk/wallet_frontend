@@ -123,7 +123,6 @@ export const DiagramTab = () => {
               <IconSVG id="icon-diagram-tab-arrow-down" />
             </DiagramButton>
           </DiagramButtonsWrapper>
-
           <Table tableData={reduxData} />
         </DiagramTableBar>
       </DiagramTabWrapper>

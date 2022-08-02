@@ -11,10 +11,7 @@ export const DiagramTabWrapper = styled.div`
   @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 20px;
-  }
-  @media screen and (min-width: 1280px) {
-    margin-top: 64px;
+    align-items: flex-start;
   }
 `;
 export const DiagramButtonsWrapper = styled.div``;
@@ -65,7 +62,7 @@ export const DiagramTableBar = styled.div`
   }
   @media screen and (min-width: 1280px) {
     width: 395px;
-    //margin-top: 56px;
+    margin-top: 56px;
   }
 `;
 
