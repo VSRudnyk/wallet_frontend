@@ -9,6 +9,9 @@ export const ErrorText = styled.h1`
   margin-bottom: 50px;
   font-size: 24px;
   line-height: 1.5;
+  & > a {
+    margin-left: 4px;
+  }
   @media screen and (min-width: 1280px) {
     margin-left: auto;
     margin-right: auto;
