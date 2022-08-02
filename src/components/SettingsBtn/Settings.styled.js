@@ -26,7 +26,7 @@ export const Button = styled.button`
 export const DropDown = styled.div`
   position: absolute;
   top: 100%;
-  left: -75px;
+  left: -106px;
   width: 130px;
   z-index: 2;
   opacity: ;
@@ -98,7 +98,7 @@ export const SlideLeft = styled.div`
   position: absolute;
   top: 40px;
   left: -80px;
-  width: 141px;
+  width: 120px;
   height: auto;
   visibility: ${props => (props.visible ? 'unset' : 'hidden')};
   z-index: 1;

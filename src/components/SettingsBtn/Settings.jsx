@@ -25,7 +25,7 @@ const Settings = () => {
   const [isDropDownOpen, setIsDropDowOpen] = useState(false);
   const [isSlideLeftOpen, setIsSlideLeftOpen] = useState(false);
 
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     window.addEventListener('mousedown', handleClickOutside);
