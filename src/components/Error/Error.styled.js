@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import '../../stylesheet/fonts.css';
 
 export const ErrorText = styled.h1`
-  font-family: var(--vaseFont);
+  font-family: var(--baseFont);
   color: var(--black);
   margin-top: 50px;
   margin-bottom: 50px;
