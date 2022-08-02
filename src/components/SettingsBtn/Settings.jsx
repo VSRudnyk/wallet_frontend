@@ -25,7 +25,7 @@ const Settings = () => {
   const [isDropDownOpen, setIsDropDowOpen] = useState(false);
   const [isSlideLeftOpen, setIsSlideLeftOpen] = useState(false);
 
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     window.addEventListener('mousedown', handleClickOutside);
@@ -75,7 +75,7 @@ const Settings = () => {
                         id="langs"
                         onClick={() => setIsSlideLeftOpen(state => !state)}
                       >
-                        Language
+                        {t('settingsComponent.language')}
                         <LanguageIcon
                           style={{ width: '18px', marginLeft: 'auto' }}
                         />
@@ -83,7 +83,7 @@ const Settings = () => {
                     </ListItem>
                     <ListItem>
                       <LangBtn>
-                        <span>Exit</span>
+                        <span>{t('settingsComponent.exit')}</span>
                         <ExitIcon
                           style={{ width: '18px', marginLeft: 'auto' }}
                         />

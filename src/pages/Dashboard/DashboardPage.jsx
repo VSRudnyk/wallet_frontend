@@ -6,10 +6,12 @@ import {
   DashboardWrapper,
   DashboardSeparator,
   Dashboard,
+  ButtonAddTransactionsWrapper,
 } from './DashboardPage.styled';
 import { lazy } from 'react';
 import { Container } from 'stylesheet/Container.styled';
 import { useLocation } from 'react-router-dom';
+import { ButtonAddTransactions } from '../../components/ButtonAddTransactions/ButtonAddTransactions';
 import Media from 'react-media';
 const Header = lazy(() =>
   import('../../components/Header' /* webpackChunkName: "Header" */)
@@ -74,6 +76,10 @@ export const DashboardPage = () => {
       </Dashboard>
 
       {/* </main> */}
+      <ButtonAddTransactionsWrapper>
+        <ButtonAddTransactions />
+      </ButtonAddTransactionsWrapper>
+      {/* </DashboardSection> */}
     </>
   );
 };

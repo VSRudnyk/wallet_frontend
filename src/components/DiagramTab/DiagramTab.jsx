@@ -1,4 +1,5 @@
 import { lazy } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import {
   DiagramTabWrapper,
@@ -9,12 +10,14 @@ import {
 } from './DiagramTab.styled';
 import { IconSVG } from 'stylesheet/IconSVG';
 const Table = lazy(() => import('../Table' /* webpackChunkName: "Table" */));
+const Chart = lazy(() => import('../Chart' /* webpackChunkName: "Chart" */));
 
 export const DiagramTab = () => {
+  const { t } = useTranslation();
   const reduxData = [
     {
       categoryColor: '#FED057',
-      categoryName: 'Basic expenses',
+      categoryName: 'Basic',
       categorySum: '8700.00',
     },
     {
@@ -22,20 +25,24 @@ export const DiagramTab = () => {
       categoryName: 'Products',
       categorySum: '3800.74',
     },
-    { categoryColor: '#FD9498', categoryName: 'Car', categorySum: '1500.00' },
+    {
+      categoryColor: '#FD9498',
+      categoryName: 'Car',
+      categorySum: '1500.00',
+    },
     {
       categoryColor: '#C5BAFF',
-      categoryName: 'Self care',
+      categoryName: 'Health',
       categorySum: '800.00',
     },
     {
       categoryColor: '#6E78E8',
-      categoryName: 'Child care',
+      categoryName: 'Kids',
       categorySum: '2208.50',
     },
     {
       categoryColor: '#4A56E2',
-      categoryName: 'Household products',
+      categoryName: 'Home',
       categorySum: '300.00',
     },
     {
@@ -50,7 +57,7 @@ export const DiagramTab = () => {
     },
     {
       categoryColor: '#00AD84',
-      categoryName: 'Other expenses',
+      categoryName: 'Other',
       categorySum: '610.00',
     },
   ];
@@ -58,6 +65,7 @@ export const DiagramTab = () => {
   return (
     <DiagramTabWrapper className="diagram-tab__wrapper">
       {/* тут должен быть компонент "Здоровенный разноцветный круг" */}
+      <Chart />
 
       <DiagramTableBar className="diagram-tab__table-bar">
         <DiagramButtonsWrapper className="diagram-tab__buttons-wrapper">
@@ -68,20 +76,22 @@ export const DiagramTab = () => {
               className="diagram-btn__select_month"
             >
               <option value="Month" disabled style={{ display: 'none' }}>
-                Month
+                {t('diagramTab.optionData.month')}
               </option>
-              <option value="January">January</option>
-              <option value="February">February</option>
-              <option value="March">March</option>
-              <option value="April">April</option>
-              <option value="May">May</option>
-              <option value="June">June</option>
-              <option value="July">July</option>
-              <option value="August">August</option>
-              <option value="September">September</option>
-              <option value="October">October</option>
-              <option value="November">November</option>
-              <option value="December">December</option>
+              <option value="January">{t('diagramTab.optionData.jan')}</option>
+              <option value="February">{t('diagramTab.optionData.feb')}</option>
+              <option value="March">{t('diagramTab.optionData.mar')}</option>
+              <option value="April">{t('diagramTab.optionData.apr')}</option>
+              <option value="May">{t('diagramTab.optionData.may')}</option>
+              <option value="June">{t('diagramTab.optionData.jun')}</option>
+              <option value="July">{t('diagramTab.optionData.jul')}</option>
+              <option value="August">{t('diagramTab.optionData.aug')}</option>
+              <option value="September">
+                {t('diagramTab.optionData.sep')}
+              </option>
+              <option value="October">{t('diagramTab.optionData.oct')}</option>
+              <option value="November">{t('diagramTab.optionData.nov')}</option>
+              <option value="December">{t('diagramTab.optionData.dec')}</option>
             </DiagramCustomSelect>
             <IconSVG id="icon-diagram-tab-arrow-down" />
           </DiagramButton>
@@ -93,7 +103,7 @@ export const DiagramTab = () => {
               className="diagram-btn__select_year"
             >
               <option value="Year" disabled style={{ display: 'none' }}>
-                Year
+                {t('diagramTab.optionData.year')}
               </option>
               <option value="2019">2019</option>
               <option value="2020">2020</option>

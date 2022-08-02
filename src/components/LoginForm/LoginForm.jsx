@@ -4,6 +4,7 @@ import { Formik, ErrorMessage, Form } from 'formik';
 import { toast, ToastContainer } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/selector';
+import { useTranslation } from 'react-i18next';
 
 import {
   Input,
@@ -17,6 +18,7 @@ import {
 export const LoginForm = () => {
   const [login, { isSuccess, isError }] = useLoginMutation();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const isToken = useSelector(authSelectors.getToken);
   const defaultInitialValues = {
     email: '',
@@ -41,7 +43,7 @@ export const LoginForm = () => {
   return (
     <>
       {isSuccess &&
-        toast.success('Success log in!', {
+        toast.success(t('login.status.success'), {
           theme: 'colored',
           icon: '🆗',
           autoClose: 8000,
@@ -50,28 +52,36 @@ export const LoginForm = () => {
           draggable: true,
           progress: undefined,
         }) && <ToastContainer />}
-      {isError && toast.error('Something wrong, try again!') && (
-        <ToastContainer />
-      )}
+      {isError && toast.error(t('login.status.error')) && <ToastContainer />}
 
       <Formik initialValues={defaultInitialValues} onSubmit={handleSubmit}>
         <Form autoComplete="off">
           <InputContainer>
             <SvgEnvelope />
-            <Input name="email" type="email" placeholder="E-mail" />
+            <Input
+              name="email"
+              type="email"
+              placeholder={t('login.placeholders.e-mail')}
+            />
             <FormError name="email" />
           </InputContainer>
           <InputContainer>
             <SvgLock />
-            <Input name="password" type="password" placeholder="Password" />
+            <Input
+              name="password"
+              type="password"
+              placeholder={t('login.placeholders.password')}
+            />
             <FormError name="password" />
           </InputContainer>
           <ToastContainer />
-          <LoginButton type="submit">Log in</LoginButton>
+          <LoginButton type="submit">{t('login.buttons.login')}</LoginButton>
         </Form>
       </Formik>
       <Link to="/wallet_frontend/register">
-        <RegisterButton type="button">Register</RegisterButton>
+        <RegisterButton type="button">
+          {t('login.buttons.register')}
+        </RegisterButton>
       </Link>
     </>
   );

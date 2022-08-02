@@ -13,7 +13,8 @@ import storage from 'redux-persist/lib/storage';
 import { authOperation } from './authOperation';
 import authReducer from './authSlice';
 import { loginOperation } from './loginOperation';
-import loginReducer from './loginSlice.jsx'
+import loginReducer from './loginSlice.jsx';
+import globalReducer from './global/globalReducer';
 
 const authPersistConfig = {
   key: 'auth',
@@ -31,6 +32,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     [loginOperation.reducerPath]: loginOperation.reducer,
     login: persistReducer(loginPersistConfig, loginReducer),
+    global: globalReducer,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
