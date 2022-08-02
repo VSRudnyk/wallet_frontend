@@ -41,7 +41,6 @@ const Settings = () => {
       e.target.id !== 'Capa_1' &&
       e.target.id !== 'lang_btn'
     ) {
-      console.log('state change');
       setIsDropDowOpen(false);
       setIsSlideLeftOpen(false);
     }
@@ -52,7 +51,13 @@ const Settings = () => {
     setIsDropDowOpen(false);
     setIsSlideLeftOpen(false);
   };
-  console.log(isDropDownOpen);
+  const menuBtnList = Object.keys(lngs).map(lng => (
+    <ListItem key={lng}>
+      <LangBtn id={lng} type="submit" onClick={() => langBtnHandler(lng)}>
+        {lngs[lng].nativeName}
+      </LangBtn>
+    </ListItem>
+  ));
   return (
     <Media queries={{ mobile: { maxWidth: 767 } }}>
       {matches =>
@@ -63,7 +68,7 @@ const Settings = () => {
             </Button>
             {isDropDownOpen && (
               <>
-                <DropDown visibility={isDropDownOpen}>
+                <DropDown visibility={isDropDownOpen.toString()}>
                   <List>
                     <ListItem>
                       <LangBtn
@@ -78,7 +83,7 @@ const Settings = () => {
                     </ListItem>
                     <ListItem>
                       <LangBtn>
-                        <span>Exit</span>{' '}
+                        <span>Exit</span>
                         <ExitIcon
                           style={{ width: '18px', marginLeft: 'auto' }}
                         />
@@ -87,20 +92,7 @@ const Settings = () => {
                   </List>
                 </DropDown>
                 <SlideLeft visible={isSlideLeftOpen}>
-                  <List>
-                    {isSlideLeftOpen &&
-                      Object.keys(lngs).map(lng => (
-                        <ListItem key={lng}>
-                          <LangBtn
-                            id={lng}
-                            type="submit"
-                            onClick={() => langBtnHandler(lng)}
-                          >
-                            {lngs[lng].nativeName}
-                          </LangBtn>
-                        </ListItem>
-                      ))}
-                  </List>
+                  <List>{isSlideLeftOpen && menuBtnList}</List>
                 </SlideLeft>
               </>
             )}
@@ -110,21 +102,8 @@ const Settings = () => {
             <Button onClick={() => setIsDropDowOpen(state => !state)}>
               <LanguageIcon id="lang_btn" />
             </Button>
-            <DropDown visibility={isDropDownOpen}>
-              <List>
-                {isDropDownOpen &&
-                  Object.keys(lngs).map(lng => (
-                    <ListItem key={lng}>
-                      <LangBtn
-                        id={lng}
-                        type="submit"
-                        onClick={() => langBtnHandler(lng)}
-                      >
-                        {lngs[lng].nativeName}
-                      </LangBtn>
-                    </ListItem>
-                  ))}
-              </List>
+            <DropDown visibility={isDropDownOpen.toString()}>
+              <List>{isDropDownOpen && menuBtnList}</List>
             </DropDown>
           </SettingsBtnWrapper>
         )

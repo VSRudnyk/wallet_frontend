@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom';
 import Media from 'react-media';
 import Logo from '../../images/Logo.svg';
 import Exit from '../../images/Exit.svg';
-// import LanguageSwitcher from 'components/LanguageSwitcher';
 import Settings from 'components/SettingsBtn/Settings';
 import {
   HeaderSection,

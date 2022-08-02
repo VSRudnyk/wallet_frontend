@@ -30,7 +30,7 @@ export const DropDown = styled.div`
   width: 130px;
   z-index: 2;
   opacity: ;
-  visibility: ${props => (props.visibility ? 'unset' : 'hidden')};
+  visibility: ${props => (props.visibility === 'true' ? 'unset' : 'hidden')};
 `;
 export const List = styled.ul`
   background-color: #ffffff;
