@@ -15,7 +15,6 @@ export const GlobalStyle = createGlobalStyle`
     text-align: center;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #E7EAF2;
   }
   h1,
   h2,
