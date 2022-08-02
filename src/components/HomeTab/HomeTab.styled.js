@@ -12,6 +12,11 @@ export const HomeTabWrapper = styled.div`
 `;
 
 export const List = styled.ul`
+  height: 65vh;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   @media (min-width: 768px) {
     margin-top: 55px;
   }
