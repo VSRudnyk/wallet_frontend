@@ -1,11 +1,6 @@
 import { Container } from 'stylesheet/Container.styled';
 import Error from '../../images/Error.jpeg';
-import {
-  ErrorContainer,
-  ErrorImage,
-  ErrorText,
-  BackToHome,
-} from './Error.styled';
+import { ErrorContainer, ErrorText, BackToHome } from './Error.styled';
 
 export const ErrorPage = () => {
   return (
@@ -16,7 +11,7 @@ export const ErrorPage = () => {
       </ErrorText>
 
       <ErrorContainer>
-        <ErrorImage src={Error} />
+        <img src={Error} alt="Ops, something is wrong" />
       </ErrorContainer>
     </Container>
   );

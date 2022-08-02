@@ -11,8 +11,8 @@ export const Dashboard = styled.main`
   );
   padding-top: 75px;
   padding-bottom: 15px;
-  height: ${({ qwe }) =>
-    qwe === '/wallet_frontend/diagram' ? '100%' : '100vh'};
+  height: ${({ pathname }) =>
+    pathname === '/wallet_frontend/diagram' ? '100%' : '100vh'};
   backdrop-filter: blur(50px);
   @media screen and (min-width: 768px) {
     background: url(${BackTab});
@@ -50,8 +50,6 @@ export const DashboardFirstSectionWrapper = styled.div`
   }
 `;
 
-export const DashboardNavAndBalWrapper = styled.div``;
-export const DashboardCurrencyWrapper = styled.div``;
 export const DashboardSecondSectionWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
@@ -71,14 +69,13 @@ export const DashboardSeparator = styled.div`
 export const ButtonAddTransactionsWrapper = styled.div`
   outline: none;
   border: none;
-  position: sticky;  
-   display: flex;
-  justify-content:  flex-end;
-  bottom: 20px; 
+  position: sticky;
+  display: flex;
+  justify-content: flex-end;
+  bottom: 20px;
   margin-right: 20px;
   @media screen and (min-width: 768px) {
-    bottom: 40px; 
+    bottom: 40px;
     margin-right: 40px;
   }
-`
-;
+`;

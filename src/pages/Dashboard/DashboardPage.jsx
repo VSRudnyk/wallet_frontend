@@ -1,7 +1,5 @@
 import {
   DashboardFirstSectionWrapper,
-  DashboardNavAndBalWrapper,
-  DashboardCurrencyWrapper,
   DashboardSecondSectionWrapper,
   DashboardWrapper,
   DashboardSeparator,
@@ -38,30 +36,29 @@ export const DashboardPage = () => {
   return (
     <>
       <Header />
-      {/* <main> */}
-      <Dashboard qwe={pathname}>
+      <Dashboard pathname={pathname}>
         <Container>
           <DashboardWrapper>
             <DashboardFirstSectionWrapper>
-              <DashboardNavAndBalWrapper>
+              <div>
                 <Navigation />
                 <Balance />
                 <Media queries={{ mobile: { maxWidth: 767 } }}>
                   {matches =>
                     matches.mobile && (
-                      <DashboardCurrencyWrapper>
+                      <div>
                         <Currency />
-                      </DashboardCurrencyWrapper>
+                      </div>
                     )
                   }
                 </Media>
-              </DashboardNavAndBalWrapper>
+              </div>
               <Media queries={{ table: { minWidth: 768 } }}>
                 {matches =>
                   matches.table && (
-                    <DashboardCurrencyWrapper>
+                    <div>
                       <Currency />
-                    </DashboardCurrencyWrapper>
+                    </div>
                   )
                 }
               </Media>
@@ -73,13 +70,11 @@ export const DashboardPage = () => {
             </DashboardSecondSectionWrapper>
           </DashboardWrapper>
         </Container>
-      </Dashboard>
 
-      {/* </main> */}
-      <ButtonAddTransactionsWrapper>
-        <ButtonAddTransactions />
-      </ButtonAddTransactionsWrapper>
-      {/* </DashboardSection> */}
+        <ButtonAddTransactionsWrapper>
+          <ButtonAddTransactions />
+        </ButtonAddTransactionsWrapper>
+      </Dashboard>
     </>
   );
 };
