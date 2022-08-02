@@ -9,6 +9,7 @@ import {
 } from './DiagramTab.styled';
 import { IconSVG } from 'stylesheet/IconSVG';
 const Table = lazy(() => import('../Table' /* webpackChunkName: "Table" */));
+const Chart = lazy(() => import('../Chart' /* webpackChunkName: "Chart" */));
 
 export const DiagramTab = () => {
   const reduxData = [
@@ -58,6 +59,7 @@ export const DiagramTab = () => {
   return (
     <DiagramTabWrapper className="diagram-tab__wrapper">
       {/* тут должен быть компонент "Здоровенный разноцветный круг" */}
+      <Chart />
 
       <DiagramTableBar className="diagram-tab__table-bar">
         <DiagramButtonsWrapper className="diagram-tab__buttons-wrapper">
