@@ -11,6 +11,10 @@ export const DiagramTabWrapper = styled.div`
   @media screen and (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 20px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-top: 64px;
   }
 `;
 export const DiagramButtonsWrapper = styled.div``;
@@ -51,10 +55,9 @@ export const DiagramCustomSelect = styled.select`
   appearance: none;
 `;
 export const DiagramTableBar = styled.div`
-  //margin-top: 32px;
-
   @media screen and (min-width: 320px) {
     width: 280px;
+    margin-top: 0;
   }
   @media screen and (min-width: 768px) {
     width: 336px;
@@ -63,5 +66,11 @@ export const DiagramTableBar = styled.div`
   @media screen and (min-width: 1280px) {
     width: 395px;
     //margin-top: 56px;
+  }
+`;
+
+export const StatisticsContainer = styled.div`
+  @media screen and (min-width: 768px) {
+    display: flex;
   }
 `;

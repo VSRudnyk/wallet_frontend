@@ -7,6 +7,7 @@ import {
   DiagramCustomSelect,
   DiagramTableBar,
   DiagramButtonsWrapper,
+  StatisticsContainer,
 } from './DiagramTab.styled';
 import { IconSVG } from 'stylesheet/IconSVG';
 const Table = lazy(() => import('../Table' /* webpackChunkName: "Table" */));
@@ -63,59 +64,69 @@ export const DiagramTab = () => {
   ];
 
   return (
-    <DiagramTabWrapper className="diagram-tab__wrapper">
-      {/* тут должен быть компонент "Здоровенный разноцветный круг" */}
+    <StatisticsContainer>
       <Chart />
+      <DiagramTabWrapper className="diagram-tab__wrapper">
+        <DiagramTableBar className="diagram-tab__table-bar">
+          <DiagramButtonsWrapper className="diagram-tab__buttons-wrapper">
+            <DiagramButton className="diagram-btn">
+              <DiagramCustomSelect
+                defaultValue="Month"
+                name="month"
+                className="diagram-btn__select_month"
+              >
+                <option value="Month" disabled style={{ display: 'none' }}>
+                  {t('diagramTab.optionData.month')}
+                </option>
+                <option value="January">
+                  {t('diagramTab.optionData.jan')}
+                </option>
+                <option value="February">
+                  {t('diagramTab.optionData.feb')}
+                </option>
+                <option value="March">{t('diagramTab.optionData.mar')}</option>
+                <option value="April">{t('diagramTab.optionData.apr')}</option>
+                <option value="May">{t('diagramTab.optionData.may')}</option>
+                <option value="June">{t('diagramTab.optionData.jun')}</option>
+                <option value="July">{t('diagramTab.optionData.jul')}</option>
+                <option value="August">{t('diagramTab.optionData.aug')}</option>
+                <option value="September">
+                  {t('diagramTab.optionData.sep')}
+                </option>
+                <option value="October">
+                  {t('diagramTab.optionData.oct')}
+                </option>
+                <option value="November">
+                  {t('diagramTab.optionData.nov')}
+                </option>
+                <option value="December">
+                  {t('diagramTab.optionData.dec')}
+                </option>
+              </DiagramCustomSelect>
+              <IconSVG id="icon-diagram-tab-arrow-down" />
+            </DiagramButton>
 
-      <DiagramTableBar className="diagram-tab__table-bar">
-        <DiagramButtonsWrapper className="diagram-tab__buttons-wrapper">
-          <DiagramButton className="diagram-btn">
-            <DiagramCustomSelect
-              defaultValue="Month"
-              name="month"
-              className="diagram-btn__select_month"
-            >
-              <option value="Month" disabled style={{ display: 'none' }}>
-                {t('diagramTab.optionData.month')}
-              </option>
-              <option value="January">{t('diagramTab.optionData.jan')}</option>
-              <option value="February">{t('diagramTab.optionData.feb')}</option>
-              <option value="March">{t('diagramTab.optionData.mar')}</option>
-              <option value="April">{t('diagramTab.optionData.apr')}</option>
-              <option value="May">{t('diagramTab.optionData.may')}</option>
-              <option value="June">{t('diagramTab.optionData.jun')}</option>
-              <option value="July">{t('diagramTab.optionData.jul')}</option>
-              <option value="August">{t('diagramTab.optionData.aug')}</option>
-              <option value="September">
-                {t('diagramTab.optionData.sep')}
-              </option>
-              <option value="October">{t('diagramTab.optionData.oct')}</option>
-              <option value="November">{t('diagramTab.optionData.nov')}</option>
-              <option value="December">{t('diagramTab.optionData.dec')}</option>
-            </DiagramCustomSelect>
-            <IconSVG id="icon-diagram-tab-arrow-down" />
-          </DiagramButton>
+            <DiagramButton className="diagram-btn">
+              <DiagramCustomSelect
+                defaultValue="Year"
+                name="year"
+                className="diagram-btn__select_year"
+              >
+                <option value="Year" disabled style={{ display: 'none' }}>
+                  {t('diagramTab.optionData.year')}
+                </option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+              </DiagramCustomSelect>
+              <IconSVG id="icon-diagram-tab-arrow-down" />
+            </DiagramButton>
+          </DiagramButtonsWrapper>
 
-          <DiagramButton className="diagram-btn">
-            <DiagramCustomSelect
-              defaultValue="Year"
-              name="year"
-              className="diagram-btn__select_year"
-            >
-              <option value="Year" disabled style={{ display: 'none' }}>
-                {t('diagramTab.optionData.year')}
-              </option>
-              <option value="2019">2019</option>
-              <option value="2020">2020</option>
-              <option value="2021">2021</option>
-              <option value="2022">2022</option>
-            </DiagramCustomSelect>
-            <IconSVG id="icon-diagram-tab-arrow-down" />
-          </DiagramButton>
-        </DiagramButtonsWrapper>
-
-        <Table tableData={reduxData} />
-      </DiagramTableBar>
-    </DiagramTabWrapper>
+          <Table tableData={reduxData} />
+        </DiagramTableBar>
+      </DiagramTabWrapper>
+    </StatisticsContainer>
   );
 };
