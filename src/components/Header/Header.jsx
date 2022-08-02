@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom';
+import Media from 'react-media';
 import Logo from '../../images/Logo.svg';
 import Exit from '../../images/Exit.svg';
-import LanguageSwitcher from 'components/LanguageSwitcher';
+// import LanguageSwitcher from 'components/LanguageSwitcher';
+import Settings from 'components/SettingsBtn/Settings';
 import {
   HeaderSection,
   LogoStyle,
@@ -30,11 +32,21 @@ export const Header = () => {
           </ContainerLogo>
           <ContainerLogo>
             <UserName>Name</UserName>
-            <LanguageSwitcher />
-            <LogoutButton>
-              <LogoutImg src={Exit} alt="Exit" />
-              <Logout>Exit</Logout>
-            </LogoutButton>
+            <Media queries={{ mobile: { maxWidth: 767 } }}>
+              {matches =>
+                matches.mobile ? (
+                  <Settings />
+                ) : (
+                  <>
+                    <Settings />
+                    <LogoutButton>
+                      <LogoutImg src={Exit} alt="Exit" />
+                      <Logout>Exit</Logout>
+                    </LogoutButton>
+                  </>
+                )
+              }
+            </Media>
           </ContainerLogo>
         </HeaderContainer>
       </Container>
