@@ -1,11 +1,9 @@
 import {
-  DashboardSection,
   DashboardFirstSectionWrapper,
-  DashboardNavAndBalWrapper,
-  DashboardCurrencyWrapper,
   DashboardSecondSectionWrapper,
   DashboardWrapper,
   DashboardSeparator,
+  Dashboard,
   ButtonAddTransactionsWrapper,
 } from './DashboardPage.styled';
 import { lazy } from 'react';
@@ -38,34 +36,33 @@ export const DashboardPage = () => {
   return (
     <>
       <Header />
-      <DashboardSection>
+      <Dashboard pathname={pathname}>
         <Container>
           <DashboardWrapper>
             <DashboardFirstSectionWrapper>
-              <DashboardNavAndBalWrapper>
+              <div>
                 <Navigation />
                 <Balance />
                 <Media queries={{ mobile: { maxWidth: 767 } }}>
                   {matches =>
                     matches.mobile && (
-                      <DashboardCurrencyWrapper>
+                      <div>
                         <Currency />
-                      </DashboardCurrencyWrapper>
+                      </div>
                     )
                   }
                 </Media>
-              </DashboardNavAndBalWrapper>
+              </div>
               <Media queries={{ table: { minWidth: 768 } }}>
                 {matches =>
                   matches.table && (
-                    <DashboardCurrencyWrapper>
+                    <div>
                       <Currency />
-                    </DashboardCurrencyWrapper>
+                    </div>
                   )
                 }
               </Media>
             </DashboardFirstSectionWrapper>
-
             <DashboardSeparator></DashboardSeparator>
             {pathname === '/wallet_frontend/diagram' && <DiagramTab />}
             <DashboardSecondSectionWrapper>
@@ -73,10 +70,11 @@ export const DashboardPage = () => {
             </DashboardSecondSectionWrapper>
           </DashboardWrapper>
         </Container>
+
         <ButtonAddTransactionsWrapper>
-          <ButtonAddTransactions/>
+          <ButtonAddTransactions />
         </ButtonAddTransactionsWrapper>
-      </DashboardSection>
+      </Dashboard>
     </>
   );
 };

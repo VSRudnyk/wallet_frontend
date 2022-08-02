@@ -1,12 +1,7 @@
 import { Container } from 'stylesheet/Container.styled';
 import { useTranslation } from 'react-i18next';
 import Error from '../../images/Error.jpeg';
-import {
-  ErrorContainer,
-  ErrorImage,
-  ErrorText,
-  BackToHome,
-} from './Error.styled';
+import { ErrorContainer, ErrorText, BackToHome } from './Error.styled';
 
 export const ErrorPage = () => {
   const { t } = useTranslation();
@@ -20,7 +15,7 @@ export const ErrorPage = () => {
       </ErrorText>
 
       <ErrorContainer>
-        <ErrorImage src={Error} />
+        <img src={Error} alt="Ops, something is wrong" />
       </ErrorContainer>
     </Container>
   );

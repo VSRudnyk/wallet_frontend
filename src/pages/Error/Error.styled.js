@@ -35,5 +35,3 @@ export const ErrorContainer = styled.div`
     height: 450px;
   }
 `;
-
-export const ErrorImage = styled.img``;
