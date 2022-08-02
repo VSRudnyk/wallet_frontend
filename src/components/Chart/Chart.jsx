@@ -6,7 +6,7 @@ import { Container, Text } from './Chart.styled';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export function Chart() {
-  const [chartData, setChartData] = useState({
+  const [chartData] = useState({
     labels: [
       'Basic expenses',
       'Products',
@@ -42,7 +42,7 @@ export function Chart() {
     ],
   });
 
-  const [chartOption, setChartOption] = useState({
+  const [chartOption] = useState({
     plugins: {
       legend: {
         display: false,
