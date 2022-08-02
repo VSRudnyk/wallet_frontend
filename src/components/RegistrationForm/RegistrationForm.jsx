@@ -19,8 +19,7 @@ import {
 import { PasswordInput } from './PasswordInput';
 
 export const FormRegistration = () => {
-  const [register, { isSuccess, isError, status, error }] =
-    useRegisterMutation();
+  const [register, { isSuccess, isError, status }] = useRegisterMutation();
   const { t } = useTranslation();
 
   const schema = yup.object().shape({
