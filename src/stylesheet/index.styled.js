@@ -74,6 +74,7 @@ table {
     --pink: #FF6596;
     --vector-color:#E7E5F2;
     --add-transaction-menu-color:rgba(255, 255, 255, 0.7);
+    --error-message: #d50c0c;
 
     //transactions
      --transaction-underline-color: #dcdcdf;

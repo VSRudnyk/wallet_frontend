@@ -1,8 +1,14 @@
 import { useState } from 'react';
-import { Input, InputContainer, ButtonShow, SvgLock, ErrorTextPassword } from './RegistrationForm.styled';
+import {
+  Input,
+  InputContainer,
+  ButtonShow,
+  ButtonHide,
+  SvgLock,
+  ErrorTextPassword,
+} from './RegistrationForm.styled';
 import { PasswordStrenght } from './PasswordStrength';
 import { ErrorMessage } from 'formik';
-
 
 export const PasswordInput = () => {
   const [password, setPassword] = useState('');
@@ -13,22 +19,31 @@ export const PasswordInput = () => {
     setType(currentType);
   };
   const FormError = ({ name }) => {
-    return <ErrorMessage name={name} render={message => <ErrorTextPassword>{message}</ErrorTextPassword>} />;
+    return (
+      <ErrorMessage
+        name={name}
+        render={message => <ErrorTextPassword>{message}</ErrorTextPassword>}
+      />
+    );
   };
 
   return (
     <InputContainer>
-    <ButtonShow onClick={showHide}/>
-    <SvgLock />
-    <Input
-      onInput={e => setPassword(e.target.value)}
-      name="password"
-      type={type}
-      placeholder="Password"
-    />
-    <FormError name="password" />
-    <PasswordStrenght password={password} />
-  </InputContainer>
-  
+      {type === 'input' ? (
+        <ButtonShow onClick={showHide} />
+      ) : (
+        <ButtonHide onClick={showHide} />
+      )}
+
+      <SvgLock />
+      <Input
+        onInput={e => setPassword(e.target.value)}
+        name="password"
+        type={type}
+        placeholder="Password"
+      />
+      <FormError name="password" />
+      <PasswordStrenght password={password} />
+    </InputContainer>
   );
 };
