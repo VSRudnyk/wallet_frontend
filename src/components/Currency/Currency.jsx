@@ -1,5 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+
 // import { ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -25,6 +27,7 @@ import { useLocation, Navigate } from 'react-router-dom';
 export const Currency = ({ page }) => {
   const [currency, setCurrency] = useState([]);
   const [status, setStatus] = useState('pending');
+  const { t } = useTranslation();
 
   const location = useLocation();
   const { pathname } = location;
@@ -100,9 +103,15 @@ export const Currency = ({ page }) => {
             <TableWrapper page={page}>
               <TableHeaderContainer>
                 <TableHeaderList>
-                  <TableHeaderListItem>Currency</TableHeaderListItem>
-                  <TableHeaderListItem>Purchase</TableHeaderListItem>
-                  <TableHeaderListItem>Sale</TableHeaderListItem>
+                  <TableHeaderListItem>
+                    {t('currencyPage.currency')}
+                  </TableHeaderListItem>
+                  <TableHeaderListItem>
+                    {t('currencyPage.purchase')}
+                  </TableHeaderListItem>
+                  <TableHeaderListItem>
+                    {t('currencyPage.sale')}
+                  </TableHeaderListItem>
                 </TableHeaderList>
               </TableHeaderContainer>
               <TableBodyContainer>
@@ -148,9 +157,15 @@ export const Currency = ({ page }) => {
             <TableWrapper page={page}>
               <TableHeaderContainer>
                 <TableHeaderList>
-                  <TableHeaderListItem>Currency</TableHeaderListItem>
-                  <TableHeaderListItem>Purchase</TableHeaderListItem>
-                  <TableHeaderListItem>Sale</TableHeaderListItem>
+                  <TableHeaderListItem>
+                    {t('currencyPage.currency')}
+                  </TableHeaderListItem>
+                  <TableHeaderListItem>
+                    {t('currencyPage.purchase')}
+                  </TableHeaderListItem>
+                  <TableHeaderListItem>
+                    {t('currencyPage.sale')}
+                  </TableHeaderListItem>
                 </TableHeaderList>
               </TableHeaderContainer>
               <TableBodyContainer>

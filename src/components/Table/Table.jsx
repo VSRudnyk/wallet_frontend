@@ -14,12 +14,15 @@ import {
   ResultItemValue,
 } from './Table.styled';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const Table = ({ tableData }) => {
   const [dataToRender, setDataToRender] = useState(null);
 
   const [categorySortedStatus, setCategorySortedStatus] = useState('');
   const [sumSortedStatus, setSumSortedStatus] = useState('');
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (dataToRender === null) {
@@ -115,10 +118,10 @@ export const Table = ({ tableData }) => {
       <TableWrapper className="table-wrapper">
         <TableTittle className="table-tittle">
           <TableTittleBtn className="table-tittle-btn" onClick={sortByCategory}>
-            Category
+            {t('table.category')}
           </TableTittleBtn>
           <TableTittleBtn className="table-tittle-btn" onClick={sortBySum}>
-            Summ
+            {t('table.sum')}
           </TableTittleBtn>
         </TableTittle>
 
@@ -135,7 +138,7 @@ export const Table = ({ tableData }) => {
                       background={categoryColor}
                     ></CategoryColorMark>
                     <CategoryName className="category-name">
-                      {categoryName}
+                      {t(`diagramTab.reduxData.${categoryName.toLowerCase()}`)}
                     </CategoryName>
                   </ItemCategoryWrapper>
                   <ItemSum>{sumConverter(categorySum)}</ItemSum>
@@ -147,7 +150,7 @@ export const Table = ({ tableData }) => {
         <TableResultList className="table-result-list">
           <TableResultItem className="table-result-item">
             <ResultItemTittle className="result-item-tittle">
-              Expenses:
+              {t('table.expenses')}:
             </ResultItemTittle>
             <ResultItemValue
               className="result-item-value"
@@ -159,7 +162,7 @@ export const Table = ({ tableData }) => {
 
           <TableResultItem className="table-result-item">
             <ResultItemTittle className="result-item-tittle">
-              Income:
+              {t('table.income')}:
             </ResultItemTittle>
             <ResultItemValue
               className="result-item-value"

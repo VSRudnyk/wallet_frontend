@@ -75,7 +75,7 @@ const Settings = () => {
                         id="langs"
                         onClick={() => setIsSlideLeftOpen(state => !state)}
                       >
-                        Language
+                        {t('settingsComponent.language')}
                         <LanguageIcon
                           style={{ width: '18px', marginLeft: 'auto' }}
                         />
@@ -83,7 +83,7 @@ const Settings = () => {
                     </ListItem>
                     <ListItem>
                       <LangBtn>
-                        <span>Exit</span>
+                        <span>{t('settingsComponent.exit')}</span>
                         <ExitIcon
                           style={{ width: '18px', marginLeft: 'auto' }}
                         />

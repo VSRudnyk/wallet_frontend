@@ -3,6 +3,7 @@ import * as yup from 'yup';
 import { useRegisterMutation } from '../../redux/authOperation';
 import { Formik, ErrorMessage, Form } from 'formik';
 import { toast, ToastContainer, Slide } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 import 'react-toastify/dist/ReactToastify.css';
 import {
   Input,
@@ -20,6 +21,7 @@ import { PasswordInput } from './PasswordInput';
 export const FormRegistration = () => {
   const [register, { isSuccess, isError, status, error }] =
     useRegisterMutation();
+  const { t } = useTranslation();
 
   const schema = yup.object().shape({
     name: yup.string().required(),
@@ -30,7 +32,7 @@ export const FormRegistration = () => {
       is: val => (val && val.length > 0 ? true : false),
       then: yup
         .string()
-        .oneOf([yup.ref('password')], 'both password need to be the same'),
+        .oneOf([yup.ref('password')], t('registration.password.notequal')),
     }),
   });
 
@@ -50,7 +52,9 @@ export const FormRegistration = () => {
     return (
       <ErrorMessage
         name={name}
-        render={message => <ErrorText>{message}</ErrorText>}
+        render={message => (
+          <ErrorText>{t(`registration.required.${name}`)}</ErrorText>
+        )}
       />
     );
   };
@@ -59,7 +63,7 @@ export const FormRegistration = () => {
     <>
       {isSuccess &&
         status === 'fulfilled' &&
-        toast.success('Success! Please, log in!', {
+        toast.success(t('registration.status.success'), {
           theme: 'colored',
           icon: '🚀',
           autoClose: 8000,
@@ -70,7 +74,9 @@ export const FormRegistration = () => {
           progress: undefined,
           transition: Slide,
         }) && <ToastContainer />}
-      {isError && toast.error(error.data.message) && <ToastContainer />}
+      {isError && toast.error(t('registration.status.error')) && (
+        <ToastContainer />
+      )}
       <Formik
         initialValues={defaultInitialValues}
         onSubmit={handleSubmit}
@@ -80,7 +86,11 @@ export const FormRegistration = () => {
           <FormInputContainer>
             <InputContainer>
               <SvgEnvelope />
-              <Input name="email" type="email" placeholder="E-mail" />
+              <Input
+                name="email"
+                type="email"
+                placeholder={t('registration.placeholders.e-mail')}
+              />
               <FormError name="email" />
             </InputContainer>
             <PasswordInput />
@@ -89,22 +99,30 @@ export const FormRegistration = () => {
               <Input
                 name="repeated_password"
                 type="password"
-                placeholder="Confirm password"
+                placeholder={t('registration.placeholders.confirmpassword')}
               />
               <FormError name="repeated_password" />
             </InputContainer>
             <InputContainer>
               <SvgAccount />
-              <Input name="name" type="text" placeholder="First name " />
+              <Input
+                name="name"
+                type="text"
+                placeholder={t('registration.placeholders.firstname')}
+              />
               <FormError name="name" />
             </InputContainer>
           </FormInputContainer>
-          <RegisterButton type="submit"> Register</RegisterButton>
+          <RegisterButton type="submit">
+            {t('registration.buttons.register')}
+          </RegisterButton>
           <ToastContainer />
         </Form>
       </Formik>
       <Link to="/wallet_frontend/login">
-        <LoginButton type="button">Log in</LoginButton>
+        <LoginButton type="button">
+          {t('registration.buttons.login')}
+        </LoginButton>
       </Link>
       <ToastContainer />
     </>
