@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 32px;
+`;
+
+export const ChartContainer = styled.div`
   position: relative;
   min-width: 250px;
   min-height: 250px;
@@ -14,6 +21,16 @@ export const Container = styled.div`
     width: 288px;
     height: 288px;
   }
+`;
+
+export const Label = styled.h2`
+  display: block;
+  font-family: var(--secondaryFont);
+  font-weight: var(--regular);
+  font-size: 30px;
+  line-height: 45px;
+  color: var(--black);
+  margin-bottom: 8px;
 `;
 
 export const Text = styled.p`

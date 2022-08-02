@@ -64,9 +64,7 @@ export const DiagramTab = () => {
 
   return (
     <DiagramTabWrapper className="diagram-tab__wrapper">
-      {/* тут должен быть компонент "Здоровенный разноцветный круг" */}
       <Chart />
-
       <DiagramTableBar className="diagram-tab__table-bar">
         <DiagramButtonsWrapper className="diagram-tab__buttons-wrapper">
           <DiagramButton className="diagram-btn">
