@@ -79,7 +79,7 @@ export const ImageContainer = styled.div`
 `;
 export const Text = styled.p`
   @media (min-width: 768px) {
-    color: #000000;
+    color: var(--black);
     display: flex;
     margin-right: auto;
     font-family: var(--secondaryFont);
