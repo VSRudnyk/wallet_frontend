@@ -50,7 +50,6 @@ export const PasswordStrenght = ({ password }) => {
     width: `${num}%`,
     height: '4px',
     background: progressColor(),
-    boxShadow: '0px 1px 8px rgba(36, 204, 167, 0.5)',
     borderRadius: '4px',
   });
 
@@ -59,8 +58,7 @@ export const PasswordStrenght = ({ password }) => {
       <div className="progress" style={changeProgressStyle()}>
         <div className="progress_bar" style={changePasswordColor()}></div>
       </div>
-      <p className="text_pr" style={{ color: progressColor() }}>
-      </p>
+      <p className="text_pr" style={{ color: progressColor() }}></p>
     </>
   );
 };

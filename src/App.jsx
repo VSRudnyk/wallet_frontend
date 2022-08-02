@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { Loader } from './components/Loader';
+import ErrorPage from './components/Error';
 const PrivatRoute = lazy(() =>
   import('./routers/PrivatRouter' /* webpackChunkName: "PrivatRoute" */)
 );
@@ -14,7 +15,7 @@ const RegistrationPage = lazy(() =>
   import('./pages/Registration' /* webpackChunkName: "RegistrationPage" */)
 );
 const LoginPage = lazy(() =>
-  import('./pages/Login' /* webpackChunkName: "LoginForm" */)
+  import('./pages/Login' /* webpackChunkName: "LoginPage" */)
 );
 
 export const App = () => {
@@ -40,13 +41,7 @@ export const App = () => {
           />
           <Route
             path="/wallet_frontend"
-            element={
-              true ? (
-                <Navigate to="/wallet_frontend/register" />
-              ) : (
-                <Navigate to="/wallet_frontend/home" />
-              )
-            }
+            element={<Navigate to="/wallet_frontend/register" />}
           />
           <Route
             path="/wallet_frontend/home"
@@ -73,7 +68,7 @@ export const App = () => {
               </PrivatRoute>
             }
           />
-          <Route path="*" element={<h1>NotFound </h1>} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Suspense>
     </>

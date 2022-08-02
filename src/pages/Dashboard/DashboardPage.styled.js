@@ -12,8 +12,9 @@ export const DashboardSection = styled.main`
 
   padding-top: 75px;
   padding-bottom: 15px;
-  height: 100%;
   backdrop-filter: blur(50px);
+  height: 100%;
+
   @media screen and (min-width: 768px) {
     background: url(${BackTab});
     background-position: center;

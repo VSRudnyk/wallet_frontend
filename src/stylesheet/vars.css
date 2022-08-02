@@ -15,4 +15,5 @@
   --vector-color: #e7e5f2;
   --add-transaction-menu-color: rgba(255, 255, 255, 0.7);
   --transaction-underline-color: #dcdcdf;
+  --error-message: #d50c0c;
 }

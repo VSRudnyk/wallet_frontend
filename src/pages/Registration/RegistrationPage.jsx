@@ -2,7 +2,7 @@ import Media from 'react-media';
 import { FormRegistration } from 'components/RegistrationForm/RegistrationForm';
 import {
   ContainerRegister,
-  LogoReg,
+  Logo,
   LogoText,
   LogoContainer,
   FormContainer,
@@ -12,7 +12,7 @@ import {
   Container,
   ContainerRegisterForm,
 } from './RegistrationPage.styled';
-import Logo from '../../images/Logo.svg';
+import LogoImg from '../../images/Logo.svg';
 
 export const RegistrationPage = () => {
   return (
@@ -30,7 +30,7 @@ export const RegistrationPage = () => {
         <ContainerRegisterForm>
           <FormContainer>
             <LogoContainer>
-              <LogoReg src={Logo} alt="Logo" />
+              <Logo src={LogoImg} alt="Logo" />
               <LogoText>Wallet</LogoText>
             </LogoContainer>
             <FormRegistration />
