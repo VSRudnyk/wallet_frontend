@@ -13,8 +13,8 @@ const PublickRoute = lazy(() =>
 const RegistrationPage = lazy(() =>
   import('./pages/Registration' /* webpackChunkName: "RegistrationPage" */)
 );
-const LoginForm = lazy(() =>
-  import('./components/LoginForm' /* webpackChunkName: "LoginForm" */)
+const LoginPage = lazy(() =>
+  import('./pages/Login' /* webpackChunkName: "LoginForm" */)
 );
 
 export const App = () => {
@@ -34,7 +34,7 @@ export const App = () => {
             path="/wallet_frontend/login"
             element={
               <PublickRoute>
-                <LoginForm />
+                <LoginPage />
               </PublickRoute>
             }
           />

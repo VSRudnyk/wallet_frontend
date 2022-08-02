@@ -11,7 +11,7 @@ import {
   Container,
   ContainerLoginForm,
 } from './LoginPage.styled';
-import Logo from '../images/Logo.svg';
+import Logo from '../../images/Logo.svg';
 
 export const LoginPage = () => {
   return (
