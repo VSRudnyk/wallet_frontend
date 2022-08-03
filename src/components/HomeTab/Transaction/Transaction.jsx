@@ -1,8 +1,22 @@
 import { useMemo } from 'react';
-import { useTable } from 'react-table';
+import { useTable, usePagination } from 'react-table';
 import { useTranslation } from 'react-i18next';
 import EllipsisText from 'react-ellipsis-text';
-import { TableContainer, Table, Thead, Th, BodyTd } from './Transaction.styled';
+import {
+  AiOutlineDoubleLeft,
+  AiOutlineDoubleRight,
+  AiOutlineLeft,
+  AiOutlineRight,
+} from 'react-icons/ai';
+import {
+  TableContainer,
+  Table,
+  Th,
+  BodyTd,
+  Pagination,
+  PaginationBtn,
+  PaginationSpan,
+} from './Transaction.styled';
 
 const Transaction = ({ transactionList }) => {
   const { t } = useTranslation();
@@ -36,13 +50,34 @@ const Transaction = ({ transactionList }) => {
     ],
     []
   );
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    prepareRow,
+    canPreviousPage,
+    canNextPage,
+    pageOptions,
+    pageCount,
+    gotoPage,
+    nextPage,
+    previousPage,
+    state: { pageIndex, pageSize },
+  } = useTable(
+    {
+      columns,
+      data,
+      initialState: { pageIndex: 0, pageSize: 7 },
+    },
+    usePagination
+  );
 
+  console.log(pageSize);
   return (
     <TableContainer>
       <Table {...getTableProps()}>
-        <Thead>
+        <thead>
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
@@ -52,9 +87,9 @@ const Transaction = ({ transactionList }) => {
               ))}
             </tr>
           ))}
-        </Thead>
+        </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map(row => {
+          {page.map(row => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
@@ -62,9 +97,9 @@ const Transaction = ({ transactionList }) => {
                   const header = cell.column.Header;
                   switch (header) {
                     case 'Date':
-                      let newValue = cell
-                        .render('Cell')
-                        .props.value.slice(2)
+                      let newValue = new Date(cell.render('Cell').props.value)
+                        .toISOString()
+                        .slice(2)
                         .substring(0, 8)
                         .split('-')
                         .reverse()
@@ -126,6 +161,32 @@ const Transaction = ({ transactionList }) => {
           })}
         </tbody>
       </Table>
+      <Pagination>
+        <PaginationBtn onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+          <AiOutlineDoubleLeft />
+        </PaginationBtn>
+        <PaginationBtn
+          onClick={() => previousPage()}
+          disabled={!canPreviousPage}
+        >
+          <AiOutlineLeft />
+        </PaginationBtn>
+        <PaginationBtn onClick={() => nextPage()} disabled={!canNextPage}>
+          <AiOutlineRight />
+        </PaginationBtn>
+        <PaginationBtn
+          onClick={() => gotoPage(pageCount - 1)}
+          disabled={!canNextPage}
+        >
+          <AiOutlineDoubleRight />
+        </PaginationBtn>
+        <PaginationSpan>
+          Page
+          <strong>
+            {pageIndex + 1} of {pageOptions.length}
+          </strong>
+        </PaginationSpan>
+      </Pagination>
     </TableContainer>
   );
 };

@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { CustomSelect } from 'components/DiagramTab/NewSelectButton/CustomSelect'
 import {
   DiagramTabWrapper,
   DiagramButton,
@@ -122,6 +123,8 @@ export const DiagramTab = () => {
               </DiagramCustomSelect>
               <IconSVG id="icon-diagram-tab-arrow-down" />
             </DiagramButton>
+            <CustomSelect items={{tittle:"Year", data: ["2019", "2020", "2021", "2022"]}}/>
+            <CustomSelect items={{tittle:"Month", data: ["January", "February", "March", "April", "June", "July", "August", "September", "October", "November", "December"]}}/>
           </DiagramButtonsWrapper>
           <Table tableData={reduxData} />
         </DiagramTableBar>

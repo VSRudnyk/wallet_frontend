@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import TransactionMobile from './TransactionMobile/TransactionMobile';
 import Transaction from './Transaction';
@@ -11,7 +11,6 @@ import Media from 'react-media';
 
 export const HomeTab = ({ page }) => {
   const { data, isLoading, isSuccess } = useGetAllTransactionsQuery();
-
   const { t } = useTranslation();
   const [transactions, setTransactions] = useState([]);
 
@@ -19,11 +18,14 @@ export const HomeTab = ({ page }) => {
     if (transactions.length !== 0) {
       return;
     }
+
     isSuccess && setTransactions(data);
   }, [data, isLoading, isSuccess, transactions]);
 
   const sortedTransactions = [...transactions].sort((item1, item2) => {
-    return Number(item2.date) - Number(item1.date);
+    const date1 = new Date(item1.date);
+    const date2 = new Date(item2.date);
+    return Number(date2) - Number(date1);
   });
 
   return (
