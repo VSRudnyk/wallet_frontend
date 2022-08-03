@@ -45,7 +45,7 @@ export const PasswordInput = () => {
         type={type}
         placeholder="password"
       />
-      <FormError name="password" />
+      <FormError name="Password" />
       <PasswordStrenght password={password} />
     </InputContainer>
   );
