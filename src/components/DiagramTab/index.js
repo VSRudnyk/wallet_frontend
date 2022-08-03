@@ -1,1 +1,3 @@
-export * from './DiagramTab';
+import { DiagramTab } from './DiagramTab';
+
+export default DiagramTab;

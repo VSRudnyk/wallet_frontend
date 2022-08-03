@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import '../stylesheet/fonts.css';
-import eclipseGray from '../images/EllipseGray.png';
-import eclipsePink from '../images/EllipsePink.png';
-import LoginImage from '../images/loginPageImage_desktop.png';
+import '../../stylesheet/fonts.css';
+import eclipseGray from '../../images/EllipseGray.png';
+import eclipsePink from '../../images/EllipsePink.png';
+import RegImage from '../../images/RegistrationPageImage.png';
 
 export const Container = styled.div`
   display: block;
@@ -10,7 +10,7 @@ export const Container = styled.div`
   padding: 0;
 `;
 
-export const ContainerLogin = styled.div`
+export const ContainerRegister = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,7 +45,6 @@ export const ContainerLogin = styled.div`
 `;
 
 export const ImageSection = styled.div`
-  display: none;
   @media (min-width: 767px) {
     display: flex;
     margin-bottom: 50px;
@@ -61,31 +60,26 @@ export const ImageSection = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-display:none;
+  @media (min-width: 768px) {
+    background-image: url(${RegImage});
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 50px;
+    display: inline-block;
+    margin-right: auto;
+    height: 273px;
+    width: 250px;
+    display: inline-block;
+  }
 
-@media (min-width: 768px) {
-background-image: url(${LoginImage});
-background-repeat: no-repeat;
-background-size: contain;
-margin-bottom: 50px;
-display: inline-block;
-margin-right: auto;
-height: 273px;
-width: 250px;
-display: inline-block;
-}
-
-@media (min-width: 1280px) {
-  width: 452px;
-  height: 413px;
-}
-
+  @media (min-width: 1280px) {
+    width: 452px;
+    height: 413px;
+  }
 `;
 export const Text = styled.p`
-  display: none;
-
   @media (min-width: 768px) {
-    color: #000000;
+    color: var(--black);
     display: flex;
     margin-right: auto;
     font-family: var(--secondaryFont);
@@ -101,7 +95,7 @@ export const Text = styled.p`
   }
 `;
 
-export const ContainerLoginForm = styled.div`
+export const ContainerRegisterForm = styled.div`
   @media (min-width: 1280px) {
     width: 57%;
     height: 100%;
@@ -120,10 +114,14 @@ export const FormContainer = styled.div`
   align-items: center;
   margin: 0;
   padding: 36px 20px;
-  background: #fff;
+  background: var(--white);
   height: 100vh;
 
-  @media screen and (min-width: 767px) {
+  @media screen and (max-width: 767px) {
+    justify-content: center;
+  }
+
+  @media screen and (min-width: 768px) {
     max-width: 540px;
     height: 616px;
     padding: 40px 65px 60px;
@@ -133,7 +131,7 @@ export const FormContainer = styled.div`
   }
 `;
 
-export const LogoLogin = styled.img`
+export const Logo = styled.img`
   @media screen and (max-width: 768px) {
     width: 30px;
     height: 30px;
@@ -163,8 +161,3 @@ export const LogoContainer = styled.div`
   margin-bottom: 60px;
   justify-content: center;
 `;
-
-
-
-
-

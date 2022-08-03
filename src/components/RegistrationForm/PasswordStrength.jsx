@@ -22,22 +22,22 @@ export const PasswordStrenght = ({ password }) => {
     }
   };
 
-  const createPasswordLabel = () => {
-    switch (testResult.score) {
-      case 0:
-        return '';
-      case 1:
-        return 'weak';
-      case 2:
-        return 'okay';
-      case 3:
-        return 'good';
-      case 4:
-        return 'strong';
-      default:
-        return '';
-    }
-  };
+  // const createPasswordLabel = () => {
+  //   switch (testResult.score) {
+  //     case 0:
+  //       return '';
+  //     case 1:
+  //       return 'weak';
+  //     case 2:
+  //       return 'okay';
+  //     case 3:
+  //       return 'good';
+  //     case 4:
+  //       return 'strong';
+  //     default:
+  //       return '';
+  //   }
+  // };
 
   const changeProgressStyle = () => ({
     width: '100%',
@@ -50,7 +50,6 @@ export const PasswordStrenght = ({ password }) => {
     width: `${num}%`,
     height: '4px',
     background: progressColor(),
-    boxShadow: '0px 1px 8px rgba(36, 204, 167, 0.5)',
     borderRadius: '4px',
   });
 
@@ -59,9 +58,7 @@ export const PasswordStrenght = ({ password }) => {
       <div className="progress" style={changeProgressStyle()}>
         <div className="progress_bar" style={changePasswordColor()}></div>
       </div>
-      <p className="text_pr" style={{ color: progressColor() }}>
-        {createPasswordLabel()}
-      </p>
+      <p className="text_pr" style={{ color: progressColor() }}></p>
     </>
   );
 };

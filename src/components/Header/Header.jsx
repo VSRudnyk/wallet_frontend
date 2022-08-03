@@ -1,6 +1,9 @@
 import { NavLink } from 'react-router-dom';
+import Media from 'react-media';
+import { useTranslation } from 'react-i18next';
 import Logo from '../../images/Logo.svg';
 import Exit from '../../images/Exit.svg';
+import Settings from 'components/SettingsBtn/Settings';
 import {
   HeaderSection,
   LogoStyle,
@@ -15,12 +18,13 @@ import {
 import { Container } from 'stylesheet/Container.styled';
 
 export const Header = () => {
+  const { t } = useTranslation();
   return (
     <HeaderSection>
       <Container>
         <HeaderContainer>
           <ContainerLogo>
-            <NavLink to="/wallet_frontend/main">
+            <NavLink to="/wallet_frontend/home">
               <ContainerLogo>
                 <LogoStyle src={Logo} alt="Logo" />
                 <LogoName>Wallet</LogoName>
@@ -28,11 +32,22 @@ export const Header = () => {
             </NavLink>
           </ContainerLogo>
           <ContainerLogo>
-            <UserName>Name</UserName>
-            <LogoutButton>
-              <LogoutImg src={Exit} alt="Exit" />
-              <Logout>Exit</Logout>
-            </LogoutButton>
+            <UserName>{t('header.name')}</UserName>
+            <Media queries={{ mobile: { maxWidth: 767 } }}>
+              {matches =>
+                matches.mobile ? (
+                  <Settings />
+                ) : (
+                  <>
+                    <Settings />
+                    <LogoutButton>
+                      <LogoutImg src={Exit} alt="Exit" />
+                      <Logout>{t('header.exit')}</Logout>
+                    </LogoutButton>
+                  </>
+                )
+              }
+            </Media>
           </ContainerLogo>
         </HeaderContainer>
       </Container>

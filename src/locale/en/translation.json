@@ -1,39 +1,138 @@
 {
-	"noTransactionText": "You don't have transactions yet. Please use add button below to get started.",
-	"date": "Date",
-	"type": "Type",
-	"category": "Category",
-	"comment": "Comment",
-	"sum": "Sum",
-	"balance": "Balance",
-	"groceries": "Groceries",
-	"work": "Work",
-	"apartment": "Apartment",
-	"tenats": "Tenants",
-	"transport": "Transport",
-	"farmacy": "Farmacy",
-	"restaurant": "Restaurant",
-	"home": "Home",
-	"other": "Other",
-	"insurance": "Insurance",
-	"medical": "Medical care",
-	"education": "Education",
-	"kids": "Kids",
-	"clothes": "Clothes",
-	"vacation": "Vacation",
-	"investment": "Investment",
-	"gifts": "Gifts",
-	"sports": "Sports",
-	"hobby": "Hobby",
-	"entertainment": "Entertainment",
-	"savings": "Savings",
-	"main": "Main",
-	"food": "Food",
-	"auto": "Auto",
-	"reset": "Reset",
-	"development": "Development",
-	"children": "Children",
-	"house": "House",
-	"income": "Income",
-	"expense": "Expenses"
+  "noTransactionText": "You don't have transactions yet. Please use add button below to get started.",
+  "date": "Date",
+  "type": "Type",
+  "category": "Category",
+  "comment": "Comment",
+  "sum": "Sum",
+  "balance": "Balance",
+  "groceries": "Groceries",
+  "work": "Work",
+  "apartment": "Apartment",
+  "tenats": "Tenants",
+  "transport": "Transport",
+  "farmacy": "Farmacy",
+  "restaurant": "Restaurant",
+  "home": "Home",
+  "other": "Other",
+  "insurance": "Insurance",
+  "medical": "Medical care",
+  "education": "Education",
+  "kids": "Kids",
+  "clothes": "Clothes",
+  "vacation": "Vacation",
+  "investment": "Investment",
+  "gifts": "Gifts",
+  "sports": "Sports",
+  "hobby": "Hobby",
+  "entertainment": "Entertainment",
+  "savings": "Savings",
+  "main": "Main",
+  "food": "Food",
+  "auto": "Auto",
+  "reset": "Reset",
+  "development": "Development",
+  "children": "Children",
+  "house": "House",
+  "income": "Income",
+  "expense": "Expenses",
+  "header": {
+    "name": "Name",
+    "exit": "Exit"
+  },
+  "currencyPage": {
+    "currency": "Currency",
+    "purchase": "Purchase",
+    "sale": "Sale"
+  },
+  "settingsComponent": {
+    "language": "Language",
+    "exit": "Exit"
+  },
+  "balanceComponent": {
+    "yourBalance": "Your balance"
+  },
+  "diagramTab": {
+    "reduxData": {
+      "basic": "Basic expenses",
+      "products": "Products",
+      "car": "Car",
+      "health": "Health",
+      "kids": "Kids",
+      "home": "Home",
+      "education": "Education",
+      "leisure": "Leisure",
+      "other": "Other"
+    },
+    "optionData": {
+      "month": "Month",
+      "year": "Year",
+      "jan": "January",
+      "feb": "February",
+      "mar": "March",
+      "apr": "April",
+      "may": "May",
+      "jun": "June",
+      "jul": "July",
+      "aug": "August",
+      "sep": "September",
+      "oct": "October",
+      "nov": "November",
+      "dec": "December"
+    }
+  },
+  "table": {
+    "category": "Category",
+    "sum": "Sum",
+    "income": "Income",
+    "expenses": "Expenses"
+  },
+  "navigation": {
+    "home": "Home",
+    "statistics": "Statistics"
+  },
+  "registration": {
+    "placeholders": {
+      "e-mail": "E-mail",
+      "firstname": "First name",
+      "password": "Password",
+      "confirmpassword": "Confirm password"
+    },
+    "buttons": {
+      "register": "REGISTER",
+      "login": "LOG IN"
+    },
+    "password": {
+      "notequal": "both password need to be the same",
+      "short": "password must be at least 6 charachters",
+      "required": "password is a required field"
+    },
+    "status": {
+      "success": "Success! Please, log in!",
+      "error": "User with this email already exists"
+    },
+    "required": {
+      "name": "name is a required field",
+      "repeated_password": "confirm password can not be empty"
+    }
+  },
+  "login": {
+    "status": {
+      "success": "Success log in!",
+      "error": "Something wrong, try again!"
+    },
+    "buttons": {
+      "register": "REGISTER",
+      "login": "LOG IN"
+    },
+    "placeholders": {
+      "e-mail": "E-mail",
+      "password": "Password"
+    }
+  },
+  "errorPage": {
+    "message": "This page does not exist. Follow link to return to",
+    "home": "Home",
+    "alt": "Ops, something is wrong"
+  }
 }

@@ -5,10 +5,11 @@ import Line from '../../images/line-currency-min.png';
 export const TableWrapper = styled.div`
   @media screen and (min-width: 768px) {
     display: block;
+    width: 336px;
   }
   @media screen and (min-width: 1280px) {
     width: 393px;
-    height: 347px;
+    /* height: 347px; */
   }
 `;
 
@@ -45,10 +46,12 @@ export const TableBodyContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   @media screen and (min-width: 768px) {
     padding: 16px 20px 12px 20px;
   }
   @media screen and (min-width: 1280px) {
+    height: 282px;
     padding: 20px 61px 20px 58px;
   }
   background-image: linear-gradient(
@@ -63,11 +66,15 @@ export const TableBodyContainer = styled.div`
 `;
 
 export const TableBodyList = styled.ul`
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 124px;
-  overflow: hidden;
+  overflow-y: hidden;
   overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
   @media screen and (min-width: 768px) {
     height: 111px;
   }
@@ -109,5 +116,25 @@ export const TableBodyText = styled.p`
       margin-right: 0;
       margin-bottom: 24px;
     }
+  }
+`;
+
+export const LoaderWrapper = styled.div`
+  @media screen and (min-width: 320px) {
+    margin-left: 100px;
+    margin-top: 30px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-top: 20px;
+    margin-left: 120px;
+  }
+  @media screen and (min-width: 1280px) {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    margin-top: 0px;
+    margin-left: 0px;
   }
 `;

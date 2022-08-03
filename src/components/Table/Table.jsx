@@ -1,147 +1,178 @@
-import { 
-    TableWrapper,
-    TableTittle, TableTittleBtn,
-    TableContentList, TableContentItem, ItemCategoryWrapper, CategoryColorMark, CategoryName, ItemSum,
-    TableResultList, TableResultItem, ResultItemTittle, ResultItemValue
-} from "./Table.styled";
-import { useState, useEffect } from "react"
+import {
+  TableWrapper,
+  TableTittle,
+  TableTittleBtn,
+  TableContentList,
+  TableContentItem,
+  ItemCategoryWrapper,
+  CategoryColorMark,
+  CategoryName,
+  ItemSum,
+  TableResultList,
+  TableResultItem,
+  ResultItemTittle,
+  ResultItemValue,
+} from './Table.styled';
+import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
+export const Table = ({ tableData }) => {
+  const [dataToRender, setDataToRender] = useState(null);
 
+  const [categorySortedStatus, setCategorySortedStatus] = useState('');
+  const [sumSortedStatus, setSumSortedStatus] = useState('');
 
-export const Table = ({tableData}) => {
+  const { t } = useTranslation();
 
-    const [dataToRender, setDataToRender] = useState(null);
+  useEffect(() => {
+    if (dataToRender === null) {
+      setDataToRender(
+        [...tableData].map(item => {
+          item.categorySum = Number.parseFloat(item.categorySum);
+          return item;
+        })
+      );
+    }
+  }, [dataToRender, tableData]);
 
-    const [categorySortedStatus, setCategorySortedStatus] = useState('');
-    const [sumSortedStatus, setSumSortedStatus] = useState('');
+  function sortByCategory() {
+    if (categorySortedStatus === '' || categorySortedStatus === 'ZA') {
+      const sortedData = [...tableData].sort((firstCategory, secondCategory) =>
+        firstCategory.categoryName.localeCompare(secondCategory.categoryName)
+      );
+      setCategorySortedStatus('AZ');
+      setSumSortedStatus('');
 
-    useEffect(() => {
+      setDataToRender(sortedData);
+    }
+    if (categorySortedStatus === 'AZ') {
+      const sortedData = [...tableData].sort((firstCategory, secondCategory) =>
+        secondCategory.categoryName.localeCompare(firstCategory.categoryName)
+      );
+      setCategorySortedStatus('ZA');
+      //setSumSortedStatus('');
 
-        if (dataToRender === null) {
+      setDataToRender(sortedData);
+    }
+  }
 
-            setDataToRender([...tableData].map(item => {
-                item.categorySum = Number.parseFloat(item.categorySum);
-                return item
-            }))
-        }
+  function sortHelper(method) {
+    const parsedData = tableData.map(item => {
+      item.categorySum = Number.parseFloat(item.categorySum);
+      return item;
+    });
 
-    },[dataToRender, tableData])
+    switch (method) {
+      case 'ascending':
+        return [...parsedData].sort((a, b) => a.categorySum - b.categorySum);
 
-    function sortByCategory () {
-        if (categorySortedStatus === '' || categorySortedStatus === 'ZA') {
-            const sortedData = [...tableData].sort((firstCategory, secondCategory) =>
-            firstCategory.categoryName.localeCompare(secondCategory.categoryName))
-            setCategorySortedStatus("AZ");
-            setSumSortedStatus('');
+      case 'descending':
+        return [...parsedData].sort((a, b) => b.categorySum - a.categorySum);
 
-            setDataToRender(sortedData)
-        }
-        if (categorySortedStatus === 'AZ') {
-            const sortedData = [...tableData].sort((firstCategory, secondCategory) =>
-            secondCategory.categoryName.localeCompare(firstCategory.categoryName))
-            setCategorySortedStatus("ZA");
-            //setSumSortedStatus('');
+      default:
+        console.log('incorrect method');
+    }
+  }
 
-            setDataToRender(sortedData)
-        }
+  function sortBySum() {
+    let sortedResult = null;
+
+    switch (sumSortedStatus) {
+      case '':
+        sortedResult = sortHelper('ascending');
+        setSumSortedStatus('increment');
+        setCategorySortedStatus('');
+        break;
+
+      case 'decrement':
+        sortedResult = sortHelper('ascending');
+        setSumSortedStatus('increment');
+        setCategorySortedStatus('');
+        break;
+
+      case 'increment':
+        sortedResult = sortHelper('descending');
+        setSumSortedStatus('decrement');
+        break;
+
+      default:
+        console.log('error');
     }
 
-    function sortHelper (method) {
-        const parsedData = tableData.map(item => {
-            item.categorySum = Number.parseFloat(item.categorySum);
-            return item
-        });
+    setDataToRender(sortedResult);
+  }
 
-        switch (method) {
-            case "ascending":
-            return [...parsedData].sort((a, b) => a.categorySum - b.categorySum);
+  function sumConverter(sum) {
+    const sumStr = sum.toFixed(2).toString();
 
-            case "descending":
-            return [...parsedData].sort((a, b) => b.categorySum - a.categorySum);
-
-            default: console.log("incorrect method")    
-        }
+    if (sumStr.length > 6) {
+      const result = sumStr[0] + ' ' + sumStr.slice(1, sumStr.length);
+      return result;
     }
 
-    function sortBySum () {
-        let sortedResult = null
+    return sumStr;
+  }
 
-        switch (sumSortedStatus) {
-            case "":
-                sortedResult = sortHelper("ascending");
-                setSumSortedStatus("increment");
-                setCategorySortedStatus("");
-            break;
-
-            case "decrement":
-                sortedResult = sortHelper("ascending");
-                setSumSortedStatus("increment");
-                setCategorySortedStatus("");
-            break;
-
-            case "increment":
-                sortedResult = sortHelper("descending");
-                setSumSortedStatus("decrement");
-            break;
-
-            default: console.log("error");
-        };
-
-        setDataToRender(sortedResult);
-    };
-
-    function sumConverter (sum) {
-
-        const sumStr = sum.toFixed(2).toString()
-    
-        if (sumStr.length > 6) {
-            
-            const result = sumStr[0] + " " + sumStr.slice(1, sumStr.length);
-            return result
-        }
-    
-        return sumStr
-    }
-
-
-    return (
+  return (
     <>
-        <TableWrapper className="table-wrapper">
-   
-            <TableTittle className="table-tittle">
-                <TableTittleBtn className="table-tittle-btn" onClick={sortByCategory}>Category</TableTittleBtn>
-                <TableTittleBtn className="table-tittle-btn" onClick={sortBySum}>Summ</TableTittleBtn>
-            </TableTittle>
+      <TableWrapper className="table-wrapper">
+        <TableTittle className="table-tittle">
+          <TableTittleBtn className="table-tittle-btn" onClick={sortByCategory}>
+            {t('table.category')}
+          </TableTittleBtn>
+          <TableTittleBtn className="table-tittle-btn" onClick={sortBySum}>
+            {t('table.sum')}
+          </TableTittleBtn>
+        </TableTittle>
 
-            <TableContentList className="table-content-list">
-                {dataToRender !== null && dataToRender.map(({categoryColor, categoryName, categorySum}) => {
-                    return (
-                        <TableContentItem className="table-content-item" key={categoryName}>
-                            <ItemCategoryWrapper className="item-category-wrapper">
-                                <CategoryColorMark background={categoryColor}></CategoryColorMark>
-                                <CategoryName className="category-name">{categoryName}</CategoryName>
-                            </ItemCategoryWrapper>
-                            <ItemSum>{sumConverter(categorySum)}</ItemSum>
-                        </TableContentItem>
-                    )
-                })}
-                
-            </TableContentList>
+        <TableContentList className="table-content-list">
+          {dataToRender !== null &&
+            dataToRender.map(({ categoryColor, categoryName, categorySum }) => {
+              return (
+                <TableContentItem
+                  className="table-content-item"
+                  key={categoryName}
+                >
+                  <ItemCategoryWrapper className="item-category-wrapper">
+                    <CategoryColorMark
+                      background={categoryColor}
+                    ></CategoryColorMark>
+                    <CategoryName className="category-name">
+                      {t(`diagramTab.reduxData.${categoryName.toLowerCase()}`)}
+                    </CategoryName>
+                  </ItemCategoryWrapper>
+                  <ItemSum>{sumConverter(categorySum)}</ItemSum>
+                </TableContentItem>
+              );
+            })}
+        </TableContentList>
 
-            <TableResultList className="table-result-list">
+        <TableResultList className="table-result-list">
+          <TableResultItem className="table-result-item">
+            <ResultItemTittle className="result-item-tittle">
+              {t('table.expenses')}:
+            </ResultItemTittle>
+            <ResultItemValue
+              className="result-item-value"
+              color={'var(--pink)'}
+            >
+              22 549.24
+            </ResultItemValue>
+          </TableResultItem>
 
-                <TableResultItem className="table-result-item">
-                    <ResultItemTittle className="result-item-tittle">Expenses:</ResultItemTittle>
-                    <ResultItemValue className="result-item-value" color={"var(--pink)"}>22 549.24</ResultItemValue>
-                </TableResultItem>
-
-                <TableResultItem className="table-result-item">
-                    <ResultItemTittle className="result-item-tittle">Income:</ResultItemTittle>
-                    <ResultItemValue className="result-item-value" color={"var(--green)"}>27 350.00</ResultItemValue>
-                </TableResultItem>
-
-            </TableResultList>
-        </TableWrapper>
+          <TableResultItem className="table-result-item">
+            <ResultItemTittle className="result-item-tittle">
+              {t('table.income')}:
+            </ResultItemTittle>
+            <ResultItemValue
+              className="result-item-value"
+              color={'var(--green)'}
+            >
+              27 350.00
+            </ResultItemValue>
+          </TableResultItem>
+        </TableResultList>
+      </TableWrapper>
     </>
-    )
-}
+  );
+};

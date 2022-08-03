@@ -3,9 +3,8 @@ import * as yup from 'yup';
 import { useRegisterMutation } from '../../redux/authOperation';
 import { Formik, ErrorMessage, Form } from 'formik';
 import { toast, ToastContainer, Slide } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState } from 'react';
-import { PasswordStrenght } from './PasswordStrength';
 import {
   Input,
   InputContainer,
@@ -14,25 +13,25 @@ import {
   SvgLock,
   RegisterButton,
   LoginButton,
-  ButtonShow
+  ErrorText,
+  FormInputContainer,
 } from './RegistrationForm.styled';
-import { useNavigate } from 'react-router-dom';
+import { PasswordInput } from './PasswordInput';
 
 export const FormRegistration = () => {
-  const navigate = useNavigate();
-  const [register, { isSuccess, isError }] = useRegisterMutation();
-  const [password, setPassword] = useState('');
-  const [type, setType] = useState('password');
+  const [register, { isSuccess, isError, status }] = useRegisterMutation();
+  const { t } = useTranslation();
 
   const schema = yup.object().shape({
     name: yup.string().required(),
     email: yup.string().email().min(6).required(),
     password: yup.string().min(6).max(12).required(),
+
     repeated_password: yup.string().when('password', {
       is: val => (val && val.length > 0 ? true : false),
       then: yup
         .string()
-        .oneOf([yup.ref('password')], 'Both password need to be the same'),
+        .oneOf([yup.ref('password')], t('registration.password.notequal')),
     }),
   });
 
@@ -43,28 +42,27 @@ export const FormRegistration = () => {
     repeated_password: '',
   };
 
-  const handleSubmit = (values, { resetForm }) => {
-    const { name, email, password } = values;
+  const handleSubmit = ({ name, email, password }, { resetForm }) => {
     register({ name, email, password });
     resetForm();
-    navigate('/login', { replace: true });
   };
 
   const FormError = ({ name }) => {
-    return <ErrorMessage name={name} render={message => <p>{message}</p>} />;
-  };
-
-  const showHide = e => {
-    e.preventDefault();
-    e.stopPropagation();
-    let currentType = type === 'input' ? 'password' : 'input';
-    setType(currentType);
+    return (
+      <ErrorMessage
+        name={name}
+        render={message => (
+          <ErrorText>{t(`registration.required.${name}`)}</ErrorText>
+        )}
+      />
+    );
   };
 
   return (
     <>
       {isSuccess &&
-        toast.success('Success! Please, log in!', {
+        status === 'fulfilled' &&
+        toast.success(t('registration.status.success'), {
           theme: 'colored',
           icon: '🚀',
           autoClose: 8000,
@@ -75,7 +73,7 @@ export const FormRegistration = () => {
           progress: undefined,
           transition: Slide,
         }) && <ToastContainer />}
-      {isError && toast.error('Something wrong, try again!') && (
+      {isError && toast.error(t('registration.status.error')) && (
         <ToastContainer />
       )}
       <Formik
@@ -84,45 +82,48 @@ export const FormRegistration = () => {
         validationSchema={schema}
       >
         <Form autoComplete="off">
-          <InputContainer>
-            <SvgEnvelope />
-            <Input name="email" type="email" placeholder="E-mail" />
-            <FormError name="email" />
-          </InputContainer>
-          <InputContainer>
-            <SvgLock />
-            <Input
-              onInput={e => setPassword(e.target.value)}
-              name="password"
-              type={type}
-              placeholder="Password"
-            />
-            <FormError name="password" />
-            <PasswordStrenght password={password} />
-          </InputContainer>
-          <ButtonShow onClick={showHide}> {type === 'input' ? 'Hide' : 'Show'}</ButtonShow>
-
-          <InputContainer>
-            <SvgLock />
-            <Input
-              name="repeated_password"
-              type="password"
-              placeholder="Confirm password"
-            />
-            <FormError name="repeated_password" />
-          </InputContainer>
-          <InputContainer>
-            <SvgAccount />
-            <Input name="name" type="text" placeholder="First name " />
-            <FormError name="name" />
-          </InputContainer>
-          <RegisterButton type="submit"> Register</RegisterButton>
+          <FormInputContainer>
+            <InputContainer>
+              <SvgEnvelope />
+              <Input
+                name="email"
+                type="email"
+                placeholder={t('registration.placeholders.e-mail')}
+              />
+              <FormError name="email" />
+            </InputContainer>
+            <PasswordInput />
+            <InputContainer>
+              <SvgLock />
+              <Input
+                name="repeated_password"
+                type="password"
+                placeholder={t('registration.placeholders.confirmpassword')}
+              />
+              <FormError name="repeated_password" />
+            </InputContainer>
+            <InputContainer>
+              <SvgAccount />
+              <Input
+                name="name"
+                type="text"
+                placeholder={t('registration.placeholders.firstname')}
+              />
+              <FormError name="name" />
+            </InputContainer>
+          </FormInputContainer>
+          <RegisterButton type="submit">
+            {t('registration.buttons.register')}
+          </RegisterButton>
           <ToastContainer />
         </Form>
       </Formik>
-      <Link to="/login">
-        <LoginButton type="button">Log in</LoginButton>
+      <Link to="/wallet_frontend/login">
+        <LoginButton type="button">
+          {t('registration.buttons.login')}
+        </LoginButton>
       </Link>
+      <ToastContainer />
     </>
   );
 };

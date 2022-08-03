@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginOperation } from './loginOperation'
+import { loginOperation } from './loginOperation';
 
 const initialState = {
   user: { email: null, password: null },
   isLoggedIn: false,
+  token: null,
 };
 
 export const loginSlice = createSlice({
@@ -13,10 +14,9 @@ export const loginSlice = createSlice({
     builder.addMatcher(
       loginOperation.endpoints.login.matchFulfilled,
       (state, { payload }) => {
-        console.log(payload);
-        console.log(state);
         state.user = payload.user;
         state.isLoggedIn = true;
+        state.token = payload.data.accessToken;
       }
     );
   },
