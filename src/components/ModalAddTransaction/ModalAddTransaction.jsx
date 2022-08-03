@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeModalStatus } from '../../redux/modal/modalActions';
 import { createPortal } from 'react-dom';
-import 'react-datetime/css/react-datetime.css';
+// import 'react-datetime/css/react-datetime.css';
 import {
   Backdrop,
   Modal,
