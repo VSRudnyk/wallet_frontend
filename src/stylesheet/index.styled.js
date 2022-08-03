@@ -56,6 +56,24 @@ table {
   border-spacing: 0;
 }
 
+input {
+  width: 280px;
+  height: 29px;
+  outline: none;    
+  padding: 8px; 
+  padding-left:20px;
+  border: none;
+  border-bottom: 1px solid #E0E0E0;
+  @media screen and (min-width: 768px) {
+    width: 181px;
+    height: 29px;
+    outline: none;    
+    padding: 8px; 
+    border: none;
+    border-bottom: 1px solid #E0E0E0
+  }   
+}
+
   :root {
     --black: #000000;
     --gray: #bdbdbd;
