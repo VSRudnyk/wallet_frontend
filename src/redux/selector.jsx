@@ -1,3 +1,4 @@
-const getToken = state => state.login.token;
+const getToken = state => state.auth.accessToken;
+const getSid = state => state.auth.sid;
 
 export const authSelectors = { getToken };

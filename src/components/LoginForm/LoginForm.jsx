@@ -1,18 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useLoginMutation } from '../../redux/loginOperation';
-import { Formik, ErrorMessage, Form } from 'formik';
+import { useLoginMutation } from '../../redux/authOperation';
+import { ErrorMessage, Form, Formik } from 'formik';
 import { toast, ToastContainer } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/selector';
 
-import {
-  Input,
-  InputContainer,
-  SvgEnvelope,
-  SvgLock,
-  LoginButton,
-  RegisterButton,
-} from './LoginForm.styled';
+import { Input, InputContainer, LoginButton, RegisterButton, SvgEnvelope, SvgLock } from './LoginForm.styled';
 
 export const LoginForm = () => {
   const [login, { isSuccess, isError }] = useLoginMutation();
@@ -55,23 +48,23 @@ export const LoginForm = () => {
       )}
 
       <Formik initialValues={defaultInitialValues} onSubmit={handleSubmit}>
-        <Form autoComplete="off">
+        <Form autoComplete='off'>
           <InputContainer>
             <SvgEnvelope />
-            <Input name="email" type="email" placeholder="E-mail" />
-            <FormError name="email" />
+            <Input name='email' type='email' placeholder='E-mail' />
+            <FormError name='email' />
           </InputContainer>
           <InputContainer>
             <SvgLock />
-            <Input name="password" type="password" placeholder="Password" />
-            <FormError name="password" />
+            <Input name='password' type='password' placeholder='Password' />
+            <FormError name='password' />
           </InputContainer>
           <ToastContainer />
-          <LoginButton type="submit">Log in</LoginButton>
+          <LoginButton type='submit'>Log in</LoginButton>
         </Form>
       </Formik>
-      <Link to="/wallet_frontend/register">
-        <RegisterButton type="button">Register</RegisterButton>
+      <Link to='/wallet_frontend/register'>
+        <RegisterButton type='button'>Register</RegisterButton>
       </Link>
     </>
   );

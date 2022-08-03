@@ -1,36 +1,24 @@
 import { configureStore } from '@reduxjs/toolkit';
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
+import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authOperation } from './authOperation';
+import { usersOperation } from './usersOperation';
+import { transactionsOperation } from './transactionsOperation';
 import authReducer from './authSlice';
-import { loginOperation } from './loginOperation';
-import loginReducer from './loginSlice.jsx'
 
 const authPersistConfig = {
   key: 'auth',
   storage,
+  whitelist: ['accessToken', 'refreshToken', 'sid'],
 };
 
-const loginPersistConfig = {
-  key: 'login',
-  storage,
-};
 
 export const store = configureStore({
   reducer: {
     [authOperation.reducerPath]: authOperation.reducer,
+    [usersOperation.reducerPath]: usersOperation.reducer,
+    [transactionsOperation.reducerPath]: transactionsOperation.reducer,
     auth: persistReducer(authPersistConfig, authReducer),
-    [loginOperation.reducerPath]: loginOperation.reducer,
-    login: persistReducer(loginPersistConfig, loginReducer),
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
@@ -39,6 +27,8 @@ export const store = configureStore({
       },
     }),
     authOperation.middleware,
+    usersOperation.middleware,
+    transactionsOperation.middleware,
   ],
 });
 

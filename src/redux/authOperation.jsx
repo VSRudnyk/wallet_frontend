@@ -1,18 +1,9 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
+import { baseQueryWithReauth } from './customFetch';
 
 export const authOperation = createApi({
   reducerPath: 'authOperation',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://wallet-backend-1.herokuapp.com/api',
-    prepareHeaders: (headers, { getState }) => {
-      const token =
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2MmU1OTYzNWI3ODZkYzI3NDA5OTk3YTMiLCJzaWQiOiI2MmU3YzBiOTg0Mjk3ODVlNGU2MWRlMWIiLCJpYXQiOjE2NTkzNTUzMjEsImV4cCI6MTY1OTM1ODkyMX0.Olrrhp0QIqP1y3X6q1D5g7FN5a_W70aFzetFGufhDuU';
-
-      headers.set('authorization', `Bearer ${token}`);
-
-      return headers;
-    },
-  }),
+  baseQuery: baseQueryWithReauth,
 
   endpoints: builder => ({
     register: builder.mutation({
@@ -22,11 +13,26 @@ export const authOperation = createApi({
         body: credentials,
       }),
     }),
-    getAllTransactions: builder.query({
-      query: () => `/transactions`,
+    login: builder.mutation({
+      query: credentials => ({
+        url: '/auth/login',
+        method: 'POST',
+        body: credentials,
+      }),
+    }),
+    logout: builder.mutation({
+      query: () => '/auth/logout',
+    }),
+    refresh: builder.mutation({
+      query: credentials => ({
+        url: '/auth/refresh',
+        method: 'POST',
+        body: credentials,
+      }),
     }),
   }),
 });
 
-export const { useRegisterMutation, useGetAllTransactionsQuery } =
+
+export const { useRegisterMutation, useLoginMutation, useLogoutMutation, useRefreshMutation } =
   authOperation;
