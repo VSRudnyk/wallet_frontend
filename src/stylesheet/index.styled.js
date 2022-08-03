@@ -15,7 +15,6 @@ export const GlobalStyle = createGlobalStyle`
     text-align: center;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #E7EAF2;
   }
   h1,
   h2,
@@ -57,6 +56,24 @@ table {
   border-spacing: 0;
 }
 
+input {
+  width: 280px;
+  height: 29px;
+  outline: none;    
+  padding: 8px; 
+  padding-left:20px;
+  border: none;
+  border-bottom: 1px solid #E0E0E0;
+  @media screen and (min-width: 768px) {
+    width: 181px;
+    height: 29px;
+    outline: none;    
+    padding: 8px; 
+    border: none;
+    border-bottom: 1px solid #E0E0E0
+  }   
+}
+
   :root {
     --black: #000000;
     --gray: #bdbdbd;
@@ -74,6 +91,7 @@ table {
     --pink: #FF6596;
     --vector-color:#E7E5F2;
     --add-transaction-menu-color:rgba(255, 255, 255, 0.7);
+    --error-message: #d50c0c;
 
     //transactions
      --transaction-underline-color: #dcdcdf;

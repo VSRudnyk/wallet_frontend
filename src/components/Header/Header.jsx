@@ -1,17 +1,19 @@
 import { NavLink } from 'react-router-dom';
+import Media from 'react-media';
+import { useTranslation } from 'react-i18next';
 import Logo from '../../images/Logo.svg';
 import Exit from '../../images/Exit.svg';
-import LanguageSwitcher from 'components/LanguageSwitcher';
+import Settings from 'components/SettingsBtn/Settings';
 import {
-  ContainerLogo,
-  HeaderContainer,
   HeaderSection,
-  LogoName,
   LogoStyle,
-  Logout,
-  LogoutButton,
-  LogoutImg,
+  ContainerLogo,
+  LogoName,
+  HeaderContainer,
   UserName,
+  LogoutImg,
+  LogoutButton,
+  Logout,
 } from './Header.styled';
 import { Container } from 'stylesheet/Container.styled';
 import { useLogoutMutation } from '../../redux/authOperation';
@@ -23,25 +25,36 @@ export const Header = () => {
     await logout();
   };
 
+  const { t } = useTranslation();
   return (
     <HeaderSection>
       <Container>
         <HeaderContainer>
           <ContainerLogo>
-            <NavLink to='/wallet_frontend/home'>
+            <NavLink to="/wallet_frontend/home">
               <ContainerLogo>
-                <LogoStyle src={Logo} alt='Logo' />
+                <LogoStyle src={Logo} alt="Logo" />
                 <LogoName>Wallet</LogoName>
               </ContainerLogo>
             </NavLink>
           </ContainerLogo>
           <ContainerLogo>
-            <UserName>Name</UserName>
-            <LanguageSwitcher />
-            <LogoutButton onClick={onLogoutHandler}>
-              <LogoutImg src={Exit} alt='Exit' />
-              <Logout>Exit</Logout>
-            </LogoutButton>
+            <UserName>{t('header.name')}</UserName>
+            <Media queries={{ mobile: { maxWidth: 767 } }}>
+              {matches =>
+                matches.mobile ? (
+                  <Settings />
+                ) : (
+                  <>
+                    <Settings />
+                    <LogoutButton>
+                      <LogoutImg src={Exit} alt="Exit" />
+                      <Logout>{t('header.exit')}</Logout>
+                    </LogoutButton>
+                  </>
+                )
+              }
+            </Media>
           </ContainerLogo>
         </HeaderContainer>
       </Container>

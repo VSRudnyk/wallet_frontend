@@ -33,6 +33,5 @@ export const authOperation = createApi({
   }),
 });
 
-
 export const { useRegisterMutation, useLoginMutation, useLogoutMutation, useRefreshMutation } =
   authOperation;

@@ -5,6 +5,11 @@ import { authOperation } from './authOperation';
 import { usersOperation } from './usersOperation';
 import { transactionsOperation } from './transactionsOperation';
 import authReducer from './authSlice';
+import { loginOperation } from './loginOperation';
+import loginReducer from './loginSlice.jsx';
+import modalReducer from './modal/modalReducer';
+import { transactionOperation } from './transactionsOperation';
+import transactionReducer from './transactionsSlice.jsx';
 
 const authPersistConfig = {
   key: 'auth',
@@ -12,6 +17,11 @@ const authPersistConfig = {
   whitelist: ['accessToken', 'refreshToken', 'sid'],
 };
 
+
+const transactionPersistConfig = {
+  key: 'transaction',
+  storage,
+};
 
 export const store = configureStore({
   reducer: {

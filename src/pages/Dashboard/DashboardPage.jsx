@@ -1,15 +1,16 @@
 import {
-  DashboardSection,
   DashboardFirstSectionWrapper,
-  DashboardNavAndBalWrapper,
-  DashboardCurrencyWrapper,
   DashboardSecondSectionWrapper,
   DashboardWrapper,
   DashboardSeparator,
+  Dashboard
 } from './DashboardPage.styled';
 import { lazy } from 'react';
 import { Container } from 'stylesheet/Container.styled';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { ButtonAddTransactions } from '../../components/ButtonAddTransactions/ButtonAddTransactions';
+import { ModalAddTransactions } from 'components/ModalAddTransaction/ModalAddTransaction'; 
 import Media from 'react-media';
 const Header = lazy(() =>
   import('../../components/Header' /* webpackChunkName: "Header" */)
@@ -32,46 +33,49 @@ const DiagramTab = lazy(() =>
 export const DashboardPage = () => {
   const location = useLocation();
   const { pathname } = location;
+  const modalAddTransactionStatus = useSelector(state=>
+    state.modal.isModalAddTransactionOpen); 
 
   return (
     <>
       <Header />
-      <DashboardSection>
+      <Dashboard pathname={pathname}>
         <Container>
           <DashboardWrapper>
             <DashboardFirstSectionWrapper>
-              <DashboardNavAndBalWrapper>
+              <div>
                 <Navigation />
                 <Balance />
                 <Media queries={{ mobile: { maxWidth: 767 } }}>
                   {matches =>
                     matches.mobile && (
-                      <DashboardCurrencyWrapper>
+                      <div>
                         <Currency />
-                      </DashboardCurrencyWrapper>
+                      </div>
                     )
                   }
                 </Media>
-              </DashboardNavAndBalWrapper>
+              </div>
               <Media queries={{ table: { minWidth: 768 } }}>
                 {matches =>
                   matches.table && (
-                    <DashboardCurrencyWrapper>
+                    <div>
                       <Currency />
-                    </DashboardCurrencyWrapper>
+                    </div>
                   )
                 }
               </Media>
             </DashboardFirstSectionWrapper>
-
             <DashboardSeparator></DashboardSeparator>
             {pathname === '/wallet_frontend/diagram' && <DiagramTab />}
             <DashboardSecondSectionWrapper>
               {location.pathname === '/wallet_frontend/home' && <HomeTab />}
             </DashboardSecondSectionWrapper>
           </DashboardWrapper>
-        </Container>
-      </DashboardSection>
+          {modalAddTransactionStatus && <ModalAddTransactions/>}
+        </Container>        
+      </Dashboard>
+      {location.pathname === '/wallet_frontend/home' && <ButtonAddTransactions/>}
     </>
   );
 };
