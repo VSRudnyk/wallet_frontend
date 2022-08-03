@@ -14,7 +14,6 @@ const authPersistConfig = {
   whitelist: ['accessToken', 'refreshToken', 'sid'],
 };
 
-
 const transactionPersistConfig = {
   key: 'transaction',
   storage,

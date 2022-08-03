@@ -12,6 +12,15 @@ const initialState = {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setCredentials: (state, action) => {
+      const { user, ...credentials } = action.payload;
+      state.user = user;
+      state.accessToken = credentials.accessToken || credentials.newAccessToken;
+      state.refreshToken = credentials.refreshToken || credentials.newRefreshToken;
+      state.sid = credentials.sid || credentials.newSid;
+    },
+  },
   extraReducers: builder => {
     builder.addMatcher(
       authOperation.endpoints.register.matchFulfilled,
@@ -42,8 +51,6 @@ export const authSlice = createSlice({
     );
   },
 });
-
+export const { setCredentials, logOut } = authSlice.actions;
 
 export default authSlice.reducer;
-
-

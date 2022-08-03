@@ -1,18 +1,9 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
+import { baseQueryWithReauth } from './customFetch';
 
 export const usersOperation = createApi({
-  reducerPath: 'transactionsOperation',
-  baseQuery: fetchBaseQuery({
-      baseUrl: 'https://wallet-backend-1.herokuapp.com/api',
-      prepareHeaders: (headers, { getState }) => {
-        const token = getState().auth.accessToken;
-        if (token) {
-          headers.set('authorization', `Bearer ${token}`);
-        }
-        return headers;
-      },
-    },
-  ),
+  reducerPath: 'usersOperation',
+  baseQuery: baseQueryWithReauth,
 
   endpoints: builder => ({
     getCurrentUser: builder.query({

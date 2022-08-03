@@ -1,12 +1,10 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/query';
-
-let sid = '';
+import { logOut, setCredentials } from './authSlice';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:3000/api/', prepareHeaders: (headers, { getState }) => {
+  baseUrl: 'https://wallet-backend-1.herokuapp.com/api',
+  prepareHeaders: (headers, { getState }) => {
     const accessToken = getState().auth.accessToken;
-    const refreshToken = getState().auth.refreshToken;
-    sid = getState().auth.sid;
     if (accessToken) {
       headers.set('authorization', `Bearer ${accessToken}`);
     }
@@ -15,22 +13,36 @@ const baseQuery = fetchBaseQuery({
 });
 export const baseQueryWithReauth = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
-  if (result.error && result.error.status === 401) {
-    // try to get a new token
-    const refreshResult = await baseQuery({
-      url: 'auth/refresh',
-      method: 'POST',
-      body: {
-        sid: `${sid}`,
+  if (result?.error?.status === 401) {
+    const currentCredential = api.getState().auth;
+    api.dispatch(
+      setCredentials({
+        ...currentCredential,
+        accessToken: currentCredential.refreshToken,
+      }),
+    );
+    const refreshResult = await baseQuery(
+      {
+        url: 'auth/refresh',
+        method: 'POST',
+        body: {
+          sid: `${currentCredential.sid}`,
+        },
       },
-    }, api, extraOptions);
+      api,
+      extraOptions,
+    );
     if (refreshResult.data) {
-      // store the new token
-      // api.dispatch(tokenReceived(refreshResult.data));
-      // retry the initial query
+      api.dispatch(
+        setCredentials({
+          ...refreshResult.data.data,
+          user: currentCredential.user,
+          isLoggedIn: currentCredential.isLoggedIn,
+        }),
+      );
       result = await baseQuery(args, api, extraOptions);
     } else {
-      // api.dispatch(loggedOut());
+      api.dispatch(logOut);
     }
   }
   return result;
