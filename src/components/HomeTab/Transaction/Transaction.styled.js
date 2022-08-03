@@ -1,31 +1,8 @@
 import styled from 'styled-components';
 
-export const List = styled.ul`
-  display: flex;
-  justify-content: space-between;
-
-  background-color: #ffffff;
-
-  border-radius: 30px;
-  background-color: white;
-  padding: 16px 0 15px 0;
-`;
-export const ListItem = styled.li`
-  width: 110px;
-  display: flex;
-  justify-content: center;
-`;
-export const Span = styled.span`
-  font-family: var(--baseFont);
-  font-weight: var(--bold);
-  font-size: 18px;
-  line-height: 27px;
-`;
-////////////////table////////////////
 export const TableContainer = styled.div`
   position: relative;
-
-  height: 46vh;
+  height: 56vh;
   overflow: hidden;
   overflow-y: scroll;
   &::-webkit-scrollbar {
@@ -38,7 +15,6 @@ export const Table = styled.table`
     width: 715px;
   }
 `;
-export const Thead = styled.thead``;
 
 export const Th = styled.th`
   position: sticky;
@@ -60,7 +36,7 @@ export const Th = styled.th`
   }
   z-index: 1;
 `;
-export const Tr = styled.tr``;
+
 export const BodyTd = styled.td`
   position: relative;
   padding: 16px 0 15px 0;
@@ -98,5 +74,30 @@ export const BodyTd = styled.td`
     }
   }
 `;
+/////////PAGINATION////////////
+export const Pagination = styled.div`
+  position: absolute;
+  top: 486px;
 
-// ${props => (props.type === '+' ? '#24CCA7' : '#ff6596')};
+  width: 100%;
+`;
+export const PaginationBtn = styled.button`
+  width: 50px;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  outline: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  &:hover {
+    background-color: var(--blue);
+    fill: var(--white);
+  }
+`;
+export const PaginationSpan = styled.span`
+  font-family: var(--baseFont);
+  font-style: normal;
+  font-weight: var(--regular);
+  font-size: 18px;
+  line-height: 27px;
+  margin-left: 20px;
+`;
