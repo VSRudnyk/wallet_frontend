@@ -23,7 +23,8 @@ const TransactionMobile = ({ obj }) => {
   }).map(([key, value]) => {
     switch (key) {
       case 'date':
-        let newValue = value
+        let newValue = new Date(value)
+          .toISOString()
           .slice(2)
           .substring(0, 8)
           .split('-')
