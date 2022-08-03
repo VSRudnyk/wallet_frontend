@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import TransactionMobile from './TransactionMobile/TransactionMobile';
 import Transaction from './Transaction';
-import { useGetAllTransactionsQuery } from 'redux/authOperation';
+import { useGetAllTransactionsQuery } from '../../redux/transactionsOperation';
 import { Loader } from 'components/Loader';
 import { v4 as uuidv4 } from 'uuid';
 

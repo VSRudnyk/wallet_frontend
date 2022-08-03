@@ -1,22 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { transactionOperation } from './transactionsOperation';
+import { transactionsOperation } from './transactionsOperation';
 
 
 const initialState = {
-    transaction: null,
-}
+  transaction: null,
+};
 
 export const transactionSlice = createSlice({
-    name:'transaction',
-    initialState,
-    extraReducers: builder => {
-        builder.addMatcher(
-            transactionOperation.endpoints.transaction.matchFulfilled,
-          (state, { payload }) => {
-            state.transaction = payload.transaction;
-          }
-        );
-      }, 
-})
+  name: 'transaction',
+  initialState,
+  extraReducers: builder => {
+    builder.addMatcher(
+      transactionsOperation.endpoints.addTransaction.matchFulfilled,
+      (state, { payload }) => {
+        state.transaction = payload.transaction;
+      },
+    );
+  },
+});
 
 export default transactionSlice.reducer;

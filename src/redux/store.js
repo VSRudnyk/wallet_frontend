@@ -4,12 +4,9 @@ import storage from 'redux-persist/lib/storage';
 import { authOperation } from './authOperation';
 import { usersOperation } from './usersOperation';
 import { transactionsOperation } from './transactionsOperation';
-import authReducer from './authSlice';
-import { loginOperation } from './loginOperation';
-import loginReducer from './loginSlice.jsx';
 import modalReducer from './modal/modalReducer';
-import { transactionOperation } from './transactionsOperation';
-import transactionReducer from './transactionsSlice.jsx';
+import authReducer from './authSlice';
+import transactionReducer from './transactionsSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -29,6 +26,8 @@ export const store = configureStore({
     [usersOperation.reducerPath]: usersOperation.reducer,
     [transactionsOperation.reducerPath]: transactionsOperation.reducer,
     auth: persistReducer(authPersistConfig, authReducer),
+    transaction: persistReducer(transactionPersistConfig, transactionReducer),
+    modal: modalReducer,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({

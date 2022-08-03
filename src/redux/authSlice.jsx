@@ -40,15 +40,6 @@ export const authSlice = createSlice({
         state.isLoggedIn = false;
       },
     );
-    builder.addMatcher(
-      authOperation.endpoints.refresh.matchFulfilled,
-      (state, { payload }) => {
-        state.accessToken = payload.newAccessToken;
-        state.refreshToken = payload.newRefreshToken;
-        state.sid = payload.sid;
-      },
-    );
-
   },
 });
 
