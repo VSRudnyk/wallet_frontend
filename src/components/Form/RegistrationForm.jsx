@@ -25,7 +25,7 @@ export const FormRegistration = () => {
     name: yup.string().max(16).required(),
     email: yup.string().email().min(6).required(),
     password: yup.string().min(6).max(12).matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/,
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*\s)/,
       "must be one uppercase, one number"
     ).required(),
     repeated_password: yup.string().when('password', {
@@ -56,6 +56,7 @@ export const FormRegistration = () => {
       />
     );
   };
+
 
   return (
     <>

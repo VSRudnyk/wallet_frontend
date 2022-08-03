@@ -43,9 +43,9 @@ export const PasswordInput = () => {
         onInput={e => setPassword(e.target.value)}
         name="password"
         type={type}
-        placeholder="password"
+        placeholder="Password"
       />
-      <FormError name="Password" />
+      <FormError name="password" />
       <PasswordStrenght password={password} />
     </InputContainer>
   );
