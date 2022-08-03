@@ -66,16 +66,4 @@ export const DashboardSeparator = styled.div`
   }
 `;
 
-export const ButtonAddTransactionsWrapper = styled.div`
-  outline: none;
-  border: none;
-  position: sticky;
-  display: flex;
-  justify-content: flex-end;
-  bottom: 20px;
-  margin-right: 20px;
-  @media screen and (min-width: 768px) {
-    bottom: 40px;
-    margin-right: 40px;
-  }
-`;
+
