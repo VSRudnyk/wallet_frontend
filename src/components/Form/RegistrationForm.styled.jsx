@@ -3,7 +3,7 @@ import '../../stylesheet/fonts.css';
 import { Field } from 'formik';
 import { ReactComponent as Envelope } from '../../images/email.svg';
 import { ReactComponent as Lock } from '../../images/lock.svg';
-import { ReactComponent as Account } from '../../images/account.svg';
+// import { ReactComponent as Account } from '../../images/account.svg';
 import { ReactComponent as Eye } from '../../images/VectorEyes.svg';
 import { ReactComponent as EyeClose } from '../../images/VectorEyeClose.svg';
 
@@ -71,14 +71,7 @@ export const SvgLock = styled(Lock)`
   }
 `;
 
-export const SvgAccount = styled(Account)`
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  @media screen and (min-width: 768px) {
-    top: 2px;
-  }
-`;
+
 
 export const RegisterButton = styled.button`
   background-color: var(--green);

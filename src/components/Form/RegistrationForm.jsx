@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { useRegisterMutation } from '../../redux/authOperation';
-import { Formik, ErrorMessage, Form } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import { toast, ToastContainer, Slide } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,8 +14,8 @@ import {
   RegisterButton,
   LoginButton,
   ErrorText,
-  FormInputContainer,
-} from './RegistrationForm.styled';
+  FormContainer
+} from './Form.styled';
 import { PasswordInput } from './PasswordInput';
 
 export const FormRegistration = () => {
@@ -81,8 +81,7 @@ export const FormRegistration = () => {
         onSubmit={handleSubmit}
         validationSchema={schema}
       >
-        <Form autoComplete="off">
-          <FormInputContainer>
+        <FormContainer autoComplete="off">
             <InputContainer>
               <SvgEnvelope />
               <Input
@@ -111,12 +110,11 @@ export const FormRegistration = () => {
               />
               <FormError name="name" />
             </InputContainer>
-          </FormInputContainer>
           <RegisterButton type="submit">
             {t('registration.buttons.register')}
           </RegisterButton>
           <ToastContainer />
-        </Form>
+        </FormContainer>
       </Formik>
       <Link to="/wallet_frontend/login">
         <LoginButton type="button">

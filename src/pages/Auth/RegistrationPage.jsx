@@ -1,42 +1,45 @@
 import Media from 'react-media';
-import { FormRegistration } from 'components/RegistrationForm/RegistrationForm';
+import { FormRegistration } from 'components/Form';
+
 import {
-  ContainerRegister,
+  ContainerPage,
   Logo,
   LogoText,
   LogoContainer,
-  FormContainer,
-  ImageContainer,
+  FormContainerRegsiter,
+  ImageContainerReg,
   Text,
   ImageSection,
   Container,
-  ContainerRegisterForm,
-} from './RegistrationPage.styled';
+  ContainerForm,
+} from './Page.styled';
 import LogoImg from '../../images/Logo.svg';
 
-export const RegistrationPage = () => {
+ const RegistrationPage = () => {
   return (
     <Container>
-      <ContainerRegister>
+      <ContainerPage>
         <Media
           query="(min-width: 768px)"
           render={() => (
             <ImageSection>
-              <ImageContainer />
+              <ImageContainerReg />
               <Text>Finance App</Text>
             </ImageSection>
           )}
         />
-        <ContainerRegisterForm>
-          <FormContainer>
+        <ContainerForm>
+          <FormContainerRegsiter>
             <LogoContainer>
               <Logo src={LogoImg} alt="Logo" />
               <LogoText>Wallet</LogoText>
             </LogoContainer>
             <FormRegistration />
-          </FormContainer>
-        </ContainerRegisterForm>
-      </ContainerRegister>
+          </FormContainerRegsiter>
+        </ContainerForm>
+      </ContainerPage>
     </Container>
   );
 };
+
+export default RegistrationPage;

@@ -6,7 +6,7 @@ import {
   ButtonHide,
   SvgLock,
   ErrorTextPassword,
-} from './RegistrationForm.styled';
+} from './Form.styled';
 import { PasswordStrenght } from './PasswordStrength';
 import { ErrorMessage } from 'formik';
 import { useTranslation } from 'react-i18next';

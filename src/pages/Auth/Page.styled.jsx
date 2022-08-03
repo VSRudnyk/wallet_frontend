@@ -3,6 +3,9 @@ import '../../stylesheet/fonts.css';
 import eclipseGray from '../../images/EllipseGray.png';
 import eclipsePink from '../../images/EllipsePink.png';
 import RegImage from '../../images/RegistrationPageImage.png';
+import RegImageTab from '../../images/RegistrationPageImage_tablet.png';
+import LoginImage from '../../images/loginPageImage_desktop.png';
+import LoginImageTab from '../../images/loginPageImage_tablet.png';
 
 export const Container = styled.div`
   display: block;
@@ -10,7 +13,7 @@ export const Container = styled.div`
   padding: 0;
 `;
 
-export const ContainerRegister = styled.div`
+export const ContainerPage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,7 +36,6 @@ export const ContainerRegister = styled.div`
     width: 100vw;
     min-height: 1024px;
     text-align: center;
-    flex-grow: 1;
     height: 100vh;
   }
 
@@ -54,27 +56,49 @@ export const ImageSection = styled.div`
   }
   @media (min-width: 1280px) {
     flex-direction: column;
-    padding: 150px 0 77px;
-    margin-right: 60px;
+    justify-content: center;
+    margin-bottom: 0px;
   }
 `;
 
-export const ImageContainer = styled.div`
+export const ImageContainerLog = styled.div`
   @media (min-width: 768px) {
-    background-image: url(${RegImage});
+    background-image: url(${LoginImageTab});
     background-repeat: no-repeat;
-    background-size: contain;
-    margin-bottom: 50px;
-    display: inline-block;
+    background-size: cover;
+    margin-left: auto;
     margin-right: auto;
-    height: 273px;
-    width: 250px;
-    display: inline-block;
+    height: 250px;
+    width: 260px;
   }
 
   @media (min-width: 1280px) {
+    background-image: url(${LoginImage});
+    width: 435px;
+    height: 419px;
+    margin-right: 38px;
+    margin-bottom: 32px;
+
+  }
+`;
+
+export const ImageContainerReg = styled.div`
+  @media (min-width: 768px) {
+    background-image: url(${RegImageTab});
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    height: 250px;
+    width: 274px;
+  }
+
+  @media (min-width: 1280px) {
+    background-image: url(${RegImage});
     width: 452px;
-    height: 413px;
+    height: 412px;
+    margin-bottom: 32px;
+    margin-right: 32px;
   }
 `;
 export const Text = styled.p`
@@ -95,15 +119,17 @@ export const Text = styled.p`
   }
 `;
 
-export const ContainerRegisterForm = styled.div`
+export const ContainerForm = styled.div`
+  align-items: center;
+  display: flex;
+  @media (max-width: 767px) {
+    height: 100vh;
+  }
   @media (min-width: 1280px) {
     width: 57%;
     height: 100%;
-    padding: 52px 85px 52px 95px;
     background: hsla(0, 0%, 100%, 0.4);
     backdrop-filter: blur(50px);
-    display: flex;
-    align-items: center;
   }
 `;
 
@@ -112,17 +138,37 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0;
-  padding: 36px 20px;
   background: var(--white);
-  height: 100vh;
-
+  height: 354px;
+  width: 320px;
   @media screen and (max-width: 767px) {
     justify-content: center;
   }
 
   @media screen and (min-width: 768px) {
-    max-width: 540px;
+    width: 533px;
+    height: 468px;
+    padding: 40px 65px 60px;
+    border-radius: 20px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+`;
+
+export const FormContainerRegsiter = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--white);
+  height: 354px;
+  width: 320px;
+  @media screen and (max-width: 767px) {
+    justify-content: center;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 533px;
     height: 616px;
     padding: 40px 65px 60px;
     border-radius: 20px;
@@ -148,10 +194,7 @@ export const LogoText = styled.p`
   font-family: var(--secondaryFont);
   font-style: normal;
   font-weight: var(--bold);
-  font-size: 30px;
-  line-height: 45px;
-  display: flex;
-  align-items: center;
+  font-size: 26px;
   color: var(--black);
 `;
 
