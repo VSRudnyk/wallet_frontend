@@ -8,8 +8,8 @@ import { ReactComponent as Eye } from '../../images/VectorEyes.svg';
 import { ReactComponent as EyeClose } from '../../images/VectorEyeClose.svg';
 
 export const FormContainer = styled(Form)`
-margin-bottom: 20px;
-`
+  margin-bottom: 20px;
+`;
 
 export const Input = styled(Field)`
   padding: 10px 55px;

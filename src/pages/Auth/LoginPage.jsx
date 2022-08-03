@@ -18,7 +18,7 @@ const LoginPage = () => {
   return (
     <Container>
       <ContainerPage>
-      <Media
+        <Media
           query="(min-width: 768px)"
           render={() => (
             <ImageSection>

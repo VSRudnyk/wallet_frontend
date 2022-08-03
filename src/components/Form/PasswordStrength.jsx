@@ -14,7 +14,7 @@ export const PasswordStrenght = ({ password }) => {
       case 2:
         return '#FAF00C';
       case 3:
-        return '#0CFA75';
+        return '#3faf6f';
       case 4:
         return '#0CD534';
       default:

@@ -11,11 +11,21 @@ import {
   LoginButton,
   RegisterButton,
   ErrorText,
-  FormContainer
+  FormContainer,
+  ButtonHide,
+  ButtonShow,
 } from './Form.styled';
+import { useState } from 'react';
 
 export const LoginForm = () => {
   const [login, { error, isError, isSuccess }] = useLoginMutation();
+  const [type, setType] = useState('password');
+
+  const showHide = e => {
+    e.preventDefault();
+    let currentType = type === 'input' ? 'password' : 'input';
+    setType(currentType);
+  };
 
   const defaultInitialValues = {
     email: '',
@@ -24,7 +34,15 @@ export const LoginForm = () => {
 
   const schema = yup.object().shape({
     email: yup.string().email().min(6).required(),
-    password: yup.string().min(6).max(12).required(),
+    password: yup
+      .string()
+      .min(6)
+      .max(12)
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
+        'must be uppercase, number and special character'
+      )
+      .required(),
   });
 
   const handleSubmit = (values, { resetForm }) => {
@@ -44,7 +62,7 @@ export const LoginForm = () => {
 
   return (
     <>
-    {isSuccess && toast.success("Welcome back!") && <ToastContainer />}
+      {isSuccess && toast.success('Welcome back!') && <ToastContainer />}
       {isError && toast.error(error.data.message) && <ToastContainer />}
 
       <Formik
@@ -59,12 +77,17 @@ export const LoginForm = () => {
             <FormError name="email" />
           </InputContainer>
           <InputContainer>
+            {type === 'input' ? (
+              <ButtonShow onClick={showHide} />
+            ) : (
+              <ButtonHide onClick={showHide} />
+            )}
             <SvgLock />
-            <Input name="password" type="password" placeholder="Password" />
+            <Input name="password" type={type} placeholder="Password" />
             <FormError name="password" />
           </InputContainer>
           <ToastContainer />
-          <LoginButton type="submit">login</LoginButton>
+          <LoginButton type="submit">log in</LoginButton>
         </FormContainer>
       </Formik>
       <Link to="/wallet_frontend/register">

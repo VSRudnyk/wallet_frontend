@@ -78,7 +78,6 @@ export const ImageContainerLog = styled.div`
     height: 419px;
     margin-right: 38px;
     margin-bottom: 32px;
-
   }
 `;
 

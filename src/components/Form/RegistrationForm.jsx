@@ -3,7 +3,6 @@ import * as yup from 'yup';
 import { useRegisterMutation } from '../../redux/authOperation';
 import { Formik, ErrorMessage } from 'formik';
 import { toast, ToastContainer, Slide } from 'react-toastify';
-import { useTranslation } from 'react-i18next';
 import 'react-toastify/dist/ReactToastify.css';
 import {
   Input,
@@ -14,24 +13,26 @@ import {
   RegisterButton,
   LoginButton,
   ErrorText,
-  FormContainer
+  FormContainer,
 } from './Form.styled';
 import { PasswordInput } from './PasswordInput';
 
 export const FormRegistration = () => {
-  const [register, { isSuccess, isError, status }] = useRegisterMutation();
-  const { t } = useTranslation();
+  const [register, { isSuccess, isError, status, error }] =
+    useRegisterMutation();
 
   const schema = yup.object().shape({
-    name: yup.string().required(),
+    name: yup.string().max(16).required(),
     email: yup.string().email().min(6).required(),
-    password: yup.string().min(6).max(12).required(),
-
+    password: yup.string().min(6).max(12).matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/,
+      "must be one uppercase, one number"
+    ).required(),
     repeated_password: yup.string().when('password', {
       is: val => (val && val.length > 0 ? true : false),
       then: yup
         .string()
-        .oneOf([yup.ref('password')], t('registration.password.notequal')),
+        .oneOf([yup.ref('password')], 'both password need to be the same'),
     }),
   });
 
@@ -51,9 +52,7 @@ export const FormRegistration = () => {
     return (
       <ErrorMessage
         name={name}
-        render={message => (
-          <ErrorText>{t(`registration.required.${name}`)}</ErrorText>
-        )}
+        render={message => <ErrorText>{message}</ErrorText>}
       />
     );
   };
@@ -62,7 +61,7 @@ export const FormRegistration = () => {
     <>
       {isSuccess &&
         status === 'fulfilled' &&
-        toast.success(t('registration.status.success'), {
+        toast.success('Success! Please, log in!', {
           theme: 'colored',
           icon: '🚀',
           autoClose: 8000,
@@ -73,53 +72,39 @@ export const FormRegistration = () => {
           progress: undefined,
           transition: Slide,
         }) && <ToastContainer />}
-      {isError && toast.error(t('registration.status.error')) && (
-        <ToastContainer />
-      )}
+      {isError && toast.error(error.data.message) && <ToastContainer />}
       <Formik
         initialValues={defaultInitialValues}
         onSubmit={handleSubmit}
         validationSchema={schema}
       >
         <FormContainer autoComplete="off">
-            <InputContainer>
-              <SvgEnvelope />
-              <Input
-                name="email"
-                type="email"
-                placeholder={t('registration.placeholders.e-mail')}
-              />
-              <FormError name="email" />
-            </InputContainer>
-            <PasswordInput />
-            <InputContainer>
-              <SvgLock />
-              <Input
-                name="repeated_password"
-                type="password"
-                placeholder={t('registration.placeholders.confirmpassword')}
-              />
-              <FormError name="repeated_password" />
-            </InputContainer>
-            <InputContainer>
-              <SvgAccount />
-              <Input
-                name="name"
-                type="text"
-                placeholder={t('registration.placeholders.firstname')}
-              />
-              <FormError name="name" />
-            </InputContainer>
-          <RegisterButton type="submit">
-            {t('registration.buttons.register')}
-          </RegisterButton>
+          <InputContainer>
+            <SvgEnvelope />
+            <Input name="email" type="email" placeholder="E-mail" />
+            <FormError name="email" />
+          </InputContainer>
+          <PasswordInput />
+          <InputContainer>
+            <SvgLock />
+            <Input
+              name="repeated_password"
+              type="password"
+              placeholder="Confirm password"
+            />
+            <FormError name="repeated_password" />
+          </InputContainer>
+          <InputContainer>
+            <SvgAccount />
+            <Input name="name" type="text" placeholder="Firstname" />
+            <FormError name="name" />
+          </InputContainer>
+          <RegisterButton type="submit">Register</RegisterButton>
           <ToastContainer />
         </FormContainer>
       </Formik>
       <Link to="/wallet_frontend/login">
-        <LoginButton type="button">
-          {t('registration.buttons.login')}
-        </LoginButton>
+        <LoginButton type="button">Login </LoginButton>
       </Link>
       <ToastContainer />
     </>

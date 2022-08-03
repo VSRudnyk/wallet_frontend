@@ -15,11 +15,11 @@ import {
 } from './Page.styled';
 import LogoImg from '../../images/Logo.svg';
 
- const RegistrationPage = () => {
+const RegistrationPage = () => {
   return (
     <Container>
       <ContainerPage>
-        <Media
+        <Media 
           query="(min-width: 768px)"
           render={() => (
             <ImageSection>
