@@ -50,10 +50,11 @@ export const Currency = ({ page }) => {
       const arrMainCurrency = [];
       let result = null;
       try {
-        const currency = await axios(
-          'https://wallet-backend-1.herokuapp.com/api/currency'
-        );
-
+        // const currency = await axios(
+        //   'https://wallet-backend-1.herokuapp.com/api/currency'
+        // );
+        const mono = await axios('https://api.monobank.ua/bank/currency');
+        console.log(mono);
         for (let currencyBack of currency.data.exchangeRate) {
           if (
             currencyBack.currency === 'USD' ||
@@ -75,7 +76,7 @@ export const Currency = ({ page }) => {
           date: data.getTime(),
           currency: result.reverse(),
         };
-        localStorage.setItem('currency', JSON.stringify(DateToLocal));
+        // localStorage.setItem('currency', JSON.stringify(DateToLocal));
         setStatus('resolve');
         return setCurrency(result);
       } catch (error) {
