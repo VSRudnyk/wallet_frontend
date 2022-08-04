@@ -1,6 +1,7 @@
 /* import { validate } from 'indicative/validator'; */
 import { useAddTransactionMutation } from '../../redux/transactionsOperation';
 import { toast, ToastContainer } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -48,6 +49,8 @@ export const ModalAddTransactions = () => {
 
   const [transaction, { isSuccess, isError }] = useAddTransactionMutation();
   const [selectWindow, setSelectWindow] = useState(false);
+
+  const { t } = useTranslation();
 
   const modalAddTransactionStatus = useSelector(
     state => state.modal.isModalAddTransactionOpen
@@ -112,7 +115,7 @@ export const ModalAddTransactions = () => {
     <Backdrop onClick={OnBackdropClick}>
       <Modal>
         {isSuccess &&
-          toast.success('Operation add Success!', {
+          toast.success(t('addtransaction.notify.success'), {
             theme: 'colored',
             icon: '🆗',
             autoClose: 8000,
@@ -121,14 +124,16 @@ export const ModalAddTransactions = () => {
             draggable: true,
             progress: undefined,
           }) && <ToastContainer />}
-        {isError && toast.error('Something wrong, try again!') && (
+        {isError && toast.error(t('addtransaction.notify.error')) && (
           <ToastContainer />
         )}
         <ButtonClose onClick={closeModal}>{<CloseSvg />}</ButtonClose>
-        <ModalName>Add transaction</ModalName>
+        <ModalName>{t('addtransaction.header.title')}</ModalName>
 
         <SwitchBox onClick={onButtonClick}>
-          <SwitchIncome nonActive={!input.operationType}>Income</SwitchIncome>
+          <SwitchIncome nonActive={!input.operationType}>
+            {t('addtransaction.header.income')}
+          </SwitchIncome>
           <SwtchCase>
             <SwitcherButton typeIncome={input.operationType}>
               {input.operationType && <SwitcherButtonVert />}
@@ -136,7 +141,7 @@ export const ModalAddTransactions = () => {
             </SwitcherButton>
           </SwtchCase>
           <SwitchExpence nonActive={!input.operationType}>
-            Expense
+            {t('addtransaction.header.expense')}
           </SwitchExpence>
         </SwitchBox>
         <InputsBox>
@@ -146,7 +151,9 @@ export const ModalAddTransactions = () => {
               onClick={onSelectClick}
               nonActive={input.category}
             >
-              {!input.category ? 'Select category' : input.category}
+              {!input.category
+                ? t('addtransaction.placeholders.select')
+                : input.category}
               <SelectSvg />
               {selectWindow && (
                 <SelectWindow>
@@ -156,56 +163,56 @@ export const ModalAddTransactions = () => {
                       key="Main"
                       value="Main"
                     >
-                      Main
+                      {t('addtransaction.options.main')}
                     </SelectOptions>
                     <SelectOptions
                       onClick={onOptionClick}
                       key="Food"
                       value="Food"
                     >
-                      Food
+                      {t('addtransaction.options.food')}
                     </SelectOptions>
                     <SelectOptions
                       onClick={onOptionClick}
                       key="Auto"
                       value="Auto"
                     >
-                      Auto
+                      {t('addtransaction.options.auto')}
                     </SelectOptions>
                     <SelectOptions
                       onClick={onOptionClick}
                       key="Development"
                       value="Development"
                     >
-                      Development
+                      {t('addtransaction.options.development')}
                     </SelectOptions>
                     <SelectOptions
                       onClick={onOptionClick}
                       key="Children"
                       value="Children"
                     >
-                      Children
+                      {t('addtransaction.options.children')}
                     </SelectOptions>
                     <SelectOptions
                       onClick={onOptionClick}
                       key="House"
                       value="House"
                     >
-                      House
+                      {t('addtransaction.options.house')}
                     </SelectOptions>
                     <SelectOptions
                       onClick={onOptionClick}
                       key="Education"
                       value="Education"
                     >
-                      Education
+                      {t('addtransaction.options.education')}
                     </SelectOptions>
                     <SelectOptions
                       onClick={onOptionClick}
                       key="Reset"
                       value="Reset"
                     >
-                      Reset
+                      {t('addtransaction.options.reset')}
                     </SelectOptions>
                   </ul>
                 </SelectWindow>
@@ -236,12 +243,16 @@ export const ModalAddTransactions = () => {
             type="text"
             value={input.comment}
             onChange={e => setInput({ ...input, comment: e.target.value })}
-            placeholder="Comment"
+            placeholder={t('addtransaction.placeholders.comment')}
           />
         </InputsBox>
-        <ButtonAdd onClick={onSubmitClick}>Add</ButtonAdd>
+        <ButtonAdd onClick={onSubmitClick}>
+          {t('addtransaction.buttons.add')}
+        </ButtonAdd>
         <br />
-        <ButtonCancel onClick={closeModal}>Cancel</ButtonCancel>
+        <ButtonCancel onClick={closeModal}>
+          {t('addtransaction.buttons.cancel')}
+        </ButtonCancel>
       </Modal>
     </Backdrop>,
     modalRoot

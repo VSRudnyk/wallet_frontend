@@ -20,7 +20,6 @@ import Media from 'react-media';
 
 export const HomeTab = ({ page }) => {
   const { data, isLoading, isSuccess } = useGetAllTransactionsQuery();
-  console.log(data);
   const { t } = useTranslation();
   const [transactions, setTransactions] = useState([]);
 
