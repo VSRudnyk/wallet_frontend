@@ -11,11 +11,11 @@ const DashboardPage = lazy(() =>
 const PublickRoute = lazy(() =>
   import('./routers/PublicRouter' /* webpackChunkName: "PublickRoute" */)
 );
-const RegistrationPage = lazy(() =>
-  import('./pages/Registration' /* webpackChunkName: "RegistrationPage" */)
+const RegistrationPage  = lazy(() =>
+  import('./pages/Auth/RegistrationPage' /* webpackChunkName: "RegistrationPage" */)
 );
 const LoginPage = lazy(() =>
-  import('./pages/Login' /* webpackChunkName: "LoginPage" */)
+  import('./pages/Auth/LoginPage' /* webpackChunkName: "LoginPage" */)
 );
 
 export const App = () => {

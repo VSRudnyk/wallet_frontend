@@ -1,11 +1,12 @@
 import React from 'react';
 import zxcvbn from 'zxcvbn';
 
-export const PasswordStrenght = ({ password }) => {
+export const PasswordStrenght = ({ password}) => {
   const testResult = zxcvbn(password);
   const num = (testResult.score * 100) / 4;
 
   const progressColor = () => {
+
     switch (testResult.score) {
       case 0:
         return '#F11C0B';
@@ -14,30 +15,13 @@ export const PasswordStrenght = ({ password }) => {
       case 2:
         return '#FAF00C';
       case 3:
-        return '#0CFA75';
+        return '#3faf6f';
       case 4:
         return '#0CD534';
       default:
         return 'none';
     }
   };
-
-  // const createPasswordLabel = () => {
-  //   switch (testResult.score) {
-  //     case 0:
-  //       return '';
-  //     case 1:
-  //       return 'weak';
-  //     case 2:
-  //       return 'okay';
-  //     case 3:
-  //       return 'good';
-  //     case 4:
-  //       return 'strong';
-  //     default:
-  //       return '';
-  //   }
-  // };
 
   const changeProgressStyle = () => ({
     width: '100%',
