@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import Line from '../../images/line-currency-min.png';
 
 export const TableWrapper = styled.div`
+  margin-top: 15px;
   @media screen and (min-width: 768px) {
     display: block;
     width: 336px;
+    margin-top: 0;
   }
   @media screen and (min-width: 1280px) {
     width: 393px;
@@ -85,6 +87,7 @@ export const TableBodyList = styled.ul`
 `;
 
 export const TableBodyListItem = styled.li`
+  width: 269px;
   display: flex;
   justify-content: space-between;
 `;

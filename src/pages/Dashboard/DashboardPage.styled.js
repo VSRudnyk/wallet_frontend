@@ -59,11 +59,9 @@ export const DashboardSeparator = styled.div`
     margin-left: 69px;
     margin-right: 89px;
     margin-top: -47px;
-    margin-bottom: -47px;
+    margin-bottom: -120px;
     border: 1px solid var(--vector-color);
     box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
       1px 0px 0px rgba(255, 255, 255, 0.6);
   }
 `;
-
-
