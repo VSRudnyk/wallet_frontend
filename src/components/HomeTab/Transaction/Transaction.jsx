@@ -43,14 +43,9 @@ const Transaction = forwardRef(({ transactionList }, ref) => {
     headerGroups,
     page,
     prepareRow,
-    canPreviousPage,
-    canNextPage,
-    pageOptions,
-    pageCount,
-    gotoPage,
+
     nextPage,
     previousPage,
-    state: { pageIndex, pageSize },
   } = useTable(
     {
       columns,
