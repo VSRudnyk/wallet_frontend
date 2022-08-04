@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import TransactionMobile from './TransactionMobile/TransactionMobile';
 import Transaction from './Transaction';
@@ -6,7 +6,16 @@ import { useGetAllTransactionsQuery } from '../../redux/transactionsOperation';
 import { Loader } from 'components/Loader';
 import { v4 as uuidv4 } from 'uuid';
 
-import { HomeTabWrapper, List, ListItem, Text } from './HomeTab.styled';
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+
+import {
+  HomeTabWrapper,
+  List,
+  ListItem,
+  Text,
+  Pagination,
+  PaginationBtn,
+} from './HomeTab.styled';
 import Media from 'react-media';
 
 export const HomeTab = ({ page }) => {
@@ -27,6 +36,14 @@ export const HomeTab = ({ page }) => {
     const date2 = new Date(item2.date);
     return Number(date2) - Number(date1);
   });
+  const childRef = useRef(null);
+
+  const next = value => {
+    childRef.current?.next(value);
+  };
+  const previous = value => {
+    childRef.current?.previous(value);
+  };
 
   return (
     <HomeTabWrapper page={page}>
@@ -57,7 +74,20 @@ export const HomeTab = ({ page }) => {
               <Text>{t('noTransactionText')}</Text>
             )
           ) : (
-            <Transaction transactionList={sortedTransactions} />
+            <>
+              <Transaction
+                transactionList={sortedTransactions}
+                ref={childRef}
+              />{' '}
+              <Pagination>
+                <PaginationBtn type="button" onClick={() => previous(true)}>
+                  <AiOutlineLeft />
+                </PaginationBtn>
+                <PaginationBtn type="button" onClick={() => next(true)}>
+                  <AiOutlineRight />
+                </PaginationBtn>
+              </Pagination>
+            </>
           )
         }
       </Media>

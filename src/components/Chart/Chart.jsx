@@ -10,15 +10,15 @@ export function Chart() {
   const { t } = useTranslation();
   const [chartData] = useState({
     labels: [
-      t('diagramTab.reduxData.basic'),
-      t('diagramTab.reduxData.products'),
-      t('diagramTab.reduxData.car'),
-      t('diagramTab.reduxData.health'),
-      t('diagramTab.reduxData.kids'),
-      t('diagramTab.reduxData.home'),
-      t('diagramTab.reduxData.education'),
-      t('diagramTab.reduxData.leisure'),
-      t('diagramTab.reduxData.other'),
+      'Basic',
+      'Products',
+      'Car',
+      'Health',
+      'Kids',
+      'Home',
+      'Education',
+      'Leisure',
+      'Other',
     ],
     datasets: [
       {
@@ -52,7 +52,9 @@ export function Chart() {
       tooltip: {
         callbacks: {
           label: function (toolTipItem) {
-            return `${toolTipItem.label}: ₴ ${toolTipItem.formattedValue}`;
+            return `${t(
+              `diagramTab.reduxData.${toolTipItem.label.toLowerCase()}`
+            )}: ₴ ${toolTipItem.formattedValue}`;
           },
         },
       },
@@ -61,7 +63,7 @@ export function Chart() {
 
   return (
     <Container>
-      <Label>Statistics</Label>
+      <Label>{t('statistics.header')}</Label>
       <ChartContainer>
         <Doughnut data={chartData} options={chartOption} />
         <Text>₴ 24 000.00</Text>
