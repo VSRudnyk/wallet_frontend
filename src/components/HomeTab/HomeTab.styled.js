@@ -93,3 +93,22 @@ export const TempBtn = styled.button`
   font-size: 18px;
   line-height: 27px;
 `;
+////PAGINATION//////
+export const Pagination = styled.div`
+  margin-top: 30px;
+`;
+export const PaginationBtn = styled.button`
+  width: 50px;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  outline: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  &:hover {
+    background-color: var(--blue);
+    fill: var(--white);
+  }
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+`;

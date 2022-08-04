@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const TableContainer = styled.div`
   position: relative;
-  height: 56vh;
+  height: 35vh;
   overflow: hidden;
   overflow-y: scroll;
   &::-webkit-scrollbar {
