@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { categoriesOperation } from './transactionsOperation';
-
+import { categoriesOperation } from './categoriesOperation';
 
 const initialState = {
   categories: null,
@@ -11,10 +10,10 @@ export const categoriesSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder.addMatcher(
-      categoriesOperation.endpoints.getCategories.matchFulfilled,
+      categoriesOperation.endpoints.getAllCategories.matchFulfilled,
       (state, { payload }) => {
         state.categories = payload.categories;
-      },
+      }
     );
   },
 });

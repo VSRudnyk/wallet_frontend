@@ -1,12 +1,23 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistReducer,
+  persistStore,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authOperation } from './authOperation';
 import { usersOperation } from './usersOperation';
 import { transactionsOperation } from './transactionsOperation';
+import { categoriesOperation } from './categoriesOperation';
 import modalReducer from './modal/modalReducer';
 import authReducer from './authSlice';
 import transactionReducer from './transactionsSlice';
+import categoriesReducer from './categoriesSlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -19,13 +30,20 @@ const transactionPersistConfig = {
   storage,
 };
 
+const categoriesPersistConfig = {
+  key: 'categories',
+  storage,
+};
+
 export const store = configureStore({
   reducer: {
     [authOperation.reducerPath]: authOperation.reducer,
     [usersOperation.reducerPath]: usersOperation.reducer,
     [transactionsOperation.reducerPath]: transactionsOperation.reducer,
+    [categoriesOperation.reducerPath]: categoriesOperation.reducer,
     auth: persistReducer(authPersistConfig, authReducer),
     transaction: persistReducer(transactionPersistConfig, transactionReducer),
+    categories: persistReducer(categoriesPersistConfig, categoriesReducer),
     modal: modalReducer,
   },
   middleware: getDefaultMiddleware => [
@@ -37,6 +55,7 @@ export const store = configureStore({
     authOperation.middleware,
     usersOperation.middleware,
     transactionsOperation.middleware,
+    categoriesOperation.middleware,
   ],
 });
 

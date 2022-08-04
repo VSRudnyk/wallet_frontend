@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import { CustomSelect } from 'components/DiagramTab/NewSelectButton/CustomSelect'
+import { useGetAllCategoriesQuery } from '../../redux/categoriesOperation';
+import { CustomSelect } from 'components/DiagramTab/NewSelectButton/CustomSelect';
 import {
   DiagramTabWrapper,
   DiagramButton,
@@ -15,6 +15,8 @@ const Table = lazy(() => import('../Table' /* webpackChunkName: "Table" */));
 const Chart = lazy(() => import('../Chart' /* webpackChunkName: "Chart" */));
 
 export const DiagramTab = () => {
+  const { data } = useGetAllCategoriesQuery();
+  console.log(data);
   const { t } = useTranslation();
   const reduxData = [
     {
@@ -123,8 +125,27 @@ export const DiagramTab = () => {
               </DiagramCustomSelect>
               <IconSVG id="icon-diagram-tab-arrow-down" />
             </DiagramButton>
-            <CustomSelect items={{tittle:"Year", data: ["2019", "2020", "2021", "2022"]}}/>
-            <CustomSelect items={{tittle:"Month", data: ["January", "February", "March", "April", "June", "July", "August", "September", "October", "November", "December"]}}/>
+            <CustomSelect
+              items={{ tittle: 'Year', data: ['2019', '2020', '2021', '2022'] }}
+            />
+            <CustomSelect
+              items={{
+                tittle: 'Month',
+                data: [
+                  'January',
+                  'February',
+                  'March',
+                  'April',
+                  'June',
+                  'July',
+                  'August',
+                  'September',
+                  'October',
+                  'November',
+                  'December',
+                ],
+              }}
+            />
           </DiagramButtonsWrapper>
           <Table tableData={reduxData} />
         </DiagramTableBar>
