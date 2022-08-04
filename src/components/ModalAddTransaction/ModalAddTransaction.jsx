@@ -46,7 +46,7 @@ export const ModalAddTransactions = () => {
     balance: 90000,
   });
 
-  const [transaction, { isSuccess, isError }] = useTransactionMutation();
+  const [transaction, { isSuccess, isError }] = useAddTransactionMutation();
   const [selectWindow, setSelectWindow] = useState(false);
 
   const modalAddTransactionStatus = useSelector(
