@@ -19,6 +19,7 @@ import globalReducer from './global/globalReducer';
 const authPersistConfig = {
   key: 'auth',
   storage,
+  whitelist: ['isLoggedIn']
 };
 
 const loginPersistConfig = {

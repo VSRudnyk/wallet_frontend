@@ -10,8 +10,7 @@ import {
 import { PasswordStrenght } from './PasswordStrength';
 import { ErrorMessage } from 'formik';
 
-export const PasswordInput = () => {
-  const [password, setPassword] = useState('');
+export const PasswordInput = ({onInput, password}) => {
   const [type, setType] = useState('password');
   const showHide = e => {
     e.preventDefault();
@@ -40,7 +39,7 @@ export const PasswordInput = () => {
 
       <SvgLock />
       <Input
-        onInput={e => setPassword(e.target.value)}
+        onInput={onInput}
         name="password"
         type={type}
         placeholder="Password"

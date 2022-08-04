@@ -16,25 +16,33 @@ import {
   FormContainer,
 } from './Form.styled';
 import { PasswordInput } from './PasswordInput';
+import { useState } from 'react';
 
 export const FormRegistration = () => {
-  const [register, { isSuccess, isError, status, error }] =
-    useRegisterMutation();
 
+  const [password, setPassword] = useState('');
+
+  const [register, { isSuccess, status, error }] = useRegisterMutation();
   const schema = yup.object().shape({
     name: yup.string().max(16).required(),
     email: yup.string().email().min(6).required(),
-    password: yup.string().min(6).max(12).matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*\s)/,
-      "must be one uppercase, one number"
-    ).required(),
-    repeated_password: yup.string().when('password', {
-      is: val => (val && val.length > 0 ? true : false),
-      then: yup
-        .string()
-        .oneOf([yup.ref('password')], 'both password need to be the same'),
-    }),
+    password: yup
+      .string()
+      .min(6)
+      .max(12)
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*\s)/,
+        'must be one uppercase, one number'
+      )
+      .required(),
+    repeated_password: yup
+      .string()
+      .oneOf([yup.ref('password')], 'both password need to be the same').required('is required field'),
   });
+
+  const Pass = e => {
+    setPassword(e.target.value);
+  };
 
   const defaultInitialValues = {
     name: '',
@@ -45,6 +53,7 @@ export const FormRegistration = () => {
 
   const handleSubmit = ({ name, email, password }, { resetForm }) => {
     register({ name, email, password });
+    setPassword('');
     resetForm();
   };
 
@@ -57,11 +66,11 @@ export const FormRegistration = () => {
     );
   };
 
-
   return (
     <>
       {isSuccess &&
         status === 'fulfilled' &&
+        password === '' &&
         toast.success('Success! Please, log in!', {
           theme: 'colored',
           icon: '🚀',
@@ -73,7 +82,9 @@ export const FormRegistration = () => {
           progress: undefined,
           transition: Slide,
         }) && <ToastContainer />}
-      {isError && toast.error(error.data.message) && <ToastContainer />}
+      {status === 'rejected' &&
+        password === '' &&
+        toast.error(error.data.message) && <ToastContainer />}
       <Formik
         initialValues={defaultInitialValues}
         onSubmit={handleSubmit}
@@ -85,7 +96,7 @@ export const FormRegistration = () => {
             <Input name="email" type="email" placeholder="E-mail" />
             <FormError name="email" />
           </InputContainer>
-          <PasswordInput />
+          <PasswordInput onInput={Pass} password={password} />
           <InputContainer>
             <SvgLock />
             <Input

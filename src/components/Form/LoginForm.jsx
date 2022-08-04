@@ -38,10 +38,6 @@ export const LoginForm = () => {
       .string()
       .min(6)
       .max(12)
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/,
-        'must be uppercase, number and special character'
-      )
       .required(),
   });
 
