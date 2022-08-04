@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkwallet_frontend=self.webpackChunkwallet_frontend||[]).push([[719],{9940:function(n,e,t){t.d(e,{u:function(){return r}});var r={getToken:function(n){return n.login.token}}},594:function(n,e,t){t.r(e),t.d(e,{default:function(){return l}});var r=t(5048),u=t(6871),o=t(9940),f=t(184);function l(n){var e=n.children,t=(0,r.v9)(o.u.getToken);return(0,f.jsx)(f.Fragment,{children:t?e:(0,f.jsx)(u.Fg,{to:"/wallet_frontend/register"})})}}}]);
-//# sourceMappingURL=PrivatRoute.bf4d4ccb.chunk.js.map
