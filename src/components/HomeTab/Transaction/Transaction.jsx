@@ -1,10 +1,11 @@
-import { useMemo } from 'react';
-import { useTable } from 'react-table';
+import { useMemo, forwardRef, useImperativeHandle } from 'react';
+import { useTable, usePagination } from 'react-table';
 import { useTranslation } from 'react-i18next';
 import EllipsisText from 'react-ellipsis-text';
-import { TableContainer, Table, Thead, Th, BodyTd } from './Transaction.styled';
 
-const Transaction = ({ transactionList }) => {
+import { TableContainer, Table, Th, BodyTd } from './Transaction.styled';
+
+const Transaction = forwardRef(({ transactionList }, ref) => {
   const { t } = useTranslation();
   const data = useMemo(() => transactionList, [transactionList]);
   const columns = useMemo(
@@ -36,13 +37,45 @@ const Transaction = ({ transactionList }) => {
     ],
     []
   );
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    prepareRow,
+
+    nextPage,
+    previousPage,
+  } = useTable(
+    {
+      columns,
+      data,
+      initialState: { pageIndex: 0, pageSize: 10 },
+    },
+    usePagination
+  );
+  const pageFwd = value => {
+    if (!value) {
+      return;
+    }
+    nextPage();
+  };
+  const pageBack = value => {
+    if (!value) {
+      return;
+    }
+    previousPage();
+  };
+
+  useImperativeHandle(ref, () => ({
+    next: value => pageFwd(value),
+    previous: value => pageBack(value),
+  }));
 
   return (
     <TableContainer>
       <Table {...getTableProps()}>
-        <Thead>
+        <thead>
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
@@ -52,9 +85,9 @@ const Transaction = ({ transactionList }) => {
               ))}
             </tr>
           ))}
-        </Thead>
+        </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map(row => {
+          {page.map(row => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
@@ -62,9 +95,9 @@ const Transaction = ({ transactionList }) => {
                   const header = cell.column.Header;
                   switch (header) {
                     case 'Date':
-                      let newValue = cell
-                        .render('Cell')
-                        .props.value.slice(2)
+                      let newValue = new Date(cell.render('Cell').props.value)
+                        .toISOString()
+                        .slice(2)
                         .substring(0, 8)
                         .split('-')
                         .reverse()
@@ -128,6 +161,6 @@ const Transaction = ({ transactionList }) => {
       </Table>
     </TableContainer>
   );
-};
+});
 
 export default Transaction;

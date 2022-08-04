@@ -3,13 +3,14 @@ import {
   DashboardSecondSectionWrapper,
   DashboardWrapper,
   DashboardSeparator,
-  Dashboard,
-  ButtonAddTransactionsWrapper,
+  Dashboard
 } from './DashboardPage.styled';
 import { lazy } from 'react';
 import { Container } from 'stylesheet/Container.styled';
 import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { ButtonAddTransactions } from '../../components/ButtonAddTransactions/ButtonAddTransactions';
+import { ModalAddTransactions } from 'components/ModalAddTransaction/ModalAddTransaction'; 
 import Media from 'react-media';
 const Header = lazy(() =>
   import('../../components/Header' /* webpackChunkName: "Header" */)
@@ -32,6 +33,8 @@ const DiagramTab = lazy(() =>
 export const DashboardPage = () => {
   const location = useLocation();
   const { pathname } = location;
+  const modalAddTransactionStatus = useSelector(state=>
+    state.modal.isModalAddTransactionOpen); 
 
   return (
     <>
@@ -69,12 +72,10 @@ export const DashboardPage = () => {
               {location.pathname === '/wallet_frontend/home' && <HomeTab />}
             </DashboardSecondSectionWrapper>
           </DashboardWrapper>
-        </Container>
-
-        <ButtonAddTransactionsWrapper>
-          <ButtonAddTransactions />
-        </ButtonAddTransactionsWrapper>
+          {modalAddTransactionStatus && <ModalAddTransactions/>}
+        </Container>        
       </Dashboard>
+      {location.pathname === '/wallet_frontend/home' && <ButtonAddTransactions/>}
     </>
   );
 };
