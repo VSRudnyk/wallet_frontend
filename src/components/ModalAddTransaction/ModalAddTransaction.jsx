@@ -1,5 +1,5 @@
 /* import { validate } from 'indicative/validator'; */
-import { useTransactionMutation } from '../../redux/transactionsOperation';
+import { useAddTransactionMutation } from '../../redux/transactionsOperation';
 import { toast, ToastContainer } from 'react-toastify';
 
 import { useEffect, useState } from 'react';

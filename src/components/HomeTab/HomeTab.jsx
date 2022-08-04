@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useGetAllTransactionsQuery } from 'redux/authOperation';
-
 import { useTranslation } from 'react-i18next';
 import TransactionMobile from './TransactionMobile/TransactionMobile';
+import Transaction from './Transaction';
+import { useGetAllTransactionsQuery } from '../../redux/transactionsOperation';
 import { Loader } from 'components/Loader';
 import { v4 as uuidv4 } from 'uuid';
 
 import { HomeTabWrapper, List, ListItem, Text } from './HomeTab.styled';
 import Media from 'react-media';
-import Transaction from './Transaction/Transaction';
 
 export const HomeTab = ({ page }) => {
   const { data, isLoading, isSuccess } = useGetAllTransactionsQuery();

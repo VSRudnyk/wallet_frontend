@@ -5,28 +5,35 @@ import Logo from '../../images/Logo.svg';
 import Exit from '../../images/Exit.svg';
 import Settings from 'components/SettingsBtn/Settings';
 import {
-  HeaderSection,
-  LogoStyle,
   ContainerLogo,
-  LogoName,
   HeaderContainer,
-  UserName,
-  LogoutImg,
-  LogoutButton,
+  HeaderSection,
+  LogoName,
+  LogoStyle,
   Logout,
+  LogoutButton,
+  LogoutImg,
+  UserName,
 } from './Header.styled';
 import { Container } from 'stylesheet/Container.styled';
+import { useLogoutMutation } from '../../redux/authOperation';
 
 export const Header = () => {
+
+  const [logout] = useLogoutMutation();
+  const onLogoutHandler = async () => {
+    await logout();
+  };
+
   const { t } = useTranslation();
   return (
     <HeaderSection>
       <Container>
         <HeaderContainer>
           <ContainerLogo>
-            <NavLink to="/wallet_frontend/home">
+            <NavLink to='/wallet_frontend/home'>
               <ContainerLogo>
-                <LogoStyle src={Logo} alt="Logo" />
+                <LogoStyle src={Logo} alt='Logo' />
                 <LogoName>Wallet</LogoName>
               </ContainerLogo>
             </NavLink>
@@ -40,8 +47,8 @@ export const Header = () => {
                 ) : (
                   <>
                     <Settings />
-                    <LogoutButton>
-                      <LogoutImg src={Exit} alt="Exit" />
+                    <LogoutButton onClick={onLogoutHandler}>
+                      <LogoutImg src={Exit} alt='Exit' />
                       <Logout>{t('header.exit')}</Logout>
                     </LogoutButton>
                   </>
