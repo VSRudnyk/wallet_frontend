@@ -44,7 +44,7 @@ export const InputContainer = styled.div`
 
 export const SvgEnvelope = styled(Envelope)`
   position: absolute;
-  top: 8px;
+  top: 2px;
   left: 8px;
   @media screen and (min-width: 768px) {
     top: 2px;
@@ -53,7 +53,7 @@ export const SvgEnvelope = styled(Envelope)`
 
 export const SvgLock = styled(Lock)`
   position: absolute;
-  top: 8px;
+  top: 2px;
   left: 8px;
   @media screen and (min-width: 768px) {
     top: 2px;
@@ -62,7 +62,7 @@ export const SvgLock = styled(Lock)`
 
 export const SvgAccount = styled(Account)`
   position: absolute;
-  top: 8px;
+  top: 2px;
   left: 8px;
   @media screen and (min-width: 768px) {
     top: 2px;
@@ -121,7 +121,7 @@ export const ButtonShow = styled(Eye)`
   position: absolute;
   padding: 7px 7px;
   right: 0;
-  top: 5px;
+  top: -3px;
   @media screen and (min-width: 768px) {
     right: 0;
     top: 0;
@@ -132,7 +132,7 @@ export const ButtonHide = styled(EyeClose)`
   position: absolute;
   padding: 7px 7px;
   right: 0;
-  top: 5px;
+  top: -3px;
   fill: var(--gray);
 
   @media screen and (min-width: 768px) {

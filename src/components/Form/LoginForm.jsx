@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useLoginMutation } from '../../redux/loginOperation';
+import { useLoginMutation } from '../../redux/authOperation';
 import { Formik, ErrorMessage } from 'formik';
 import { toast, ToastContainer } from 'react-toastify';
 import * as yup from 'yup';
@@ -34,11 +34,7 @@ export const LoginForm = () => {
 
   const schema = yup.object().shape({
     email: yup.string().email().min(6).required(),
-    password: yup
-      .string()
-      .min(6)
-      .max(12)
-      .required(),
+    password: yup.string().min(6).max(12).required(),
   });
 
   const handleSubmit = (values, { resetForm }) => {
