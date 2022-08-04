@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useLoginMutation } from '../../redux/authOperation';
+import { useLoginMutation } from 'redux/authOperation';
 import { Formik, ErrorMessage } from 'formik';
 import { toast, ToastContainer } from 'react-toastify';
 import * as yup from 'yup';
@@ -18,7 +18,7 @@ import {
 import { useState } from 'react';
 
 export const LoginForm = () => {
-  const [login, { error, isError, isSuccess }] = useLoginMutation();
+  const [login, { isError, isSuccess }] = useLoginMutation();
   const [type, setType] = useState('password');
 
   const showHide = e => {
@@ -55,7 +55,7 @@ export const LoginForm = () => {
   return (
     <>
       {isSuccess && toast.success('Welcome back!') && <ToastContainer />}
-      {isError && toast.error(error.data.message) && <ToastContainer />}
+      {isError && toast.error('Ooops, something wrong!') && <ToastContainer />}
 
       <Formik
         initialValues={defaultInitialValues}
