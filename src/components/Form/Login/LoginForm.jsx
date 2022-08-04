@@ -14,7 +14,7 @@ import {
   FormContainer,
   ButtonHide,
   ButtonShow,
-} from './Form.styled';
+} from '../Form.styled';
 import { useState } from 'react';
 
 export const LoginForm = () => {

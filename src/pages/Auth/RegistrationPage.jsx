@@ -1,5 +1,5 @@
 import Media from 'react-media';
-import { FormRegistration } from 'components/Form';
+import { FormRegistration } from '../../components/Form';
 
 import {
   ContainerPage,

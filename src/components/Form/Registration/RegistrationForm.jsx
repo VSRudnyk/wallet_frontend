@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
-import { useRegisterMutation } from '../../redux/authOperation';
+import { useRegisterMutation } from '../../../redux/authOperation';
 import { Formik, ErrorMessage } from 'formik';
 import { toast, ToastContainer, Slide } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,7 +14,7 @@ import {
   LoginButton,
   ErrorText,
   FormContainer,
-} from './Form.styled';
+} from '../Form.styled';
 import { PasswordInput } from './PasswordInput';
 import { useState } from 'react';
 

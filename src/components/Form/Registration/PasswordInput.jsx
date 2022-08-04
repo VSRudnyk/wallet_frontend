@@ -6,7 +6,7 @@ import {
   ButtonHide,
   SvgLock,
   ErrorTextPassword,
-} from './Form.styled';
+} from '../Form.styled';
 import { PasswordStrenght } from './PasswordStrength';
 import { ErrorMessage } from 'formik';
 
