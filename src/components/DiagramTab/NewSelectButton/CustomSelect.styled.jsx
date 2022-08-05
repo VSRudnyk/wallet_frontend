@@ -12,15 +12,7 @@ export const SelectWrapper = styled.div`
         fill: var(--active-blue);
     }
 
-    // & svg {
-    // position: absolute;
-    // top: 50%;
-    // right: 20px;
-    // transform: translateY(-50%);
-    // cursor: pointer;
-    // transition: fill 500ms ease;
-    // pointer-events: none;
-    // }
+    
 
 `;
 export const SelectBtn = styled.button`
@@ -42,6 +34,11 @@ export const SelectBtn = styled.button`
     background: none;
     cursor: pointer;
     outline: none;
+
+    & svg {
+        ${props => props.status === true ? `transform: rotateX(180deg);` : `transform: rotateX(0);`}
+        transition: transform 500ms ease;
+    }
 `;
 
 export const SelectOptionsList = styled.ul`
