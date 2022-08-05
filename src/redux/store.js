@@ -14,7 +14,7 @@ import { authOperation } from './authOperation';
 import { usersOperation } from './usersOperation';
 import { transactionsOperation } from './transactionsOperation';
 import { categoriesOperation } from './categoriesOperation';
-import modalReducer from './modal/modalReducer';
+import globalReducer from './global/globalReducer';
 import authReducer from './authSlice';
 import transactionReducer from './transactionsSlice';
 import categoriesReducer from './categoriesSlice';
@@ -44,7 +44,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     transaction: persistReducer(transactionPersistConfig, transactionReducer),
     categories: persistReducer(categoriesPersistConfig, categoriesReducer),
-    modal: modalReducer,
+    global: globalReducer,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
