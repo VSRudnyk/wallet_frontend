@@ -68,8 +68,12 @@ export const Currency = ({ page }) => {
             cur.currency !== 'RUB' &&
             cur.currency !== 'USD' &&
             cur.currency !== 'EUR' &&
-            cur.currency !== 'PLZ'
+            cur.currency !== 'PLZ' &&
+            cur.currency !== 'UAH' &&
+            cur.currency !== 'UZS' &&
+            cur.currency !== undefined
         );
+
         result.push(...arrMainCurrency);
         const DateToLocal = {
           date: data.getTime(),
