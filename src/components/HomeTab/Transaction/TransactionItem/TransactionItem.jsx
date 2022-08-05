@@ -2,6 +2,11 @@ import { useTranslation } from 'react-i18next';
 import { Li, Data, Span, DelBtn, Icon } from './TransactionItem.styled';
 import EllipsisText from 'react-ellipsis-text';
 import { useDeleteTransactionMutation } from 'redux/transactionsOperation';
+import Notiflix from 'notiflix';
+
+Notiflix.Confirm.init({
+  okButtonBackground: '#ff6596',
+});
 
 const TransactionItem = ({ transaction }) => {
   const [deleteTransaction] = useDeleteTransactionMutation({
@@ -9,6 +14,21 @@ const TransactionItem = ({ transaction }) => {
   });
   const { _id, date, type, category, comment, sum, balance } = transaction;
   const { t } = useTranslation();
+
+  const promptBeforeDeleteContactModal = id => {
+    Notiflix.Confirm.show(
+      'Are you sure?',
+      'Transaction cannot be restored after deleting',
+      'Delete',
+      'Cancel',
+      function okCb() {
+        deleteTransaction(id);
+      },
+      function notOkCb() {
+        return;
+      }
+    );
+  };
 
   const newDate = new Date(date)
     .toISOString()
@@ -40,7 +60,7 @@ const TransactionItem = ({ transaction }) => {
       <DelBtn
         type="button"
         onClick={() => {
-          deleteTransaction(_id);
+          promptBeforeDeleteContactModal(_id);
         }}
       >
         <Icon />
