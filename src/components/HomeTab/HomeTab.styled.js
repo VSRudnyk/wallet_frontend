@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
 export const HomeTabWrapper = styled.div`
-
-
   position: relative;
   & > button:nth-child(1) {
     margin-right: 30px;

@@ -4,16 +4,42 @@ import {
   TransactionDescrp,
   TransactionData,
   Sum,
+  Icon,
+  DelBtn,
 } from './TransactionMobile.styled';
 import { v4 as uuidv4 } from 'uuid';
 import EllipsisText from 'react-ellipsis-text';
 import { useTranslation } from 'react-i18next';
+import { useDeleteTransactionMutation } from 'redux/transactionsOperation';
+import Notiflix from 'notiflix';
 
-const TransactionMobile = ({ obj }) => {
+Notiflix.Confirm.init({
+  okButtonBackground: '#ff6596',
+});
+
+const TransactionMobile = ({ transaction }) => {
+  const [deleteTransaction] = useDeleteTransactionMutation({
+    refetchOnMountOrArgChange: true,
+  });
   const { t } = useTranslation();
-  const { date, type, category, comment, sum, balance } = obj;
+  const promptBeforeDeleteContactModal = id => {
+    Notiflix.Confirm.show(
+      t('deleteprompt.sure'),
+      t('deleteprompt.irrevertable'),
+      t('deleteprompt.delete'),
+      t('deleteprompt.cancel'),
+      function okCb() {
+        deleteTransaction(id);
+      },
+      function notOkCb() {
+        return;
+      }
+    );
+  };
+  const { _id, date, type, category, comment, sum, balance } = transaction;
 
   const list = Object.entries({
+    _id,
     date,
     type,
     category,
@@ -73,6 +99,14 @@ const TransactionMobile = ({ obj }) => {
           <ListItem key={uuidv4()} type={type}>
             <TransactionDescrp>{t(`${key}`)}</TransactionDescrp>
             <TransactionData>{`${value.toFixed(2)}`}</TransactionData>
+            <DelBtn
+              type="button"
+              onClick={() => {
+                promptBeforeDeleteContactModal(_id);
+              }}
+            >
+              <Icon />
+            </DelBtn>
           </ListItem>
         );
 

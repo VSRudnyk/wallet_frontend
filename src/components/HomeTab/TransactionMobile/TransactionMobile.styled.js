@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { BsFillTrashFill } from 'react-icons/bs';
 
 export const List = styled.ul`
   @media screen and (max-width: 767px) {
@@ -74,4 +75,23 @@ export const TransactionData = styled.p`
 
 export const Sum = styled.span`
   color: ${props => (props.income === 'income' ? '#24CCA7' : '#ff6596')};
+`;
+export const DelBtn = styled.button`
+  position: absolute;
+  left: 50%;
+  top: 64%;
+  transform: translate(-50%, -50%);
+
+  background-color: transparent;
+  outline: none;
+  border: none;
+  padding: 9px;
+`;
+
+export const Icon = styled(BsFillTrashFill)`
+  cursor: pointer;
+  color: #bdbdbd;
+  &:hover {
+    fill: #ff6596;
+  }
 `;

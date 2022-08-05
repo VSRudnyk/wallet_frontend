@@ -38,6 +38,7 @@
   "house": "Casa",
   "income": "Ingreso",
   "expense": "Gasto",
+  "salary": "Salario",
   "header": {
     "name": "Nombre",
     "exit": "Salida"
@@ -173,5 +174,11 @@
       "comment": "Notas",
       "select": "Selecciona una categoría"
     }
+  },
+  "deleteprompt": {
+    "sure": "Estas seguro?",
+    "irrevertable": "La transacción no se puede restaurar después de la eliminación",
+    "delete": "Borrar",
+    "cancel": "Cancelar"
   }
 }
