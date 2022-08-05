@@ -1,8 +1,12 @@
 import { Li, Data, Span, DelBtn, Icon } from './TransactionItem.styled';
 import EllipsisText from 'react-ellipsis-text';
+import { useDeleteTransactionMutation } from 'redux/transactionsOperation';
 
 const TransactionItem = ({ transaction }) => {
-  const { date, type, category, comment, sum, balance } = transaction;
+  const [deleteTransaction] = useDeleteTransactionMutation({
+    refetchOnMountOrArgChange: true,
+  });
+  const { _id, date, type, category, comment, sum, balance } = transaction;
 
   const newDate = new Date(date)
     .toISOString()
@@ -12,7 +16,7 @@ const TransactionItem = ({ transaction }) => {
     .reverse()
     .join('.');
   return (
-    <Li>
+    <Li id={_id}>
       <Data style={{ paddingTop: '16px', paddingBottom: '15px' }}>
         {newDate}
       </Data>
@@ -27,7 +31,12 @@ const TransactionItem = ({ transaction }) => {
       <Data>
         <span style={{ paddingRight: '50px' }}>{balance}</span>
       </Data>
-      <DelBtn type="button">
+      <DelBtn
+        type="button"
+        onClick={() => {
+          deleteTransaction(_id);
+        }}
+      >
         <Icon />
       </DelBtn>
     </Li>

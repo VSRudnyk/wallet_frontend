@@ -1,10 +1,10 @@
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
 import TransactionItem from './TransactionItem';
 import { TableContainer, List, Li } from './Transaction.styled';
 
 const Transaction = ({ transactionList }) => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   const columns = [
     {

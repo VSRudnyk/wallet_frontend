@@ -19,11 +19,11 @@ export const Data = styled.p`
   &::after {
     content: '';
     position: absolute;
-    left: 0;
+    left: 18px;
     top: 56.396px;
     background-color: #dcdcdf;
     box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
-    width: 100%;
+    width: 95%;
     height: 1px;
   }
 `;

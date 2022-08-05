@@ -10,15 +10,15 @@ import { HomeTabWrapper, List, ListItem, Text } from './HomeTab.styled';
 import Media from 'react-media';
 
 export const HomeTab = ({ page }) => {
-  const { data, isLoading, isSuccess } = useGetAllTransactionsQuery();
+  const { data, isLoading, isSuccess } = useGetAllTransactionsQuery({
+    refetchOnMountOrArgChange: true,
+    refetchOnFocus: true,
+    refetchOnReconnect: true,
+  });
   const { t } = useTranslation();
   const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
-    if (transactions.length !== 0) {
-      return;
-    }
-
     isSuccess && setTransactions(data);
   }, [data, isLoading, isSuccess, transactions]);
 
@@ -35,7 +35,6 @@ export const HomeTab = ({ page }) => {
           matches.mobile ? (
             sortedTransactions.length === 0 ? (
               isLoading ? (
-                // <Loader />
                 <Loader color="#4a56e2" size="45px" />
               ) : (
                 <Text>{t('noTransactionText')}</Text>
@@ -53,7 +52,6 @@ export const HomeTab = ({ page }) => {
             )
           ) : sortedTransactions.length === 0 ? (
             isLoading ? (
-              // <Loader />
               <Loader color="#4a56e2" size="45px" />
             ) : (
               <Text>{t('noTransactionText')}</Text>
