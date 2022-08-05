@@ -2,23 +2,23 @@ export const colorizedCategory = (category) => {
 
     const categoryColorsData = [
       {
-        categoryColor: '#FF7DDB',
+        categoryColor: '#B5B88F',
         categoryName: 'Main',
       },
       {
-        categoryColor: '#FF6E41',
+        categoryColor: '#FF7A7A',
         categoryName: 'House',
       },
       {
-        categoryColor: '#F422FF',
+        categoryColor: '#FFF1CB',
         categoryName: 'Children',
       },
       {
-        categoryColor: '#FF1EA1',
+        categoryColor: '#F0F1AB',
         categoryName: 'Development',
       },
       {
-        categoryColor: '#BE6C31',
+        categoryColor: '#F6ACF8',
         categoryName: 'Auto',
       },
       {
