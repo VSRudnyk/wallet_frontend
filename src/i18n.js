@@ -3,6 +3,7 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import English from './locale/en/translation.json';
 import Ukrainian from './locale/ua/translation.json';
+import Spanish from './locale/es/translation.json';
 
 i18n
   // detect user language
@@ -24,6 +25,9 @@ i18n
       },
       ua: {
         translation: Ukrainian,
+      },
+      es: {
+        translation: Spanish,
       },
     },
   });
