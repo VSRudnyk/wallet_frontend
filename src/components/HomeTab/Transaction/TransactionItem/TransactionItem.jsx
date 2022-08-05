@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { Li, Data, Span, DelBtn, Icon } from './TransactionItem.styled';
 import EllipsisText from 'react-ellipsis-text';
 import { useDeleteTransactionMutation } from 'redux/transactionsOperation';
@@ -7,6 +8,7 @@ const TransactionItem = ({ transaction }) => {
     refetchOnMountOrArgChange: true,
   });
   const { _id, date, type, category, comment, sum, balance } = transaction;
+  const { t } = useTranslation();
 
   const newDate = new Date(date)
     .toISOString()
@@ -20,8 +22,8 @@ const TransactionItem = ({ transaction }) => {
       <Data style={{ paddingTop: '16px', paddingBottom: '15px' }}>
         {newDate}
       </Data>
-      <Data>{type}</Data>
-      <Data>{category}</Data>
+      <Data>{t(`${type}`)}</Data>
+      <Data>{t(`${category}`)}</Data>
       <Data>
         <EllipsisText text={comment.toLowerCase()} length={20} />
       </Data>

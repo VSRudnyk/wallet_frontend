@@ -20,6 +20,7 @@ import {
 const lngs = {
   en: { nativeName: 'English' },
   ua: { nativeName: 'Українська' },
+  es: { nativeName: 'Español' },
 };
 
 const Settings = () => {
@@ -40,6 +41,7 @@ const Settings = () => {
     if (
       e.target.id !== 'en' &&
       e.target.id !== 'ua' &&
+      e.target.id !== 'es' &&
       e.target.id !== 'langs' &&
       e.target.id !== 'Capa_1' &&
       e.target.id !== 'logout'
@@ -61,9 +63,6 @@ const Settings = () => {
       </LangBtn>
     </ListItem>
   ));
-  const onLogoutHandler = async () => {
-    await logout();
-  };
   return (
     <Media queries={{ mobile: { maxWidth: 767 } }}>
       {matches =>
