@@ -7,6 +7,16 @@ import { ReactComponent as Account } from '../../images/account.svg';
 import { ReactComponent as Eye } from '../../images/VectorEyes.svg';
 import { ReactComponent as EyeClose } from '../../images/VectorEyeClose.svg';
 
+export const Base = styled.div`
+  display: block;
+  height: 4px;
+  box-shadow: 1px -2px 16px #e3e8e3;
+  margin-top: 1px;
+  transition: 1s;
+  width: 0%;
+  border-radius: 25px;
+`
+
 export const FormContainer = styled(Form)`
   margin-bottom: 20px;
 `;
