@@ -1,12 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-
+import { Loader } from 'components/Loader';
 // import { ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-import { HashLoader } from 'react-spinners';
+// import { HashLoader } from 'react-spinners';
 
 import Media from 'react-media';
 
@@ -19,7 +19,7 @@ import {
   TableBodyListItem,
   TableBodyText,
   TableWrapper,
-  LoaderWrapper,
+  // LoaderWrapper,
 } from './Currency.styled';
 import { useLocation, Navigate } from 'react-router-dom';
 // import { getCurrency } from './API/ApiCurrency';
@@ -103,13 +103,13 @@ export const Currency = ({ page }) => {
             <TableWrapper page={page}>
               <TableHeaderContainer>
                 <TableHeaderList>
-                  <TableHeaderListItem>
+                  <TableHeaderListItem key={uuidv4()}>
                     {t('currencyPage.currency')}
                   </TableHeaderListItem>
-                  <TableHeaderListItem>
+                  <TableHeaderListItem key={uuidv4()}>
                     {t('currencyPage.purchase')}
                   </TableHeaderListItem>
-                  <TableHeaderListItem>
+                  <TableHeaderListItem key={uuidv4()}>
                     {t('currencyPage.sale')}
                   </TableHeaderListItem>
                 </TableHeaderList>
@@ -119,31 +119,31 @@ export const Currency = ({ page }) => {
                   {currency.length > 0 &&
                     currency.map(({ currency, purchaseRateNB, saleRateNB }) => {
                       return (
-                        <>
-                          <TableBodyListItem key={uuidv4()}>
-                            <TableBodyText key={uuidv4()}>
-                              {currency}
-                            </TableBodyText>
-                            <TableBodyText key={uuidv4()}>
-                              {Number(purchaseRateNB).toFixed(2)}
-                            </TableBodyText>
-                            <TableBodyText key={uuidv4()}>
-                              {Number(saleRateNB).toFixed(2)}
-                            </TableBodyText>
-                          </TableBodyListItem>
-                        </>
+                        <TableBodyListItem key={uuidv4()}>
+                          <TableBodyText>{currency}</TableBodyText>
+                          <TableBodyText>
+                            {Number(purchaseRateNB).toFixed(2)}
+                          </TableBodyText>
+                          <TableBodyText>
+                            {Number(saleRateNB).toFixed(2)}
+                          </TableBodyText>
+                        </TableBodyListItem>
                       );
                     })}
-                  {status === 'pending' && (
-                    <LoaderWrapper>
-                      <HashLoader
-                        color="#f7f7f7"
-                        loading
-                        size={35}
-                        speedMultiplier={1.5}
-                      />
-                    </LoaderWrapper>
-                  )}
+
+                  {
+                    status === 'pending' && (
+                      <Loader color="#e7e5f2" size="35px" />
+                    )
+                    // <LoaderWrapper>
+                    //   <HashLoader
+                    //     color="#f7f7f7"
+                    //     loading
+                    //     size={35}
+                    //     speedMultiplier={1.5}
+                    //   />
+                    // </LoaderWrapper>
+                  }
                 </TableBodyList>
               </TableBodyContainer>
               {/* <ToastContainer /> */}
@@ -173,31 +173,28 @@ export const Currency = ({ page }) => {
                   {currency.length > 0 &&
                     currency.map(({ currency, purchaseRateNB, saleRateNB }) => {
                       return (
-                        <>
-                          <TableBodyListItem key={uuidv4()}>
-                            <TableBodyText key={uuidv4()}>
-                              {currency}
-                            </TableBodyText>
-                            <TableBodyText key={uuidv4()}>
-                              {Number(purchaseRateNB).toFixed(2)}
-                            </TableBodyText>
-                            <TableBodyText key={uuidv4()}>
-                              {Number(saleRateNB).toFixed(2)}
-                            </TableBodyText>
-                          </TableBodyListItem>
-                        </>
+                        <TableBodyListItem key={uuidv4()}>
+                          <TableBodyText>{currency}</TableBodyText>
+                          <TableBodyText>
+                            {Number(purchaseRateNB).toFixed(2)}
+                          </TableBodyText>
+                          <TableBodyText>
+                            {Number(saleRateNB).toFixed(2)}
+                          </TableBodyText>
+                        </TableBodyListItem>
                       );
                     })}
-
+                  {/* <Loader color="red" size="35" /> */}
                   {status === 'pending' && (
-                    <LoaderWrapper>
-                      <HashLoader
-                        color="#f7f7f7"
-                        loading
-                        size={45}
-                        speedMultiplier={1.5}
-                      />
-                    </LoaderWrapper>
+                    <Loader color="#e7e5f2" size="45px" />
+                    // <LoaderWrapper>
+                    //   <HashLoader
+                    //     color="#f7f7f7"
+                    //     loading
+                    //     size={45}
+                    //     speedMultiplier={1.5}
+                    //   />
+                    // </LoaderWrapper>
                   )}
                 </TableBodyList>
               </TableBodyContainer>

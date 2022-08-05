@@ -3,48 +3,45 @@ import { useState } from 'react'
 import { IconSVG } from 'stylesheet/IconSVG';
 
 
-export const CustomSelect = ({items}) => {
+export const CustomSelect = ({items, changeValue}) => {
 
-    const [selectedValue, setSelectedValue] = useState(items.tittle)
+    const [selectedText, setSelectedTex] = useState(items.tittle)
     const [openStatus, setOpenStatus] = useState(false);
  
     function onSelectClick () {
-        setOpenStatus(!openStatus);
+        setOpenStatus(!openStatus);  
     }
 
     function onSelectChange (event) {
-        console.log(event.currentTarget.className)
-
 
         if (event.target.nodeName !== "LI") {
             return
         }
+        
+        const itemName = event.target.innerText;
+        const itemValue = event.target.dataset.itemvalue
 
-        const itemValue = event.target.dataset.itemvalue;
+        setSelectedTex(itemName);
+        changeValue(itemValue);
+        setOpenStatus(!openStatus);
 
-        setSelectedValue(itemValue);
-        setOpenStatus(!openStatus)
     }
 
     return (
         <SelectWrapper className='select__wrapper'>
-            <SelectBtn className='select__button' onClick={onSelectClick}>
-                <span className='select__button__active-text'>{selectedValue}</span>
-                <IconSVG id="icon-diagram-tab-arrow-down" />
+            <SelectBtn className='select__button' onClick={onSelectClick} status={openStatus}>
+                <span className='select__button__active-text'>{selectedText}</span>
+                <IconSVG id="icon-diagram-tab-arrow-down"/>
             </SelectBtn>
 
             {openStatus === true && <SelectOptionsList className='select__options-wrapper options' onClick={event => {
                 onSelectChange(event)
             }}>
-                {items && items.data.map(item => {
+                {items && items.data.map(({text, value}) => {
                     return (
-                        <SelectOptionsItem key={item} className='options__item' data-itemvalue={`${item}`}>{item}</SelectOptionsItem>
+                        <SelectOptionsItem key={text} className='options__item' data-itemvalue={value}>{text}</SelectOptionsItem>
                     )
                 })}
-                {/* <SelectOptionsItem className='options__item' data-itemvalue="2019">2019</SelectOptionsItem>
-                <SelectOptionsItem className='options__item' data-itemvalue="2020">2020</SelectOptionsItem>
-                <SelectOptionsItem className='options__item' data-itemvalue="2021">2021</SelectOptionsItem>
-                <SelectOptionsItem className='options__item' data-itemvalue="2022">2022</SelectOptionsItem> */}
             </SelectOptionsList>}
         </SelectWrapper>
     )

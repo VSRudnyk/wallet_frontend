@@ -1,70 +1,219 @@
-import { lazy } from 'react';
-import { useTranslation } from 'react-i18next';
+
+import { lazy, useState, useEffect } from 'react';
 import { useGetAllCategoriesQuery } from '../../redux/categoriesOperation';
-import { CustomSelect } from 'components/DiagramTab/NewSelectButton/CustomSelect';
+// import { useTranslation } from 'react-i18next';
+
+import { CustomSelect } from 'components/DiagramTab/NewSelectButton/CustomSelect'
 import {
   DiagramTabWrapper,
-  DiagramButton,
-  DiagramCustomSelect,
   DiagramTableBar,
   DiagramButtonsWrapper,
   StatisticsContainer,
 } from './DiagramTab.styled';
-import { IconSVG } from 'stylesheet/IconSVG';
+import { colorizedCategory } from 'helpers/colorizedCategory';
+
 const Table = lazy(() => import('../Table' /* webpackChunkName: "Table" */));
 const Chart = lazy(() => import('../Chart' /* webpackChunkName: "Chart" */));
 
+
 export const DiagramTab = () => {
-  const { data } = useGetAllCategoriesQuery();
-  console.log(data);
-  const { t } = useTranslation();
-  const reduxData = [
-    {
-      categoryColor: '#FED057',
-      categoryName: 'Basic',
-      categorySum: '8700.00',
-    },
-    {
-      categoryColor: '#FFD8D0',
-      categoryName: 'Products',
-      categorySum: '3800.74',
-    },
-    {
-      categoryColor: '#FD9498',
-      categoryName: 'Car',
-      categorySum: '1500.00',
-    },
-    {
-      categoryColor: '#C5BAFF',
-      categoryName: 'Health',
-      categorySum: '800.00',
-    },
-    {
-      categoryColor: '#6E78E8',
-      categoryName: 'Kids',
-      categorySum: '2208.50',
-    },
-    {
-      categoryColor: '#4A56E2',
-      categoryName: 'Home',
-      categorySum: '300.00',
-    },
-    {
-      categoryColor: '#81E1FF',
-      categoryName: 'Education',
-      categorySum: '3400.00',
-    },
-    {
-      categoryColor: '#24CCA7',
-      categoryName: 'Leisure',
-      categorySum: '1230.00',
-    },
-    {
-      categoryColor: '#00AD84',
-      categoryName: 'Other',
-      categorySum: '610.00',
-    },
-  ];
+const { data: reduxData } = useGetAllCategoriesQuery();
+
+  // const { t } = useTranslation();
+  const [tableCategories, setTableCategories] = useState('');
+  const [tableIncomeSum, setTableIncomeSum] = useState(0)
+  const [tableExpenseSum, setTableExpenseSum] = useState(0)
+
+  const [monthSelectedValue, setMonthSelectedValue] = useState(null);
+  const [yearSelectedValue, setYearSelectedValue] = useState(null);
+
+  const monthDataSet = {
+    tittle:"Month",
+    data: [
+      {text: "January", value: 1}, 
+      {text: "February", value: 2}, 
+      {text: "March", value: 3}, 
+      {text: "April", value: 4},
+      {text: "May", value: 5},
+      {text: "June", value: 6},
+      {text: "July", value: 7},
+      {text: "August", value: 8},
+      {text: "September", value: 9},
+      {text: "October", value: 10},
+      {text: "November", value: 11},
+      {text: "December", value: 12}
+    ]
+  }
+
+  const yearDataSet = {
+    tittle:"Year",
+    data: [
+      {text: "2019", value: 2019}, 
+      {text: "2020", value: 2020}, 
+      {text: "2021", value: 2021}, 
+      {text: "2022", value: 2022}
+    ]
+  };
+  function incomeExpenseFilter (type, data) {
+    switch (type) {
+      case 'income':
+      return data.filter(item => item && item._id.type === 'income');
+
+      case 'expense':
+      return data.filter(item => item && item._id.type === 'expense');
+
+      default: console.log('incorrect type of operation')
+    }
+    
+  }
+  function onDateFilter (date, data) {
+    const {month, year} = date;
+      
+      if (month === null && year === null) {
+        const result = data;
+        return result;
+      }
+        
+  
+      if (month !== null && year === null) {
+
+        const result = data.filter(item => item._id.month === Number(month));
+        return result;
+      }
+        
+  
+      if (month === null && year !== null) {
+
+        const result = data.filter(item => item._id.year === Number(year));
+        return result;
+      }
+        
+  
+      if (month !== null && year !== null) {
+
+        const result = data.filter(item => item._id.month === Number(month) && item._id.year === Number(year));
+        return result;
+      }
+        
+  
+      console.log('incorrect arguments')  
+
+  }
+
+useEffect (() => {
+
+  function sumTheSameCategories (data) {
+
+    let sumaryData = [];
+  
+    for (let item of data) {
+  
+      if (sumaryData.length === 0) {
+  
+        sumaryData = [{categoryName: item.category, categorySum: item.sum, categoryColor: colorizedCategory(item.category)}]
+  
+      } else {
+  
+        const exisingItemOnsumaryData = sumaryData.find(element => element.categoryName === item.category);
+  
+        if (exisingItemOnsumaryData !== undefined) {
+          exisingItemOnsumaryData.categorySum += item.sum;
+    
+        } else {
+    
+          sumaryData = [...sumaryData, {categoryName: item.category, categorySum: item.sum, categoryColor: colorizedCategory(item.category)}]
+        }
+  
+      }
+  
+  
+  
+    }
+  
+    return sumaryData;
+  }
+
+  if (reduxData === undefined) {
+    return
+  }
+  if (tableCategories !== '') {
+    return
+  }
+
+  const expenseCategiries = incomeExpenseFilter('expense', reduxData);
+  const incomeCategiries = incomeExpenseFilter('income', reduxData);
+
+
+  const expenseCategiriesTotalSum = expenseCategiries.reduce((total, item) => total += item.totalPrice, 0);
+  const incomeCategiriesTotalSum = incomeCategiries.reduce((total, item) => total += item.totalPrice, 0);
+
+
+  const allCategoriesInOne =  expenseCategiries.reduce((result, item) => result = [...result, ...item.category], []);
+  const sumaryCategories = sumTheSameCategories(allCategoriesInOne);
+
+
+
+  
+
+  setTableCategories(sumaryCategories);
+  setTableExpenseSum(expenseCategiriesTotalSum);
+  setTableIncomeSum(incomeCategiriesTotalSum);
+
+},[reduxData, tableCategories])
+
+useEffect(() => {
+  function sumTheSameCategories (data) {
+
+    let sumaryData = [];
+  
+    for (let item of data) {
+  
+      if (sumaryData.length === 0) {
+  
+        sumaryData = [{categoryName: item.category, categorySum: item.sum, categoryColor: colorizedCategory(item.category)}]
+  
+      } else {
+  
+        const exisingItemOnsumaryData = sumaryData.find(element => element.categoryName === item.category);
+  
+        if (exisingItemOnsumaryData !== undefined) {
+          exisingItemOnsumaryData.categorySum += item.sum;
+    
+        } else {
+    
+          sumaryData = [...sumaryData, {categoryName: item.category, categorySum: item.sum, categoryColor: colorizedCategory(item.category)}]
+        }
+  
+      }
+  
+  
+  
+    }
+  
+    return sumaryData;
+  }
+
+  if (monthSelectedValue === null && yearSelectedValue === null) {
+    return
+  }
+
+  const onDateFilteredData = onDateFilter({month: monthSelectedValue, year: yearSelectedValue}, reduxData);
+
+  const expenseCategiries = incomeExpenseFilter('expense', onDateFilteredData);
+  const incomeCategiries = incomeExpenseFilter('income', onDateFilteredData);
+
+  const expenseCategiriesTotalSum = expenseCategiries.reduce((total, item) => total += item.totalPrice, 0);
+  const incomeCategiriesTotalSum = incomeCategiries.reduce((total, item) => total += item.totalPrice, 0);
+
+  const allCategoriesInOne =  expenseCategiries.reduce((result, item) => result = [...result, ...item.category], []);
+  const sumaryCategories = sumTheSameCategories(allCategoriesInOne);
+
+  setTableCategories(sumaryCategories);
+  setTableExpenseSum(expenseCategiriesTotalSum);
+  setTableIncomeSum(incomeCategiriesTotalSum);
+
+},[monthSelectedValue, reduxData, yearSelectedValue])
+
 
   return (
     <StatisticsContainer>
@@ -72,82 +221,14 @@ export const DiagramTab = () => {
       <DiagramTabWrapper className="diagram-tab__wrapper">
         <DiagramTableBar className="diagram-tab__table-bar">
           <DiagramButtonsWrapper className="diagram-tab__buttons-wrapper">
-            <DiagramButton className="diagram-btn">
-              <DiagramCustomSelect
-                defaultValue="Month"
-                name="month"
-                className="diagram-btn__select_month"
-              >
-                <option value="Month" disabled style={{ display: 'none' }}>
-                  {t('diagramTab.optionData.month')}
-                </option>
-                <option value="January">
-                  {t('diagramTab.optionData.jan')}
-                </option>
-                <option value="February">
-                  {t('diagramTab.optionData.feb')}
-                </option>
-                <option value="March">{t('diagramTab.optionData.mar')}</option>
-                <option value="April">{t('diagramTab.optionData.apr')}</option>
-                <option value="May">{t('diagramTab.optionData.may')}</option>
-                <option value="June">{t('diagramTab.optionData.jun')}</option>
-                <option value="July">{t('diagramTab.optionData.jul')}</option>
-                <option value="August">{t('diagramTab.optionData.aug')}</option>
-                <option value="September">
-                  {t('diagramTab.optionData.sep')}
-                </option>
-                <option value="October">
-                  {t('diagramTab.optionData.oct')}
-                </option>
-                <option value="November">
-                  {t('diagramTab.optionData.nov')}
-                </option>
-                <option value="December">
-                  {t('diagramTab.optionData.dec')}
-                </option>
-              </DiagramCustomSelect>
-              <IconSVG id="icon-diagram-tab-arrow-down" />
-            </DiagramButton>
 
-            <DiagramButton className="diagram-btn">
-              <DiagramCustomSelect
-                defaultValue="Year"
-                name="year"
-                className="diagram-btn__select_year"
-              >
-                <option value="Year" disabled style={{ display: 'none' }}>
-                  {t('diagramTab.optionData.year')}
-                </option>
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-              </DiagramCustomSelect>
-              <IconSVG id="icon-diagram-tab-arrow-down" />
-            </DiagramButton>
-            <CustomSelect
-              items={{ tittle: 'Year', data: ['2019', '2020', '2021', '2022'] }}
-            />
-            <CustomSelect
-              items={{
-                tittle: 'Month',
-                data: [
-                  'January',
-                  'February',
-                  'March',
-                  'April',
-                  'June',
-                  'July',
-                  'August',
-                  'September',
-                  'October',
-                  'November',
-                  'December',
-                ],
-              }}
-            />
+            <CustomSelect items={yearDataSet} changeValue={setYearSelectedValue}/>
+            <CustomSelect items={monthDataSet} changeValue={setMonthSelectedValue}/>
+
           </DiagramButtonsWrapper>
-          <Table tableData={reduxData} />
+
+          <Table tableCategories={tableCategories} tableIncomeSum={tableIncomeSum} tableExpenseSum={tableExpenseSum}/>
+
         </DiagramTableBar>
       </DiagramTabWrapper>
     </StatisticsContainer>
