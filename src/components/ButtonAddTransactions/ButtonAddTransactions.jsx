@@ -1,14 +1,12 @@
 import {Switch, SwitchElGor, SwitchElVert} from './ButtonAddTransactions.styled'
 import { useDispatch, useSelector } from 'react-redux';
-import { changeModalStatus } from '../../redux/modal/modalActions.jsx'
+import { changeModalStatus } from '../../redux/global/globalActions.jsx'
 
 
  export const ButtonAddTransactions = () => {
     const modalAddTransactionStatus = useSelector(state=>
-        state.modal.isModalAddTransactionOpen);
+        state.global.isModalAddTransactionOpen);
     const dispatch = useDispatch()
-
-    console.log(modalAddTransactionStatus)
 
     function onButtonClick() {
         dispatch(changeModalStatus(!modalAddTransactionStatus))
@@ -20,5 +18,4 @@ import { changeModalStatus } from '../../redux/modal/modalActions.jsx'
                 <SwitchElGor></SwitchElGor>
             </Switch>        
     )}
-
     

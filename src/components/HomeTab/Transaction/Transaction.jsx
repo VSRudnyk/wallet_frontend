@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import TransactionItem from './TransactionItem';
 import { TableContainer, List, Li } from './Transaction.styled';
 
-const Transaction = ({ transactionList }) => {
+const Transaction = ({ transactionsList }) => {
   const { t } = useTranslation();
 
   const columns = [
@@ -44,10 +44,11 @@ const Transaction = ({ transactionList }) => {
     <TableContainer>
       <List>{tableHeaders}</List>
       <List>
-        {transactionList.map(transaction => {
+        {transactionsList.map(transaction => {
           return <TransactionItem key={uuidv4()} transaction={transaction} />;
         })}
       </List>
+
     </TableContainer>
   );
 };

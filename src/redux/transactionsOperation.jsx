@@ -5,7 +5,6 @@ export const transactionsOperation = createApi({
   reducerPath: 'transactionsOperation',
   baseQuery: baseQueryWithReauth,
   tagTypes: ['Transactions'],
-
   endpoints: builder => ({
     getAllTransactions: builder.query({
       query: () => `/transactions`,

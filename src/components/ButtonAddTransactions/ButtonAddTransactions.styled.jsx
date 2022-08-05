@@ -9,6 +9,7 @@ export const Switch = styled.div`
     bottom: 20px;
     right: 20px;    
     background: var(--green);
+   
     box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
     cursor: pointer;   
     @media screen and (min-width: 768px) {
