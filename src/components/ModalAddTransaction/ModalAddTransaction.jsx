@@ -153,7 +153,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Car"
-                        value="Car"
+                        value={t('addtransaction.options.car')}
                       >
                         {t('addtransaction.options.car')}
                       </SelectOptions>
@@ -161,7 +161,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Products"
-                        value="Products"
+                        value={t('addtransaction.options.products')}
                       >
                         {t('addtransaction.options.products')}
                       </SelectOptions>
@@ -169,7 +169,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Main"
-                        value="Main"
+                        value={t('addtransaction.options.main')}
                       >
                         {t('addtransaction.options.main')}
                       </SelectOptions>
@@ -177,7 +177,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Food"
-                        value="Food"
+                        value={t('addtransaction.options.food')}
                       >
                         {t('addtransaction.options.food')}
                       </SelectOptions>
@@ -185,7 +185,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Development"
-                        value="Development"
+                        value={t('addtransaction.options.development')}
                       >
                         {t('addtransaction.options.development')}
                       </SelectOptions>
@@ -193,7 +193,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Children"
-                        value="Children"
+                        value={t('addtransaction.options.children')}
                       >
                         {t('addtransaction.options.children')}
                       </SelectOptions>
@@ -201,7 +201,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="House"
-                        value="House"
+                        value={t('addtransaction.options.house')}
                       >
                         {t('addtransaction.options.house')}
                       </SelectOptions>
@@ -209,7 +209,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Education"
-                        value="Education"
+                        value={t('addtransaction.options.education')}
                       >
                         {t('addtransaction.options.education')}
                       </SelectOptions>
@@ -217,7 +217,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Self care"
-                        value="Self care"
+                        value={t('addtransaction.options.health')}
                       >
                         {t('addtransaction.options.health')}
                       </SelectOptions>
@@ -225,7 +225,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Children care"
-                        value="Children care"
+                        value={t('addtransaction.options.children')}
                       >
                         {t('addtransaction.options.children')}
                       </SelectOptions>{' '}
@@ -233,7 +233,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Household product"
-                        value="Household product"
+                        value={t('addtransaction.options.house')}
                       >
                         {t('addtransaction.options.house')}
                       </SelectOptions>{' '}
@@ -241,7 +241,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Laisure"
-                        value="Laisure"
+                        value={t('addtransaction.options.laisure')}
                       >
                         {t('addtransaction.options.laisure')}
                       </SelectOptions>{' '}
@@ -249,7 +249,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Basic expenses"
-                        value="Basic expenses"
+                        value={t('addtransaction.options.main')}
                       >
                         {t('addtransaction.options.main')}
                       </SelectOptions>
@@ -257,7 +257,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Other"
-                        value="Other"
+                        value={t('addtransaction.options.other')}
                       >
                         {t('addtransaction.options.other')}
                       </SelectOptions>
@@ -268,7 +268,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Salary"
-                        value="Salary"
+                        value={t('addtransaction.options.salary')}
                       >
                         {t('addtransaction.options.salary')}
                       </SelectOptions>
@@ -276,7 +276,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Bonus"
-                        value="Bonus"
+                        value={t('addtransaction.options.bonus')}
                       >
                         {t('addtransaction.options.bonus')}
                       </SelectOptions>
@@ -284,7 +284,7 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Other"
-                        value="Other"
+                        value={t('addtransaction.options.other')}
                       >
                         {t('addtransaction.options.other')}
                       </SelectOptions>

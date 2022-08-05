@@ -17,10 +17,10 @@ const TransactionItem = ({ transaction }) => {
 
   const promptBeforeDeleteContactModal = id => {
     Notiflix.Confirm.show(
-      'Are you sure?',
-      'Transaction cannot be restored after deleting',
-      'Delete',
-      'Cancel',
+      t('deleteprompt.sure'),
+      t('deleteprompt.irrevertable'),
+      t('deleteprompt.delete'),
+      t('deleteprompt.cancel'),
       function okCb() {
         deleteTransaction(id);
       },
@@ -43,7 +43,7 @@ const TransactionItem = ({ transaction }) => {
         {newDate}
       </Data>
       <Data>{t(`${type}`)}</Data>
-      <Data>{t(`${category}`)}</Data>
+      <Data>{t(`${category.toLowerCase()}`)}</Data>
       <Data>
         <EllipsisText text={comment.toLowerCase()} length={20} />
       </Data>

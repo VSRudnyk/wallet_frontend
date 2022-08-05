@@ -36,8 +36,10 @@ export const SelectBtn = styled.button`
     outline: none;
 
     & svg {
-        ${props => props.status === true ? `transform: rotateX(180deg);` : `transform: rotateX(0);`}
-        transition: transform 500ms ease;
+        &.rotated-svg {
+            transform: rotateX(180deg);
+        }
+  
     }
 `;
 
