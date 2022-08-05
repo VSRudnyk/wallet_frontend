@@ -1,4 +1,3 @@
-
 import { useTranslation } from 'react-i18next';
 import TransactionMobile from './TransactionMobile/TransactionMobile';
 import Transaction from './Transaction';
@@ -7,8 +6,19 @@ import { v4 as uuidv4 } from 'uuid';
 import { HomeTabWrapper, List, ListItem, Text } from './HomeTab.styled';
 import Media from 'react-media';
 
-export const HomeTab = ({ transactionsList}) => {
+
+/*export const HomeTab = ({ transactionsList}) => {
   const { t } = useTranslation();
+*/
+
+export const HomeTab = ({ page }) => {
+  const { data, isLoading, isSuccess } = useGetAllTransactionsQuery({
+    refetchOnMountOrArgChange: true,
+    refetchOnFocus: true,
+    refetchOnReconnect: true,
+  });
+  const { t } = useTranslation();
+  const [transactions, setTransactions] = useState([]);
 
   return (
     <HomeTabWrapper>
@@ -32,6 +42,7 @@ export const HomeTab = ({ transactionsList}) => {
                 })}
               </List>
             )
+
           ) : transactionsList.length === 0 ? (
             !transactionsList ? (
               <Loader />

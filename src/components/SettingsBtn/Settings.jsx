@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLogoutMutation } from 'redux/authOperation';
 import Media from 'react-media';
 
 import { ReactComponent as SettingsIcon } from '../../images/settings-icon.svg';
@@ -19,11 +20,14 @@ import {
 const lngs = {
   en: { nativeName: 'English' },
   ua: { nativeName: 'Українська' },
+  es: { nativeName: 'Español' },
 };
 
 const Settings = () => {
   const [isDropDownOpen, setIsDropDowOpen] = useState(false);
   const [isSlideLeftOpen, setIsSlideLeftOpen] = useState(false);
+
+  const [logout] = useLogoutMutation();
 
   const { t, i18n } = useTranslation();
 
@@ -37,9 +41,10 @@ const Settings = () => {
     if (
       e.target.id !== 'en' &&
       e.target.id !== 'ua' &&
+      e.target.id !== 'es' &&
       e.target.id !== 'langs' &&
       e.target.id !== 'Capa_1' &&
-      e.target.id !== 'lang_btn'
+      e.target.id !== 'logout'
     ) {
       setIsDropDowOpen(false);
       setIsSlideLeftOpen(false);
@@ -82,7 +87,11 @@ const Settings = () => {
                       </LangBtn>
                     </ListItem>
                     <ListItem>
-                      <LangBtn>
+                      <LangBtn
+                        type="button"
+                        id="logout"
+                        onClick={() => logout()}
+                      >
                         <span>{t('settingsComponent.exit')}</span>
                         <ExitIcon
                           style={{ width: '18px', marginLeft: 'auto' }}
