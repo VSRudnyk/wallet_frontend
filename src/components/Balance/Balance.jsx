@@ -19,7 +19,9 @@ export const Balance = () => {
       {pathname === '/wallet_frontend/home' && (
         <ContainerBalance >
           <BalanceTitle>{t('balanceComponent.yourBalance')}</BalanceTitle>
+
           <BalanceInWallet>{balance}</BalanceInWallet>
+
         </ContainerBalance>
       )}
       <Media queries={{ tablet: { minWidth: 768 } }}>
@@ -28,7 +30,9 @@ export const Balance = () => {
           pathname === '/wallet_frontend/diagram' && (
             <ContainerBalance >
               <BalanceTitle>{t('balanceComponent.yourBalance')}</BalanceTitle>
+
               <BalanceInWallet>{balance}</BalanceInWallet>
+
             </ContainerBalance>
           )
         }

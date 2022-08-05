@@ -1,0 +1,172 @@
+{
+  "noTransactionText": "No tienes ninguna transacción. Haga clic en el botón Agregar para comenzar.",
+  "date": "Fecha",
+  "type": "Tipo",
+  "category": "Categoría",
+  "comment": "Notas",
+  "sum": "Suma",
+  "balance": "Saldo",
+  "groceries": "Comestibles",
+  "work": "Trabajar",
+  "apartment": "Apartamento",
+  "tenats": "Inquilinas ",
+  "transport": "Transporte",
+  "farmacy": "Farmacia",
+  "restaurant": "Restaurante",
+  "home": "Casa",
+  "other": "Otro",
+  "insurance": "Seguro",
+  "medical": "Atención médica",
+  "education": "Educación",
+  "kids": "Niños",
+  "clothes": "Vestidos",
+  "vacation": "Vacaciones",
+  "investment": "Investidura",
+  "gifts": "Regalos",
+  "sports": "Deporte",
+  "sport": "Deporte",
+  "hobby": "Hobby",
+  "entertainment": "Entretenimiento",
+  "savings": "Ahorros",
+  "basic": "Gastos básicos",
+  "main": "Básicos",
+  "food": "Alimento",
+  "auto": "Auto",
+  "reset": "Reiniciar",
+  "development": "Desarrollo",
+  "children": "Niños",
+  "house": "Casa",
+  "income": "Ingreso",
+  "expense": "Gasto",
+  "header": {
+    "name": "Nombre",
+    "exit": "Salida"
+  },
+  "currencyPage": {
+    "currency": "Divisas",
+    "purchase": "Compra",
+    "sale": "Venta"
+  },
+  "settingsComponent": {
+    "language": "Idioma",
+    "exit": "Salida"
+  },
+  "balanceComponent": {
+    "yourBalance": "Balance"
+  },
+  "diagramTab": {
+    "reduxData": {
+      "basic": "Gastos básicos",
+      "products": "Productos",
+      "car": "Auto",
+      "health": "Salud",
+      "kids": "Niños",
+      "home": "Casa",
+      "education": "Educación",
+      "leisure": "Vacaciones",
+      "other": "Otro"
+    },
+    "optionData": {
+      "month": "Mes",
+      "year": "Año",
+      "jan": "Enero",
+      "feb": "Febrero",
+      "mar": "Marzo",
+      "apr": "Abril",
+      "may": "Mayo",
+      "jun": "Junio",
+      "jul": "Julio",
+      "aug": "Agosto",
+      "sep": "Septiembre",
+      "oct": "Octubre",
+      "nov": "Noviembre",
+      "dec": "Diciembre"
+    }
+  },
+  "table": {
+    "category": "Categoría",
+    "sum": "Suma",
+    "income": "Ingreso",
+    "expenses": "Gasto"
+  },
+  "navigation": {
+    "home": "Principal",
+    "statistics": "Estadísticas"
+  },
+  "registration": {
+    "placeholders": {
+      "e-mail": "Email",
+      "firstname": "Nombre",
+      "password": "Contraseña",
+      "confirmpassword": "Confirmar contraseña"
+    },
+    "buttons": {
+      "register": "REGISTRARSE",
+      "login": "INICIAR SESIÓN"
+    },
+    "password": {
+      "notequal": "паролі повинні співпадати",
+      "short": "пароль має бути не менше 6-ти символів",
+      "required": "це поле не може бути пустим"
+    },
+    "status": {
+      "success": "Реєстрація успішна!",
+      "error": "Користувач з такою поштою вже зареєстрований"
+    },
+    "required": {
+      "name": "це поле не може бути пустим",
+      "repeated_password": "це поле не може бути пустим"
+    }
+  },
+  "login": {
+    "status": {
+      "success": "Ви увійшли!",
+      "error": "Сталася помилка. Спробуйте ще раз"
+    },
+    "buttons": {
+      "register": "РЕЄСТРАЦІЯ",
+      "login": "ВХІД"
+    },
+    "placeholders": {
+      "e-mail": "Пошта",
+      "password": "Пароль"
+    }
+  },
+  "errorPage": {
+    "message": "Esta página no existe. Siga el enlace para volver a ",
+    "home": "Principal",
+    "alt": "Ops, algo anda mal"
+  },
+  "statistics": {
+    "header": "Estadísticas"
+  },
+  "addtransaction": {
+    "header": {
+      "title": "Agregar transacción",
+      "income": "Ingreso",
+      "expense": "Gastos"
+    },
+    "buttons": {
+      "add": "Agregar",
+      "cancel": "Cancelar"
+    },
+    "options": {
+      "main": "Principal",
+      "food": "Alimento",
+      "auto": "Auto",
+      "development": "Desarrollo",
+      "children": "Niños",
+      "house": "Casa",
+      "education": "Educación",
+      "reset": "Otro"
+    },
+    "notify": {
+      "success": "¡La operación es exitosa!",
+      "error": "Algo salió mal. Inténtalo de nuevo."
+    },
+    "placeholders": {
+      "comment": "Notas",
+      "select": "Selecciona una categoría"
+    }
+  }
+}

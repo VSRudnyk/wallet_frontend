@@ -11,8 +11,6 @@ export const Dashboard = styled.main`
   );
   padding-top: 75px;
   padding-bottom: 15px;
-  height: ${({ pathname }) =>
-    pathname === '/wallet_frontend/diagram' ? '100%' : '100vh'};
   backdrop-filter: blur(50px);
   @media screen and (min-width: 768px) {
     background: url(${BackTab});
@@ -28,7 +26,7 @@ export const Dashboard = styled.main`
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 126px;
-    padding-bottom: 47px;
+    padding-bottom: 103px;
   }
 `;
 
@@ -59,11 +57,9 @@ export const DashboardSeparator = styled.div`
     margin-left: 69px;
     margin-right: 89px;
     margin-top: -47px;
-    margin-bottom: -47px;
+    margin-bottom: -103px;
     border: 1px solid var(--vector-color);
     box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
       1px 0px 0px rgba(255, 255, 255, 0.6);
   }
 `;
-
-
