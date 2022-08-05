@@ -7,14 +7,14 @@ import Media from 'react-media';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
-export const Balance = ({ page }) => {
+export const Balance = () => {
   const { t } = useTranslation();
   const location = useLocation();
   const { pathname } = location;
   return (
     <>
       {pathname === '/wallet_frontend/home' && (
-        <ContainerBalance page={page}>
+        <ContainerBalance>
           <BalanceTitle>{t('balanceComponent.yourBalance')}</BalanceTitle>
           <BalanceInWallet>0</BalanceInWallet>
         </ContainerBalance>
@@ -23,7 +23,7 @@ export const Balance = ({ page }) => {
         {matches =>
           matches.tablet &&
           pathname === '/wallet_frontend/diagram' && (
-            <ContainerBalance page={page}>
+            <ContainerBalance>
               <BalanceTitle>{t('balanceComponent.yourBalance')}</BalanceTitle>
               <BalanceInWallet>0</BalanceInWallet>
             </ContainerBalance>
