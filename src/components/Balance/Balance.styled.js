@@ -33,7 +33,7 @@ export const BalanceTitle = styled.p`
   color: var(--dark-grey);
 `;
 
-export const BalanceInWallet = styled.p`
+export const BalanceInWallet = styled.div`
   display: flex;
   align-items: center;
   overflow-x: hidden;
