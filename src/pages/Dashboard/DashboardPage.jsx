@@ -55,7 +55,7 @@ export const DashboardPage = () => {
                 }
               </Media>
             </DashboardFirstSectionWrapper>
-            <DashboardSeparator pathname={pathname}></DashboardSeparator>
+            <DashboardSeparator></DashboardSeparator>
             {pathname === '/wallet_frontend/diagram' && <DiagramTab />}
             <DashboardSecondSectionWrapper>
               {location.pathname === '/wallet_frontend/home' && <HomeTab />}
