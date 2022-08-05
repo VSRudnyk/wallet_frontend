@@ -1,20 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
-  persistReducer,
-  persistStore,
-  PURGE,
-  REGISTER,
-  REHYDRATE,
-} from 'redux-persist';
+import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authOperation } from './authOperation';
 import { usersOperation } from './usersOperation';
 import { transactionsOperation } from './transactionsOperation';
 import { categoriesOperation } from './categoriesOperation';
-import modalReducer from './modal/modalReducer';
+import globalReducer from './global/globalReducer';
 import authReducer from './authSlice';
 import transactionReducer from './transactionsSlice';
 import categoriesReducer from './categoriesSlice';
@@ -22,7 +13,7 @@ import categoriesReducer from './categoriesSlice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['accessToken', 'refreshToken', 'sid'],
+  whitelist: ['accessToken', 'sid'],
 };
 
 const transactionPersistConfig = {
@@ -44,7 +35,7 @@ export const store = configureStore({
     auth: persistReducer(authPersistConfig, authReducer),
     transaction: persistReducer(transactionPersistConfig, transactionReducer),
     categories: persistReducer(categoriesPersistConfig, categoriesReducer),
-    modal: modalReducer,
+    global: globalReducer,
   },
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({

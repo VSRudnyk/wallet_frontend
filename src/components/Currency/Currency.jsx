@@ -24,7 +24,7 @@ import {
 import { useLocation, Navigate } from 'react-router-dom';
 // import { getCurrency } from './API/ApiCurrency';
 
-export const Currency = ({ page }) => {
+export const Currency = () => {
   const [currency, setCurrency] = useState([]);
   const [status, setStatus] = useState('pending');
   const { t } = useTranslation();
@@ -104,7 +104,7 @@ export const Currency = ({ page }) => {
         {matches =>
           matches.mobile &&
           pathname === '/wallet_frontend/currency' && (
-            <TableWrapper page={page}>
+            <TableWrapper>
               <TableHeaderContainer>
                 <TableHeaderList>
                   <TableHeaderListItem key={uuidv4()}>
@@ -158,7 +158,7 @@ export const Currency = ({ page }) => {
       <Media queries={{ tablet: { minWidth: 768 } }}>
         {matches =>
           matches.tablet && (
-            <TableWrapper page={page}>
+            <TableWrapper>
               <TableHeaderContainer>
                 <TableHeaderList>
                   <TableHeaderListItem>

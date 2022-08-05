@@ -2,7 +2,7 @@ import { fetchBaseQuery } from '@reduxjs/toolkit/query';
 import { logOut, setCredentials } from './authSlice';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://wallet-backend-1.herokuapp.com/api',
+  baseUrl: 'https://wallet-backend-1.herokuapp.com/api/',
   prepareHeaders: (headers, { getState }) => {
     const accessToken = getState().auth.accessToken;
     if (accessToken) {
@@ -15,12 +15,6 @@ export const baseQueryWithReauth = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
   if (result?.error?.status === 401) {
     const currentCredential = api.getState().auth;
-    api.dispatch(
-      setCredentials({
-        ...currentCredential,
-        accessToken: currentCredential.refreshToken,
-      }),
-    );
     const refreshResult = await baseQuery(
       {
         url: 'auth/refresh',
@@ -28,6 +22,7 @@ export const baseQueryWithReauth = async (args, api, extraOptions) => {
         body: {
           sid: `${currentCredential.sid}`,
         },
+        credentials: 'include',
       },
       api,
       extraOptions,

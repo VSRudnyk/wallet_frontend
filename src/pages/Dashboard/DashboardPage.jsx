@@ -5,25 +5,74 @@ import {
   DashboardSeparator,
   Dashboard,
 } from './DashboardPage.styled';
+import { lazy } from 'react';
+import { useState, useEffect } from 'react';
 import { Container } from 'stylesheet/Container.styled';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ButtonAddTransactions } from '../../components/ButtonAddTransactions/ButtonAddTransactions';
 import { ModalAddTransactions } from 'components/ModalAddTransaction/ModalAddTransaction';
+import { useGetAllTransactionsQuery } from '../../redux/transactionsOperation';
 import Media from 'react-media';
-import Header from '../../components/Header';
-import Navigation from '../../components/Navigation';
-import Balance from '../../components/Balance';
-import HomeTab from '../../components/HomeTab';
-import Currency from '../../components/Currency';
-import DiagramTab from '../../components/DiagramTab';
-
+import { useDispatch } from 'react-redux';
+import { updateBalance } from 'redux/global/globalActions';
+const Header = lazy(() =>
+  import('../../components/Header' /* webpackChunkName: "Header" */)
+);
+const Navigation = lazy(() =>
+  import('../../components/Navigation' /* webpackChunkName: "Navigation" */)
+);
+const Balance = lazy(() =>
+  import('../../components/Balance' /* webpackChunkName: "Balance" */)
+);
+const HomeTab = lazy(() =>
+  import('../../components/HomeTab' /* webpackChunkName: "HomeTab" */)
+);
+const Currency = lazy(() =>
+  import('../../components/Currency' /* webpackChunkName: "Currency" */)
+);
+const DiagramTab = lazy(() =>
+  import('../../components/DiagramTab' /* webpackChunkName: "DiagramTab" */)
+);
 export const DashboardPage = () => {
+  const dispatch = useDispatch();
   const location = useLocation();
   const { pathname } = location;
   const modalAddTransactionStatus = useSelector(
-    state => state.modal.isModalAddTransactionOpen
+    state => state.global.isModalAddTransactionOpen
   );
+  const { data, isLoading, isSuccess } = useGetAllTransactionsQuery();
+  const [transactions, setTransactions] = useState(null);
+
+  useEffect(() => {
+    if (data !== undefined && data.length > 0) {
+      const sortedTransactions = [...data].sort((item1, item2) => {
+        const date1 = new Date(item1.date);
+        const date2 = new Date(item2.date);
+        return Number(date2) - Number(date1);
+      });
+
+      const arr = [];
+      sortedTransactions.reverse().reduce((previousValue, item) => {
+        const itemNew = {
+          ...item,
+          balance:
+            item.type === 'expense'
+              ? previousValue - item.sum
+              : previousValue + item.sum,
+        };
+        arr.push(itemNew);
+        return item.type === 'expense'
+          ? previousValue - item.sum
+          : previousValue + item.sum;
+      }, 0);
+
+      if (data && arr.length === data.length) {
+        dispatch(updateBalance(arr[arr.length - 1].balance));
+        setTransactions(arr.reverse());
+      }
+    }
+  }, [data, isLoading, isSuccess, dispatch]);
 
   return (
     <>
@@ -58,7 +107,10 @@ export const DashboardPage = () => {
             <DashboardSeparator></DashboardSeparator>
             {pathname === '/wallet_frontend/diagram' && <DiagramTab />}
             <DashboardSecondSectionWrapper>
-              {location.pathname === '/wallet_frontend/home' && <HomeTab />}
+              {location.pathname === '/wallet_frontend/home' &&
+                transactions !== null && (
+                  <HomeTab transactionsList={transactions} />
+                )}
             </DashboardSecondSectionWrapper>
           </DashboardWrapper>
           {modalAddTransactionStatus && <ModalAddTransactions />}

@@ -9,6 +9,8 @@ export const Dashboard = styled.main`
     var(--background-light-grey),
     var(--background-light-grey)
   );
+  height: ${({ pathname }) =>
+    pathname === '/wallet_frontend/currency' ? '100vh' : '100%'};
   padding-top: 75px;
   padding-bottom: 15px;
   backdrop-filter: blur(50px);
