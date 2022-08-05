@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLogoutMutation } from 'redux/authOperation';
 import Media from 'react-media';
 
 import { ReactComponent as SettingsIcon } from '../../images/settings-icon.svg';
@@ -25,6 +26,8 @@ const Settings = () => {
   const [isDropDownOpen, setIsDropDowOpen] = useState(false);
   const [isSlideLeftOpen, setIsSlideLeftOpen] = useState(false);
 
+  const [logout] = useLogoutMutation();
+
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
@@ -39,7 +42,7 @@ const Settings = () => {
       e.target.id !== 'ua' &&
       e.target.id !== 'langs' &&
       e.target.id !== 'Capa_1' &&
-      e.target.id !== 'lang_btn'
+      e.target.id !== 'logout'
     ) {
       setIsDropDowOpen(false);
       setIsSlideLeftOpen(false);
@@ -58,6 +61,9 @@ const Settings = () => {
       </LangBtn>
     </ListItem>
   ));
+  const onLogoutHandler = async () => {
+    await logout();
+  };
   return (
     <Media queries={{ mobile: { maxWidth: 767 } }}>
       {matches =>
@@ -82,7 +88,11 @@ const Settings = () => {
                       </LangBtn>
                     </ListItem>
                     <ListItem>
-                      <LangBtn>
+                      <LangBtn
+                        type="button"
+                        id="logout"
+                        onClick={() => logout()}
+                      >
                         <span>{t('settingsComponent.exit')}</span>
                         <ExitIcon
                           style={{ width: '18px', marginLeft: 'auto' }}

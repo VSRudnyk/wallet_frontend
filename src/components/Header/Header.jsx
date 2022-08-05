@@ -41,7 +41,6 @@ export const Header = () => {
             </NavLink>
           </ContainerLogo>
           <ContainerLogo>
-            {/* {t('header.name')} */}
             <UserName>{data && data.data.user.name}</UserName>
             <Media queries={{ mobile: { maxWidth: 767 } }}>
               {matches =>
