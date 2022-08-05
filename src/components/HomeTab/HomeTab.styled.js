@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
 export const HomeTabWrapper = styled.div`
+  position: relative;
   /* display: ${({ page }) => (page === 'currency' ? 'none' : 'block')}; */
   & > button:nth-child(1) {
     margin-right: 30px;
   }
   @media screen and (min-width: 768px) {
+    /* position: relative; */
     display: block;
     margin-top: 46px;
   }
