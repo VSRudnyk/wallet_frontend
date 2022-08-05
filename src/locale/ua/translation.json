@@ -154,12 +154,17 @@
     "options": {
       "main": "Основні",
       "food": "Їжа",
-      "auto": "Авто",
+      "car": "Авто",
+      "products": "Товари",
       "development": "Розвиток",
+      "health": "Здоров'я",
       "children": "Діти",
       "house": "Будинок",
       "education": "Освіта",
-      "reset": "Інше"
+      "laisure": "Відпочинок",
+      "other": "Інше",
+      "salary": "Зарплата",
+      "bonus": "Бонус"
     },
     "notify": {
       "success": "Операція успішна!",
