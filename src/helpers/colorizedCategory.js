@@ -3,7 +3,7 @@ export const colorizedCategory = (category) => {
     const categoryColorsData = [
       {
         categoryColor: '#FF7DDB',
-        categoryName: 'Education',
+        categoryName: 'Main',
       },
       {
         categoryColor: '#FF6E41',
@@ -27,7 +27,7 @@ export const colorizedCategory = (category) => {
       },
       {
         categoryColor: '#FED057',
-        categoryName: 'Basic',
+        categoryName: 'Basic expenses',
       },
       {
         categoryColor: '#FFD8D0',
@@ -39,15 +39,15 @@ export const colorizedCategory = (category) => {
       },
       {
         categoryColor: '#C5BAFF',
-        categoryName: 'Health',
+        categoryName: 'Self care',
       },
       {
         categoryColor: '#6E78E8',
-        categoryName: 'Kids',
+        categoryName: 'Child care',
       },
       {
         categoryColor: '#4A56E2',
-        categoryName: 'Home',
+        categoryName: 'Household products',
       },
       {
         categoryColor: '#81E1FF',
@@ -59,9 +59,10 @@ export const colorizedCategory = (category) => {
       },
       {
         categoryColor: '#00AD84',
-        categoryName: 'Other',
+        categoryName: 'Other expenses',
       }
     ]
     const findedItem = categoryColorsData.find(item => item.categoryName === category);
-    return findedItem.categoryColor;
+    const randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+    return findedItem !== undefined ? findedItem.categoryColor : randomColor;
   }
