@@ -5,42 +5,30 @@ import {
 } from './Balance.styled';
 import Media from 'react-media';
 import { useTranslation } from 'react-i18next';
-
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { useGetAllTransactionsQuery } from 'redux/transactionsOperation';
 
-export const Balance = ({ page }) => {
-  const { data } = useGetAllTransactionsQuery();
+export const Balance = () => {
   const { t } = useTranslation();
   const location = useLocation();
+  const balance = useSelector(state => state.global.currentBalance)
   const { pathname } = location;
+  
   return (
     <>
       {pathname === '/wallet_frontend/home' && (
-        <ContainerBalance page={page}>
+        <ContainerBalance >
           <BalanceTitle>{t('balanceComponent.yourBalance')}</BalanceTitle>
-          <BalanceInWallet>
-            {data && data.length > 0
-              ? data.map(({ balance }) => {
-                  return balance;
-                })
-              : 0}
-          </BalanceInWallet>
+          <BalanceInWallet>{balance}</BalanceInWallet>
         </ContainerBalance>
       )}
       <Media queries={{ tablet: { minWidth: 768 } }}>
         {matches =>
           matches.tablet &&
           pathname === '/wallet_frontend/diagram' && (
-            <ContainerBalance page={page}>
+            <ContainerBalance >
               <BalanceTitle>{t('balanceComponent.yourBalance')}</BalanceTitle>
-              <BalanceInWallet>
-                {data && data.length > 0
-                  ? data.map(({ balance }) => {
-                      return balance;
-                    })
-                  : 0}
-              </BalanceInWallet>
+              <BalanceInWallet>{balance}</BalanceInWallet>
             </ContainerBalance>
           )
         }

@@ -3,7 +3,7 @@ import { transactionsOperation } from './transactionsOperation';
 
 
 const initialState = {
-  transaction: null,
+  transaction: [],
 };
 
 export const transactionSlice = createSlice({
@@ -11,9 +11,9 @@ export const transactionSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder.addMatcher(
-      transactionsOperation.endpoints.addTransaction.matchFulfilled,
+      transactionsOperation.endpoints.getAllTransactions.matchFulfilled,
       (state, { payload }) => {
-        state.transaction = payload.transaction;
+        state.transaction = payload;
       },
     );
   },

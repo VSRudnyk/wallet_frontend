@@ -1,13 +1,26 @@
-import { useMemo, forwardRef, useImperativeHandle } from 'react';
+import { useMemo } from 'react';
 import { useTable, usePagination } from 'react-table';
 import { useTranslation } from 'react-i18next';
 import EllipsisText from 'react-ellipsis-text';
+import {
+  AiOutlineDoubleLeft,
+  AiOutlineDoubleRight,
+  AiOutlineLeft,
+  AiOutlineRight,
+} from 'react-icons/ai';
+import {
+  TableContainer,
+  Table,
+  Th,
+  BodyTd,
+  Pagination,
+  PaginationBtn,
+  PaginationSpan,
+} from './Transaction.styled';
 
-import { TableContainer, Table, Th, BodyTd } from './Transaction.styled';
-
-const Transaction = forwardRef(({ transactionList }, ref) => {
+const Transaction = ({ transactionsList }) => {
   const { t } = useTranslation();
-  const data = useMemo(() => transactionList, [transactionList]);
+  const data = useMemo(() => transactionsList, [transactionsList]);
   const columns = useMemo(
     () => [
       {
@@ -43,35 +56,23 @@ const Transaction = forwardRef(({ transactionList }, ref) => {
     headerGroups,
     page,
     prepareRow,
-
+    canPreviousPage,
+    canNextPage,
+    pageOptions,
+    pageCount,
+    gotoPage,
     nextPage,
     previousPage,
+    state: { pageIndex, pageSize },
   } = useTable(
     {
       columns,
       data,
-      initialState: { pageIndex: 0, pageSize: 10 },
+      initialState: { pageIndex: 0, pageSize: 7 },
     },
     usePagination
   );
-  const pageFwd = value => {
-    if (!value) {
-      return;
-    }
-    nextPage();
-  };
-  const pageBack = value => {
-    if (!value) {
-      return;
-    }
-    previousPage();
-  };
-
-  useImperativeHandle(ref, () => ({
-    next: value => pageFwd(value),
-    previous: value => pageBack(value),
-  }));
-
+  
   return (
     <TableContainer>
       <Table {...getTableProps()}>
@@ -159,8 +160,34 @@ const Transaction = forwardRef(({ transactionList }, ref) => {
           })}
         </tbody>
       </Table>
+      <Pagination>
+        <PaginationBtn onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+          <AiOutlineDoubleLeft />
+        </PaginationBtn>
+        <PaginationBtn
+          onClick={() => previousPage()}
+          disabled={!canPreviousPage}
+        >
+          <AiOutlineLeft />
+        </PaginationBtn>
+        <PaginationBtn onClick={() => nextPage()} disabled={!canNextPage}>
+          <AiOutlineRight />
+        </PaginationBtn>
+        <PaginationBtn
+          onClick={() => gotoPage(pageCount - 1)}
+          disabled={!canNextPage}
+        >
+          <AiOutlineDoubleRight />
+        </PaginationBtn>
+        <PaginationSpan>
+          Page
+          <strong>
+            {pageIndex + 1} of {pageOptions.length}
+          </strong>
+        </PaginationSpan>
+      </Pagination>
     </TableContainer>
   );
-});
+};
 
 export default Transaction;

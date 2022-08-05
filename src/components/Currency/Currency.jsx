@@ -132,7 +132,7 @@ export const Currency = ({ page }) => {
                     })}
 
                   {
-                    status === 'pending' && <Loader color="red" size="35" />
+                    status === 'pending' && <Loader color="red" size="35px" />
                     // <Loader color="#f7f7f7" size="35" />
                     // <LoaderWrapper>
                     //   <HashLoader
@@ -185,7 +185,7 @@ export const Currency = ({ page }) => {
                     })}
                   {/* <Loader color="red" size="35" /> */}
                   {status === 'pending' && (
-                    <Loader color="red" size="35" />
+                    <Loader color="red" size="35px" />
                     // <Loader color="#f7f7f7" size="35" />
                     // <LoaderWrapper>
                     //   <HashLoader

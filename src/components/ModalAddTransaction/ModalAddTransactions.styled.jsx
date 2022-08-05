@@ -3,7 +3,7 @@ import '../../stylesheet/fonts.css';
 import { ReactComponent as Close } from '../../images/Сlose.svg';
 import { ReactComponent as Select } from '../../images/select_open.svg';
 import { ReactComponent as Calendar } from '../../images/calendar.svg';
-// import Datetime from 'react-datetime';
+import DatePicker from "react-datepicker";
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -18,6 +18,7 @@ export const Backdrop = styled.div`
   @media screen and (min-width: 768px) {
     justify-content: center;
     align-items: center;
+    margin-top:0;
   }
 `;
 
@@ -205,34 +206,30 @@ export const InputCalendarBox = styled.div`
   }
 `;
 
-// export const InputCalendar = styled(Datetime)`
-//   width: 280px;
-//   height: 29px;
-//   text-align: center;
-//   display: inline-block;
-//   font-size: 18px;
-//   line-height: 27px;
-//   font-family: var(--baseFont);
-//   @media screen and (min-width: 768px) {
-//     width: 181px;
-//     height: 29px;
-//     outline: none;
-//     font-family: var(--baseFont);
-//     font-style: normal;
-//     font-weight: (--regular);
-//     font-size: 18px;
-//     line-height: 27px;
-//     color: var(--black);
-//     border-top: none;
-//     border-left: none;
-//     border-right: none;
-//     border-bottom: 1px solid var(--light-gray);
-//   }
-// `;
+ export const InputCalendar = styled(DatePicker)`
+  width: 280px;
+  height: 29px;
+  font-size: 18px;
+  line-height: 27px;
+  font-family: 'Circe';
+  font-style: normal;
+  color: var(--black);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid var(--light-gray);
+  @media screen and (min-width: 768px) {
+    width: 181px;    
+    font-weight: (--regular);
+    font-size: 18px;
+    line-height: 27px;     
+   }
+ `;
 
 export const InputCalendarSVG = styled(Calendar)`
   position: absolute;
   right: 15px;
+  top: 1px;
 `;
 
 export const InputComment = styled(Input)`
@@ -286,7 +283,7 @@ export const ButtonCancel = styled(Button)`
   border: 1px solid var(--active-blue);
   border-radius: 20px;
   color: var(--active-blue);
-  margin-bottom: 40px;
+  margin-bottom: ${props => props.add ? '40px': '60px'};
 `;
 
 export const SelectDiv = styled.div`
@@ -327,7 +324,9 @@ export const SelectSvg = styled(Select)`
 
 export const SelectWindow = styled.div`
   position: absolute;
+  overflow: scroll;
   width: 280px;
+  max-height: 350px;
   top: 31px;
   left: 0;
   z-index: 3500;
@@ -335,6 +334,17 @@ export const SelectWindow = styled.div`
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(50px);
   border-radius: 20px;
+  overflow-y: hidden;
+  overflow-y: scroll;
+  width: 260px;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+overflow-x: hidden;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    height: 0;
+  }
   @media screen and (min-width: 768px) {
     width: 392px;
   }
@@ -352,11 +362,11 @@ export const SelectOptions = styled.li`
   align-items: center;
   color: var(--black);
   cursor: pointer;
+  
   :hover,
   :focus {
-    background: var(--white);
-    display: flex;
-    align-items: center;
-    color: var(--pink);
+    background: var(--white);  
+    color: ${props => props.oper? 'var(--green)' :'var(--pink)'} ;
   }
 `;
+
