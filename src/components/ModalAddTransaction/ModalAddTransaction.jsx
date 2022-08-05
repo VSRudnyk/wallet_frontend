@@ -30,8 +30,8 @@ import {
   SelectDiv,
   SelectSvg,
   SelectWindow,
-  SelectOptions,
-  SelectBox
+  SelectOptions
+
 } from './ModalAddTransactions.styled';
 
 
