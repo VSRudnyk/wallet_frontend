@@ -119,19 +119,15 @@ export const Currency = ({ page }) => {
                   {currency.length > 0 &&
                     currency.map(({ currency, purchaseRateNB, saleRateNB }) => {
                       return (
-                        <>
-                          <TableBodyListItem key={uuidv4()}>
-                            <TableBodyText key={uuidv4()}>
-                              {currency}
-                            </TableBodyText>
-                            <TableBodyText key={uuidv4()}>
-                              {Number(purchaseRateNB).toFixed(2)}
-                            </TableBodyText>
-                            <TableBodyText key={uuidv4()}>
-                              {Number(saleRateNB).toFixed(2)}
-                            </TableBodyText>
-                          </TableBodyListItem>
-                        </>
+                        <TableBodyListItem key={uuidv4()}>
+                          <TableBodyText>{currency}</TableBodyText>
+                          <TableBodyText>
+                            {Number(purchaseRateNB).toFixed(2)}
+                          </TableBodyText>
+                          <TableBodyText>
+                            {Number(saleRateNB).toFixed(2)}
+                          </TableBodyText>
+                        </TableBodyListItem>
                       );
                     })}
                   {status === 'pending' && (
@@ -140,6 +136,57 @@ export const Currency = ({ page }) => {
                         color="#f7f7f7"
                         loading
                         size={35}
+                        speedMultiplier={1.5}
+                      />
+                    </LoaderWrapper>
+                  )}
+                </TableBodyList>
+              </TableBodyContainer>
+              {/* <ToastContainer /> */}
+            </TableWrapper>
+          )
+        }
+      </Media>
+      <Media queries={{ tablet: { minWidth: 768 } }}>
+        {matches =>
+          matches.tablet && (
+            <TableWrapper page={page}>
+              <TableHeaderContainer>
+                <TableHeaderList>
+                  <TableHeaderListItem>
+                    {t('currencyPage.currency')}
+                  </TableHeaderListItem>
+                  <TableHeaderListItem>
+                    {t('currencyPage.purchase')}
+                  </TableHeaderListItem>
+                  <TableHeaderListItem>
+                    {t('currencyPage.sale')}
+                  </TableHeaderListItem>
+                </TableHeaderList>
+              </TableHeaderContainer>
+              <TableBodyContainer>
+                <TableBodyList>
+                  {currency.length > 0 &&
+                    currency.map(({ currency, purchaseRateNB, saleRateNB }) => {
+                      return (
+                        <TableBodyListItem key={uuidv4()}>
+                          <TableBodyText>{currency}</TableBodyText>
+                          <TableBodyText>
+                            {Number(purchaseRateNB).toFixed(2)}
+                          </TableBodyText>
+                          <TableBodyText>
+                            {Number(saleRateNB).toFixed(2)}
+                          </TableBodyText>
+                        </TableBodyListItem>
+                      );
+                    })}
+
+                  {status === 'pending' && (
+                    <LoaderWrapper>
+                      <HashLoader
+                        color="#f7f7f7"
+                        loading
+                        size={45}
                         speedMultiplier={1.5}
                       />
                     </LoaderWrapper>
