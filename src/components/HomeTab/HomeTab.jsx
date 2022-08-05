@@ -5,9 +5,7 @@ import { Loader } from 'components/Loader';
 import { v4 as uuidv4 } from 'uuid';
 import { HomeTabWrapper, List, ListItem, Text } from './HomeTab.styled';
 import Media from 'react-media';
-import { HomeTabWrapper, List, ListItem, Text } from './HomeTab.styled';
 
-import Media from 'react-media';
 
 /*export const HomeTab = ({ transactionsList}) => {
   const { t } = useTranslation();
