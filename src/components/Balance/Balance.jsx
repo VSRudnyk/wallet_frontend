@@ -17,7 +17,8 @@ export const Balance = () => {
   return (
     <>
       {pathname === '/wallet_frontend/home' && (
-        <ContainerBalance >
+
+        <ContainerBalance>
           <BalanceTitle>{t('balanceComponent.yourBalance')}</BalanceTitle>
 
           <BalanceInWallet>{balance}</BalanceInWallet>
@@ -28,7 +29,8 @@ export const Balance = () => {
         {matches =>
           matches.tablet &&
           pathname === '/wallet_frontend/diagram' && (
-            <ContainerBalance >
+            <ContainerBalance>
+
               <BalanceTitle>{t('balanceComponent.yourBalance')}</BalanceTitle>
 
               <BalanceInWallet>{balance}</BalanceInWallet>
