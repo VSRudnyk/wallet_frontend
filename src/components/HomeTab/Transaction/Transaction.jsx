@@ -1,166 +1,55 @@
-import { useMemo, forwardRef, useImperativeHandle } from 'react';
-import { useTable, usePagination } from 'react-table';
 import { useTranslation } from 'react-i18next';
-import EllipsisText from 'react-ellipsis-text';
+import { v4 as uuidv4 } from 'uuid';
+import TransactionItem from './TransactionItem';
+import { TableContainer, List, Li } from './Transaction.styled';
 
-import { TableContainer, Table, Th, BodyTd } from './Transaction.styled';
-
-const Transaction = forwardRef(({ transactionList }, ref) => {
+const Transaction = ({ transactionList }) => {
   const { t } = useTranslation();
-  const data = useMemo(() => transactionList, [transactionList]);
-  const columns = useMemo(
-    () => [
-      {
-        Header: 'Date',
-        accessor: 'date',
-      },
-      {
-        Header: 'Type',
-        accessor: 'type',
-      },
-      {
-        Header: 'Category',
-        accessor: 'category',
-      },
-      {
-        Header: 'Comment',
-        accessor: 'comment',
-      },
-      {
-        Header: 'Sum',
-        accessor: 'sum',
-      },
-      {
-        Header: 'Balance',
-        accessor: 'balance',
-      },
-    ],
-    []
-  );
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    page,
-    prepareRow,
 
-    nextPage,
-    previousPage,
-  } = useTable(
+  const columns = [
     {
-      columns,
-      data,
-      initialState: { pageIndex: 0, pageSize: 10 },
+      header: 'Date',
     },
-    usePagination
-  );
-  const pageFwd = value => {
-    if (!value) {
-      return;
-    }
-    nextPage();
-  };
-  const pageBack = value => {
-    if (!value) {
-      return;
-    }
-    previousPage();
-  };
+    {
+      header: 'Type',
+    },
+    {
+      header: 'Category',
+    },
+    {
+      header: 'Comment',
+    },
+    {
+      header: 'Sum',
+    },
+    {
+      header: 'Balance',
+    },
+  ];
 
-  useImperativeHandle(ref, () => ({
-    next: value => pageFwd(value),
-    previous: value => pageBack(value),
-  }));
+  const tableHeaders = columns.map(({ header }) => {
+    if (header === 'Balance') {
+      return (
+        <Li key={uuidv4()}>
+          <span style={{ paddingRight: '50px' }}>
+            {t(`${header.toLowerCase()}`)}
+          </span>
+        </Li>
+      );
+    }
+    return <Li key={uuidv4()}>{t(`${header.toLowerCase()}`)}</Li>;
+  });
 
   return (
     <TableContainer>
-      <Table {...getTableProps()}>
-        <thead>
-          {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
-                <Th {...column.getHeaderProps()}>
-                  {t(column.render('Header').toLowerCase())}
-                </Th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {page.map(row => {
-            prepareRow(row);
-            return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
-                  const header = cell.column.Header;
-                  switch (header) {
-                    case 'Date':
-                      let newValue = new Date(cell.render('Cell').props.value)
-                        .toISOString()
-                        .slice(2)
-                        .substring(0, 8)
-                        .split('-')
-                        .reverse()
-                        .join('.');
-                      return (
-                        <BodyTd {...cell.getCellProps()}>{newValue}</BodyTd>
-                      );
-                    case 'Type':
-                      return (
-                        <BodyTd {...cell.getCellProps()}>
-                          {t(cell.render('Cell').props.value.toLowerCase())}
-                        </BodyTd>
-                      );
-                    case 'Category':
-                      return (
-                        <BodyTd {...cell.getCellProps()}>
-                          {t(cell.render('Cell').props.value.toLowerCase())}
-                        </BodyTd>
-                      );
-
-                    case 'Comment':
-                      return (
-                        <BodyTd {...cell.getCellProps()}>
-                          <EllipsisText
-                            text={cell.render('Cell').props.value}
-                            length={20}
-                          />
-                        </BodyTd>
-                      );
-
-                    case 'Sum':
-                      const color =
-                        row.values.type === 'income' ? '#24CCA7' : '#ff6596';
-                      return (
-                        <BodyTd
-                          {...cell.getCellProps()}
-                          style={{ color: color }}
-                        >
-                          {cell.render('Cell').props.value.toFixed(2)}
-                        </BodyTd>
-                      );
-                    case 'Balance':
-                      return (
-                        <BodyTd {...cell.getCellProps()}>
-                          {cell.render('Cell').props.value.toFixed(2)}
-                        </BodyTd>
-                      );
-
-                    default:
-                      return (
-                        <BodyTd {...cell.getCellProps()}>
-                          {cell.render('Cell')}
-                        </BodyTd>
-                      );
-                  }
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
+      <List>{tableHeaders}</List>
+      <List>
+        {transactionList.map(transaction => {
+          return <TransactionItem key={uuidv4()} transaction={transaction} />;
+        })}
+      </List>
     </TableContainer>
   );
-});
+};
 
 export default Transaction;
