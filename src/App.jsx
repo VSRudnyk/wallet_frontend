@@ -43,7 +43,7 @@ export const App = () => {
           />
           <Route
             path="/wallet_frontend"
-            element={<Navigate to="/wallet_frontend/register" />}
+            element={<Navigate to="/wallet_frontend/login" />}
           />
           <Route
             path="/wallet_frontend/home"

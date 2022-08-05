@@ -151,17 +151,22 @@
       "cancel": "Cancel"
     },
     "options": {
-      "main": "Main",
+      "main": "Basic expenses",
       "food": "Food",
-      "auto": "Auto",
+      "car": "Car",
+      "products": "Products",
       "development": "Development",
-      "children": "Children",
-      "house": "House",
+      "health": "Self care",
+      "children": "Children care",
+      "house": "Household product",
       "education": "Education",
-      "reset": "Other"
+      "laisure": "Laisure",
+      "other": "Other",
+      "salary": "Salary",
+      "bonus": "Bonus"
     },
     "notify": {
-      "success": "Operation is successful!",
+      "success": "Transaction successfuly added!",
       "error": "Something went wrong. Please try again."
     },
     "placeholders": {

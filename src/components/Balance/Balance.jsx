@@ -11,28 +11,26 @@ import { useLocation } from 'react-router-dom';
 export const Balance = () => {
   const { t } = useTranslation();
   const location = useLocation();
-  const balance = useSelector(state => state.global.currentBalance)
+  const balance = useSelector(state => state.global.currentBalance);
   const { pathname } = location;
-  
+
   return (
     <>
       {pathname === '/wallet_frontend/home' && (
-        <ContainerBalance >
+        <ContainerBalance>
           <BalanceTitle>{t('balanceComponent.yourBalance')}</BalanceTitle>
 
-          <BalanceInWallet>{balance}</BalanceInWallet>
-
+          <BalanceInWallet>₴ {balance}</BalanceInWallet>
         </ContainerBalance>
       )}
       <Media queries={{ tablet: { minWidth: 768 } }}>
         {matches =>
           matches.tablet &&
           pathname === '/wallet_frontend/diagram' && (
-            <ContainerBalance >
+            <ContainerBalance>
               <BalanceTitle>{t('balanceComponent.yourBalance')}</BalanceTitle>
 
-              <BalanceInWallet>{balance}</BalanceInWallet>
-
+              <BalanceInWallet>₴ {balance}</BalanceInWallet>
             </ContainerBalance>
           )
         }

@@ -1,5 +1,5 @@
 import { SelectWrapper, SelectBtn, SelectOptionsList, SelectOptionsItem, } from  './CustomSelect.styled'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { IconSVG } from 'stylesheet/IconSVG';
 
 
@@ -7,7 +7,7 @@ export const CustomSelect = ({items, changeValue}) => {
 
     const [selectedText, setSelectedTex] = useState(items.tittle)
     const [openStatus, setOpenStatus] = useState(false);
- 
+    const refToggleDropDown = useRef(null)
     function onSelectClick () {
         setOpenStatus(!openStatus);  
     }
@@ -26,10 +26,27 @@ export const CustomSelect = ({items, changeValue}) => {
         setOpenStatus(!openStatus);
 
     }
+    function handleOutsideDropDown (event) {
 
+            if (openStatus === true) {
+                
+                if (refToggleDropDown.current) {
+                    if(!refToggleDropDown.current.contains(event.target)) {
+                        setOpenStatus(false)
+                    }
+                }
+            }
+    }
+
+    useEffect(() => {
+        window.addEventListener('click', handleOutsideDropDown);
+        return () => {
+            window.removeEventListener('click', handleOutsideDropDown);
+        }
+    }); 
     return (
         <SelectWrapper className='select__wrapper'>
-            <SelectBtn className='select__button' onClick={onSelectClick} status={openStatus}>
+            <SelectBtn className='select__button' ref={refToggleDropDown}  onClick={onSelectClick} status={openStatus}>
                 <span className='select__button__active-text'>{selectedText}</span>
                 <IconSVG id="icon-diagram-tab-arrow-down"/>
             </SelectBtn>

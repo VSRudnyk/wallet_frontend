@@ -153,12 +153,17 @@
     "options": {
       "main": "Principal",
       "food": "Alimento",
-      "auto": "Auto",
+      "car": "Auto",
+      "products": "Productos",
       "development": "Desarrollo",
+      "health": "Salud",
       "children": "Niños",
       "house": "Casa",
       "education": "Educación",
-      "reset": "Otro"
+      "laisure": "Vacacion",
+      "other": "Otro",
+      "salary": "Salario",
+      "bonus": "Primo"
     },
     "notify": {
       "success": "¡La operación es exitosa!",

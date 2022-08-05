@@ -10,12 +10,12 @@ import {
   LinkName,
 } from './Navigation.styled';
 
-export const Navigation = ({ changeComponent, page }) => {
+export const Navigation = () => {
   const { t } = useTranslation();
   return (
     <>
-      <NavigationContainer page={page}>
-        <NavigationButton id="home" onClick={changeComponent}>
+      <NavigationContainer>
+        <NavigationButton>
           <Link to="/wallet_frontend/home">
             <HomeLink alt="Link to home page" />
             <LinkName>{t('navigation.home')}</LinkName>
@@ -27,7 +27,7 @@ export const Navigation = ({ changeComponent, page }) => {
             <LinkName>{t('navigation.statistics')}</LinkName>
           </Link>
         </NavigationButton>
-        <NavigationButton id="currency" onClick={changeComponent}>
+        <NavigationButton>
           <Link to="/wallet_frontend/currency">
             <CurrencyLink alt="Link to currency page" />
           </Link>
