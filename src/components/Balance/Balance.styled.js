@@ -36,7 +36,7 @@ export const BalanceTitle = styled.p`
 export const BalanceInWallet = styled.p`
   font-family: var(--secondaryFont);
   font-style: normal;
-  font-weight: var(--reqular);
+  font-weight: var(--bold);
   overflow-x: hidden;
   overflow-x: scroll;
   &::-webkit-scrollbar {

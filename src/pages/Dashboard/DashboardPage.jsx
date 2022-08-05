@@ -3,7 +3,7 @@ import {
   DashboardSecondSectionWrapper,
   DashboardWrapper,
   DashboardSeparator,
-  Dashboard
+  Dashboard,
 } from './DashboardPage.styled';
 import { lazy } from 'react';
 import { useState, useEffect } from 'react';
@@ -11,7 +11,7 @@ import { Container } from 'stylesheet/Container.styled';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ButtonAddTransactions } from '../../components/ButtonAddTransactions/ButtonAddTransactions';
-import { ModalAddTransactions } from 'components/ModalAddTransaction/ModalAddTransaction'; 
+import { ModalAddTransactions } from 'components/ModalAddTransaction/ModalAddTransaction';
 import { useGetAllTransactionsQuery } from '../../redux/transactionsOperation';
 import Media from 'react-media';
 import { useDispatch } from 'react-redux';
@@ -38,36 +38,41 @@ export const DashboardPage = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { pathname } = location;
-  const modalAddTransactionStatus = useSelector(state=>
-    state.global.isModalAddTransactionOpen); 
-    const { data, isLoading, isSuccess } = useGetAllTransactionsQuery();
-const [transactions, setTransactions] = useState(null)
-    
-    
-    useEffect(() => {
-      if (data) {
-        const sortedTransactions = [...data].sort((item1, item2) => {
-          const date1 = new Date(item1.date);
-          const date2 = new Date(item2.date);
-          return Number(date2) - Number(date1);
-        });
-        
-        const arr = []
-        sortedTransactions.reverse().reduce((previousValue, item) => {
-            const itemNew = {...item, balance: item.type === 'expense' ? previousValue - item.sum : previousValue + item.sum }
-            arr.push(itemNew)
-            return item.type === 'expense' ? previousValue - item.sum : previousValue + item.sum;
-            
-        }, 0)
-        
-        if(data && arr.length === data.length  ) {
-          dispatch(updateBalance(arr[arr.length-1].balance))
-          setTransactions(arr.reverse())
-        } 
+  const modalAddTransactionStatus = useSelector(
+    state => state.global.isModalAddTransactionOpen
+  );
+  const { data, isLoading, isSuccess } = useGetAllTransactionsQuery();
+  const [transactions, setTransactions] = useState(null);
+
+  useEffect(() => {
+    if (data !== undefined && data.length > 0) {
+      const sortedTransactions = [...data].sort((item1, item2) => {
+        const date1 = new Date(item1.date);
+        const date2 = new Date(item2.date);
+        return Number(date2) - Number(date1);
+      });
+
+      const arr = [];
+      sortedTransactions.reverse().reduce((previousValue, item) => {
+        const itemNew = {
+          ...item,
+          balance:
+            item.type === 'expense'
+              ? previousValue - item.sum
+              : previousValue + item.sum,
+        };
+        arr.push(itemNew);
+        return item.type === 'expense'
+          ? previousValue - item.sum
+          : previousValue + item.sum;
+      }, 0);
+
+      if (data && arr.length === data.length) {
+        dispatch(updateBalance(arr[arr.length - 1].balance));
+        setTransactions(arr.reverse());
       }
-  
-      
-    }, [data, isLoading, isSuccess, dispatch]); 
+    }
+  }, [data, isLoading, isSuccess, dispatch]);
 
   return (
     <>
@@ -95,19 +100,25 @@ const [transactions, setTransactions] = useState(null)
                     <div>
                       <Currency />
                     </div>
-                  )}
+                  )
+                }
               </Media>
             </DashboardFirstSectionWrapper>
             <DashboardSeparator></DashboardSeparator>
             {pathname === '/wallet_frontend/diagram' && <DiagramTab />}
             <DashboardSecondSectionWrapper>
-              {location.pathname === '/wallet_frontend/home' &&  transactions !== null && <HomeTab transactionsList={transactions} />}
+              {location.pathname === '/wallet_frontend/home' &&
+                transactions !== null && (
+                  <HomeTab transactionsList={transactions} />
+                )}
             </DashboardSecondSectionWrapper>
           </DashboardWrapper>
-          {modalAddTransactionStatus && <ModalAddTransactions/>}
-        </Container>        
+          {modalAddTransactionStatus && <ModalAddTransactions />}
+        </Container>
       </Dashboard>
-      {location.pathname === '/wallet_frontend/home' && <ButtonAddTransactions/>}
+      {location.pathname === '/wallet_frontend/home' && (
+        <ButtonAddTransactions />
+      )}
     </>
   );
 };
