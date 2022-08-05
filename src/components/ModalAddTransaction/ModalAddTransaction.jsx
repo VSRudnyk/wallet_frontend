@@ -31,7 +31,6 @@ import {
   SelectSvg,
   SelectWindow,
   SelectOptions,
-  SelectBox
 } from './ModalAddTransactions.styled';
 
 
