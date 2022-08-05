@@ -1,4 +1,3 @@
-
 import {
   TableWrapper,
   TableTittle,
@@ -27,10 +26,12 @@ export const Table = ({ tableCategories = [], tableExpenseSum = 0, tableIncomeSu
   const { t } = useTranslation();
 
   useEffect(() => {
-    
+    if (tableCategories === []) {
+      return
+    }
     setDataToRender(tableCategories);
 
-  }, [dataToRender, tableCategories]);
+  }, [tableCategories]);
 
   function sortByCategory() {
     if (categorySortedStatus === '' || categorySortedStatus === 'ZA') {
