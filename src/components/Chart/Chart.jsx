@@ -1,14 +1,92 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import { useTranslation } from 'react-i18next';
 import { Container, ChartContainer, Text, Label } from './Chart.styled';
+import { Loader } from 'components/Loader';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export function Chart() {
+function sumConverter(sum) {
+  const sumStr = sum.toFixed(2).toString();
+
+  switch (sumStr.length) {
+    case 7:
+      return sumStr[0] + ' ' + sumStr.slice(1, sumStr.length);
+    case 8:
+      return sumStr[0] + sumStr[1] + ' ' + sumStr.slice(2, sumStr.length);
+    case 9:
+      return (
+        sumStr[0] + sumStr[1] + sumStr[2] + ' ' + sumStr.slice(3, sumStr.length)
+      );
+    case 10:
+      return (
+        sumStr[0] +
+        ' ' +
+        sumStr[1] +
+        sumStr[2] +
+        sumStr[3] +
+        ' ' +
+        sumStr.slice(4, sumStr.length)
+      );
+    case 11:
+      return (
+        sumStr[0] +
+        sumStr[1] +
+        ' ' +
+        sumStr[2] +
+        sumStr[3] +
+        sumStr[4] +
+        ' ' +
+        sumStr.slice(5, sumStr.length)
+      );
+    case 12:
+      return (
+        sumStr[0] +
+        sumStr[1] +
+        sumStr[2] +
+        ' ' +
+        sumStr[3] +
+        sumStr[4] +
+        sumStr[5] +
+        ' ' +
+        sumStr.slice(6, sumStr.length)
+      );
+    case 13:
+      return (
+        sumStr[0] +
+        ' ' +
+        sumStr[1] +
+        sumStr[2] +
+        sumStr[3] +
+        ' ' +
+        sumStr[4] +
+        sumStr[5] +
+        sumStr[6] +
+        ' ' +
+        sumStr.slice(7, sumStr.length)
+      );
+    default:
+      return sumStr;
+  }
+}
+
+export function Chart({ tableCategories = [], tableExpenseSum = 0 }) {
+  const [categoryName, setCategoryName] = useState(null);
+  const [categoryColor, setCategoryColor] = useState(null);
+  const [categorySum, setCategorySum] = useState(null);
+
+  useEffect(() => {
+    if (tableCategories) {
+      setCategoryName(tableCategories.map(item => item.categoryName));
+      setCategoryColor(tableCategories.map(item => item.categoryColor));
+      setCategorySum(tableCategories.map(item => item.categorySum));
+    }
+  }, [tableCategories]);
+  console.log(tableCategories);
   const { t } = useTranslation();
-  const [chartData] = useState({
+
+  const [chartData, setChartData] = useState({
     labels: [
       'Basic',
       'Products',
@@ -22,20 +100,8 @@ export function Chart() {
     ],
     datasets: [
       {
-        data: [
-          8700.0, 3800.74, 1500.0, 800.0, 2208.5, 300.0, 3400.0, 1230.0, 610.0,
-        ],
-        backgroundColor: [
-          '#FED057',
-          '#FFD8D0',
-          '#FD9498',
-          '#C5BAFF',
-          '#6E78E8',
-          '#4A56E2',
-          '#81E1FF',
-          '#24CCA7',
-          '#00AD84',
-        ],
+        data: [0],
+        backgroundColor: ['#FED057'],
         hoverOffset: 5,
         borderWidth: 0,
         cutout: '70%',
@@ -43,6 +109,24 @@ export function Chart() {
       },
     ],
   });
+
+  useEffect(() => {
+    if (categoryColor && categoryName && categorySum) {
+      setChartData({
+        labels: categoryName,
+        datasets: [
+          {
+            data: categorySum,
+            backgroundColor: categoryColor,
+            hoverOffset: 5,
+            borderWidth: 0,
+            cutout: '70%',
+            radius: '95%',
+          },
+        ],
+      });
+    }
+  }, [categoryColor, categoryName, categorySum]);
 
   const [chartOption] = useState({
     plugins: {
@@ -52,9 +136,9 @@ export function Chart() {
       tooltip: {
         callbacks: {
           label: function (toolTipItem) {
-            return `${t(
-              `diagramTab.reduxData.${toolTipItem.label.toLowerCase()}`
-            )}: ₴ ${toolTipItem.formattedValue}`;
+            return `${toolTipItem.label}: ₴ ${sumConverter(
+              toolTipItem.parsed
+            )}`;
           },
         },
       },
@@ -65,8 +149,14 @@ export function Chart() {
     <Container>
       <Label>{t('statistics.header')}</Label>
       <ChartContainer>
-        <Doughnut data={chartData} options={chartOption} />
-        <Text>₴ 24 000.00</Text>
+        {!tableCategories ? (
+          <Loader color="#4a56e2" size="100px" />
+        ) : (
+          <>
+            <Doughnut data={chartData} options={chartOption} />
+            <Text>₴{sumConverter(tableExpenseSum)}</Text>
+          </>
+        )}
       </ChartContainer>
     </Container>
   );
