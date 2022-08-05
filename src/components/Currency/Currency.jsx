@@ -1,12 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-
+import { Loader } from 'components/Loader';
 // import { ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-import { HashLoader } from 'react-spinners';
+// import { HashLoader } from 'react-spinners';
 
 import Media from 'react-media';
 
@@ -19,7 +19,7 @@ import {
   TableBodyListItem,
   TableBodyText,
   TableWrapper,
-  LoaderWrapper,
+  // LoaderWrapper,
 } from './Currency.styled';
 import { useLocation, Navigate } from 'react-router-dom';
 // import { getCurrency } from './API/ApiCurrency';
@@ -130,16 +130,19 @@ export const Currency = ({ page }) => {
                         </TableBodyListItem>
                       );
                     })}
-                  {status === 'pending' && (
-                    <LoaderWrapper>
-                      <HashLoader
-                        color="#f7f7f7"
-                        loading
-                        size={35}
-                        speedMultiplier={1.5}
-                      />
-                    </LoaderWrapper>
-                  )}
+
+                  {
+                    status === 'pending' && <Loader color="red" size="35" />
+                    // <Loader color="#f7f7f7" size="35" />
+                    // <LoaderWrapper>
+                    //   <HashLoader
+                    //     color="#f7f7f7"
+                    //     loading
+                    //     size={35}
+                    //     speedMultiplier={1.5}
+                    //   />
+                    // </LoaderWrapper>
+                  }
                 </TableBodyList>
               </TableBodyContainer>
               {/* <ToastContainer /> */}
@@ -180,16 +183,18 @@ export const Currency = ({ page }) => {
                         </TableBodyListItem>
                       );
                     })}
-
+                  {/* <Loader color="red" size="35" /> */}
                   {status === 'pending' && (
-                    <LoaderWrapper>
-                      <HashLoader
-                        color="#f7f7f7"
-                        loading
-                        size={45}
-                        speedMultiplier={1.5}
-                      />
-                    </LoaderWrapper>
+                    <Loader color="red" size="35" />
+                    // <Loader color="#f7f7f7" size="35" />
+                    // <LoaderWrapper>
+                    //   <HashLoader
+                    //     color="#f7f7f7"
+                    //     loading
+                    //     size={45}
+                    //     speedMultiplier={1.5}
+                    //   />
+                    // </LoaderWrapper>
                   )}
                 </TableBodyList>
               </TableBodyContainer>

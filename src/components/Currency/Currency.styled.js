@@ -4,6 +4,7 @@ import Line from '../../images/line-currency-min.png';
 
 export const TableWrapper = styled.div`
   @media screen and (min-width: 768px) {
+    position: relative;
     display: block;
     width: 336px;
   }

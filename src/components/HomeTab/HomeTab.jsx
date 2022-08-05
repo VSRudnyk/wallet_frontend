@@ -52,8 +52,10 @@ export const HomeTab = ({ page }) => {
           matches.mobile ? (
             sortedTransactions.length === 0 ? (
               isLoading ? (
-                <Loader />
+                <Loader color="red" size="35" />
               ) : (
+                // <Loader color="#1f38dd" size="35" />
+                // <Loader />
                 <Text>{t('noTransactionText')}</Text>
               )
             ) : (
@@ -69,8 +71,10 @@ export const HomeTab = ({ page }) => {
             )
           ) : sortedTransactions.length === 0 ? (
             isLoading ? (
-              <Loader />
+              <Loader color="red" size="35" />
             ) : (
+              // <Loader color="#1f38dd" size="35" />
+              // <Loader />
               <Text>{t('noTransactionText')}</Text>
             )
           ) : (
