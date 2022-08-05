@@ -1,3 +1,4 @@
+
 import {
   TableWrapper,
   TableTittle,
@@ -16,8 +17,9 @@ import {
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const Table = ({ tableData }) => {
-  const [dataToRender, setDataToRender] = useState(null);
+export const Table = ({ tableCategories = [], tableExpenseSum = 0, tableIncomeSum = 0}) => {
+  const [dataToRender, setDataToRender] = useState('');
+
 
   const [categorySortedStatus, setCategorySortedStatus] = useState('');
   const [sumSortedStatus, setSumSortedStatus] = useState('');
@@ -25,19 +27,14 @@ export const Table = ({ tableData }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    if (dataToRender === null) {
-      setDataToRender(
-        [...tableData].map(item => {
-          item.categorySum = Number.parseFloat(item.categorySum);
-          return item;
-        })
-      );
-    }
-  }, [dataToRender, tableData]);
+    
+    setDataToRender(tableCategories);
+
+  }, [dataToRender, tableCategories]);
 
   function sortByCategory() {
     if (categorySortedStatus === '' || categorySortedStatus === 'ZA') {
-      const sortedData = [...tableData].sort((firstCategory, secondCategory) =>
+      const sortedData = [...tableCategories].sort((firstCategory, secondCategory) =>
         firstCategory.categoryName.localeCompare(secondCategory.categoryName)
       );
       setCategorySortedStatus('AZ');
@@ -46,7 +43,7 @@ export const Table = ({ tableData }) => {
       setDataToRender(sortedData);
     }
     if (categorySortedStatus === 'AZ') {
-      const sortedData = [...tableData].sort((firstCategory, secondCategory) =>
+      const sortedData = [...tableCategories].sort((firstCategory, secondCategory) =>
         secondCategory.categoryName.localeCompare(firstCategory.categoryName)
       );
       setCategorySortedStatus('ZA');
@@ -57,17 +54,13 @@ export const Table = ({ tableData }) => {
   }
 
   function sortHelper(method) {
-    const parsedData = tableData.map(item => {
-      item.categorySum = Number.parseFloat(item.categorySum);
-      return item;
-    });
 
     switch (method) {
       case 'ascending':
-        return [...parsedData].sort((a, b) => a.categorySum - b.categorySum);
+        return [...dataToRender].sort((a, b) => a.categorySum - b.categorySum);
 
       case 'descending':
-        return [...parsedData].sort((a, b) => b.categorySum - a.categorySum);
+        return [...dataToRender].sort((a, b) => b.categorySum - a.categorySum);
 
       default:
         console.log('incorrect method');
@@ -103,14 +96,26 @@ export const Table = ({ tableData }) => {
   }
 
   function sumConverter(sum) {
+
     const sumStr = sum.toFixed(2).toString();
 
-    if (sumStr.length > 6) {
-      const result = sumStr[0] + ' ' + sumStr.slice(1, sumStr.length);
-      return result;
+    switch (sumStr.length) {
+      case 7:
+        return sumStr[0] + ' ' + sumStr.slice(1, sumStr.length);
+      case 8:
+        return sumStr[0] + sumStr[1] + ' ' + sumStr.slice(2, sumStr.length);
+      case 9:
+        return sumStr[0] + sumStr[1] + sumStr[2] + ' ' + sumStr.slice(3, sumStr.length);
+      case 10:
+        return sumStr[0] + ' ' + sumStr[1] + sumStr[2] + sumStr[3] + ' ' + sumStr.slice(4, sumStr.length);
+      case 11:
+        return sumStr[0] + sumStr[1] + ' ' + sumStr[2] + sumStr[3] + sumStr[4] + ' ' + sumStr.slice(5, sumStr.length);
+      case 12:
+        return sumStr[0] + sumStr[1] + sumStr[2] + ' ' + sumStr[3] + sumStr[4] + sumStr[5] + ' ' + sumStr.slice(6, sumStr.length);
+        case 13:
+        return sumStr[0] + ' ' + sumStr[1] + sumStr[2] + sumStr[3] + ' ' + sumStr[4] + sumStr[5] + sumStr[6] + ' ' + sumStr.slice(7, sumStr.length);
+      default: return sumStr
     }
-
-    return sumStr;
   }
 
   return (
@@ -125,27 +130,28 @@ export const Table = ({ tableData }) => {
           </TableTittleBtn>
         </TableTittle>
 
-        <TableContentList className="table-content-list">
-          {dataToRender !== null &&
-            dataToRender.map(({ categoryColor, categoryName, categorySum }) => {
-              return (
-                <TableContentItem
-                  className="table-content-item"
-                  key={categoryName}
-                >
-                  <ItemCategoryWrapper className="item-category-wrapper">
-                    <CategoryColorMark
-                      background={categoryColor}
-                    ></CategoryColorMark>
-                    <CategoryName className="category-name">
-                      {t(`diagramTab.reduxData.${categoryName.toLowerCase()}`)}
-                    </CategoryName>
-                  </ItemCategoryWrapper>
-                  <ItemSum>{sumConverter(categorySum)}</ItemSum>
-                </TableContentItem>
-              );
-            })}
-        </TableContentList>
+      <TableContentList className="table-content-list">
+        {dataToRender !== '' && dataToRender.map(({ categoryColor, categoryName, categorySum }) => {
+            return (
+              <TableContentItem
+                className="table-content-item"
+                key={categoryName}
+              >
+                <ItemCategoryWrapper className="item-category-wrapper">
+                  <CategoryColorMark
+                    background={categoryColor}
+                  ></CategoryColorMark>
+                  <CategoryName className="category-name">
+                    {categoryName}
+                    {/* {t(`diagramTab.reduxData.${categoryName.toLowerCase()}`)} */}
+                  </CategoryName>
+                </ItemCategoryWrapper>
+                <ItemSum>{sumConverter(categorySum)}</ItemSum>
+              </TableContentItem>
+            );
+          })
+        }
+      </TableContentList>
 
         <TableResultList className="table-result-list">
           <TableResultItem className="table-result-item">
@@ -156,7 +162,7 @@ export const Table = ({ tableData }) => {
               className="result-item-value"
               color={'var(--pink)'}
             >
-              22 549.24
+              {sumConverter(tableExpenseSum)}
             </ResultItemValue>
           </TableResultItem>
 
@@ -168,7 +174,7 @@ export const Table = ({ tableData }) => {
               className="result-item-value"
               color={'var(--green)'}
             >
-              27 350.00
+              {sumConverter(tableIncomeSum)}
             </ResultItemValue>
           </TableResultItem>
         </TableResultList>
