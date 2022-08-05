@@ -1,9 +1,8 @@
-
 import { lazy, useState, useEffect } from 'react';
 import { useGetAllCategoriesQuery } from '../../redux/categoriesOperation';
 // import { useTranslation } from 'react-i18next';
 
-import { CustomSelect } from 'components/DiagramTab/NewSelectButton/CustomSelect'
+import { CustomSelect } from 'components/DiagramTab/NewSelectButton/CustomSelect';
 import {
   DiagramTabWrapper,
   DiagramTableBar,
@@ -15,220 +14,246 @@ import { colorizedCategory } from 'helpers/colorizedCategory';
 const Table = lazy(() => import('../Table' /* webpackChunkName: "Table" */));
 const Chart = lazy(() => import('../Chart' /* webpackChunkName: "Chart" */));
 
-
 export const DiagramTab = () => {
-const { data: reduxData } = useGetAllCategoriesQuery();
+  const { data: reduxData } = useGetAllCategoriesQuery();
 
   // const { t } = useTranslation();
   const [tableCategories, setTableCategories] = useState('');
-  const [tableIncomeSum, setTableIncomeSum] = useState(0)
-  const [tableExpenseSum, setTableExpenseSum] = useState(0)
+  const [tableIncomeSum, setTableIncomeSum] = useState(0);
+  const [tableExpenseSum, setTableExpenseSum] = useState(0);
 
   const [monthSelectedValue, setMonthSelectedValue] = useState(null);
   const [yearSelectedValue, setYearSelectedValue] = useState(null);
 
   const monthDataSet = {
-    tittle:"Month",
+    tittle: 'Month',
     data: [
-      {text: "January", value: 1}, 
-      {text: "February", value: 2}, 
-      {text: "March", value: 3}, 
-      {text: "April", value: 4},
-      {text: "May", value: 5},
-      {text: "June", value: 6},
-      {text: "July", value: 7},
-      {text: "August", value: 8},
-      {text: "September", value: 9},
-      {text: "October", value: 10},
-      {text: "November", value: 11},
-      {text: "December", value: 12}
-    ]
-  }
+      { text: 'January', value: 1 },
+      { text: 'February', value: 2 },
+      { text: 'March', value: 3 },
+      { text: 'April', value: 4 },
+      { text: 'May', value: 5 },
+      { text: 'June', value: 6 },
+      { text: 'July', value: 7 },
+      { text: 'August', value: 8 },
+      { text: 'September', value: 9 },
+      { text: 'October', value: 10 },
+      { text: 'November', value: 11 },
+      { text: 'December', value: 12 },
+    ],
+  };
 
   const yearDataSet = {
-    tittle:"Year",
+    tittle: 'Year',
     data: [
-      {text: "2019", value: 2019}, 
-      {text: "2020", value: 2020}, 
-      {text: "2021", value: 2021}, 
-      {text: "2022", value: 2022}
-    ]
+      { text: '2019', value: 2019 },
+      { text: '2020', value: 2020 },
+      { text: '2021', value: 2021 },
+      { text: '2022', value: 2022 },
+    ],
   };
-  function incomeExpenseFilter (type, data) {
+  function incomeExpenseFilter(type, data) {
     switch (type) {
       case 'income':
-      return data.filter(item => item && item._id.type === 'income');
+        return data.filter(item => item && item._id.type === 'income');
 
       case 'expense':
-      return data.filter(item => item && item._id.type === 'expense');
+        return data.filter(item => item && item._id.type === 'expense');
 
-      default: console.log('incorrect type of operation')
+      default:
+        console.log('incorrect type of operation');
     }
-    
   }
-  function onDateFilter (date, data) {
-    const {month, year} = date;
-      
-      if (month === null && year === null) {
-        const result = data;
-        return result;
-      }
-        
-  
-      if (month !== null && year === null) {
+  function onDateFilter(date, data) {
+    const { month, year } = date;
 
-        const result = data.filter(item => item._id.month === Number(month));
-        return result;
-      }
-        
-  
-      if (month === null && year !== null) {
+    if (month === null && year === null) {
+      const result = data;
+      return result;
+    }
 
-        const result = data.filter(item => item._id.year === Number(year));
-        return result;
-      }
-        
-  
-      if (month !== null && year !== null) {
+    if (month !== null && year === null) {
+      const result = data.filter(item => item._id.month === Number(month));
+      return result;
+    }
 
-        const result = data.filter(item => item._id.month === Number(month) && item._id.year === Number(year));
-        return result;
-      }
-        
-  
-      console.log('incorrect arguments')  
+    if (month === null && year !== null) {
+      const result = data.filter(item => item._id.year === Number(year));
+      return result;
+    }
 
+    if (month !== null && year !== null) {
+      const result = data.filter(
+        item =>
+          item._id.month === Number(month) && item._id.year === Number(year)
+      );
+      return result;
+    }
+
+    console.log('incorrect arguments');
   }
 
-useEffect (() => {
+  useEffect(() => {
+    function sumTheSameCategories(data) {
+      let sumaryData = [];
 
-  function sumTheSameCategories (data) {
-
-    let sumaryData = [];
-  
-    for (let item of data) {
-  
-      if (sumaryData.length === 0) {
-  
-        sumaryData = [{categoryName: item.category, categorySum: item.sum, categoryColor: colorizedCategory(item.category)}]
-  
-      } else {
-  
-        const exisingItemOnsumaryData = sumaryData.find(element => element.categoryName === item.category);
-  
-        if (exisingItemOnsumaryData !== undefined) {
-          exisingItemOnsumaryData.categorySum += item.sum;
-    
+      for (let item of data) {
+        if (sumaryData.length === 0) {
+          sumaryData = [
+            {
+              categoryName: item.category,
+              categorySum: item.sum,
+              categoryColor: colorizedCategory(item.category),
+            },
+          ];
         } else {
-    
-          sumaryData = [...sumaryData, {categoryName: item.category, categorySum: item.sum, categoryColor: colorizedCategory(item.category)}]
+          const exisingItemOnsumaryData = sumaryData.find(
+            element => element.categoryName === item.category
+          );
+
+          if (exisingItemOnsumaryData !== undefined) {
+            exisingItemOnsumaryData.categorySum += item.sum;
+          } else {
+            sumaryData = [
+              ...sumaryData,
+              {
+                categoryName: item.category,
+                categorySum: item.sum,
+                categoryColor: colorizedCategory(item.category),
+              },
+            ];
+          }
         }
-  
       }
-  
-  
-  
+
+      return sumaryData;
     }
-  
-    return sumaryData;
-  }
 
-  if (reduxData === undefined) {
-    return
-  }
-  if (tableCategories !== '') {
-    return
-  }
+    if (reduxData === undefined) {
+      return;
+    }
+    if (tableCategories !== '') {
+      return;
+    }
 
-  const expenseCategiries = incomeExpenseFilter('expense', reduxData);
-  const incomeCategiries = incomeExpenseFilter('income', reduxData);
+    const expenseCategiries = incomeExpenseFilter('expense', reduxData);
+    const incomeCategiries = incomeExpenseFilter('income', reduxData);
 
+    const expenseCategiriesTotalSum = expenseCategiries.reduce(
+      (total, item) => (total += item.totalPrice),
+      0
+    );
+    const incomeCategiriesTotalSum = incomeCategiries.reduce(
+      (total, item) => (total += item.totalPrice),
+      0
+    );
 
-  const expenseCategiriesTotalSum = expenseCategiries.reduce((total, item) => total += item.totalPrice, 0);
-  const incomeCategiriesTotalSum = incomeCategiries.reduce((total, item) => total += item.totalPrice, 0);
+    const allCategoriesInOne = expenseCategiries.reduce(
+      (result, item) => (result = [...result, ...item.category]),
+      []
+    );
+    const sumaryCategories = sumTheSameCategories(allCategoriesInOne);
 
+    setTableCategories(sumaryCategories);
+    setTableExpenseSum(expenseCategiriesTotalSum);
+    setTableIncomeSum(incomeCategiriesTotalSum);
+  }, [reduxData, tableCategories]);
 
-  const allCategoriesInOne =  expenseCategiries.reduce((result, item) => result = [...result, ...item.category], []);
-  const sumaryCategories = sumTheSameCategories(allCategoriesInOne);
+  useEffect(() => {
+    function sumTheSameCategories(data) {
+      let sumaryData = [];
 
-
-
-  
-
-  setTableCategories(sumaryCategories);
-  setTableExpenseSum(expenseCategiriesTotalSum);
-  setTableIncomeSum(incomeCategiriesTotalSum);
-
-},[reduxData, tableCategories])
-
-useEffect(() => {
-  function sumTheSameCategories (data) {
-
-    let sumaryData = [];
-  
-    for (let item of data) {
-  
-      if (sumaryData.length === 0) {
-  
-        sumaryData = [{categoryName: item.category, categorySum: item.sum, categoryColor: colorizedCategory(item.category)}]
-  
-      } else {
-  
-        const exisingItemOnsumaryData = sumaryData.find(element => element.categoryName === item.category);
-  
-        if (exisingItemOnsumaryData !== undefined) {
-          exisingItemOnsumaryData.categorySum += item.sum;
-    
+      for (let item of data) {
+        if (sumaryData.length === 0) {
+          sumaryData = [
+            {
+              categoryName: item.category,
+              categorySum: item.sum,
+              categoryColor: colorizedCategory(item.category),
+            },
+          ];
         } else {
-    
-          sumaryData = [...sumaryData, {categoryName: item.category, categorySum: item.sum, categoryColor: colorizedCategory(item.category)}]
+          const exisingItemOnsumaryData = sumaryData.find(
+            element => element.categoryName === item.category
+          );
+
+          if (exisingItemOnsumaryData !== undefined) {
+            exisingItemOnsumaryData.categorySum += item.sum;
+          } else {
+            sumaryData = [
+              ...sumaryData,
+              {
+                categoryName: item.category,
+                categorySum: item.sum,
+                categoryColor: colorizedCategory(item.category),
+              },
+            ];
+          }
         }
-  
       }
-  
-  
-  
+
+      return sumaryData;
     }
-  
-    return sumaryData;
-  }
 
-  if (monthSelectedValue === null && yearSelectedValue === null) {
-    return
-  }
+    if (monthSelectedValue === null && yearSelectedValue === null) {
+      return;
+    }
 
-  const onDateFilteredData = onDateFilter({month: monthSelectedValue, year: yearSelectedValue}, reduxData);
+    const onDateFilteredData = onDateFilter(
+      { month: monthSelectedValue, year: yearSelectedValue },
+      reduxData
+    );
 
-  const expenseCategiries = incomeExpenseFilter('expense', onDateFilteredData);
-  const incomeCategiries = incomeExpenseFilter('income', onDateFilteredData);
+    const expenseCategiries = incomeExpenseFilter(
+      'expense',
+      onDateFilteredData
+    );
+    const incomeCategiries = incomeExpenseFilter('income', onDateFilteredData);
 
-  const expenseCategiriesTotalSum = expenseCategiries.reduce((total, item) => total += item.totalPrice, 0);
-  const incomeCategiriesTotalSum = incomeCategiries.reduce((total, item) => total += item.totalPrice, 0);
+    const expenseCategiriesTotalSum = expenseCategiries.reduce(
+      (total, item) => (total += item.totalPrice),
+      0
+    );
+    const incomeCategiriesTotalSum = incomeCategiries.reduce(
+      (total, item) => (total += item.totalPrice),
+      0
+    );
 
-  const allCategoriesInOne =  expenseCategiries.reduce((result, item) => result = [...result, ...item.category], []);
-  const sumaryCategories = sumTheSameCategories(allCategoriesInOne);
+    const allCategoriesInOne = expenseCategiries.reduce(
+      (result, item) => (result = [...result, ...item.category]),
+      []
+    );
+    const sumaryCategories = sumTheSameCategories(allCategoriesInOne);
 
-  setTableCategories(sumaryCategories);
-  setTableExpenseSum(expenseCategiriesTotalSum);
-  setTableIncomeSum(incomeCategiriesTotalSum);
-
-},[monthSelectedValue, reduxData, yearSelectedValue])
-
+    setTableCategories(sumaryCategories);
+    setTableExpenseSum(expenseCategiriesTotalSum);
+    setTableIncomeSum(incomeCategiriesTotalSum);
+  }, [monthSelectedValue, reduxData, yearSelectedValue]);
 
   return (
     <StatisticsContainer>
-      <Chart />
+      <Chart
+        tableCategories={tableCategories}
+        tableExpenseSum={tableExpenseSum}
+      />
       <DiagramTabWrapper className="diagram-tab__wrapper">
         <DiagramTableBar className="diagram-tab__table-bar">
           <DiagramButtonsWrapper className="diagram-tab__buttons-wrapper">
-
-            <CustomSelect items={yearDataSet} changeValue={setYearSelectedValue}/>
-            <CustomSelect items={monthDataSet} changeValue={setMonthSelectedValue}/>
-
+            <CustomSelect
+              items={yearDataSet}
+              changeValue={setYearSelectedValue}
+            />
+            <CustomSelect
+              items={monthDataSet}
+              changeValue={setMonthSelectedValue}
+            />
           </DiagramButtonsWrapper>
 
-          <Table tableCategories={tableCategories} tableIncomeSum={tableIncomeSum} tableExpenseSum={tableExpenseSum}/>
-
+          <Table
+            tableCategories={tableCategories}
+            tableIncomeSum={tableIncomeSum}
+            tableExpenseSum={tableExpenseSum}
+          />
         </DiagramTableBar>
       </DiagramTabWrapper>
     </StatisticsContainer>
