@@ -11,8 +11,10 @@ const DashboardPage = lazy(() =>
 const PublickRoute = lazy(() =>
   import('./routers/PublicRouter' /* webpackChunkName: "PublickRoute" */)
 );
-const RegistrationPage  = lazy(() =>
-  import('./pages/Auth/RegistrationPage' /* webpackChunkName: "RegistrationPage" */)
+const RegistrationPage = lazy(() =>
+  import(
+    './pages/Auth/RegistrationPage' /* webpackChunkName: "RegistrationPage" */
+  )
 );
 const LoginPage = lazy(() =>
   import('./pages/Auth/LoginPage' /* webpackChunkName: "LoginPage" */)
@@ -21,7 +23,7 @@ const LoginPage = lazy(() =>
 export const App = () => {
   return (
     <>
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<Loader color="#4a56e2" size="150px" />}>
         <Routes>
           <Route
             path="/wallet_frontend/register"
