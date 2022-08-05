@@ -37,6 +37,11 @@ export const BalanceInWallet = styled.p`
   font-family: var(--secondaryFont);
   font-style: normal;
   font-weight: var(--reqular);
+  overflow-x: hidden;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    height: 0;
+  }
   font-size: 30px;
   line-height: 45px;
   display: flex;
