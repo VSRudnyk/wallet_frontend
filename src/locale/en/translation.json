@@ -38,6 +38,7 @@
   "house": "House",
   "income": "Income",
   "expense": "Expenses",
+  "salary": "Salary",
   "header": {
     "name": "Name",
     "exit": "Exit"
@@ -173,5 +174,11 @@
       "comment": "Comment",
       "select": "Select category"
     }
+  },
+  "deleteprompt": {
+    "sure": "Are you sure?",
+    "irrevertable": "Transaction cannot be restored after deleting",
+    "delete": "Delete",
+    "cancel": "Cancel"
   }
 }
