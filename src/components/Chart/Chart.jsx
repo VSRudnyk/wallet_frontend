@@ -4,6 +4,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { useTranslation } from 'react-i18next';
 import { Container, ChartContainer, Text, Label } from './Chart.styled';
 import { Loader } from 'components/Loader';
+import noDataFound from '../../images/noDataFound.jpg';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -83,7 +84,6 @@ export function Chart({ tableCategories = [], tableExpenseSum = 0 }) {
       setCategorySum(tableCategories.map(item => item.categorySum));
     }
   }, [tableCategories]);
-  console.log(tableCategories);
   const { t } = useTranslation();
 
   const [chartData, setChartData] = useState({
@@ -149,9 +149,11 @@ export function Chart({ tableCategories = [], tableExpenseSum = 0 }) {
     <Container>
       <Label>{t('statistics.header')}</Label>
       <ChartContainer>
-        {!tableCategories ? (
-          <Loader color="#4a56e2" size="100px" />
-        ) : (
+        {!tableCategories && <Loader color="#4a56e2" size="100px" />}
+        {categorySum?.length === 0 && (
+          <img src={noDataFound} alt={t('errorPage.alt')} />
+        )}
+        {tableCategories && categorySum?.length !== 0 && (
           <>
             <Doughnut data={chartData} options={chartOption} />
             <Text>₴{sumConverter(tableExpenseSum)}</Text>
