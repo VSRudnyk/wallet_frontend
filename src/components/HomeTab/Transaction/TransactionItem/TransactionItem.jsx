@@ -28,10 +28,14 @@ const TransactionItem = ({ transaction }) => {
         <EllipsisText text={comment.toLowerCase()} length={20} />
       </Data>
       <Data>
-        <Span income={type}>{sum}</Span>
+        <Span income={type}>
+          <EllipsisText text={sum.toFixed(2).toString()} length={10} />
+        </Span>
       </Data>
       <Data>
-        <span style={{ paddingRight: '50px' }}>{balance}</span>
+        <span style={{ paddingRight: '50px' }}>
+          <EllipsisText text={balance.toFixed(2).toString()} length={10} />
+        </span>
       </Data>
       <DelBtn
         type="button"
