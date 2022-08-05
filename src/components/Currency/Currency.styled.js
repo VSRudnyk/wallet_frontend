@@ -11,7 +11,6 @@ export const TableWrapper = styled.div`
   }
   @media screen and (min-width: 1280px) {
     width: 393px;
-    /* height: 347px; */
   }
 `;
 
@@ -44,13 +43,12 @@ export const TableBodyContainer = styled.div`
   background: var(--active-blue);
   border-bottom-left-radius: 30px;
   border-bottom-right-radius: 30px;
-  padding: 12px 20px 16px 20px;
+  padding: 12px 15px 16px 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
   @media screen and (min-width: 768px) {
-    padding: 16px 20px 12px 20px;
+    padding: 16px 15px 12px 20px;
   }
   @media screen and (min-width: 1280px) {
     height: 282px;
@@ -74,22 +72,30 @@ export const TableBodyList = styled.ul`
   height: 124px;
   overflow-y: hidden;
   overflow-y: scroll;
+  width: 260px;
   &::-webkit-scrollbar {
     width: 0;
   }
   @media screen and (min-width: 768px) {
+    width: 310px;
     height: 111px;
   }
   @media screen and (min-width: 1280px) {
-    width: 273px;
+    width: 290px;
     height: 270px;
   }
 `;
 
 export const TableBodyListItem = styled.li`
-  width: 269px;
   display: flex;
   justify-content: space-between;
+  width: 240px;
+  @media screen and (min-width: 768px) {
+    width: 300px;
+  }
+  @media screen and (min-width: 1280px) {
+    width: 269px;
+  }
 `;
 
 export const TableBodyText = styled.p`
@@ -99,10 +105,10 @@ export const TableBodyText = styled.p`
   font-size: 16px;
   line-height: 24px;
 
-  width: 35px;
+  width: 36px;
   height: 24px;
   &:not(:last-child) {
-    margin-right: 67px;
+    margin-right: 64px;
   }
 
   color: var(--white);
@@ -110,6 +116,7 @@ export const TableBodyText = styled.p`
     margin-bottom: 12px;
   }
   @media screen and (min-width: 768px) {
+    width: 40px;
     &:not(:last-child) {
       margin-right: 95px;
     }
