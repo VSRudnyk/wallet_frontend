@@ -5,7 +5,7 @@ import { Mutex } from 'async-mutex';
 const mutex = new Mutex();
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:3000/api/',
+  baseUrl: 'https://wallet-backend-1.herokuapp.com/api/',
   prepareHeaders: (headers, { getState }) => {
     const accessToken = getState().auth.accessToken;
     if (accessToken) {
