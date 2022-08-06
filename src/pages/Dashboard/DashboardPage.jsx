@@ -71,6 +71,9 @@ export const DashboardPage = () => {
         dispatch(updateBalance(arr[arr.length - 1].balance));
         setTransactions(arr.reverse());
       }
+    } else {
+      setTransactions([]);
+      dispatch(updateBalance(0));
     }
   }, [data, isLoading, isSuccess, dispatch]);
 
