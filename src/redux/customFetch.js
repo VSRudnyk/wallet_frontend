@@ -18,16 +18,17 @@ export const baseQueryWithReauth = async (args, api, extraOptions) => {
   await mutex.waitForUnlock();
   let result = await baseQuery(args, api, extraOptions);
   const currentCredential = api.getState().auth;
-  api.dispatch(
-    setCredentials({
-      ...currentCredential,
-      accessToken: currentCredential.refreshToken,
-    }),
-  );
+
   if (result.error && result.error.status === 401) {
     if (!mutex.isLocked()) {
       const release = await mutex.acquire();
       try {
+        api.dispatch(
+          setCredentials({
+            ...currentCredential,
+            accessToken: currentCredential.refreshToken,
+          }),
+        );
         const refreshResult = await baseQuery(
           {
             url: 'auth/refresh',
