@@ -324,7 +324,7 @@ export const ModalAddTransactions = () => {
           </ButtonAdd>
           <br />
           <ButtonCancel add={input.operationType} onClick={closeModal}>
-            {t('addtransaction.buttons.add')}
+            {t('addtransaction.buttons.cancel')}
           </ButtonCancel>
         </form>
       </Modal>
