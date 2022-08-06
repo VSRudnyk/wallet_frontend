@@ -3,6 +3,7 @@ import { logOut, setCredentials } from './authSlice';
 import { Mutex } from 'async-mutex';
 
 const mutex = new Mutex();
+
 const baseQuery = fetchBaseQuery({
   baseUrl: 'https://wallet-backend-1.herokuapp.com/api/',
   prepareHeaders: (headers, { getState }) => {
@@ -17,6 +18,12 @@ export const baseQueryWithReauth = async (args, api, extraOptions) => {
   await mutex.waitForUnlock();
   let result = await baseQuery(args, api, extraOptions);
   const currentCredential = api.getState().auth;
+  api.dispatch(
+    setCredentials({
+      ...currentCredential,
+      accessToken: currentCredential.refreshToken,
+    }),
+  );
   if (result.error && result.error.status === 401) {
     if (!mutex.isLocked()) {
       const release = await mutex.acquire();

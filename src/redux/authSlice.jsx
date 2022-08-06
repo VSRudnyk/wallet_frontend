@@ -6,6 +6,7 @@ const initialState = {
   accessToken: null,
   sid: null,
   isLoggedIn: false,
+  refreshToken: null,
 };
 
 export const authSlice = createSlice({
@@ -16,6 +17,7 @@ export const authSlice = createSlice({
       const { user, ...credentials } = action.payload;
       state.user = user;
       state.accessToken = credentials.accessToken || credentials.newAccessToken;
+      state.refreshToken = credentials.refreshToken || credentials.newRefreshToken;
       state.sid = credentials.sid || credentials.newSid;
     },
   },
@@ -31,6 +33,7 @@ export const authSlice = createSlice({
       authOperation.endpoints.login.matchFulfilled,
       (state, { payload }) => {
         state.accessToken = payload.data.accessToken;
+        state.refreshToken = payload.data.refreshToken;
         state.user = payload.data.user;
         state.sid = payload.data.sid;
         state.isLoggedIn = true;
