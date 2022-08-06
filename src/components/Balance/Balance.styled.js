@@ -33,18 +33,33 @@ export const BalanceTitle = styled.p`
   color: var(--dark-grey);
 `;
 
-export const BalanceInWallet = styled.p`
-  font-family: var(--secondaryFont);
-  font-style: normal;
-  font-weight: var(--bold);
+export const BalanceInWallet = styled.div`
+  display: flex;
+  align-items: center;
   overflow-x: hidden;
   overflow-x: scroll;
   &::-webkit-scrollbar {
     height: 0;
   }
+  & > p:first-child {
+    margin-right: 5px;
+  }
+`;
+
+export const IconInBalance = styled.p`
+  font-family: var(--baseFont);
+  font-style: normal;
+  font-weight: var(--reqular);
   font-size: 30px;
   line-height: 45px;
-  display: flex;
-  align-items: center;
+  color: var(--black);
+`;
+
+export const BalanceMain = styled.p`
+  font-family: var(--secondaryFont);
+  font-style: normal;
+  font-weight: var(--bold);
+  font-size: 30px;
+  line-height: 45px;
   color: var(--black);
 `;

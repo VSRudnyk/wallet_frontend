@@ -1,23 +1,22 @@
 import React from 'react';
 import zxcvbn from 'zxcvbn';
 
-export const PasswordStrenght = ({ password}) => {
+export const PasswordStrenght = ({ password }) => {
   const testResult = zxcvbn(password);
   const num = (testResult.score * 100) / 4;
 
   const progressColor = () => {
-
     switch (testResult.score) {
       case 0:
         return '#F11C0B';
       case 1:
         return '#F1540B';
       case 2:
-        return '#FAF00C';
+        return '#f8eb00';
       case 3:
-        return '#3faf6f';
+        return '#0a9d6e';
       case 4:
-        return '#0CD534';
+        return '#00b445';
       default:
         return 'none';
     }

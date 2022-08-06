@@ -19,7 +19,6 @@ import { PasswordInput } from './PasswordInput';
 import { useState } from 'react';
 
 export const FormRegistration = () => {
-
   const [password, setPassword] = useState('');
 
   const [register, { isSuccess, status, error }] = useRegisterMutation();
@@ -30,14 +29,17 @@ export const FormRegistration = () => {
       .string()
       .min(6)
       .max(12)
+      .matches(/^(?!.*\s)/, ' whitespaces are forbidden.')
+      .matches(/^(?=.*[0-9])/, 'must contain at least one numeric character')
       .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*\s)/,
-        'must be one uppercase, one number'
+        /^(?=.*[a-z])(?=.*[A-Z])/,
+        'must contain at least: one upper case letter, one lower case letter, only latin-based alphabet'
       )
       .required(),
     repeated_password: yup
       .string()
-      .oneOf([yup.ref('password')], 'both password need to be the same').required('is required field'),
+      .oneOf([yup.ref('password')], 'both password need to be the same')
+      .required('is required field'),
   });
 
   const Pass = e => {

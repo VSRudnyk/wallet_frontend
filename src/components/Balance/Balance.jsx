@@ -2,6 +2,8 @@ import {
   ContainerBalance,
   BalanceTitle,
   BalanceInWallet,
+  IconInBalance,
+  BalanceMain,
 } from './Balance.styled';
 import Media from 'react-media';
 import { useTranslation } from 'react-i18next';
@@ -20,7 +22,10 @@ export const Balance = () => {
         <ContainerBalance>
           <BalanceTitle>{t('balanceComponent.yourBalance')}</BalanceTitle>
 
-          <BalanceInWallet>₴ {balance}</BalanceInWallet>
+          <BalanceInWallet>
+            <IconInBalance>₴ </IconInBalance>
+            <BalanceMain>{balance}</BalanceMain>
+          </BalanceInWallet>
         </ContainerBalance>
       )}
       <Media queries={{ tablet: { minWidth: 768 } }}>
@@ -30,7 +35,10 @@ export const Balance = () => {
             <ContainerBalance>
               <BalanceTitle>{t('balanceComponent.yourBalance')}</BalanceTitle>
 
-              <BalanceInWallet>₴ {balance}</BalanceInWallet>
+              <BalanceInWallet>
+                <IconInBalance>₴ </IconInBalance>
+                <BalanceMain>{balance}</BalanceMain>
+              </BalanceInWallet>
             </ContainerBalance>
           )
         }

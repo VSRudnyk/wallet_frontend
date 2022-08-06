@@ -48,7 +48,8 @@ export const CustomSelect = ({items, changeValue}) => {
         <SelectWrapper className='select__wrapper'>
             <SelectBtn className='select__button' ref={refToggleDropDown}  onClick={onSelectClick} status={openStatus}>
                 <span className='select__button__active-text'>{selectedText}</span>
-                <IconSVG id="icon-diagram-tab-arrow-down"/>
+                {openStatus === false && <IconSVG id="icon-diagram-tab-arrow-down"/>}
+                {openStatus === true && <IconSVG id="icon-diagram-tab-arrow-down" className="rotated-svg"/>}
             </SelectBtn>
 
             {openStatus === true && <SelectOptionsList className='select__options-wrapper options' onClick={event => {
