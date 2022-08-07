@@ -92,7 +92,7 @@ export const ModalAddTransactions = () => {
     };
 
     if (rules(transactionItem)) {
-      transaction(transactionItem).then(res => document.location.reload());
+      transaction(transactionItem);
       closeModal();
 
       setInput({
