@@ -48,7 +48,6 @@ const Transaction = ({ transactionsList }) => {
           return <TransactionItem key={uuidv4()} transaction={transaction} />;
         })}
       </List>
-
     </TableContainer>
   );
 };

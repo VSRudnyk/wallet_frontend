@@ -44,7 +44,8 @@ const Settings = () => {
       e.target.id !== 'es' &&
       e.target.id !== 'langs' &&
       e.target.id !== 'Capa_1' &&
-      e.target.id !== 'logout'
+      e.target.id !== 'logout' &&
+      e.target.id !== 'exit-icon'
     ) {
       setIsDropDowOpen(false);
       setIsSlideLeftOpen(false);
@@ -92,9 +93,10 @@ const Settings = () => {
                         id="logout"
                         onClick={() => logout()}
                       >
-                        <span>{t('settingsComponent.exit')}</span>
+                        {t('settingsComponent.exit')}
                         <ExitIcon
                           style={{ width: '18px', marginLeft: 'auto' }}
+                          id="exit-icon"
                         />
                       </LangBtn>
                     </ListItem>
