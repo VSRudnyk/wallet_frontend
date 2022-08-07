@@ -4,10 +4,7 @@ import { BsFillTrashFill } from 'react-icons/bs';
 export const Li = styled.li`
   position: relative;
   display: flex;
-  // z-index: -1;
-
   transition: all 0.2s ease-in-out;
-
   &:hover {
     transform: scale(1.01);
   }
@@ -37,30 +34,6 @@ export const Data = styled.p`
   z-index: -2;
 `;
 
-export const FullComment = styled.span`
-  position: absolute;
-  top: 21px;
-  left: -240px;
-  z-index: 1;
-  width: 275px;
-  padding: 10px;
-  height: auto;
-  background-color: white;
-  border-radius: 20px;
-  visibility: hidden;
-  &:hover {
-    visibility: visible;
-  }
-`;
-export const DataHover = styled(Data)`
-  position: relative;
-
-  &:hover {
-    ${FullComment} {
-      visibility: visible;
-    }
-  }
-`;
 export const Span = styled.span`
   color: ${props => (props.income === 'income' ? '#24CCA7' : '#ff6596')}; ;
 `;

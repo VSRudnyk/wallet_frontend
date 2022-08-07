@@ -14,10 +14,6 @@ export const HomeTabWrapper = styled.div`
 
 export const List = styled.ul`
   height: 65vh;
-  // overflow-y: scroll;
-  // &::-webkit-scrollbar {
-  //   display: none;
-  // }
   @media (min-width: 768px) {
     margin-top: 55px;
   }
@@ -51,11 +47,6 @@ export const TransactionsContainer = styled.ul`
   border-radius: 30px;
   overflow: hidden;
   height: 40vh;
-  // overflow-y: scroll;
-  // scroll-behavior: smooth;
-  &::-webkit-scrollbar {
-    // display: none;
-  }
 
   @media (min-width: 1280px) {
     &:nth-child(2) {
@@ -93,23 +84,4 @@ export const TempBtn = styled.button`
   font-weight: var(--bold);
   font-size: 18px;
   line-height: 27px;
-`;
-////PAGINATION//////
-export const Pagination = styled.div`
-  margin-top: 30px;
-`;
-export const PaginationBtn = styled.button`
-  width: 50px;
-  padding: 10px;
-  border: none;
-  background-color: transparent;
-  outline: 1px solid rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
-  &:hover {
-    background-color: var(--blue);
-    fill: var(--white);
-  }
-  &:not(:last-child) {
-    margin-right: 20px;
-  }
 `;
