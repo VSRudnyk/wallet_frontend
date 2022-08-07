@@ -24,7 +24,7 @@ export const Balance = () => {
 
           <BalanceInWallet>
             <IconInBalance>₴ </IconInBalance>
-            <BalanceMain>{balance}</BalanceMain>
+            <BalanceMain>{balance.toFixed(2)}</BalanceMain>
           </BalanceInWallet>
         </ContainerBalance>
       )}
@@ -37,7 +37,7 @@ export const Balance = () => {
 
               <BalanceInWallet>
                 <IconInBalance>₴ </IconInBalance>
-                <BalanceMain>{balance}</BalanceMain>
+                <BalanceMain>{balance.toFixed(2)}</BalanceMain>
               </BalanceInWallet>
             </ContainerBalance>
           )
