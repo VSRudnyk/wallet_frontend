@@ -10,25 +10,44 @@ import {
   SvgAccount,
   SvgEnvelope,
   SvgLock,
-  RegisterButton,
-  LoginButton,
+  RegisterButtonRegPage,
+  LoginButtonRegPage,
   ErrorText,
   FormContainer,
+  ButtonShow,
+  ButtonHide,
 } from '../Form.styled';
 import { PasswordInput } from './PasswordInput';
 import { useState } from 'react';
 
 export const FormRegistration = () => {
+  const [type, setType] = useState('password');
+
+  const showHide = e => {
+    e.preventDefault();
+    let currentType = type === 'input' ? 'password' : 'input';
+    setType(currentType);
+  };
+
   const [password, setPassword] = useState('');
 
   const [register, { isSuccess, status, error }] = useRegisterMutation();
   const schema = yup.object().shape({
-    name: yup.string().max(16).required(),
-    email: yup.string().email().min(6).required(),
+    name: yup.string().max(16, 'must be less than 16 characters').required(),
+    email: yup
+      .string()
+      .email()
+      .matches(
+        /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+        'available latin-based alphabet, numeric character and _ . + -'
+      )
+      .min(6, 'must be at least 6 characters')
+      .max(63, 'email length must be less than 63 characters')
+      .required(),
     password: yup
       .string()
-      .min(6)
-      .max(12)
+      .min(6, 'must be at least 6 characters')
+      .max(12, 'password length must be less than 12 characters')
       .matches(/^(?!.*\s)/, ' whitespaces are forbidden.')
       .matches(/^(?=.*[0-9])/, 'must contain at least one numeric character')
       .matches(
@@ -38,7 +57,7 @@ export const FormRegistration = () => {
       .required(),
     repeated_password: yup
       .string()
-      .oneOf([yup.ref('password')], 'both password need to be the same')
+      .oneOf([yup.ref('password')], 'both passwords need to be the same')
       .required('is required field'),
   });
 
@@ -94,31 +113,47 @@ export const FormRegistration = () => {
       >
         <FormContainer autoComplete="off">
           <InputContainer>
-            <SvgEnvelope />
-            <Input name="email" type="email" placeholder="E-mail" />
+            <label id="email">
+              <SvgEnvelope />
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="E-mail"
+              />
+            </label>
             <FormError name="email" />
           </InputContainer>
           <PasswordInput onInput={Pass} password={password} />
           <InputContainer>
+          <label id="repeated_password">
+            {type === 'input' ? (
+              <ButtonShow onClick={showHide} />
+            ) : (
+              <ButtonHide onClick={showHide} />
+            )}
             <SvgLock />
-            <Input
+            <Input id="repeated_password"
               name="repeated_password"
-              type="password"
+              type={type}
               placeholder="Confirm password"
             />
+            </label>
             <FormError name="repeated_password" />
           </InputContainer>
           <InputContainer>
+          <label id="name">
             <SvgAccount />
-            <Input name="name" type="text" placeholder="Firstname" />
+            <Input id="name" name="name" type="text" placeholder="First name" />
             <FormError name="name" />
+            </label>
           </InputContainer>
-          <RegisterButton type="submit">Register</RegisterButton>
+          <RegisterButtonRegPage type="submit">Register</RegisterButtonRegPage>
           <ToastContainer />
         </FormContainer>
       </Formik>
       <Link to="/wallet_frontend/login">
-        <LoginButton type="button">Login </LoginButton>
+        <LoginButtonRegPage type="button">Log in </LoginButtonRegPage>
       </Link>
       <ToastContainer />
     </>

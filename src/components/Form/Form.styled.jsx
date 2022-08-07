@@ -79,7 +79,7 @@ export const SvgAccount = styled(Account)`
   }
 `;
 
-export const LoginButton = styled.button`
+export const LoginButtonRegPage = styled.button`
   background-color: var(--white);
   color: var(--active-blue);
   width: 280px;
@@ -92,6 +92,13 @@ export const LoginButton = styled.button`
   line-height: 1;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  transition: 0.5s;
+
+  &:hover, &:focus, &:active {
+    color: var(--white);
+    background-color: var(--active-blue);
+    transition: 0.5s;
+  }
 `;
 
 export const ErrorText = styled.p`
@@ -112,7 +119,7 @@ export const ErrorTextPassword = styled.p`
   }
 `;
 
-export const RegisterButton = styled.button`
+export const RegisterButtonRegPage = styled.button`
   background-color: var(--green);
   color: var(--white);
   width: 280px;
@@ -125,6 +132,59 @@ export const RegisterButton = styled.button`
   line-height: 1;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  transition: 0.5s;
+
+  &:hover, &:focus, &:active{
+    color: var(--green);
+    background: var(--white);
+    border: 1px solid var(--green);
+    transition: 0.5s;
+  }
+`;
+
+export const LoginButtonLogPage = styled.button`
+  background-color: var(--green);
+  color: var(--white);
+  width: 280px;
+  border-radius: 50px;
+  height: 50px;
+  border: none;
+  font-family: var(--baseFont);
+  font-weight: var(--regular);
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: 0.5s;
+
+  &:hover, &:focus, &:active{
+    color: var(--green);
+    background: var(--white);
+    border: 1px solid var(--green);
+    transition: 0.5s;
+  }
+`;
+
+export const RegisterButtonLogPage = styled.button`
+  background-color: var(--white);
+  color: var(--active-blue);
+  width: 280px;
+  border-radius: 50px;
+  height: 50px;
+  border: 1px solid var(--active-blue);
+  font-family: var(--baseFont);
+  font-weight: var(--regular);
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: 0.5s;
+
+  &:hover, &:focus, &:active {
+    color: var(--white);
+    background-color: var(--active-blue);
+    transition: 0.5s;
+  }
 `;
 
 export const ButtonShow = styled(Eye)`
@@ -132,9 +192,11 @@ export const ButtonShow = styled(Eye)`
   padding: 7px 7px;
   right: 0;
   top: -3px;
+  cursor: pointer;
   @media screen and (min-width: 768px) {
     right: 0;
     top: 0;
+  
   }
 `;
 
@@ -144,6 +206,7 @@ export const ButtonHide = styled(EyeClose)`
   right: 0;
   top: -3px;
   fill: var(--gray);
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     right: 0;

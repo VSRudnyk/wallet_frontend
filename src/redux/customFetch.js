@@ -1,5 +1,5 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/query';
-import { logOut, setCredentials } from './authSlice';
+import {  setCredentials } from './authSlice';
 import { Mutex } from 'async-mutex';
 
 const mutex = new Mutex();
@@ -50,9 +50,7 @@ export const baseQueryWithReauth = async (args, api, extraOptions) => {
             }),
           );
           result = await baseQuery(args, api, extraOptions);
-        } else {
-          api.dispatch(logOut);
-        }
+        } 
       } finally {
         release();
       }

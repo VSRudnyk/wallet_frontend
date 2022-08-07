@@ -9,14 +9,15 @@ import {
   Input,
   InputContainer,
   SvgEnvelope,
-  LoginButton,
-  RegisterButton,
+  LoginButtonLogPage,
+  RegisterButtonLogPage,
   ErrorText,
   FormContainer,
 } from '../Form.styled';
 
 export const LoginForm = () => {
-  const [login, { isError, isSuccess }] = useLoginMutation();
+
+  const [login, { isError, isSuccess, error }] = useLoginMutation();
 
   const defaultInitialValues = {
     email: '',
@@ -24,7 +25,7 @@ export const LoginForm = () => {
   };
 
   const schema = yup.object().shape({
-    email: yup.string().email().min(6).required(),
+    email: yup.string().email().min(6).max(63).required(),
     password: yup.string().min(6).max(12).required(),
   });
 
@@ -46,7 +47,7 @@ export const LoginForm = () => {
   return (
     <>
       {isSuccess && toast.success('Welcome back!') && <ToastContainer />}
-      {isError && toast.error('Ooops, something wrong!') && <ToastContainer />}
+      {isError && toast.error(error.data.message) && <ToastContainer />}
 
       <Formik
         initialValues={defaultInitialValues}
@@ -55,19 +56,21 @@ export const LoginForm = () => {
       >
         <FormContainer autoComplete="off">
           <InputContainer>
+          <label id="emal">
             <SvgEnvelope />
-            <Input name="email" type="email" placeholder="E-mail" />
+            <Input id="emal" name="email" type="email" placeholder="E-mail" />
+            </label>
             <FormError name="email" />
           </InputContainer>
           <InputContainer>
             <ButtonShowAndHide />
           </InputContainer>
           <ToastContainer />
-          <LoginButton type="submit">log in</LoginButton>
+          <LoginButtonLogPage type="submit">log in</LoginButtonLogPage>
         </FormContainer>
       </Formik>
       <Link to="/wallet_frontend/register">
-        <RegisterButton type="button">register</RegisterButton>
+        <RegisterButtonLogPage type="button">register</RegisterButtonLogPage>
       </Link>
     </>
   );
