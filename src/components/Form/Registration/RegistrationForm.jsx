@@ -36,7 +36,7 @@ export const FormRegistration = () => {
     name: yup.string().max(16,'must be less than 16 characters').required(),
     email: yup
       .string()
-      .email()
+      .email().matches(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, 'available latin-based alphabet, numeric character and _ . + -')
       .min(6, 'must be at least 6 characters')
       .max(63, 'email length must be less than 63 characters')
       .required(),
