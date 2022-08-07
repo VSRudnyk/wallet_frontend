@@ -4,6 +4,7 @@ import { baseQueryWithReauth } from './customFetch';
 export const transactionsOperation = createApi({
   reducerPath: 'transactionsOperation',
   baseQuery: baseQueryWithReauth,
+  keepUnusedDataFor: 10,
   tagTypes: ['Transactions'],
   endpoints: builder => ({
     getAllTransactions: builder.query({

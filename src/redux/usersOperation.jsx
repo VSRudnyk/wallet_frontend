@@ -4,6 +4,7 @@ import { baseQueryWithReauth } from './customFetch';
 export const usersOperation = createApi({
   reducerPath: 'usersOperation',
   baseQuery: baseQueryWithReauth,
+  keepUnusedDataFor: 10,
 
   endpoints: builder => ({
     getCurrentUser: builder.query({
