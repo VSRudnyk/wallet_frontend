@@ -10,25 +10,40 @@ import {
   SvgAccount,
   SvgEnvelope,
   SvgLock,
-  RegisterButton,
-  LoginButton,
+  RegisterButtonRegPage,
+  LoginButtonRegPage,
   ErrorText,
   FormContainer,
+  ButtonShow,
+  ButtonHide,
 } from '../Form.styled';
 import { PasswordInput } from './PasswordInput';
 import { useState } from 'react';
 
 export const FormRegistration = () => {
+  const [type, setType] = useState('password');
+
+  const showHide = e => {
+    e.preventDefault();
+    let currentType = type === 'input' ? 'password' : 'input';
+    setType(currentType);
+  };
+
   const [password, setPassword] = useState('');
 
   const [register, { isSuccess, status, error }] = useRegisterMutation();
   const schema = yup.object().shape({
-    name: yup.string().max(16).required(),
-    email: yup.string().email().min(6).required(),
+    name: yup.string().max(16,'must be less than 16 characters').required(),
+    email: yup
+      .string()
+      .email()
+      .min(6, 'must be at least 6 characters')
+      .max(63, 'email length must be less than 63 characters')
+      .required(),
     password: yup
       .string()
-      .min(6)
-      .max(12)
+      .min(6, 'must be at least 6 characters')
+      .max(12, 'password length must be less than 12 characters')
       .matches(/^(?!.*\s)/, ' whitespaces are forbidden.')
       .matches(/^(?=.*[0-9])/, 'must contain at least one numeric character')
       .matches(
@@ -38,7 +53,7 @@ export const FormRegistration = () => {
       .required(),
     repeated_password: yup
       .string()
-      .oneOf([yup.ref('password')], 'both password need to be the same')
+      .oneOf([yup.ref('password')], 'both passwords need to be the same')
       .required('is required field'),
   });
 
@@ -100,25 +115,30 @@ export const FormRegistration = () => {
           </InputContainer>
           <PasswordInput onInput={Pass} password={password} />
           <InputContainer>
+            {type === 'input' ? (
+              <ButtonShow onClick={showHide} />
+            ) : (
+              <ButtonHide onClick={showHide} />
+            )}
             <SvgLock />
             <Input
               name="repeated_password"
-              type="password"
+              type={type}
               placeholder="Confirm password"
             />
             <FormError name="repeated_password" />
           </InputContainer>
           <InputContainer>
             <SvgAccount />
-            <Input name="name" type="text" placeholder="Firstname" />
+            <Input name="name" type="text" placeholder="First name" />
             <FormError name="name" />
           </InputContainer>
-          <RegisterButton type="submit">Register</RegisterButton>
+          <RegisterButtonRegPage type="submit">Register</RegisterButtonRegPage>
           <ToastContainer />
         </FormContainer>
       </Formik>
       <Link to="/wallet_frontend/login">
-        <LoginButton type="button">Login </LoginButton>
+        <LoginButtonRegPage type="button">Log in </LoginButtonRegPage>
       </Link>
       <ToastContainer />
     </>
