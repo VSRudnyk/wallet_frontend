@@ -1,5 +1,5 @@
 {
-  "noTransactionText": "You don't have transactions yet. Please use add button below to get started.",
+  "noTransactionText": "You don't have any transactions. Please use add button below to get started.",
   "date": "Date",
   "type": "Type",
   "category": "Category",
@@ -152,16 +152,19 @@
       "cancel": "Cancel"
     },
     "options": {
-      "main": "Basic expenses",
+      "main": "Main",
+      "basic": "Basic expenses",
       "food": "Food",
       "car": "Car",
       "products": "Products",
       "development": "Development",
       "health": "Self care",
-      "children": "Children care",
-      "house": "Household product",
+      "children": "Children",
+      "childrencare": "Children care",
+      "house": "House",
+      "household": "Household product",
       "education": "Education",
-      "laisure": "Laisure",
+      "leisure": "Leisure",
       "other": "Other",
       "salary": "Salary",
       "bonus": "Bonus"

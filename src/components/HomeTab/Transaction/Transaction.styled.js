@@ -1,12 +1,18 @@
 import styled from 'styled-components';
+
 export const TableContainer = styled.div`
   position: relative;
   width: 715px;
   height: 38vh;
   overflow: hidden;
   overflow-y: scroll;
+
   &::-webkit-scrollbar {
-    display: none;
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #bdbdbd;
+    border-radius: 10px;
   }
 `;
 
