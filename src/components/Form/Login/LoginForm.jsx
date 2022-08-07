@@ -17,7 +17,7 @@ import {
 
 export const LoginForm = () => {
 
-  const [login, { isError, isSuccess }] = useLoginMutation();
+  const [login, { isError, isSuccess, error }] = useLoginMutation();
 
   const defaultInitialValues = {
     email: '',
@@ -47,7 +47,7 @@ export const LoginForm = () => {
   return (
     <>
       {isSuccess && toast.success('Welcome back!') && <ToastContainer />}
-      {isError && toast.error('Email or password wrong') && <ToastContainer />}
+      {isError && toast.error(error.data.message) && <ToastContainer />}
 
       <Formik
         initialValues={defaultInitialValues}
