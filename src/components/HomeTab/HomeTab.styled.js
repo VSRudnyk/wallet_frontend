@@ -14,10 +14,10 @@ export const HomeTabWrapper = styled.div`
 
 export const List = styled.ul`
   height: 65vh;
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  // overflow-y: scroll;
+  // &::-webkit-scrollbar {
+  //   display: none;
+  // }
   @media (min-width: 768px) {
     margin-top: 55px;
   }
@@ -51,10 +51,10 @@ export const TransactionsContainer = styled.ul`
   border-radius: 30px;
   overflow: hidden;
   height: 40vh;
-  overflow-y: scroll;
-  scroll-behavior: smooth;
+  // overflow-y: scroll;
+  // scroll-behavior: smooth;
   &::-webkit-scrollbar {
-    display: none;
+    // display: none;
   }
 
   @media (min-width: 1280px) {

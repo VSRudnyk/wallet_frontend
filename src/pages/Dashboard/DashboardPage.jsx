@@ -42,7 +42,7 @@ export const DashboardPage = () => {
     state => state.global.isModalAddTransactionOpen
   );
   const { data, isLoading, isSuccess } = useGetAllTransactionsQuery();
-  const [transactions, setTransactions] = useState(null);
+  const [transactions, setTransactions] = useState([]);
 
   useEffect(() => {
     if (data !== undefined && data.length > 0) {
@@ -110,10 +110,12 @@ export const DashboardPage = () => {
             <DashboardSeparator></DashboardSeparator>
             {pathname === '/wallet_frontend/diagram' && <DiagramTab />}
             <DashboardSecondSectionWrapper>
-              {location.pathname === '/wallet_frontend/home' &&
-                transactions !== null && (
-                  <HomeTab transactionsList={transactions} />
-                )}
+              {location.pathname === '/wallet_frontend/home' && (
+                <HomeTab
+                  transactionsList={transactions}
+                  isLoading={isLoading}
+                />
+              )}
             </DashboardSecondSectionWrapper>
           </DashboardWrapper>
           {modalAddTransactionStatus && <ModalAddTransactions />}

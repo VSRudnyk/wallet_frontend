@@ -202,9 +202,9 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="House"
-                        value={t('addtransaction.options.house')}
+                        value={t('addtransaction.options.household')}
                       >
-                        {t('addtransaction.options.house')}
+                        {t('addtransaction.options.household')}
                       </SelectOptions>
                       <SelectOptions
                         onClick={onOptionClick}
@@ -226,9 +226,9 @@ export const ModalAddTransactions = () => {
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Children care"
-                        value={t('addtransaction.options.children')}
+                        value={t('addtransaction.options.childrencare')}
                       >
-                        {t('addtransaction.options.children')}
+                        {t('addtransaction.options.childrencare')}
                       </SelectOptions>{' '}
                       <SelectOptions
                         onClick={onOptionClick}
@@ -244,15 +244,15 @@ export const ModalAddTransactions = () => {
                         key="Laisure"
                         value={t('addtransaction.options.laisure')}
                       >
-                        {t('addtransaction.options.laisure')}
+                        {t('addtransaction.options.leisure')}
                       </SelectOptions>{' '}
                       <SelectOptions
                         onClick={onOptionClick}
                         oper={input.operationType}
                         key="Basic expenses"
-                        value={t('addtransaction.options.main')}
+                        value={t('addtransaction.options.basic')}
                       >
-                        {t('addtransaction.options.main')}
+                        {t('addtransaction.options.basic')}
                       </SelectOptions>
                       <SelectOptions
                         onClick={onOptionClick}
