@@ -56,8 +56,10 @@ export const LoginForm = () => {
       >
         <FormContainer autoComplete="off">
           <InputContainer>
+          <label id="emal">
             <SvgEnvelope />
-            <Input name="email" type="email" placeholder="E-mail" />
+            <Input id="emal" name="email" type="email" placeholder="E-mail" />
+            </label>
             <FormError name="email" />
           </InputContainer>
           <InputContainer>

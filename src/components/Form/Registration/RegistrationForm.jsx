@@ -33,10 +33,14 @@ export const FormRegistration = () => {
 
   const [register, { isSuccess, status, error }] = useRegisterMutation();
   const schema = yup.object().shape({
-    name: yup.string().max(16,'must be less than 16 characters').required(),
+    name: yup.string().max(16, 'must be less than 16 characters').required(),
     email: yup
       .string()
-      .email().matches(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, 'available latin-based alphabet, numeric character and _ . + -')
+      .email()
+      .matches(
+        /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+        'available latin-based alphabet, numeric character and _ . + -'
+      )
       .min(6, 'must be at least 6 characters')
       .max(63, 'email length must be less than 63 characters')
       .required(),
@@ -109,29 +113,40 @@ export const FormRegistration = () => {
       >
         <FormContainer autoComplete="off">
           <InputContainer>
-            <SvgEnvelope />
-            <Input name="email" type="email" placeholder="E-mail" />
+            <label id="email">
+              <SvgEnvelope />
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="E-mail"
+              />
+            </label>
             <FormError name="email" />
           </InputContainer>
           <PasswordInput onInput={Pass} password={password} />
           <InputContainer>
+          <label id="repeated_password">
             {type === 'input' ? (
               <ButtonShow onClick={showHide} />
             ) : (
               <ButtonHide onClick={showHide} />
             )}
             <SvgLock />
-            <Input
+            <Input id="repeated_password"
               name="repeated_password"
               type={type}
               placeholder="Confirm password"
             />
+            </label>
             <FormError name="repeated_password" />
           </InputContainer>
           <InputContainer>
+          <label id="name">
             <SvgAccount />
-            <Input name="name" type="text" placeholder="First name" />
+            <Input id="name" name="name" type="text" placeholder="First name" />
             <FormError name="name" />
+            </label>
           </InputContainer>
           <RegisterButtonRegPage type="submit">Register</RegisterButtonRegPage>
           <ToastContainer />

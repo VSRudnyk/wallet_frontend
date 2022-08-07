@@ -27,19 +27,22 @@ export const ButtonShowAndHide = ({ onInput, password }) => {
 
   return (
     <>
-      {type === 'input' ? (
-        <ButtonShow onClick={showHide} />
-      ) : (
-        <ButtonHide onClick={showHide} />
-      )}
+      <label id="password">
+        {type === 'input' ? (
+          <ButtonShow onClick={showHide} />
+        ) : (
+          <ButtonHide onClick={showHide} />
+        )}
 
-      <SvgLock />
-      <Input
-        onInput={onInput}
-        name="password"
-        type={type}
-        placeholder="Password"
-      />
+        <SvgLock />
+        <Input
+          id="password"
+          onInput={onInput}
+          name="password"
+          type={type}
+          placeholder="Password"
+        />
+      </label>
       <FormError name="password" />
     </>
   );
