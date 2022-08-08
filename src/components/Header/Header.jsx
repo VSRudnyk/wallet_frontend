@@ -5,6 +5,7 @@ import Logo from '../../images/Logo.svg';
 import Exit from '../../images/Exit.svg';
 import Settings from 'components/SettingsBtn/Settings';
 import { useGetCurrentUserQuery } from 'redux/usersOperation';
+import Notiflix from 'notiflix';
 import {
   ContainerLogo,
   HeaderContainer,
@@ -18,14 +19,13 @@ import {
 } from './Header.styled';
 import { Container } from 'stylesheet/Container.styled';
 import { useLogoutMutation } from '../../redux/authOperation';
+import { useState } from 'react';
 
 export const Header = () => {
   const [logout] = useLogoutMutation();
   const { data } = useGetCurrentUserQuery();
+  const [show, setShow] = useState(false);
 
-  const onLogoutHandler = async () => {
-    await logout();
-  };
 
   const { t } = useTranslation();
   return (
@@ -49,7 +49,7 @@ export const Header = () => {
                 ) : (
                   <>
                     <Settings />
-                    <LogoutButton onClick={onLogoutHandler}>
+                    <LogoutButton onClick={()=>setShow(!show)}>
                       <LogoutImg src={Exit} alt="Exit" />
                       <Logout>{t('header.exit')}</Logout>
                     </LogoutButton>
@@ -60,6 +60,17 @@ export const Header = () => {
           </ContainerLogo>
         </HeaderContainer>
       </Container>
+      {show && Notiflix.Confirm.show('Wallet Confirm',
+        'Do you realy want exit?', 'Exit', 'Cancel',
+            function okCb() {
+             logout();
+            },
+            function cancelCb() {
+              Notiflix.Confirm.show(false);
+            },
+{
+},
+)}    
     </HeaderSection>
   );
 };
