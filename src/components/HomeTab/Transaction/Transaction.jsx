@@ -1,6 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
 import TransactionItem from './TransactionItem';
+import PropTypes from 'prop-types';
+
 import {
   TableContainer,
   TransactionsWrapper,
@@ -57,6 +59,10 @@ const Transaction = ({ transactionsList }) => {
       </TransactionsWrapper>
     </TableContainer>
   );
+};
+
+Transaction.propTypes = {
+  transactionsList: PropTypes.array,
 };
 
 export default Transaction;

@@ -4,8 +4,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { useTranslation } from 'react-i18next';
 import { HomeTabWrapper, List, ListItem, Text } from './HomeTab.styled';
 import Media from 'react-media';
+import PropTypes from 'prop-types';
 
-export const HomeTab = ({ transactionsList, isLoading }) => {
+export const HomeTab = ({ transactionsList }) => {
   const { t } = useTranslation();
   return (
     <HomeTabWrapper>
@@ -34,4 +35,8 @@ export const HomeTab = ({ transactionsList, isLoading }) => {
       </Media>
     </HomeTabWrapper>
   );
+};
+
+HomeTab.propTypes = {
+  transactionsList: PropTypes.array,
 };

@@ -37,9 +37,5 @@ export const List = styled.ul`
 
 export const Li = styled.li`
   width: 100%;
-  font-family: var(--baseFont);
-  font-style: normal;
   font-weight: var(--bold);
-  font-size: 16px;
-  line-height: 24px;
 `;
