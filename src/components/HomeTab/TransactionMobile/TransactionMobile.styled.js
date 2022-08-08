@@ -3,7 +3,7 @@ import { BsFillTrashFill } from 'react-icons/bs';
 
 export const List = styled.ul`
   @media screen and (max-width: 767px) {
-    width: 280px;
+    width: 277px;
     border-radius: 10px;
 
     overflow: hidden;
