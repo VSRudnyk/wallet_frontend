@@ -1,6 +1,6 @@
 import { lazy, useState, useEffect } from 'react';
 import { useGetAllCategoriesQuery } from '../../redux/categoriesOperation';
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 import { CustomSelect } from 'components/DiagramTab/NewSelectButton/CustomSelect';
 import {
@@ -17,7 +17,7 @@ const Chart = lazy(() => import('../Chart' /* webpackChunkName: "Chart" */));
 export const DiagramTab = () => {
   const { data: reduxData } = useGetAllCategoriesQuery();
 
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
   const [tableCategories, setTableCategories] = useState('');
   const [tableIncomeSum, setTableIncomeSum] = useState(0);
   const [tableExpenseSum, setTableExpenseSum] = useState(0);
@@ -26,25 +26,25 @@ export const DiagramTab = () => {
   const [yearSelectedValue, setYearSelectedValue] = useState(null);
 
   const monthDataSet = {
-    tittle: 'Month',
+    tittle: 'month',
     data: [
-      { text: 'January', value: 1 },
-      { text: 'February', value: 2 },
-      { text: 'March', value: 3 },
-      { text: 'April', value: 4 },
-      { text: 'May', value: 5 },
-      { text: 'June', value: 6 },
-      { text: 'July', value: 7 },
-      { text: 'August', value: 8 },
-      { text: 'September', value: 9 },
-      { text: 'October', value: 10 },
-      { text: 'November', value: 11 },
-      { text: 'December', value: 12 },
+      { text: t('diagramTab.optionData.jan'), value: 1 },
+      { text: t('diagramTab.optionData.feb'), value: 2 },
+      { text: t('diagramTab.optionData.mar'), value: 3 },
+      { text: t('diagramTab.optionData.apr'), value: 4 },
+      { text: t('diagramTab.optionData.may'), value: 5 },
+      { text: t('diagramTab.optionData.jun'), value: 6 },
+      { text: t('diagramTab.optionData.jul'), value: 7 },
+      { text: t('diagramTab.optionData.aug'), value: 8 },
+      { text: t('diagramTab.optionData.sep'), value: 9 },
+      { text: t('diagramTab.optionData.oct'), value: 10 },
+      { text: t('diagramTab.optionData.nov'), value: 11 },
+      { text: t('diagramTab.optionData.dec'), value: 12 },
     ],
   };
 
   const yearDataSet = {
-    tittle: 'Year',
+    tittle: 'year',
     data: [
       { text: '2019', value: 2019 },
       { text: '2020', value: 2020 },
@@ -157,7 +157,7 @@ export const DiagramTab = () => {
     setTableCategories(sumaryCategories);
     setTableExpenseSum(expenseCategiriesTotalSum);
     setTableIncomeSum(incomeCategiriesTotalSum);
-  }, [reduxData, tableCategories]);
+  }, [reduxData, t, tableCategories]);
 
   useEffect(() => {
     function sumTheSameCategories(data) {
@@ -167,7 +167,7 @@ export const DiagramTab = () => {
         if (sumaryData.length === 0) {
           sumaryData = [
             {
-              categoryName: item.category,
+              categoryName: t(`addtransaction.options.${item.category}`),
               categorySum: item.sum,
               categoryColor: colorizedCategory(item.category),
             },
@@ -183,7 +183,7 @@ export const DiagramTab = () => {
             sumaryData = [
               ...sumaryData,
               {
-                categoryName: item.category,
+                categoryName: t(`addtransaction.options.${item.category}`),
                 categorySum: item.sum,
                 categoryColor: colorizedCategory(item.category),
               },
@@ -228,7 +228,7 @@ export const DiagramTab = () => {
     setTableCategories(sumaryCategories);
     setTableExpenseSum(expenseCategiriesTotalSum);
     setTableIncomeSum(incomeCategiriesTotalSum);
-  }, [monthSelectedValue, reduxData, yearSelectedValue]);
+  }, [monthSelectedValue, reduxData, t, yearSelectedValue]);
 
   return (
     <StatisticsContainer>
