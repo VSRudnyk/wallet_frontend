@@ -46,7 +46,7 @@ const TransactionItem = ({ transaction }) => {
           {newDate}
         </Data>
         <Data>{t(`${type}`)}</Data>
-        <Data>{category}</Data>
+        <Data>{t(`addtransaction.options.${category}`)}</Data>
 
         <Data>
           <EllipsisText

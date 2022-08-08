@@ -32,6 +32,8 @@
   "main": "Básicos",
   "food": "Alimento",
   "auto": "Auto",
+  "car": "Auto",
+  "products": "Productos",
   "reset": "Reiniciar",
   "development": "Desarrollo",
   "children": "Niños",
@@ -164,7 +166,7 @@
       "house": "Casa",
       "household": "Producto doméstico",
       "education": "Educación",
-      "laisure": "Vacacion",
+      "leisure": "Vacacion",
       "other": "Otro",
       "salary": "Salario",
       "bonus": "Primo"

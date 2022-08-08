@@ -18,13 +18,21 @@ import {
   ButtonHide,
 } from '../Form.styled';
 import { PasswordInput } from './PasswordInput';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRef } from 'react';
 
 export const FormRegistration = () => {
   const [type, setType] = useState('password');
 
-  const showHide = e => {
-    e.preventDefault();
+  const confirmPassInFocus = useRef();
+
+  useEffect(() => {
+    if (confirmPassInFocus.active) {
+      confirmPassInFocus.current.focus();
+    }
+  }, [confirmPassInFocus]);
+
+  const showHide = () => {
     let currentType = type === 'input' ? 'password' : 'input';
     setType(currentType);
   };
@@ -126,26 +134,33 @@ export const FormRegistration = () => {
           </InputContainer>
           <PasswordInput onInput={Pass} password={password} />
           <InputContainer>
-          <label id="repeated_password">
-            {type === 'input' ? (
-              <ButtonShow onClick={showHide} />
-            ) : (
-              <ButtonHide onClick={showHide} />
-            )}
-            <SvgLock />
-            <Input id="repeated_password"
-              name="repeated_password"
-              type={type}
-              placeholder="Confirm password"
-            />
+            <label id="repeated_password">
+              {type === 'input' ? (
+                <ButtonShow onClick={showHide} />
+              ) : (
+                <ButtonHide onClick={showHide} />
+              )}
+              <SvgLock />
+              <Input
+                id="repeated_password"
+                name="repeated_password"
+                type={type}
+                placeholder="Confirm password"
+                innerRef={confirmPassInFocus}
+              />
             </label>
             <FormError name="repeated_password" />
           </InputContainer>
           <InputContainer>
-          <label id="name">
-            <SvgAccount />
-            <Input id="name" name="name" type="text" placeholder="First name" />
-            <FormError name="name" />
+            <label id="name">
+              <SvgAccount />
+              <Input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="First name"
+              />
+              <FormError name="name" />
             </label>
           </InputContainer>
           <RegisterButtonRegPage type="submit">Register</RegisterButtonRegPage>

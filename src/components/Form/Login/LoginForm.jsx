@@ -25,7 +25,10 @@ export const LoginForm = () => {
   };
 
   const schema = yup.object().shape({
-    email: yup.string().email().min(6).max(63).required(),
+    email: yup.string().email().min(6).max(63).matches(
+      /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+      'available latin-based alphabet, numeric character and _ . + -'
+    ).required(),
     password: yup.string().min(6).max(12).required(),
   });
 

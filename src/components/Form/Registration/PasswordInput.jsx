@@ -2,14 +2,15 @@ import { InputContainer, Base } from '../Form.styled';
 import { ButtonShowAndHide } from './ButtonShow';
 
 export const PasswordInput = ({ onInput, password }) => {
+
   function lengthConfig() {
     const passLength = password.length;
-    if (passLength >= 6 && passLength < 12) {
+    if (passLength >= 6 && passLength <= 12) {
       const x = '25%';
       return x;
-    };
+    }
     return '0%';
-  };
+  }
 
   function numberConfig() {
     const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -17,10 +18,10 @@ export const PasswordInput = ({ onInput, password }) => {
       if (password.includes(number)) {
         const y = '25%';
         return y;
-      };
-    };
+      }
+    }
     return '0%';
-  };
+  }
 
   function lettersLoweCase() {
     const lowerLetters = [
