@@ -2,6 +2,13 @@ import styled from 'styled-components';
 
 export const TableContainer = styled.div`
   position: relative;
+
+  @media (min-width: 1280px) {
+    width: 715px;
+  }
+`;
+export const TransactionsWrapper = styled.div`
+  height: auto;
   height: 38vh;
   overflow: hidden;
   overflow-y: scroll;
@@ -13,11 +20,7 @@ export const TableContainer = styled.div`
     background: #bdbdbd;
     border-radius: 10px;
   }
-  @media (min-width: 1280px) {
-    width: 715px;
-  }
 `;
-
 export const List = styled.ul`
   width: 100%;
 

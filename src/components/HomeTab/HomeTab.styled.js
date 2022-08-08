@@ -2,23 +2,23 @@ import styled from 'styled-components';
 
 export const HomeTabWrapper = styled.div`
   position: relative;
-  // width: 100%;
   & > button:nth-child(1) {
     margin-right: 30px;
   }
-  overflow-y: auto;
-  scrollbar-gutter: stable;
+  @media (max-width: 767px) {
+    overflow-y: auto;
+    scrollbar-gutter: stable;
 
-  &::-webkit-scrollbar {
-    position: absolute;
-    width: 3px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: #bdbdbd;
-    border-radius: 10px;
+    &::-webkit-scrollbar {
+      position: absolute;
+      width: 3px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #bdbdbd;
+      border-radius: 10px;
+    }
   }
   @media screen and (min-width: 768px) {
-    /* position: relative; */
     display: block;
     margin-top: 46px;
   }
