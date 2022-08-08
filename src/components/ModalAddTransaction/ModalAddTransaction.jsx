@@ -1,4 +1,5 @@
 import { useAddTransactionMutation } from '../../redux/transactionsOperation';
+import Switch from 'react-switch';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { rules } from '../../functions/validate';
 import { useEffect, useState } from 'react';
@@ -17,7 +18,6 @@ import {
   SwitchIncome,
   SwitchExpence,
   SwtchCase,
-  SwitcherButton,
   SwitcherButtonVert,
   SwitcherButtonGor,
   InputsBox,
@@ -44,6 +44,13 @@ export const ModalAddTransactions = () => {
     comment: '',
     category: '',
   });
+
+  const [checkedSwitch, setCheckedSwitch] = useState(false);
+  const handleChangeSwitch = nextChecked => {
+    console.log(nextChecked);
+    setCheckedSwitch(nextChecked);
+  };
+
   const { t } = useTranslation();
   const [transaction, { isSuccess, isError }] = useAddTransactionMutation();
 
@@ -123,16 +130,54 @@ export const ModalAddTransactions = () => {
         <ModalName>{t('addtransaction.header.title')}</ModalName>
         <form onSubmit={OnSubmitClick}>
           <SwitchBox onClick={onButtonClick}>
-            <SwitchIncome nonActive={!input.operationType}>
+            <SwitchIncome
+              nonActive={checkedSwitch}
+              onClick={e => {
+                if (e.currentTarget === e.target) {
+                  e.preventDefault();
+                  setCheckedSwitch(false);
+                }
+              }}
+            >
               {t('addtransaction.header.income')}
             </SwitchIncome>
             <SwtchCase>
-              <SwitcherButton typeIncome={input.operationType}>
-                {input.operationType && <SwitcherButtonVert />}
-                <SwitcherButtonGor />
-              </SwitcherButton>
+              <Switch
+                onChange={handleChangeSwitch}
+                checked={checkedSwitch}
+                className="react-switch"
+                height={30}
+                width={78}
+                handleDiameter={44}
+                offColor="#FFFFFF"
+                onColor="#FFFFFF"
+                offHandleColor="#24CCA7"
+                onHandleColor="#FF6596"
+                boxShadow={
+                  checkedSwitch
+                    ? '0px 6px 15px rgba(255, 101, 150, 0.5)'
+                    : '0px 6px 15px rgba(36, 204, 167, 0.5)'
+                }
+                uncheckedIcon={false}
+                checkedIcon={false}
+                uncheckedHandleIcon={
+                  <>
+                    <SwitcherButtonVert />
+                    <SwitcherButtonGor />
+                  </>
+                }
+                checkedHandleIcon={<SwitcherButtonGor />}
+              />
             </SwtchCase>
-            <SwitchExpence nonActive={!input.operationType}>
+            <SwitchExpence
+              nonActive={checkedSwitch}
+              onClick={e => {
+                if (e.currentTarget === e.target) {
+                  e.preventDefault();
+                  setCheckedSwitch(true);
+                }
+              }}
+            >
               {t('addtransaction.header.expense')}
             </SwitchExpence>
           </SwitchBox>
