@@ -32,6 +32,8 @@
   "main": "Main",
   "food": "Food",
   "auto": "Auto",
+  "car": "Car",
+  "products": "Products",
   "reset": "Reset",
   "development": "Development",
   "children": "Children",

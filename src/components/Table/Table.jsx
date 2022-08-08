@@ -16,9 +16,12 @@ import {
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const Table = ({ tableCategories = [], tableExpenseSum = 0, tableIncomeSum = 0}) => {
+export const Table = ({
+  tableCategories = [],
+  tableExpenseSum = 0,
+  tableIncomeSum = 0,
+}) => {
   const [dataToRender, setDataToRender] = useState('');
-
 
   const [categorySortedStatus, setCategorySortedStatus] = useState('');
   const [sumSortedStatus, setSumSortedStatus] = useState('');
@@ -27,16 +30,16 @@ export const Table = ({ tableCategories = [], tableExpenseSum = 0, tableIncomeSu
 
   useEffect(() => {
     if (tableCategories === []) {
-      return
+      return;
     }
     setDataToRender(tableCategories);
-
   }, [tableCategories]);
 
   function sortByCategory() {
     if (categorySortedStatus === '' || categorySortedStatus === 'ZA') {
-      const sortedData = [...tableCategories].sort((firstCategory, secondCategory) =>
-        firstCategory.categoryName.localeCompare(secondCategory.categoryName)
+      const sortedData = [...tableCategories].sort(
+        (firstCategory, secondCategory) =>
+          firstCategory.categoryName.localeCompare(secondCategory.categoryName)
       );
       setCategorySortedStatus('AZ');
       setSumSortedStatus('');
@@ -44,8 +47,9 @@ export const Table = ({ tableCategories = [], tableExpenseSum = 0, tableIncomeSu
       setDataToRender(sortedData);
     }
     if (categorySortedStatus === 'AZ') {
-      const sortedData = [...tableCategories].sort((firstCategory, secondCategory) =>
-        secondCategory.categoryName.localeCompare(firstCategory.categoryName)
+      const sortedData = [...tableCategories].sort(
+        (firstCategory, secondCategory) =>
+          secondCategory.categoryName.localeCompare(firstCategory.categoryName)
       );
       setCategorySortedStatus('ZA');
       //setSumSortedStatus('');
@@ -55,7 +59,6 @@ export const Table = ({ tableCategories = [], tableExpenseSum = 0, tableIncomeSu
   }
 
   function sortHelper(method) {
-
     switch (method) {
       case 'ascending':
         return [...dataToRender].sort((a, b) => a.categorySum - b.categorySum);
@@ -97,7 +100,6 @@ export const Table = ({ tableCategories = [], tableExpenseSum = 0, tableIncomeSu
   }
 
   function sumConverter(sum) {
-
     const sumStr = sum.toFixed(2).toString();
 
     switch (sumStr.length) {
@@ -106,16 +108,62 @@ export const Table = ({ tableCategories = [], tableExpenseSum = 0, tableIncomeSu
       case 8:
         return sumStr[0] + sumStr[1] + ' ' + sumStr.slice(2, sumStr.length);
       case 9:
-        return sumStr[0] + sumStr[1] + sumStr[2] + ' ' + sumStr.slice(3, sumStr.length);
+        return (
+          sumStr[0] +
+          sumStr[1] +
+          sumStr[2] +
+          ' ' +
+          sumStr.slice(3, sumStr.length)
+        );
       case 10:
-        return sumStr[0] + ' ' + sumStr[1] + sumStr[2] + sumStr[3] + ' ' + sumStr.slice(4, sumStr.length);
+        return (
+          sumStr[0] +
+          ' ' +
+          sumStr[1] +
+          sumStr[2] +
+          sumStr[3] +
+          ' ' +
+          sumStr.slice(4, sumStr.length)
+        );
       case 11:
-        return sumStr[0] + sumStr[1] + ' ' + sumStr[2] + sumStr[3] + sumStr[4] + ' ' + sumStr.slice(5, sumStr.length);
+        return (
+          sumStr[0] +
+          sumStr[1] +
+          ' ' +
+          sumStr[2] +
+          sumStr[3] +
+          sumStr[4] +
+          ' ' +
+          sumStr.slice(5, sumStr.length)
+        );
       case 12:
-        return sumStr[0] + sumStr[1] + sumStr[2] + ' ' + sumStr[3] + sumStr[4] + sumStr[5] + ' ' + sumStr.slice(6, sumStr.length);
-        case 13:
-        return sumStr[0] + ' ' + sumStr[1] + sumStr[2] + sumStr[3] + ' ' + sumStr[4] + sumStr[5] + sumStr[6] + ' ' + sumStr.slice(7, sumStr.length);
-      default: return sumStr
+        return (
+          sumStr[0] +
+          sumStr[1] +
+          sumStr[2] +
+          ' ' +
+          sumStr[3] +
+          sumStr[4] +
+          sumStr[5] +
+          ' ' +
+          sumStr.slice(6, sumStr.length)
+        );
+      case 13:
+        return (
+          sumStr[0] +
+          ' ' +
+          sumStr[1] +
+          sumStr[2] +
+          sumStr[3] +
+          ' ' +
+          sumStr[4] +
+          sumStr[5] +
+          sumStr[6] +
+          ' ' +
+          sumStr.slice(7, sumStr.length)
+        );
+      default:
+        return sumStr;
     }
   }
 
@@ -131,28 +179,27 @@ export const Table = ({ tableCategories = [], tableExpenseSum = 0, tableIncomeSu
           </TableTittleBtn>
         </TableTittle>
 
-      <TableContentList className="table-content-list">
-        {dataToRender !== '' && dataToRender.map(({ categoryColor, categoryName, categorySum }) => {
-            return (
-              <TableContentItem
-                className="table-content-item"
-                key={categoryName}
-              >
-                <ItemCategoryWrapper className="item-category-wrapper">
-                  <CategoryColorMark
-                    background={categoryColor}
-                  ></CategoryColorMark>
-                  <CategoryName className="category-name">
-                    {categoryName}
-                    {/* {t(`diagramTab.reduxData.${categoryName.toLowerCase()}`)} */}
-                  </CategoryName>
-                </ItemCategoryWrapper>
-                <ItemSum>{sumConverter(categorySum)}</ItemSum>
-              </TableContentItem>
-            );
-          })
-        }
-      </TableContentList>
+        <TableContentList className="table-content-list">
+          {dataToRender !== '' &&
+            dataToRender.map(({ categoryColor, categoryName, categorySum }) => {
+              return (
+                <TableContentItem
+                  className="table-content-item"
+                  key={categoryName}
+                >
+                  <ItemCategoryWrapper className="item-category-wrapper">
+                    <CategoryColorMark
+                      background={categoryColor}
+                    ></CategoryColorMark>
+                    <CategoryName className="category-name">
+                      {t(`addtransaction.options.${categoryName}`)}
+                    </CategoryName>
+                  </ItemCategoryWrapper>
+                  <ItemSum>{sumConverter(categorySum)}</ItemSum>
+                </TableContentItem>
+              );
+            })}
+        </TableContentList>
 
         <TableResultList className="table-result-list">
           <TableResultItem className="table-result-item">
