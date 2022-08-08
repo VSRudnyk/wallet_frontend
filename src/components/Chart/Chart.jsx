@@ -76,15 +76,19 @@ export function Chart({ tableCategories = [], tableExpenseSum = 0 }) {
   const [categoryName, setCategoryName] = useState(null);
   const [categoryColor, setCategoryColor] = useState(null);
   const [categorySum, setCategorySum] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (tableCategories) {
-      setCategoryName(tableCategories.map(item => item.categoryName));
+      setCategoryName(
+        tableCategories.map(item =>
+          t(`addtransaction.options.${item.categoryName}`)
+        )
+      );
       setCategoryColor(tableCategories.map(item => item.categoryColor));
       setCategorySum(tableCategories.map(item => item.categorySum));
     }
-  }, [tableCategories]);
-  const { t } = useTranslation();
+  }, [t, tableCategories]);
 
   const [chartData, setChartData] = useState({
     labels: [
