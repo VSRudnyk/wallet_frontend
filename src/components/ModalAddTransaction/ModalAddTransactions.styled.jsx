@@ -3,7 +3,7 @@ import '../../stylesheet/fonts.css';
 import { ReactComponent as Close } from '../../images/Сlose.svg';
 import { ReactComponent as Select } from '../../images/select_open.svg';
 import { ReactComponent as Calendar } from '../../images/calendar.svg';
-import DatePicker from "react-datepicker";
+import DatePicker from 'react-datepicker';
 
 export const Backdrop = styled.div`
   position: fixed;
@@ -18,7 +18,7 @@ export const Backdrop = styled.div`
   @media screen and (min-width: 768px) {
     justify-content: center;
     align-items: center;
-    margin-top:0;
+    margin-top: 0;
   }
 `;
 
@@ -95,36 +95,27 @@ export const SwitchText = styled.span`
 export const SwitchIncome = styled(SwitchText)`
   color: ${props => (props.nonActive ? 'var(--light-gray)' : 'var(--green)')};
   margin-right: 20px;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
 `;
 
 export const SwitchExpence = styled(SwitchText)`
   color: ${props => (props.nonActive ? 'var(--pink)' : 'var(--light-gray)')};
   margin-left: 20px;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
 `;
 
 export const SwtchCase = styled.div`
-  box-sizing: border-box;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 80px;
   height: 40px;
   border: 1px solid var(--light-gray);
   border-radius: 30px;
-`;
-
-export const SwitcherButton = styled.div`
-  border-radius: 50%;
-  position: absolute;
-  top: -2px;
-  width: 44px;
-  height: 44px;
-  justify-content: center;
-  cursor: pointer;
-  background: ${props => (props.typeIncome ? 'var(--green) ' : 'var(--pink)')};
-  box-shadow: ${props =>
-    props.typeIncome
-      ? '0px 6px 15px rgba(36, 204, 167, 0.5)'
-      : '0px 6px 15px rgba(255, 101, 150, 0.5)'};
-  right: ${props => !props.typeIncome && '-3px'};
 `;
 
 export const SwitcherButtonVert = styled.div`
@@ -206,7 +197,7 @@ export const InputCalendarBox = styled.div`
   }
 `;
 
- export const InputCalendar = styled(DatePicker)`
+export const InputCalendar = styled(DatePicker)`
   width: 280px;
   height: 29px;
   font-size: 18px;
@@ -219,12 +210,12 @@ export const InputCalendarBox = styled.div`
   border-right: none;
   border-bottom: 1px solid var(--light-gray);
   @media screen and (min-width: 768px) {
-    width: 181px;    
+    width: 181px;
     font-weight: (--regular);
     font-size: 18px;
-    line-height: 27px;     
-   }
- `;
+    line-height: 27px;
+  }
+`;
 
 export const InputCalendarSVG = styled(Calendar)`
   position: absolute;
@@ -283,7 +274,7 @@ export const ButtonCancel = styled(Button)`
   border: 1px solid var(--active-blue);
   border-radius: 20px;
   color: var(--active-blue);
-  margin-bottom: ${props => props.add ? '40px': '60px'};
+  margin-bottom: 60px;
 `;
 
 export const SelectDiv = styled.div`
@@ -340,7 +331,7 @@ export const SelectWindow = styled.div`
   &::-webkit-scrollbar {
     width: 0;
   }
-overflow-x: hidden;
+  overflow-x: hidden;
   overflow-x: scroll;
   &::-webkit-scrollbar {
     height: 0;
@@ -362,11 +353,10 @@ export const SelectOptions = styled.li`
   align-items: center;
   color: var(--black);
   cursor: pointer;
-  
+
   :hover,
   :focus {
-    background: var(--white);  
-    color: ${props => props.oper? 'var(--green)' :'var(--pink)'} ;
+    background: var(--white);
+    color: ${props => (props.oper ? 'var(--green)' : 'var(--pink)')};
   }
 `;
-
