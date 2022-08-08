@@ -53,7 +53,7 @@ export const DashboardFirstSectionWrapper = styled.div`
 export const DashboardSecondSectionWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
-  height: 100vh;
+  height: 72vh;
 `;
 export const DashboardSeparator = styled.div`
   @media screen and (min-width: 1280px) {
