@@ -4,7 +4,7 @@ import { ButtonShowAndHide } from './ButtonShow';
 export const PasswordInput = ({ onInput, password }) => {
   function lengthConfig() {
     const passLength = password.length;
-    if (passLength >= 6 && passLength < 12) {
+    if (passLength >= 6 && passLength <= 12) {
       const x = '25%';
       return x;
     };
