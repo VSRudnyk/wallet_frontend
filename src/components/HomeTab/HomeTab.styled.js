@@ -2,8 +2,20 @@ import styled from 'styled-components';
 
 export const HomeTabWrapper = styled.div`
   position: relative;
+  // width: 100%;
   & > button:nth-child(1) {
     margin-right: 30px;
+  }
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+
+  &::-webkit-scrollbar {
+    position: absolute;
+    width: 3px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #bdbdbd;
+    border-radius: 10px;
   }
   @media screen and (min-width: 768px) {
     /* position: relative; */
@@ -14,6 +26,8 @@ export const HomeTabWrapper = styled.div`
 
 export const List = styled.ul`
   height: 65vh;
+  width: 277px;
+
   @media (min-width: 768px) {
     margin-top: 55px;
   }

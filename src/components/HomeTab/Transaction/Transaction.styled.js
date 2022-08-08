@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const TableContainer = styled.div`
   position: relative;
-  width: 715px;
   height: 38vh;
   overflow: hidden;
   overflow-y: scroll;
@@ -13,6 +12,9 @@ export const TableContainer = styled.div`
   &::-webkit-scrollbar-thumb {
     background: #bdbdbd;
     border-radius: 10px;
+  }
+  @media (min-width: 1280px) {
+    width: 715px;
   }
 `;
 
