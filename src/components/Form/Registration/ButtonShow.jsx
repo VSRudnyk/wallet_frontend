@@ -6,12 +6,22 @@ import {
   SvgLock,
   ErrorTextPassword,
 } from '../Form.styled';
-import { ErrorMessage } from 'formik';
 
-export const ButtonShowAndHide = ({ onInput, password }) => {
+import { ErrorMessage } from 'formik';
+import { useRef } from 'react';
+import { useEffect } from 'react';
+
+export const ButtonShowAndHide = ({ onInput }) => {
   const [type, setType] = useState('password');
-  const showHide = e => {
-    e.preventDefault();
+  const passInFocus = useRef();
+
+  useEffect(() => {
+    if(passInFocus.active) {
+      passInFocus.current.focus();
+    }
+  }, [passInFocus]);
+
+  const showHide = () => {
     let currentType = type === 'input' ? 'password' : 'input';
     setType(currentType);
   };
@@ -33,16 +43,17 @@ export const ButtonShowAndHide = ({ onInput, password }) => {
         ) : (
           <ButtonHide onClick={showHide} />
         )}
-
         <SvgLock />
+
         <Input
           id="password"
           onInput={onInput}
           name="password"
           type={type}
           placeholder="Password"
-        />
-      </label>
+          innerRef={passInFocus}
+          />
+          </label>
       <FormError name="password" />
     </>
   );
