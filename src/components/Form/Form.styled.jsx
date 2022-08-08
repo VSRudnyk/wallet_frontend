@@ -94,7 +94,7 @@ export const LoginButtonRegPage = styled.button`
   text-transform: uppercase;
   transition: 0.5s;
 
-  &:hover, &:focus, &:active {
+  &:hover{
     color: var(--white);
     background-color: var(--active-blue);
     transition: 0.5s;
@@ -134,7 +134,7 @@ export const RegisterButtonRegPage = styled.button`
   text-transform: uppercase;
   transition: 0.5s;
 
-  &:hover, &:focus, &:active{
+  &:hover{
     color: var(--green);
     background: var(--white);
     border: 1px solid var(--green);
@@ -157,7 +157,7 @@ export const LoginButtonLogPage = styled.button`
   text-transform: uppercase;
   transition: 0.5s;
 
-  &:hover, &:focus, &:active{
+  &:hover{
     color: var(--green);
     background: var(--white);
     border: 1px solid var(--green);
@@ -180,7 +180,7 @@ export const RegisterButtonLogPage = styled.button`
   text-transform: uppercase;
   transition: 0.5s;
 
-  &:hover, &:focus, &:active {
+  &:hover{
     color: var(--white);
     background-color: var(--active-blue);
     transition: 0.5s;

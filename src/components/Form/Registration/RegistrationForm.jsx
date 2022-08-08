@@ -41,7 +41,7 @@ export const FormRegistration = () => {
 
   const [register, { isSuccess, status, error }] = useRegisterMutation();
   const schema = yup.object().shape({
-    name: yup.string().max(16, 'must be less than 16 characters').required(),
+    name: yup.string().min(1).max(16, 'must be less than 16 characters').required(),
     email: yup
       .string()
       .email()
