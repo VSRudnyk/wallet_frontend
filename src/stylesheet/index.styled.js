@@ -74,6 +74,15 @@ input {
   }   
 }
 
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
   :root {
     --black: #000000;
     --gray: #bdbdbd;
