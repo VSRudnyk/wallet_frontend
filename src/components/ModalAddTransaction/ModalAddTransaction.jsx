@@ -106,7 +106,7 @@ export const ModalAddTransactions = () => {
     const transactionItem = {
       sum: input.sum,
       date: input.date,
-      type: input.operationType ? 'expense' : 'income',
+      type: input.operationType ? 'income' : 'expense',
       comment: input.comment ? input.comment: "-",
       category: input.category,
       balance: 90000,
@@ -146,11 +146,10 @@ export const ModalAddTransactions = () => {
         <form onSubmit={OnSubmitClick}>
           <SwitchBox onClick={onButtonClick}>
             <SwitchIncome
-              nonActive={input.operationType}
+              nonActive={!input.operationType}
               onClick={e => {
                 if (e.currentTarget === e.target) {
-                  e.preventDefault();
-                  setInput({...input, operationType: true})
+                  handleChangeSwitch(!input.operationType);                  
                 }
               }}
             >
@@ -159,7 +158,7 @@ export const ModalAddTransactions = () => {
             <SwtchCase>
               <Switch
                 onChange={handleChangeSwitch}
-                checked={input.operationType}
+                checked={!input.operationType}
                 className="react-switch"
                 height={30}
                 width={78}
@@ -169,12 +168,12 @@ export const ModalAddTransactions = () => {
                 offHandleColor="#24CCA7"
                 onHandleColor="#FF6596"
                 boxShadow={
-                  input.operationType
+                  !input.operationType
                     ? '0px 6px 15px rgba(255, 101, 150, 0.5)'
                     : '0px 6px 15px rgba(36, 204, 167, 0.5)'
                 }
                 uncheckedIcon={false}
-                checkedIcon={false}
+                checkedIcon={false} 
                 uncheckedHandleIcon={
                   <>
                     <SwitcherButtonVert />
@@ -185,12 +184,10 @@ export const ModalAddTransactions = () => {
               />
             </SwtchCase>
             <SwitchExpence
-              nonActive={input.operationType}
+              nonActive={!input.operationType}
               onClick={e => {
-                if (e.currentTarget === e.target) {
-                  e.preventDefault();
-                
-                  setInput({...input, operationType: false})
+                if (e.currentTarget === e.target) {         
+                  handleChangeSwitch(!input.operationType)
                 }
               }}
             >
@@ -213,7 +210,7 @@ export const ModalAddTransactions = () => {
               <SelectSvg />
               {selectWindow && (
                 <SelectWindow>
-                  {input.operationType ? (
+                  {!input.operationType ? (
                     <ul>
                       <SelectOptions
                         onClick={onOptionClick}
