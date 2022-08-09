@@ -11,14 +11,14 @@ export const Backdrop = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  margin-top: 60px;
+ 
   display: flex;
-  background: var(--backdrop);
+  background: transparent;
   z-index: 1200;
   @media screen and (min-width: 768px) {
     justify-content: center;
     align-items: center;
-    margin-top: 0;
+    background: var(--backdrop);
   }
 `;
 
@@ -27,6 +27,8 @@ export const Modal = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  margin-top:60px;
+  overflow: scroll; 
   background-color: var(--white);
   @media screen and (min-width: 768px) {
     width: 540px;
@@ -174,7 +176,7 @@ export const Input = styled.input`
 
 export const InputAmount = styled(Input)`
   margin-bottom: 40px;
-  padding-left: 20px;
+  padding-left: 8px;
   font-weight: var(--bold);
   @media screen and (min-width: 768px) {
     margin-right: 32px;
@@ -217,15 +219,20 @@ export const InputCalendar = styled(DatePicker)`
   }
 `;
 
+export const InputCalendarIcon = styled(DatePicker)`
+  position:absolute;
+`
+
 export const InputCalendarSVG = styled(Calendar)`
   position: absolute;
   right: 15px;
-  top: 1px;
+  top: -40px;
 `;
 
 export const InputComment = styled(Input)`
   height: 84px;
   margin-top: 40px;
+
   ::placeholder {
     padding-left: 20px;
     font-family: var(--baseFont);
@@ -238,9 +245,10 @@ export const InputComment = styled(Input)`
     width: 394px;
     margin-top: 0;
     height: 29px;
-    padding-left: 0;
+    
+    padding-left: 8px;
     ::placeholder {
-      padding-left: 8px;
+      padding-left: 0px;
     }
   }
 `;

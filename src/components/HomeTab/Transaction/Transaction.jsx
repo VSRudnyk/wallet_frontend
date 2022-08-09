@@ -1,7 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { v4 as uuidv4 } from 'uuid';
 import TransactionItem from './TransactionItem';
-import { TableContainer, List, Li } from './Transaction.styled';
+import PropTypes from 'prop-types';
+
+import {
+  TableContainer,
+  TransactionsWrapper,
+  List,
+  Li,
+} from './Transaction.styled';
 
 const Transaction = ({ transactionsList }) => {
   const { t } = useTranslation();
@@ -43,13 +50,19 @@ const Transaction = ({ transactionsList }) => {
   return (
     <TableContainer>
       <List>{tableHeaders}</List>
-      <List>
-        {transactionsList.map(transaction => {
-          return <TransactionItem key={uuidv4()} transaction={transaction} />;
-        })}
-      </List>
+      <TransactionsWrapper>
+        <List>
+          {transactionsList.map(transaction => {
+            return <TransactionItem key={uuidv4()} transaction={transaction} />;
+          })}
+        </List>
+      </TransactionsWrapper>
     </TableContainer>
   );
+};
+
+Transaction.propTypes = {
+  transactionsList: PropTypes.array,
 };
 
 export default Transaction;

@@ -23,7 +23,7 @@ const LoginPage = lazy(() =>
 export const App = () => {
   return (
     <>
-      <Suspense fallback={<Loader color="#4a56e2" size="150px" />}>
+      <Suspense fallback={<Loader color="#4a56e2" size="100px" />}>
         <Routes>
           <Route
             path="/wallet_frontend/register"
