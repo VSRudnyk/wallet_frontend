@@ -52,7 +52,7 @@ export const ModalAddTransactions = () => {
   const handleChangeSwitch = nextChecked => {
     setCheckedSwitch(nextChecked);
   };
-  const setting = JSON.parse(localStorage.getItem('inputs'));  
+  /* const setting = JSON.parse(localStorage.getItem('inputs'));   */
 
   const { t } = useTranslation();
   const [transaction, { isSuccess, isError }] = useAddTransactionMutation();
@@ -63,35 +63,25 @@ export const ModalAddTransactions = () => {
     state => state.global.isModalAddTransactionOpen
   );
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    if(setting) {
-       return setInput({...setting, date: new Date()})
-    } else {
-      setInput({
-        sum: '',
-        date: new Date(),
-        operationType: true,
-        comment: '',
-        category: '',
-      })
-    }
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown); 
-    };    
-  },[]);
-
-
-
-  
-
-
   const handleKeyDown = e => {
     if (e.code === 'Escape') {
       dispatch(changeModalStatus(!modalAddTransactionStatus));
     }
   };
+
+  useEffect(() => {
+    /* if(setting) {
+       return setInput({...setting, date: new Date()})
+    }  */
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown); 
+    };    
+  });
+
+
+
 
   const OnBackdropClick = e => {
     if (e.target === e.currentTarget) {
