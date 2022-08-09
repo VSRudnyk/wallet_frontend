@@ -52,7 +52,7 @@ export const ModalAddTransactions = () => {
   const handleChangeSwitch = nextChecked => {
     setCheckedSwitch(nextChecked);
   };
-  /* const setting = JSON.parse(localStorage.getItem('inputs'));   */
+   
 
   const { t } = useTranslation();
   const [transaction, { isSuccess, isError }] = useAddTransactionMutation();
@@ -63,29 +63,31 @@ export const ModalAddTransactions = () => {
     state => state.global.isModalAddTransactionOpen
   );
   const dispatch = useDispatch();
-  const handleKeyDown = e => {
-    if (e.code === 'Escape') {
-      dispatch(changeModalStatus(!modalAddTransactionStatus));
+
+
+  useEffect(() => {       
+
+    const setting =  JSON.parse(localStorage.getItem('inputs'));   
+    if(setting) {
+      setInput({...setting, date: new Date()})
     }
-  };
-
-  useEffect(() => {
-    /* if(setting) {
-       return setInput({...setting, date: new Date()})
-    }  */
-    
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Escape') {
+        dispatch(changeModalStatus(!modalAddTransactionStatus));
+      }
+    });
     return () => {
-      window.removeEventListener('keydown', handleKeyDown); 
+      window.removeEventListener('keydown', (e) => {
+        if (e.code === 'Escape') {
+          dispatch(changeModalStatus(!modalAddTransactionStatus));
+        }
+      }); 
     };    
-  });
-
-
-
+  }, [dispatch, modalAddTransactionStatus]);
 
   const OnBackdropClick = e => {
     if (e.target === e.currentTarget) {
-      localStorage.setItem("inputs", JSON.stringify({sum: input.sum,  operationType: input.operationType, comment: input.comment, category: input.category}));
+     localStorage.setItem("inputs", JSON.stringify({sum: input.sum,  operationType: input.operationType, comment: input.comment, category: input.category}));
       dispatch(changeModalStatus(!modalAddTransactionStatus));
     }
   };
@@ -198,16 +200,16 @@ export const ModalAddTransactions = () => {
           <InputsBox>
             <SelectDiv
               value={t(
-                `addtransaction.options.${input.category.toLowerCase()}`
+                `addtransaction.options.${input.category && input.category.toLowerCase()}`
               )}
               onClick={onSelectClick}
               nonActive={t(
-                `addtransaction.options.${input.category.toLowerCase()}`
+                `addtransaction.options.${input.category && input.category.toLowerCase()}`
               )}
             >
               {!input.category
                 ? t('addtransaction.placeholders.select')
-                : t(`addtransaction.options.${input.category.toLowerCase()}`)}
+                : t(`addtransaction.options.${input.category && input.category.toLowerCase()}`)}
               <SelectSvg />
               {selectWindow && (
                 <SelectWindow>

@@ -28,6 +28,7 @@ export const Modal = styled.div`
   margin-right: auto;
   width: 100%;
   margin-top:60px;
+  overflow: scroll; 
   background-color: var(--white);
   @media screen and (min-width: 768px) {
     width: 540px;
