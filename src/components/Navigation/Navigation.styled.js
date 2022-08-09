@@ -14,6 +14,9 @@ export const NavigationContainer = styled.nav`
 export const NavigationButton = styled.button`
   border: none;
   background-color: inherit;
+  &:hover {
+    transform: scale(1.1);
+  }
   @media screen and (max-width: 767px) {
     &:not(:last-child) {
       margin-right: 38px;
