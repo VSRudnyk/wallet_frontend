@@ -95,6 +95,9 @@ export const LogoutImg = styled.img`
 `;
 
 export const LogoutButton = styled.button`
+  &:hover {
+    transform: scale(1.1);
+  }
   display: flex;
   align-items: center;
   border: none;

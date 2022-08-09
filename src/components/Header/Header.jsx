@@ -26,15 +26,13 @@ export const Header = () => {
   const { data } = useGetCurrentUserQuery();
   const [show, setShow] = useState(false);
 
-
-  Notiflix.Confirm.init({  
+  Notiflix.Confirm.init({
     width: '300px',
-    fontFamily: 'Circe',    
+    fontFamily: 'Circe',
     titleFontSize: '18px',
-    okButtonBackground:  '#24cca7',
-    cancelButtonBackground: '#ff6596',    
-    });
-
+    okButtonBackground: '#24cca7',
+    cancelButtonBackground: '#ff6596',
+  });
 
   const { t } = useTranslation();
   return (
@@ -58,7 +56,7 @@ export const Header = () => {
                 ) : (
                   <>
                     <Settings />
-                    <LogoutButton onClick={()=>setShow(!show)}>
+                    <LogoutButton onClick={() => setShow(!show)}>
                       <LogoutImg src={Exit} alt="Exit" />
                       <Logout>{t('header.exit')}</Logout>
                     </LogoutButton>
@@ -69,18 +67,21 @@ export const Header = () => {
           </ContainerLogo>
         </HeaderContainer>
       </Container>
-      {show && Notiflix.Confirm.show('Wallet Confirm',
-        'Do you realy want exit?', 'Cancel','Exit',           
-            function cancelCb() {
-              Notiflix.Confirm.show(false);
-              setShow(false);
-            },
-            function okCb() {
-              logout();
-             },
-{
-},
-)}    
+      {show &&
+        Notiflix.Confirm.show(
+          'Wallet Confirm',
+          'Do you realy want exit?',
+          'Cancel',
+          'Exit',
+          function cancelCb() {
+            Notiflix.Confirm.show(false);
+            setShow(false);
+          },
+          function okCb() {
+            logout();
+          },
+          {}
+        )}
     </HeaderSection>
   );
 };
