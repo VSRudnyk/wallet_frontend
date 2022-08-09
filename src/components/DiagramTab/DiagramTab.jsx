@@ -28,28 +28,28 @@ export const DiagramTab = () => {
   const monthDataSet = {
     tittle: 'month',
     data: [
-      { text: t('diagramTab.optionData.jan'), value: 1 },
-      { text: t('diagramTab.optionData.feb'), value: 2 },
-      { text: t('diagramTab.optionData.mar'), value: 3 },
-      { text: t('diagramTab.optionData.apr'), value: 4 },
-      { text: t('diagramTab.optionData.may'), value: 5 },
-      { text: t('diagramTab.optionData.jun'), value: 6 },
-      { text: t('diagramTab.optionData.jul'), value: 7 },
-      { text: t('diagramTab.optionData.aug'), value: 8 },
-      { text: t('diagramTab.optionData.sep'), value: 9 },
-      { text: t('diagramTab.optionData.oct'), value: 10 },
-      { text: t('diagramTab.optionData.nov'), value: 11 },
-      { text: t('diagramTab.optionData.dec'), value: 12 },
+      { text: t('diagramTab.optionData.jan'), value: 1, id: 'jan' },
+      { text: t('diagramTab.optionData.feb'), value: 2, id: 'feb' },
+      { text: t('diagramTab.optionData.mar'), value: 3, id: 'mar' },
+      { text: t('diagramTab.optionData.apr'), value: 4, id: 'apr' },
+      { text: t('diagramTab.optionData.may'), value: 5, id: 'may' },
+      { text: t('diagramTab.optionData.jun'), value: 6, id: 'jun' },
+      { text: t('diagramTab.optionData.jul'), value: 7, id: 'jul' },
+      { text: t('diagramTab.optionData.aug'), value: 8, id: 'aug' },
+      { text: t('diagramTab.optionData.sep'), value: 9, id: 'sep' },
+      { text: t('diagramTab.optionData.oct'), value: 10, id: 'oct' },
+      { text: t('diagramTab.optionData.nov'), value: 11, id: 'nov' },
+      { text: t('diagramTab.optionData.dec'), value: 12, id: 'dec' },
     ],
   };
 
   const yearDataSet = {
     tittle: 'year',
     data: [
-      { text: '2019', value: 2019 },
-      { text: '2020', value: 2020 },
-      { text: '2021', value: 2021 },
-      { text: '2022', value: 2022 },
+      { text: '2019', value: 2019, id: '19' },
+      { text: '2020', value: 2020, id: '20' },
+      { text: '2021', value: 2021, id: '21' },
+      { text: '2022', value: 2022, id: '22' },
     ],
   };
   function incomeExpenseFilter(type, data) {
@@ -167,7 +167,7 @@ export const DiagramTab = () => {
         if (sumaryData.length === 0) {
           sumaryData = [
             {
-              categoryName: t(`addtransaction.options.${item.category}`),
+              categoryName: item.category,
               categorySum: item.sum,
               categoryColor: colorizedCategory(item.category),
             },
@@ -183,7 +183,7 @@ export const DiagramTab = () => {
             sumaryData = [
               ...sumaryData,
               {
-                categoryName: t(`addtransaction.options.${item.category}`),
+                categoryName: item.category,
                 categorySum: item.sum,
                 categoryColor: colorizedCategory(item.category),
               },

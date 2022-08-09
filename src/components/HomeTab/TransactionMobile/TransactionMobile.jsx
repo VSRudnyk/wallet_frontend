@@ -12,6 +12,7 @@ import EllipsisText from 'react-ellipsis-text';
 import { useTranslation } from 'react-i18next';
 import { useDeleteTransactionMutation } from 'redux/transactionsOperation';
 import Notiflix from 'notiflix';
+import PropTypes from 'prop-types';
 
 Notiflix.Confirm.init({
   okButtonBackground: '#ff6596',
@@ -118,5 +119,7 @@ const TransactionMobile = ({ transaction }) => {
 
   return <List>{list}</List>;
 };
-
+TransactionMobile.propTypes = {
+  transaction: PropTypes.object,
+};
 export default TransactionMobile;

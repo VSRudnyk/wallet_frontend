@@ -22,7 +22,7 @@ export const CustomSelect = ({ items, changeValue }) => {
       return;
     }
 
-    const itemName = event.target.innerText;
+    const itemName = event.target.id;
     const itemValue = event.target.dataset.itemvalue;
 
     setSelectedTex(itemName);
@@ -70,14 +70,15 @@ export const CustomSelect = ({ items, changeValue }) => {
           }}
         >
           {items &&
-            items.data.map(({ text, value }) => {
+            items.data.map(({ text, value, id }) => {
               return (
                 <SelectOptionsItem
                   key={text}
+                  id={id}
                   className="options__item"
                   data-itemvalue={value}
                 >
-                  {text}
+                  {t(`diagramTab.optionData.${id}`)}
                 </SelectOptionsItem>
               );
             })}

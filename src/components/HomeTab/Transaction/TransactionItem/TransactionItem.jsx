@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Li, Data, Span, DelBtn, Icon } from './TransactionItem.styled';
 import EllipsisText from 'react-ellipsis-text';
 import { useDeleteTransactionMutation } from 'redux/transactionsOperation';
+import PropTypes from 'prop-types';
 
 import Notiflix from 'notiflix';
 
@@ -78,5 +79,8 @@ const TransactionItem = ({ transaction }) => {
       </Li>
     </>
   );
+};
+TransactionItem.propTypes = {
+  transaction: PropTypes.object,
 };
 export default TransactionItem;

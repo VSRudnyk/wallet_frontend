@@ -25,12 +25,7 @@ export const Data = styled.p`
   align-items: center;
   justify-content: center;
   width: 100%;
-  font-family: var(--baseFont);
-  font-style: normal;
-  font-weight: var(-regular);
-  font-size: 16px;
-  line-height: 24px;
-  overflowwrap: break-word;
+  overflow-wrap: break-word;
   z-index: -2;
 `;
 

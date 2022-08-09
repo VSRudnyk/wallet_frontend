@@ -5,12 +5,11 @@ export const List = styled.ul`
   @media screen and (max-width: 767px) {
     width: 277px;
     border-radius: 10px;
-
     overflow: hidden;
   }
+
   @media screen and (min-width: 768px) {
     display: flex;
-
     justify-content: space-between;
   }
 `;
@@ -47,8 +46,6 @@ export const ListItem = styled.li`
   }
 `;
 export const TransactionDescrp = styled.p`
-  font-family: var(--baseFont);
-  font-style: normal;
   font-weight: var(--bold);
   font-size: 18px;
   line-height: 27px;
@@ -62,11 +59,6 @@ export const TransactionDescrp = styled.p`
 export const TransactionData = styled.p`
   position: relative;
   overflow: hidden;
-  font-family: var(--baseFont);
-  font-style: normal;
-  font-weight: var(-regular);
-  font-size: 16px;
-  line-height: 24px;
 
   @media (max-width: 767px) {
     margin-left: auto;

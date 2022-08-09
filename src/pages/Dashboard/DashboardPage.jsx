@@ -111,10 +111,7 @@ export const DashboardPage = () => {
             {pathname === '/wallet_frontend/diagram' && <DiagramTab />}
             <DashboardSecondSectionWrapper>
               {location.pathname === '/wallet_frontend/home' && (
-                <HomeTab
-                  transactionsList={transactions}
-                  isLoading={isLoading}
-                />
+                <HomeTab transactionsList={transactions} />
               )}
             </DashboardSecondSectionWrapper>
           </DashboardWrapper>
