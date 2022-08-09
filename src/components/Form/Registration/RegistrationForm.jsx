@@ -55,7 +55,7 @@ export const FormRegistration = () => {
     password: yup
       .string()
       .min(6, 'must be at least 6 characters')
-      .max(12, 'password length must be less than 12 characters')
+      .max(12, 'password length must be less than 13 characters')
       .matches(/^(?!.*\s)/, ' whitespaces are forbidden.')
       .matches(/^(?=.*[0-9])/, 'must contain at least one numeric character')
       .matches(

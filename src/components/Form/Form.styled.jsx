@@ -117,6 +117,10 @@ export const ErrorTextPassword = styled.p`
   font-size: 12px;
   font-family: var(--baseFont);
   font-weight: var(--regular);
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+
+  }
 `;
 
 export const RegisterButtonRegPage = styled.button`

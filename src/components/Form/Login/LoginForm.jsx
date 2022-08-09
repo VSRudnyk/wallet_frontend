@@ -25,11 +25,11 @@ export const LoginForm = () => {
   };
 
   const schema = yup.object().shape({
-    email: yup.string().email().min(6).max(63).matches(
+    email: yup.string().email().min(6, 'must be at least 6 characters').max(63,  'email length must be less than 63 characters').matches(
       /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
       'available latin-based alphabet, numeric character and _ . + -'
     ).required(),
-    password: yup.string().min(6).max(12).required(),
+    password: yup.string().min(6, 'must be at least 6 characters').max(12, 'password length must be less than 13 characters').required(),
   });
 
   const handleSubmit = (values, { resetForm }) => {
