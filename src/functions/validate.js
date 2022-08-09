@@ -15,11 +15,6 @@ export const rules = (arr) => {
       Notify.failure('Please select category of expense'); 
       return false;
     }
-
-    if(arr.comment === '') {
-      Notify.failure('Please enter your comment'); 
-      return false;
-    }
     return true;
   }
 

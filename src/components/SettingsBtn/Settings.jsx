@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLogoutMutation } from 'redux/authOperation';
 import Media from 'react-media';
+import Notiflix from 'notiflix';
 
 import { ReactComponent as SettingsIcon } from '../../images/settings-icon.svg';
 import { ReactComponent as LanguageIcon } from '../../images/language-switch.svg';
@@ -26,7 +27,6 @@ const lngs = {
 const Settings = () => {
   const [isDropDownOpen, setIsDropDowOpen] = useState(false);
   const [isSlideLeftOpen, setIsSlideLeftOpen] = useState(false);
-
   const [logout] = useLogoutMutation();
 
   const { t, i18n } = useTranslation();
@@ -91,7 +91,17 @@ const Settings = () => {
                       <LangBtn
                         type="button"
                         id="logout"
-                        onClick={() => logout()}
+                        onClick={() => Notiflix.Confirm.show('Wallet Confirm',
+                        'Do you realy want exit?', 'Exit', 'Cancel',
+                            function okCb() {
+                             logout();
+                            },
+                            function cancelCb() {
+                              Notiflix.Confirm.show(false);
+                            },
+                            {
+                            },
+                            )   }
                       >
                         {t('settingsComponent.exit')}
                         <ExitIcon

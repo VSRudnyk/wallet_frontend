@@ -24,6 +24,7 @@ import {
   InputAmount,
   InputCalendarBox,
   InputCalendar,
+  InputCalendarIcon,
   InputComment,
   InputCalendarSVG,
   ButtonAdd,
@@ -33,6 +34,7 @@ import {
   SelectWindow,
   SelectOptions,
 } from './ModalAddTransactions.styled';
+
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -45,27 +47,45 @@ export const ModalAddTransactions = () => {
     category: '',
   });
 
-  const [checkedSwitch, setCheckedSwitch] = useState(false);
+    
+  const [checkedSwitch, setCheckedSwitch] = useState(!input.operationType);
   const handleChangeSwitch = nextChecked => {
-    console.log(nextChecked);
     setCheckedSwitch(nextChecked);
   };
+  const setting = JSON.parse(localStorage.getItem('inputs'));  
 
   const { t } = useTranslation();
   const [transaction, { isSuccess, isError }] = useAddTransactionMutation();
 
   const [selectWindow, setSelectWindow] = useState(false);
+
   const modalAddTransactionStatus = useSelector(
     state => state.global.isModalAddTransactionOpen
   );
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if(setting) {
+       return setInput({...setting, date: new Date()})
+    } else {
+      setInput({
+        sum: '',
+        date: new Date(),
+        operationType: true,
+        comment: '',
+        category: '',
+      })
+    }
     window.addEventListener('keydown', handleKeyDown);
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  });
+      window.removeEventListener('keydown', handleKeyDown); 
+    };    
+  },[]);
+
+
+
+  
+
 
   const handleKeyDown = e => {
     if (e.code === 'Escape') {
@@ -75,6 +95,7 @@ export const ModalAddTransactions = () => {
 
   const OnBackdropClick = e => {
     if (e.target === e.currentTarget) {
+      localStorage.setItem("inputs", JSON.stringify({sum: input.sum,  operationType: input.operationType, comment: input.comment, category: input.category}));
       dispatch(changeModalStatus(!modalAddTransactionStatus));
     }
   };
@@ -93,7 +114,7 @@ export const ModalAddTransactions = () => {
       sum: input.sum,
       date: input.date,
       type: input.operationType ? 'income' : 'expense',
-      comment: input.comment,
+      comment: input.comment ? input.comment: "-",
       category: input.category,
       balance: 90000,
     };
@@ -109,6 +130,7 @@ export const ModalAddTransactions = () => {
         comment: '',
         category: '',
       });
+      localStorage.removeItem('inputs')
     }
   };
 
@@ -136,6 +158,7 @@ export const ModalAddTransactions = () => {
                 if (e.currentTarget === e.target) {
                   e.preventDefault();
                   setCheckedSwitch(false);
+                  setInput({...input, operationType: true})
                 }
               }}
             >
@@ -175,6 +198,7 @@ export const ModalAddTransactions = () => {
                 if (e.currentTarget === e.target) {
                   e.preventDefault();
                   setCheckedSwitch(true);
+                  setInput({...input, operationType: false})
                 }
               }}
             >
@@ -367,16 +391,27 @@ export const ModalAddTransactions = () => {
               placeholder="0.00"
               value={input.sum}
               onChange={e =>
-                setInput({ ...input, sum: Number(e.target.value) })
+                setInput({ ...input, sum: e.target.value })
               }
             />
             <InputCalendarBox>
               <InputCalendar
+              key='input'
                 dateFormat={'dd.MM.yyyy'}
                 selected={input.date}
+                maxDate={new Date()}
                 onChange={e => setInput({ ...input, date: e })}
+              
+                
               />
-              <InputCalendarSVG />
+              <InputCalendarIcon
+                key='icon'
+                dateFormat={'dd.MM.yyyy'}
+                selected={input.date}
+                maxDate={new Date()}
+                customInput={<InputCalendarSVG />}
+                onChange={e => setInput({ ...input, date: e })}             
+              />
             </InputCalendarBox>
 
             <InputComment
