@@ -15,7 +15,7 @@ export const Base = styled.div`
   transition: 1s;
   width: 0%;
   border-radius: 25px;
-`
+`;
 
 export const FormContainer = styled(Form)`
   margin-bottom: 20px;
@@ -30,6 +30,8 @@ export const Input = styled(Field)`
   border-bottom: 1px solid var(--light-gray);
   width: 280px;
   outline: none;
+  font-family: var(--baseFont);
+  font-weight: var(--regular);
   transition: border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
   @media screen and (min-width: 767px) {
     width: 409.5px;
@@ -95,9 +97,8 @@ export const LoginButtonRegPage = styled.button`
   transition: 0.5s;
 
   &:hover{
-    color: var(--white);
-    background-color: var(--active-blue);
-    transition: 0.5s;
+    transition: 0.7s;
+    transform: scale(1.1);
   }
 `;
 
@@ -105,18 +106,17 @@ export const ErrorText = styled.p`
   position: absolute;
   color: var(--error-message);
   font-size: 14px;
+  font-family: var(--baseFont);
+  font-weight: var(--regular);
 `;
 
 export const ErrorTextPassword = styled.p`
   margin-top: 5px;
   position: absolute;
   color: var(--error-message);
-  font-size: 14px;
-
-  @media screen and (max-width: 767px) {
-    margin-top: 5px;
-    color: var(--error-message);
-  }
+  font-size: 12px;
+  font-family: var(--baseFont);
+  font-weight: var(--regular);
 `;
 
 export const RegisterButtonRegPage = styled.button`
@@ -135,10 +135,8 @@ export const RegisterButtonRegPage = styled.button`
   transition: 0.5s;
 
   &:hover{
-    color: var(--green);
-    background: var(--white);
-    border: 1px solid var(--green);
-    transition: 0.5s;
+    transition: 0.7s;
+    transform: scale(1.1);
   }
 `;
 
@@ -158,10 +156,8 @@ export const LoginButtonLogPage = styled.button`
   transition: 0.5s;
 
   &:hover{
-    color: var(--green);
-    background: var(--white);
-    border: 1px solid var(--green);
-    transition: 0.5s;
+    transition: 0.7s;
+    transform: scale(1.1);
   }
 `;
 
@@ -178,12 +174,11 @@ export const RegisterButtonLogPage = styled.button`
   line-height: 1;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  transition: 0.5s;
+  transition: 0.7s;
 
-  &:hover{
-    color: var(--white);
-    background-color: var(--active-blue);
-    transition: 0.5s;
+  &:hover {
+    transition: 0.7s;
+    transform: scale(1.1);
   }
 `;
 
@@ -196,7 +191,6 @@ export const ButtonShow = styled(Eye)`
   @media screen and (min-width: 768px) {
     right: 0;
     top: 0;
-  
   }
 `;
 
