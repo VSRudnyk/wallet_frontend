@@ -192,6 +192,7 @@ export const InputCalendarBox = styled.div`
   width: 280px;
   margin-left: auto;
   margin-right: auto;
+  cursor: pointer;
   @media screen and (min-width: 768px) {
     width: 181px;
     margin-left: 0;
@@ -319,6 +320,7 @@ export const SelectDiv = styled.div`
 
 export const SelectSvg = styled(Select)`
   margin-top: 4px;
+  cursor: pointer;
 `;
 
 export const SelectWindow = styled.div`
