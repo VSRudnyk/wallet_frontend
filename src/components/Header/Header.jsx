@@ -27,6 +27,15 @@ export const Header = () => {
   const [show, setShow] = useState(false);
 
 
+  Notiflix.Confirm.init({  
+    width: '300px',
+    fontFamily: 'Circe',    
+    titleFontSize: '18px',
+    okButtonBackground:  '#24cca7',
+    cancelButtonBackground: '#ff6596',    
+    });
+
+
   const { t } = useTranslation();
   return (
     <HeaderSection>
@@ -61,13 +70,14 @@ export const Header = () => {
         </HeaderContainer>
       </Container>
       {show && Notiflix.Confirm.show('Wallet Confirm',
-        'Do you realy want exit?', 'Exit', 'Cancel',
-            function okCb() {
-             logout();
-            },
+        'Do you realy want exit?', 'Cancel','Exit',           
             function cancelCb() {
               Notiflix.Confirm.show(false);
+              setShow(false);
             },
+            function okCb() {
+              logout();
+             },
 {
 },
 )}    

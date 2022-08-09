@@ -92,16 +92,16 @@ const Settings = () => {
                         type="button"
                         id="logout"
                         onClick={() => Notiflix.Confirm.show('Wallet Confirm',
-                        'Do you realy want exit?', 'Exit', 'Cancel',
-                            function okCb() {
-                             logout();
-                            },
+                        'Do you realy want exit?', 'Cancel','Exit',           
                             function cancelCb() {
                               Notiflix.Confirm.show(false);
                             },
-                            {
-                            },
-                            )   }
+                            function okCb() {
+                              logout();
+                             },
+                {
+                },
+                )}
                       >
                         {t('settingsComponent.exit')}
                         <ExitIcon
