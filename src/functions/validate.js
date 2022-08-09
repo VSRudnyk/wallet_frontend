@@ -1,7 +1,8 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export const rules = (arr) => {
-    if( arr.sum < 0 || arr.sum === 0 || arr.sum === '' ) {    
+  console.log(typeof(arr.sum))
+    if( Number.parseFloat(arr.sum)  < 0 || Number.parseFloat(arr.sum) === 0 || arr.sum === '' ) {    
       Notify.failure('Plese enter correct amount'); 
       return false;
     }
@@ -12,7 +13,7 @@ export const rules = (arr) => {
     }
   
     if( arr.category === '') {
-      Notify.failure('Please select category of expense'); 
+      Notify.failure('Please select category of operation'); 
       return false;
     }
     return true;
