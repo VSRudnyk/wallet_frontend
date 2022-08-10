@@ -11,7 +11,7 @@ import {
   Text,
   ImageSection,
   Container,
-  ContainerForm,
+  FormWrapper,
 } from './Page.styled';
 import LogoImg from '../../images/Logo.svg';
 
@@ -28,7 +28,7 @@ const RegistrationPage = () => {
             </ImageSection>
           )}
         />
-        <ContainerForm>
+        <FormWrapper>
           <FormContainerRegsiter>
             <LogoContainer>
               <Logo src={LogoImg} alt="Logo" />
@@ -36,7 +36,7 @@ const RegistrationPage = () => {
             </LogoContainer>
             <FormRegistration />
           </FormContainerRegsiter>
-        </ContainerForm>
+        </FormWrapper>
       </ContainerPage>
     </Container>
   );

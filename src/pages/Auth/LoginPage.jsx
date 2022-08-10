@@ -9,7 +9,7 @@ import {
   Text,
   ImageSection,
   Container,
-  ContainerForm,
+  FormWrapper,
 } from './Page.styled';
 import LogoSrc from '../../images/Logo.svg';
 import Media from 'react-media';
@@ -27,7 +27,7 @@ const LoginPage = () => {
             </ImageSection>
           )}
         />
-        <ContainerForm>
+        <FormWrapper>
           <FormContainer>
             <LogoContainer>
               <Logo src={LogoSrc} alt="Logo" />
@@ -35,7 +35,7 @@ const LoginPage = () => {
             </LogoContainer>
             <LoginForm />
           </FormContainer>
-        </ContainerForm>
+        </FormWrapper>
       </ContainerPage>
     </Container>
   );

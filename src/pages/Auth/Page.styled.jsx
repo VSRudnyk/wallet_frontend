@@ -118,7 +118,7 @@ export const Text = styled.p`
   }
 `;
 
-export const ContainerForm = styled.div`
+export const FormWrapper = styled.div`
   align-items: center;
   display: flex;
   @media (max-width: 767px) {
