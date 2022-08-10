@@ -107,20 +107,20 @@ export const DashboardPage = () => {
                 }
               </Media>
             </DashboardFirstSectionWrapper>
-            <DashboardSeparator></DashboardSeparator>
-            {pathname === '/wallet_frontend/diagram' && <DiagramTab />}
+            <DashboardSeparator pathname={pathname}></DashboardSeparator>
             <DashboardSecondSectionWrapper>
+              {pathname === '/wallet_frontend/diagram' && <DiagramTab />}
               {location.pathname === '/wallet_frontend/home' && (
-                <HomeTab transactionsList={transactions} />
+                <>
+                  <HomeTab transactionsList={transactions} />
+                  <ButtonAddTransactions />
+                </>
               )}
             </DashboardSecondSectionWrapper>
           </DashboardWrapper>
           {modalAddTransactionStatus && <ModalAddTransactions />}
         </Container>
       </Dashboard>
-      {location.pathname === '/wallet_frontend/home' && (
-        <ButtonAddTransactions />
-      )}
     </>
   );
 };

@@ -9,7 +9,7 @@ import {
   DiagramButtonsWrapper,
   StatisticsContainer,
 } from './DiagramTab.styled';
-import { colorizedCategory } from 'helpers/colorizedCategory';
+import { colorizedCategory } from 'components/Navigation/helpers/colorizedCategory';
 
 const Table = lazy(() => import('../Table' /* webpackChunkName: "Table" */));
 const Chart = lazy(() => import('../Chart' /* webpackChunkName: "Chart" */));

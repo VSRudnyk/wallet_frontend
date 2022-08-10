@@ -28,7 +28,17 @@ export const Modal = styled.div`
   margin-right: auto;
   width: 100%;
   margin-top:60px;
-  overflow: scroll; 
+  overflow: scroll;
+  overflow-y: hidden;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+  overflow-x: hidden;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    height: 0;
+  } 
   background-color: var(--white);
   @media screen and (min-width: 768px) {
     width: 540px;
@@ -192,6 +202,7 @@ export const InputCalendarBox = styled.div`
   width: 280px;
   margin-left: auto;
   margin-right: auto;
+  cursor: pointer;
   @media screen and (min-width: 768px) {
     width: 181px;
     margin-left: 0;
@@ -319,6 +330,7 @@ export const SelectDiv = styled.div`
 
 export const SelectSvg = styled(Select)`
   margin-top: 4px;
+  cursor: pointer;
 `;
 
 export const SelectWindow = styled.div`

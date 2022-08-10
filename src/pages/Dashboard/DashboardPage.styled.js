@@ -1,32 +1,16 @@
 import styled from 'styled-components';
 
-import BackDes from '../../images/BackgrDes-min.png';
-import BackTab from '../../images/BackgrTablet-min.png';
-
 export const Dashboard = styled.main`
-  background-color: var(--background-gray);
-  background-image: linear-gradient(
-    var(--background-light-grey),
-    var(--background-light-grey)
-  );
-  height: ${({ pathname }) =>
-    pathname === '/wallet_frontend/currency' ? '100vh' : '100%'};
+  height: 100vh;
   padding-top: 75px;
   padding-bottom: 15px;
-  backdrop-filter: blur(50px);
   @media screen and (min-width: 768px) {
-    background: url(${BackTab});
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     padding-top: 112px;
     padding-bottom: 32px;
+    height: ${props =>
+      props.pathname === '/wallet_frontend/home' ? '100vh' : '100%'};
   }
   @media screen and (min-width: 1280px) {
-    background: url(${BackDes});
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     padding-top: 126px;
     padding-bottom: 103px;
   }
@@ -51,16 +35,17 @@ export const DashboardFirstSectionWrapper = styled.div`
 `;
 
 export const DashboardSecondSectionWrapper = styled.div`
+  position: relative;
   margin-left: auto;
   margin-right: auto;
-  height: 72vh;
 `;
 export const DashboardSeparator = styled.div`
   @media screen and (min-width: 1280px) {
     margin-left: 69px;
     margin-right: 89px;
     margin-top: -47px;
-    margin-bottom: -103px;
+    margin-bottom: ${({ pathname }) =>
+      pathname === '/wallet_frontend/home' ? '-83px' : '-103px'};
     border: 1px solid var(--vector-color);
     box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
       1px 0px 0px rgba(255, 255, 255, 0.6);

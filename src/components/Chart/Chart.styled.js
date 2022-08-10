@@ -13,8 +13,8 @@ export const Container = styled.div`
 
 export const ChartContainer = styled.div`
   position: relative;
-  min-width: 250px;
-  min-height: 250px;
+  width: 280px;
+  height: 280px;
   @media screen and (min-width: 768px) {
     margin-right: 32px;
     width: 336px;

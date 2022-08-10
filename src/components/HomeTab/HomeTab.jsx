@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { useTranslation } from 'react-i18next';
 import { HomeTabWrapper, List, ListItem, Text } from './HomeTab.styled';
 import Media from 'react-media';
+// import { ButtonAddTransactions } from 'components/ButtonAddTransactions/ButtonAddTransactions';
+
 import PropTypes from 'prop-types';
 
 export const HomeTab = ({ transactionsList }) => {
@@ -29,7 +31,10 @@ export const HomeTab = ({ transactionsList }) => {
           ) : transactionsList.length === 0 ? (
             <Text>{t('noTransactionText')}</Text>
           ) : (
-            <Transaction transactionsList={transactionsList} />
+            <>
+              <Transaction transactionsList={transactionsList} />
+              {/* <ButtonAddTransactions /> */}
+            </>
           )
         }
       </Media>

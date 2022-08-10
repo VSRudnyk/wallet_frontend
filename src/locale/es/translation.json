@@ -185,5 +185,11 @@
     "irrevertable": "La transacción no se puede restaurar después de la eliminación",
     "delete": "Borrar",
     "cancel": "Cancelar"
+  },
+  "exitprompt": {
+    "wallet": "Wallet Confirmar",
+    "confirm": "¿De verdad quieres salir?",
+    "cancel": "Cancelar",
+    "exit": "Salir"
   }
 }

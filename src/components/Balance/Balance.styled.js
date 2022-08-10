@@ -10,6 +10,7 @@ export const ContainerBalance = styled.div`
   text-align: start;
   margin-top: 15px;
   margin-bottom: 32px;
+  padding-right: 20px;
   @media screen and (min-width: 768px) {
     display: block;
     width: 336px;

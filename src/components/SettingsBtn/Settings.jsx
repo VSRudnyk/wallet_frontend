@@ -64,6 +64,20 @@ const Settings = () => {
       </LangBtn>
     </ListItem>
   ));
+  const promptBeforeExit = () => {
+    Notiflix.Confirm.show(
+      t('exitprompt.wallet'),
+      t('exitprompt.confirm'),
+      t('exitprompt.cancel'),
+      t('exitprompt.exit'),
+      function cancelCb() {
+        Notiflix.Confirm.show(false);
+      },
+      function okCb() {
+        logout();
+      }
+    );
+  };
   return (
     <Media queries={{ mobile: { maxWidth: 767 } }}>
       {matches =>
@@ -91,17 +105,7 @@ const Settings = () => {
                       <LangBtn
                         type="button"
                         id="logout"
-                        onClick={() => Notiflix.Confirm.show('Wallet Confirm',
-                        'Do you realy want exit?', 'Cancel','Exit',           
-                            function cancelCb() {
-                              Notiflix.Confirm.show(false);
-                            },
-                            function okCb() {
-                              logout();
-                             },
-                {
-                },
-                )}
+                        onClick={promptBeforeExit}
                       >
                         {t('settingsComponent.exit')}
                         <ExitIcon

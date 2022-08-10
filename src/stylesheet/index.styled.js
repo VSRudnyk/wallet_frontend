@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+import BackDes from '../images/BackgrDes-min.png';
+import BackTab from '../images/BackgrTablet-min.png';
 
 export const GlobalStyle = createGlobalStyle`
     html {
@@ -13,8 +15,23 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     text-align: center;
+    background-color: var(--background-gray);
+        background-image: linear-gradient( var(--background-light-grey), var(--background-light-grey) );
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    backdrop-filter: blur(50px);
+  @media screen and (min-width: 768px) {
+    background: url(${BackTab});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  @media screen and (min-width: 1280px) {
+    background: url(${BackDes});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
   }
   h1,
   h2,

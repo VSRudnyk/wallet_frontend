@@ -57,6 +57,7 @@ const Transaction = ({ transactionsList }) => {
           })}
         </List>
       </TransactionsWrapper>
+      {/* <ButtonAddTransactions /> */}
     </TableContainer>
   );
 };

@@ -27,7 +27,7 @@ export const List = styled.ul`
   &:not(:last-child) {
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 0;
     display: flex;
     background-color: var(--white);
     border-radius: 30px;

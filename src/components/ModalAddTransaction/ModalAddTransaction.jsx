@@ -42,15 +42,15 @@ export const ModalAddTransactions = () => {
   const [input, setInput] = useState({
     sum: '',
     date: new Date(),
-    operationType: true,
+    operationType: false,
     comment: '',
     category: '',
   });
 
     
-  const [checkedSwitch, setCheckedSwitch] = useState(!input.operationType);
+ /*  const [checkedSwitch, setCheckedSwitch] = useState(!input.operationType); */
   const handleChangeSwitch = nextChecked => {
-    setCheckedSwitch(nextChecked);
+    setInput({...input, operationType: nextChecked});
   };
    
 
@@ -85,6 +85,7 @@ export const ModalAddTransactions = () => {
     };    
   }, [dispatch, modalAddTransactionStatus]);
 
+  
   const OnBackdropClick = e => {
     if (e.target === e.currentTarget) {
      localStorage.setItem("inputs", JSON.stringify({sum: input.sum,  operationType: input.operationType, comment: input.comment, category: input.category}));
@@ -145,12 +146,10 @@ export const ModalAddTransactions = () => {
         <form onSubmit={OnSubmitClick}>
           <SwitchBox onClick={onButtonClick}>
             <SwitchIncome
-              nonActive={checkedSwitch}
+              nonActive={!input.operationType}
               onClick={e => {
                 if (e.currentTarget === e.target) {
-                  e.preventDefault();
-                  setCheckedSwitch(false);
-                  setInput({...input, operationType: true})
+                  handleChangeSwitch(!input.operationType);                  
                 }
               }}
             >
@@ -159,7 +158,7 @@ export const ModalAddTransactions = () => {
             <SwtchCase>
               <Switch
                 onChange={handleChangeSwitch}
-                checked={checkedSwitch}
+                checked={!input.operationType}
                 className="react-switch"
                 height={30}
                 width={78}
@@ -169,12 +168,12 @@ export const ModalAddTransactions = () => {
                 offHandleColor="#24CCA7"
                 onHandleColor="#FF6596"
                 boxShadow={
-                  checkedSwitch
+                  !input.operationType
                     ? '0px 6px 15px rgba(255, 101, 150, 0.5)'
                     : '0px 6px 15px rgba(36, 204, 167, 0.5)'
                 }
                 uncheckedIcon={false}
-                checkedIcon={false}
+                checkedIcon={false} 
                 uncheckedHandleIcon={
                   <>
                     <SwitcherButtonVert />
@@ -185,12 +184,10 @@ export const ModalAddTransactions = () => {
               />
             </SwtchCase>
             <SwitchExpence
-              nonActive={checkedSwitch}
+              nonActive={!input.operationType}
               onClick={e => {
-                if (e.currentTarget === e.target) {
-                  e.preventDefault();
-                  setCheckedSwitch(true);
-                  setInput({...input, operationType: false})
+                if (e.currentTarget === e.target) {         
+                  handleChangeSwitch(!input.operationType)
                 }
               }}
             >
@@ -379,7 +376,6 @@ export const ModalAddTransactions = () => {
 
             <InputAmount
               type="number"
-              required
               placeholder="0.00"
               value={input.sum}
               onChange={e =>

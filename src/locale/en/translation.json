@@ -189,5 +189,11 @@
     "irrevertable": "Transaction cannot be restored after deleting",
     "delete": "Delete",
     "cancel": "Cancel"
+  },
+  "exitprompt": {
+    "wallet": "Wallet Confirm",
+    "confirm": "Do you really want to exit?",
+    "cancel": "Cancel",
+    "exit": "Exit"
   }
 }
