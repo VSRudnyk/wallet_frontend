@@ -1,6 +1,6 @@
-import { ReactComponent as HomeLink } from '../../images/Home.svg';
-import { ReactComponent as StatisticsLink } from '../../images/Statistics.svg';
-import { ReactComponent as CurrencyLink } from '../../images/Currency.svg';
+import { ReactComponent as HomeLink } from '../../assets/images/Home.svg';
+import { ReactComponent as StatisticsLink } from '../../assets/images/Statistics.svg';
+import { ReactComponent as CurrencyLink } from '../../assets/images/Currency.svg';
 import { useTranslation } from 'react-i18next';
 
 import {

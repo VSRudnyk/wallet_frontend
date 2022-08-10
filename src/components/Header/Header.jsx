@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
 import Media from 'react-media';
 import { useTranslation } from 'react-i18next';
-import Logo from '../../images/Logo.svg';
-import Exit from '../../images/Exit.svg';
+import Logo from '../../assets/images/Logo.svg';
+import Exit from '../../assets/images/Exit.svg';
 import Settings from 'components/SettingsBtn/Settings';
 import { useGetCurrentUserQuery } from 'redux/usersOperation';
 import Notiflix from 'notiflix';

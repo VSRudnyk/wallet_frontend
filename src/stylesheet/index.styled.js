@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import BackDes from '../images/BackgrDes-min.png';
-import BackTab from '../images/BackgrTablet-min.png';
+import BackDes from '../assets/images/BackgrDes-min.png';
+import BackTab from '../assets/images/BackgrTablet-min.png';
 
 export const GlobalStyle = createGlobalStyle`
     html {

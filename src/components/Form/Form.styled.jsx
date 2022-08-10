@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import '../../stylesheet/fonts.css';
 import { Field, Form } from 'formik';
-import { ReactComponent as Envelope } from '../../images/email.svg';
-import { ReactComponent as Lock } from '../../images/lock.svg';
-import { ReactComponent as Account } from '../../images/account.svg';
-import { ReactComponent as Eye } from '../../images/VectorEyes.svg';
-import { ReactComponent as EyeClose } from '../../images/VectorEyeClose.svg';
+import { ReactComponent as Envelope } from '../../assets/images/email.svg';
+import { ReactComponent as Lock } from '../../assets/images/lock.svg';
+import { ReactComponent as Account } from '../../assets/images/account.svg';
+import { ReactComponent as Eye } from '../../assets/images/VectorEyes.svg';
+import { ReactComponent as EyeClose } from '../../assets/images/VectorEyeClose.svg';
 
 export const Base = styled.div`
   display: block;
@@ -96,7 +96,7 @@ export const LoginButtonRegPage = styled.button`
   text-transform: uppercase;
   transition: 0.5s;
 
-  &:hover{
+  &:hover {
     transition: 0.7s;
     transform: scale(1.1);
   }
@@ -119,7 +119,6 @@ export const ErrorTextPassword = styled.p`
   font-weight: var(--regular);
   @media screen and (min-width: 768px) {
     font-size: 14px;
-
   }
 `;
 
@@ -138,7 +137,7 @@ export const RegisterButtonRegPage = styled.button`
   text-transform: uppercase;
   transition: 0.5s;
 
-  &:hover{
+  &:hover {
     transition: 0.7s;
     transform: scale(1.1);
   }
@@ -159,7 +158,7 @@ export const LoginButtonLogPage = styled.button`
   text-transform: uppercase;
   transition: 0.5s;
 
-  &:hover{
+  &:hover {
     transition: 0.7s;
     transform: scale(1.1);
   }

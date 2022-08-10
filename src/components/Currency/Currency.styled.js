@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import Line from '../../images/line-currency-min.png';
+import Line from '../../assets/images/line-currency-min.png';
 
 export const TableWrapper = styled.div`
   margin-top: 15px;
