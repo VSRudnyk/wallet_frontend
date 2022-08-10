@@ -124,7 +124,16 @@ export const FormRegistration = () => {
         }) && <ToastContainer />}
       {status === 'rejected' &&
         password === '' &&
-        toast.error(error.data.message) && <ToastContainer />}
+        toast.error(error.data.message, {
+          theme: 'colored',
+          autoClose: 8000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          transition: Slide,
+        }) && <ToastContainer />}
       <Formik
         initialValues={defaultInitialValues}
         onSubmit={handleSubmit}

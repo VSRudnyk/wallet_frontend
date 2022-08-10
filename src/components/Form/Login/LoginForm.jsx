@@ -53,6 +53,7 @@ export const LoginForm = () => {
     const { email, password } = values;
     login({ email, password });
     resetForm();
+    setStatus(null)
   };
 
   const FormError = ({ name }) => {
@@ -66,8 +67,17 @@ export const LoginForm = () => {
 
   return (
     <>
-      {isError && toast.error(error.data.message) && <ToastContainer />}
-      {status === 'sucess' &&
+      {isError && toast.error(error.data.message, {
+          theme: 'colored',
+          autoClose: 8000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          transition: Slide,
+        }) && <ToastContainer />}
+      {status  &&
         toast.success('Registration success! Please, log in!', {
           theme: 'colored',
           icon: '🚀',

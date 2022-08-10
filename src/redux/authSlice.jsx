@@ -50,6 +50,7 @@ export const authSlice = createSlice({
         state.sid = null;
         state.isLoggedIn = false;
         state.refreshToken = null;
+        state.status = null;
       },
     );
   },

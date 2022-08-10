@@ -13,7 +13,7 @@ import categoriesReducer from './categoriesSlice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['accessToken', 'refreshToken', 'sid', 'status'],
+  whitelist: ['accessToken', 'refreshToken', 'sid'],
 };
 
 const transactionPersistConfig = {
