@@ -1,4 +1,7 @@
+import { useEffect } from 'react';
+import { useRef } from 'react';
 import { useState } from 'react';
+import { ErrorMessage } from 'formik';
 import {
   Input,
   ButtonShow,
@@ -7,16 +10,12 @@ import {
   ErrorTextPassword,
 } from '../Form.styled';
 
-import { ErrorMessage } from 'formik';
-import { useRef } from 'react';
-import { useEffect } from 'react';
-
 export const ButtonShowAndHide = ({ onInput }) => {
   const [type, setType] = useState('password');
   const passInFocus = useRef();
 
   useEffect(() => {
-    if(passInFocus.active) {
+    if (passInFocus.active) {
       passInFocus.current.focus();
     }
   }, [passInFocus]);
@@ -52,8 +51,8 @@ export const ButtonShowAndHide = ({ onInput }) => {
           type={type}
           placeholder="Password"
           innerRef={passInFocus}
-          />
-          </label>
+        />
+      </label>
       <FormError name="password" />
     </>
   );

@@ -1,6 +1,6 @@
 import Media from 'react-media';
 import { FormRegistration } from '../../components/Form';
-
+import Logo from '../../components/Logo/Logo';
 import {
   ContainerPage,
   FormContainerRegsiter,
@@ -9,9 +9,8 @@ import {
   ImageSection,
   Container,
   FormWrapper,
-  LogoContainer
+  LogoContainer,
 } from './Page.styled';
-import Logo from '../../components/Logo/Logo';
 
 const RegistrationPage = () => {
   return (
@@ -29,7 +28,7 @@ const RegistrationPage = () => {
         <FormWrapper>
           <FormContainerRegsiter>
             <LogoContainer>
-            <Logo />
+              <Logo />
             </LogoContainer>
             <FormRegistration />
           </FormContainerRegsiter>

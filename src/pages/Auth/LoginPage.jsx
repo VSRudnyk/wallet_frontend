@@ -1,4 +1,6 @@
+import Media from 'react-media';
 import { LoginForm } from '../../components/Form';
+import Logo from '../../components/Logo/Logo';
 import {
   ContainerPage,
   FormContainer,
@@ -8,8 +10,7 @@ import {
   Container,
   FormWrapper,
 } from './Page.styled';
-import Media from 'react-media';
-import Logo  from '../../components/Logo/Logo';
+
 const LoginPage = () => {
   return (
     <Container>

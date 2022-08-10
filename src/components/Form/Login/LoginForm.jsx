@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
-import { useLoginMutation } from 'redux/authOperation';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import * as yup from 'yup';
 import { Formik, ErrorMessage } from 'formik';
 import { toast, ToastContainer, Slide } from 'react-toastify';
-import * as yup from 'yup';
+import { authSelectors } from 'redux/selector';
+import { useLoginMutation } from 'redux/authOperation';
 import { ButtonShowAndHide } from '../Registration/ButtonShow';
-
 import {
   Input,
   InputContainer,
@@ -14,9 +16,6 @@ import {
   ErrorText,
   FormContainer,
 } from '../Form.styled';
-import { useSelector } from 'react-redux';
-import { authSelectors } from 'redux/selector';
-import { useEffect, useState } from 'react';
 
 export const LoginForm = () => {
   const [login, { isError, error }] = useLoginMutation();

@@ -1,8 +1,11 @@
+import { useEffect, useState } from 'react';
+import { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
-import { useRegisterMutation } from '../../../redux/authOperation';
 import { Formik, ErrorMessage } from 'formik';
 import { toast, ToastContainer, Slide } from 'react-toastify';
+import { useRegisterMutation } from '../../../redux/authOperation';
+import { PasswordInput } from './PasswordInput';
 import 'react-toastify/dist/ReactToastify.css';
 import {
   Input,
@@ -17,9 +20,6 @@ import {
   ButtonShow,
   ButtonHide,
 } from '../Form.styled';
-import { PasswordInput } from './PasswordInput';
-import { useEffect, useState } from 'react';
-import { useRef } from 'react';
 
 export const FormRegistration = () => {
   const navigate = useNavigate();

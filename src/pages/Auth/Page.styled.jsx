@@ -176,6 +176,4 @@ export const FormContainerRegsiter = styled.div`
   }
 `;
 
-export const LogoContainer = styled.div`
-  
-`
+export const LogoContainer = styled.div``;
