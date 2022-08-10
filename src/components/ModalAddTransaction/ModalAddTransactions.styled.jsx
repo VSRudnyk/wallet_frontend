@@ -28,7 +28,17 @@ export const Modal = styled.div`
   margin-right: auto;
   width: 100%;
   margin-top:60px;
-  overflow: scroll; 
+  overflow: scroll;
+  overflow-y: hidden;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+  overflow-x: hidden;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    height: 0;
+  } 
   background-color: var(--white);
   @media screen and (min-width: 768px) {
     width: 540px;
