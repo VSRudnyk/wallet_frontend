@@ -53,7 +53,7 @@ export const LoginForm = () => {
     const { email, password } = values;
     login({ email, password });
     resetForm();
-    setStatus(null)
+    setStatus(null);
   };
 
   const FormError = ({ name }) => {
