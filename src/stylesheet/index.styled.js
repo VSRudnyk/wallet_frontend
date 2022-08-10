@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     text-align: center;
+    height: 100vh;
     background-color: var(--background-gray);
         background-image: linear-gradient( var(--background-light-grey), var(--background-light-grey) );
     -webkit-font-smoothing: antialiased;
@@ -63,13 +64,11 @@ export const GlobalStyle = createGlobalStyle`
   table, caption, tbody, tfoot, thead, tr, th, td {
   margin: 0;
   padding: 0;
-  // border: 0;
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
 }
 table {
-  // border-collapse: collapse;
   border-spacing: 0;
 }
 
@@ -119,8 +118,7 @@ input[type="number"]::-webkit-outer-spin-button {
     --add-transaction-menu-color:rgba(255, 255, 255, 0.7);
     --error-message: #d50c0c;
 
-    //transactions
-     --transaction-underline-color: #dcdcdf;
+    --transaction-underline-color: #dcdcdf;
      --transaction-item-bg-color: #ffffff;
 
     --baseFont: 'Circe', sans-serif;
