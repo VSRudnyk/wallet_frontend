@@ -1,4 +1,3 @@
-import { lazy } from 'react';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -7,6 +6,12 @@ import { useDispatch } from 'react-redux';
 import { ButtonAddTransactions } from '../../components/ButtonAddTransactions/ButtonAddTransactions';
 import { ModalAddTransactions } from 'components/ModalAddTransaction/ModalAddTransaction';
 import { useGetAllTransactionsQuery } from '../../redux/transactionsOperation';
+import Header from '../../components/Header';
+import Navigation from '../../components/Navigation';
+import Balance from '../../components/Balance';
+import HomeTab from '../../components/HomeTab';
+import Currency from '../../components/Currency';
+import DiagramTab from '../../components/DiagramTab';
 import { updateBalance } from 'redux/global/globalActions';
 import { Container } from 'stylesheet/Container.styled';
 import {
@@ -16,24 +21,7 @@ import {
   DashboardSeparator,
   Dashboard,
 } from './DashboardPage.styled';
-const Header = lazy(() =>
-  import('../../components/Header' /* webpackChunkName: "Header" */)
-);
-const Navigation = lazy(() =>
-  import('../../components/Navigation' /* webpackChunkName: "Navigation" */)
-);
-const Balance = lazy(() =>
-  import('../../components/Balance' /* webpackChunkName: "Balance" */)
-);
-const HomeTab = lazy(() =>
-  import('../../components/HomeTab' /* webpackChunkName: "HomeTab" */)
-);
-const Currency = lazy(() =>
-  import('../../components/Currency' /* webpackChunkName: "Currency" */)
-);
-const DiagramTab = lazy(() =>
-  import('../../components/DiagramTab' /* webpackChunkName: "DiagramTab" */)
-);
+
 export const DashboardPage = () => {
   const dispatch = useDispatch();
   const location = useLocation();
