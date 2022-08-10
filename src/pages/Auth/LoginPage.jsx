@@ -1,9 +1,6 @@
 import { LoginForm } from '../../components/Form';
 import {
   ContainerPage,
-  Logo,
-  LogoText,
-  LogoContainer,
   FormContainer,
   ImageContainerLog,
   Text,
@@ -11,9 +8,8 @@ import {
   Container,
   FormWrapper,
 } from './Page.styled';
-import LogoSrc from '../../assets/images/Logo.svg';
 import Media from 'react-media';
-
+import Logo  from '../../components/Logo/Logo';
 const LoginPage = () => {
   return (
     <Container>
@@ -29,10 +25,7 @@ const LoginPage = () => {
         />
         <FormWrapper>
           <FormContainer>
-            <LogoContainer>
-              <Logo src={LogoSrc} alt="Logo" />
-              <LogoText>Wallet</LogoText>
-            </LogoContainer>
+            <Logo />
             <LoginForm />
           </FormContainer>
         </FormWrapper>

@@ -19,6 +19,7 @@ export const Base = styled.div`
 
 export const FormContainer = styled(Form)`
   margin-bottom: 20px;
+  margin-top: 60px;
 `;
 
 export const Input = styled(Field)`

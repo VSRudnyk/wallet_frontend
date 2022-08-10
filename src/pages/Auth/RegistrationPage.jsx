@@ -3,17 +3,15 @@ import { FormRegistration } from '../../components/Form';
 
 import {
   ContainerPage,
-  Logo,
-  LogoText,
-  LogoContainer,
   FormContainerRegsiter,
   ImageContainerReg,
   Text,
   ImageSection,
   Container,
   FormWrapper,
+  LogoContainer
 } from './Page.styled';
-import LogoImg from '../../assets/images/Logo.svg';
+import Logo from '../../components/Logo/Logo';
 
 const RegistrationPage = () => {
   return (
@@ -31,8 +29,7 @@ const RegistrationPage = () => {
         <FormWrapper>
           <FormContainerRegsiter>
             <LogoContainer>
-              <Logo src={LogoImg} alt="Logo" />
-              <LogoText>Wallet</LogoText>
+            <Logo />
             </LogoContainer>
             <FormRegistration />
           </FormContainerRegsiter>
