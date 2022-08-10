@@ -1,5 +1,5 @@
 import TransactionMobile from './TransactionMobile/TransactionMobile';
-import Transaction from './Transaction';
+import Transaction from './Transaction/Transaction';
 import PropTypes from 'prop-types';
 
 import { v4 as uuidv4 } from 'uuid';

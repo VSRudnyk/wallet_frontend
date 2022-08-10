@@ -81,6 +81,15 @@ const TransactionItem = ({ transaction }) => {
   );
 };
 TransactionItem.propTypes = {
-  transaction: PropTypes.object,
+  transaction: PropTypes.shape({
+    balance: PropTypes.number,
+    category: PropTypes.string,
+    comment: PropTypes.string,
+    sum: PropTypes.number,
+    date: PropTypes.string,
+    owner: PropTypes.objectOf(PropTypes.string),
+    type: PropTypes.oneOf(['income', 'expense']),
+    _id: PropTypes.string,
+  }),
 };
 export default TransactionItem;
