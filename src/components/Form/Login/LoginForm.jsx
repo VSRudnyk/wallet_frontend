@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
-import { useLoginMutation } from 'redux/authOperation';
-import { Formik, ErrorMessage } from 'formik';
-import { toast, ToastContainer } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 import * as yup from 'yup';
+import { Formik, ErrorMessage } from 'formik';
+import { toast, ToastContainer, Slide } from 'react-toastify';
+import { authSelectors } from 'redux/selector';
+import { useLoginMutation } from 'redux/authOperation';
 import { ButtonShowAndHide } from '../Registration/ButtonShow';
-
 import {
   Input,
   InputContainer,
@@ -16,7 +18,13 @@ import {
 } from '../Form.styled';
 
 export const LoginForm = () => {
-  const [login, { isError, isSuccess, error }] = useLoginMutation();
+  const [login, { isError, error }] = useLoginMutation();
+  const [status, setStatus] = useState(false);
+  const statuss = useSelector(authSelectors.getStatus);
+
+  useEffect(() => {
+    setStatus(statuss);
+  }, [statuss]);
 
   const defaultInitialValues = {
     email: '',
@@ -45,6 +53,7 @@ export const LoginForm = () => {
     const { email, password } = values;
     login({ email, password });
     resetForm();
+    setStatus(null);
   };
 
   const FormError = ({ name }) => {
@@ -58,9 +67,28 @@ export const LoginForm = () => {
 
   return (
     <>
-      {isSuccess && toast.success('Welcome back!') && <ToastContainer />}
-      {isError && toast.error(error.data.message) && <ToastContainer />}
-
+      {isError && toast.error(error.data.message, {
+          theme: 'colored',
+          autoClose: 8000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          transition: Slide,
+        }) && <ToastContainer />}
+      {status  &&
+        toast.success('Registration success! Please, log in!', {
+          theme: 'colored',
+          icon: '🚀',
+          autoClose: 8000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          transition: Slide,
+        }) && <ToastContainer />}
       <Formik
         initialValues={defaultInitialValues}
         validationSchema={schema}

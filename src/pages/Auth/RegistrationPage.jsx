@@ -1,19 +1,16 @@
 import Media from 'react-media';
 import { FormRegistration } from '../../components/Form';
-
+import Logo from '../../components/Logo/Logo';
 import {
   ContainerPage,
-  Logo,
-  LogoText,
-  LogoContainer,
   FormContainerRegsiter,
   ImageContainerReg,
   Text,
   ImageSection,
   Container,
-  ContainerForm,
+  FormWrapper,
+  LogoContainer,
 } from './Page.styled';
-import LogoImg from '../../assets/images/Logo.svg';
 
 const RegistrationPage = () => {
   return (
@@ -28,15 +25,14 @@ const RegistrationPage = () => {
             </ImageSection>
           )}
         />
-        <ContainerForm>
+        <FormWrapper>
           <FormContainerRegsiter>
             <LogoContainer>
-              <Logo src={LogoImg} alt="Logo" />
-              <LogoText>Wallet</LogoText>
+              <Logo />
             </LogoContainer>
             <FormRegistration />
           </FormContainerRegsiter>
-        </ContainerForm>
+        </FormWrapper>
       </ContainerPage>
     </Container>
   );

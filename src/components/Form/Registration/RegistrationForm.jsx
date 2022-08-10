@@ -1,8 +1,11 @@
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
-import { useRegisterMutation } from '../../../redux/authOperation';
 import { Formik, ErrorMessage } from 'formik';
 import { toast, ToastContainer, Slide } from 'react-toastify';
+import { useRegisterMutation } from '../../../redux/authOperation';
+import { PasswordInput } from './PasswordInput';
 import 'react-toastify/dist/ReactToastify.css';
 import {
   Input,
@@ -17,13 +20,10 @@ import {
   ButtonShow,
   ButtonHide,
 } from '../Form.styled';
-import { PasswordInput } from './PasswordInput';
-import { useEffect, useState } from 'react';
-import { useRef } from 'react';
 
 export const FormRegistration = () => {
+  const navigate = useNavigate();
   const [type, setType] = useState('password');
-
   const confirmPassInFocus = useRef();
 
   useEffect(() => {
@@ -90,6 +90,13 @@ export const FormRegistration = () => {
     resetForm();
   };
 
+  useEffect(() => {
+    if (!isSuccess) {
+      return;
+    }
+    navigate('/wallet_frontend/login');
+  }, [isSuccess, navigate]);
+
   const FormError = ({ name }) => {
     return (
       <ErrorMessage
@@ -117,7 +124,16 @@ export const FormRegistration = () => {
         }) && <ToastContainer />}
       {status === 'rejected' &&
         password === '' &&
-        toast.error(error.data.message) && <ToastContainer />}
+        toast.error(error.data.message, {
+          theme: 'colored',
+          autoClose: 8000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          transition: Slide,
+        }) && <ToastContainer />}
       <Formik
         initialValues={defaultInitialValues}
         onSubmit={handleSubmit}

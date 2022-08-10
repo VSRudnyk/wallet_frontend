@@ -1,18 +1,15 @@
+import Media from 'react-media';
 import { LoginForm } from '../../components/Form';
+import Logo from '../../components/Logo/Logo';
 import {
   ContainerPage,
-  Logo,
-  LogoText,
-  LogoContainer,
   FormContainer,
   ImageContainerLog,
   Text,
   ImageSection,
   Container,
-  ContainerForm,
+  FormWrapper,
 } from './Page.styled';
-import LogoSrc from '../../assets/images/Logo.svg';
-import Media from 'react-media';
 
 const LoginPage = () => {
   return (
@@ -27,15 +24,12 @@ const LoginPage = () => {
             </ImageSection>
           )}
         />
-        <ContainerForm>
+        <FormWrapper>
           <FormContainer>
-            <LogoContainer>
-              <Logo src={LogoSrc} alt="Logo" />
-              <LogoText>Wallet</LogoText>
-            </LogoContainer>
+            <Logo />
             <LoginForm />
           </FormContainer>
-        </ContainerForm>
+        </FormWrapper>
       </ContainerPage>
     </Container>
   );

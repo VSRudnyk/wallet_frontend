@@ -2,7 +2,6 @@ import { InputContainer, Base } from '../Form.styled';
 import { ButtonShowAndHide } from './ButtonShow';
 
 export const PasswordInput = ({ onInput, password }) => {
-
   function lengthConfig() {
     const passLength = password.length;
     if (passLength >= 6 && passLength <= 12) {
