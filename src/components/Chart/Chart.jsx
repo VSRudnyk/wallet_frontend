@@ -4,7 +4,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { useTranslation } from 'react-i18next';
 import { Container, ChartContainer, Text, Label } from './Chart.styled';
 import { Loader } from 'components/Loader';
-import noDataFound from '../../images/noDataFound.jpg';
+import noDataFound from '../../assets/images/noDataFound.jpg';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

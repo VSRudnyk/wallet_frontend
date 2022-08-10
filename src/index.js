@@ -11,8 +11,7 @@ import { Provider } from 'react-redux';
 import './i18n';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
-  <div>
+  <React.StrictMode>
     <GlobalStyle />
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
@@ -21,6 +20,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </BrowserRouter>
       </PersistGate>
     </Provider>
-  </div>
-  // </React.StrictMode>
+  </React.StrictMode>
 );

@@ -1,6 +1,6 @@
 import { Container } from 'stylesheet/Container.styled';
 import { useTranslation } from 'react-i18next';
-import Error from '../../images/Error.jpeg';
+import Error from '../../assets/images/Error.jpeg';
 import { ErrorContainer, ErrorText, BackToHome } from './Error.styled';
 
 export const ErrorPage = () => {

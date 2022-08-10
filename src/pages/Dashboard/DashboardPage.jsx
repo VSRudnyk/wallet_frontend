@@ -1,3 +1,14 @@
+import { lazy } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Media from 'react-media';
+import { useDispatch } from 'react-redux';
+import { ButtonAddTransactions } from '../../components/ButtonAddTransactions/ButtonAddTransactions';
+import { ModalAddTransactions } from 'components/ModalAddTransaction/ModalAddTransaction';
+import { useGetAllTransactionsQuery } from '../../redux/transactionsOperation';
+import { updateBalance } from 'redux/global/globalActions';
+import { Container } from 'stylesheet/Container.styled';
 import {
   DashboardFirstSectionWrapper,
   DashboardSecondSectionWrapper,
@@ -5,17 +16,6 @@ import {
   DashboardSeparator,
   Dashboard,
 } from './DashboardPage.styled';
-import { lazy } from 'react';
-import { useState, useEffect } from 'react';
-import { Container } from 'stylesheet/Container.styled';
-import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { ButtonAddTransactions } from '../../components/ButtonAddTransactions/ButtonAddTransactions';
-import { ModalAddTransactions } from 'components/ModalAddTransaction/ModalAddTransaction';
-import { useGetAllTransactionsQuery } from '../../redux/transactionsOperation';
-import Media from 'react-media';
-import { useDispatch } from 'react-redux';
-import { updateBalance } from 'redux/global/globalActions';
 const Header = lazy(() =>
   import('../../components/Header' /* webpackChunkName: "Header" */)
 );

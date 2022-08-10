@@ -2,14 +2,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Loader } from 'components/Loader';
-// import { ToastContainer } from 'react-toastify';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-
-// import { HashLoader } from 'react-spinners';
-
 import Media from 'react-media';
-
+import { USD, EUR, PLZ, RUB, UAH, UZS } from 'CONST/const';
 import {
   TableHeaderContainer,
   TableHeaderList,
@@ -19,10 +15,8 @@ import {
   TableBodyListItem,
   TableBodyText,
   TableWrapper,
-  // LoaderWrapper,
 } from './Currency.styled';
 import { useLocation, Navigate } from 'react-router-dom';
-// import { getCurrency } from './API/ApiCurrency';
 
 export const Currency = () => {
   const [currency, setCurrency] = useState([]);
@@ -56,21 +50,21 @@ export const Currency = () => {
 
         for (let currencyBack of currency.data.exchangeRate) {
           if (
-            currencyBack.currency === 'USD' ||
-            currencyBack.currency === 'EUR' ||
-            currencyBack.currency === 'PLZ'
+            currencyBack.currency === USD ||
+            currencyBack.currency === EUR ||
+            currencyBack.currency === PLZ
           ) {
             arrMainCurrency.push(currencyBack);
           }
         }
         result = currency.data.exchangeRate.filter(
           cur =>
-            cur.currency !== 'RUB' &&
-            cur.currency !== 'USD' &&
-            cur.currency !== 'EUR' &&
-            cur.currency !== 'PLZ' &&
-            cur.currency !== 'UAH' &&
-            cur.currency !== 'UZS' &&
+            cur.currency !== RUB &&
+            cur.currency !== USD &&
+            cur.currency !== EUR &&
+            cur.currency !== PLZ &&
+            cur.currency !== UAH &&
+            cur.currency !== UZS &&
             cur.currency !== undefined
         );
 
@@ -135,22 +129,11 @@ export const Currency = () => {
                       );
                     })}
 
-                  {
-                    status === 'pending' && (
-                      <Loader color="#e7e5f2" size="35px" />
-                    )
-                    // <LoaderWrapper>
-                    //   <HashLoader
-                    //     color="#f7f7f7"
-                    //     loading
-                    //     size={35}
-                    //     speedMultiplier={1.5}
-                    //   />
-                    // </LoaderWrapper>
-                  }
+                  {status === 'pending' && (
+                    <Loader color="#e7e5f2" size="35px" />
+                  )}
                 </TableBodyList>
               </TableBodyContainer>
-              {/* <ToastContainer /> */}
             </TableWrapper>
           )
         }
@@ -188,21 +171,11 @@ export const Currency = () => {
                         </TableBodyListItem>
                       );
                     })}
-                  {/* <Loader color="red" size="35" /> */}
                   {status === 'pending' && (
                     <Loader color="#e7e5f2" size="45px" />
-                    // <LoaderWrapper>
-                    //   <HashLoader
-                    //     color="#f7f7f7"
-                    //     loading
-                    //     size={45}
-                    //     speedMultiplier={1.5}
-                    //   />
-                    // </LoaderWrapper>
                   )}
                 </TableBodyList>
               </TableBodyContainer>
-              {/* <ToastContainer /> */}
             </TableWrapper>
           )
         }

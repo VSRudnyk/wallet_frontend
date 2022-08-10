@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import '../../stylesheet/fonts.css';
-import { ReactComponent as Close } from '../../images/Сlose.svg';
-import { ReactComponent as Select } from '../../images/select_open.svg';
-import { ReactComponent as Calendar } from '../../images/calendar.svg';
+import { ReactComponent as Close } from '../../assets/images/Сlose.svg';
+import { ReactComponent as Select } from '../../assets/images/select_open.svg';
+import { ReactComponent as Calendar } from '../../assets/images/calendar.svg';
 import DatePicker from 'react-datepicker';
 
 export const Backdrop = styled.div`
@@ -11,7 +11,7 @@ export const Backdrop = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
- 
+
   display: flex;
   background: transparent;
   z-index: 1200;
@@ -27,7 +27,7 @@ export const Modal = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  margin-top:60px;
+  margin-top: 60px;
   overflow: scroll;
   overflow-y: hidden;
   overflow-y: scroll;
@@ -38,7 +38,7 @@ export const Modal = styled.div`
   overflow-x: scroll;
   &::-webkit-scrollbar {
     height: 0;
-  } 
+  }
   background-color: var(--white);
   @media screen and (min-width: 768px) {
     width: 540px;
@@ -231,8 +231,8 @@ export const InputCalendar = styled(DatePicker)`
 `;
 
 export const InputCalendarIcon = styled(DatePicker)`
-  position:absolute;
-`
+  position: absolute;
+`;
 
 export const InputCalendarSVG = styled(Calendar)`
   position: absolute;
@@ -256,7 +256,7 @@ export const InputComment = styled(Input)`
     width: 394px;
     margin-top: 0;
     height: 29px;
-    
+
     padding-left: 8px;
     ::placeholder {
       padding-left: 0px;
