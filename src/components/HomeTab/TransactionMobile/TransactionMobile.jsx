@@ -1,3 +1,11 @@
+import { useDeleteTransactionMutation } from 'redux/transactionsOperation';
+import PropTypes from 'prop-types';
+
+import { v4 as uuidv4 } from 'uuid';
+import EllipsisText from 'react-ellipsis-text';
+import { useTranslation } from 'react-i18next';
+import Notiflix from 'notiflix';
+
 import {
   List,
   ListItem,
@@ -7,12 +15,6 @@ import {
   Icon,
   DelBtn,
 } from './TransactionMobile.styled';
-import { v4 as uuidv4 } from 'uuid';
-import EllipsisText from 'react-ellipsis-text';
-import { useTranslation } from 'react-i18next';
-import { useDeleteTransactionMutation } from 'redux/transactionsOperation';
-import Notiflix from 'notiflix';
-import PropTypes from 'prop-types';
 
 Notiflix.Confirm.init({
   okButtonBackground: '#ff6596',
@@ -120,6 +122,15 @@ const TransactionMobile = ({ transaction }) => {
   return <List>{list}</List>;
 };
 TransactionMobile.propTypes = {
-  transaction: PropTypes.object,
+  transaction: PropTypes.shape({
+    balance: PropTypes.number,
+    category: PropTypes.string,
+    comment: PropTypes.string,
+    sum: PropTypes.number,
+    date: PropTypes.string,
+    owner: PropTypes.objectOf(PropTypes.string),
+    type: PropTypes.oneOf(['income', 'expense']),
+    _id: PropTypes.string,
+  }),
 };
 export default TransactionMobile;
