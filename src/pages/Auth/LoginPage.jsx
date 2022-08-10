@@ -11,7 +11,7 @@ import {
   Container,
   FormWrapper,
 } from './Page.styled';
-import LogoSrc from '../../images/Logo.svg';
+import LogoSrc from '../../assets/images/Logo.svg';
 import Media from 'react-media';
 
 const LoginPage = () => {

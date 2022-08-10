@@ -4,9 +4,9 @@ import { useLogoutMutation } from 'redux/authOperation';
 import Media from 'react-media';
 import Notiflix from 'notiflix';
 
-import { ReactComponent as SettingsIcon } from '../../images/settings-icon.svg';
-import { ReactComponent as LanguageIcon } from '../../images/language-switch.svg';
-import { ReactComponent as ExitIcon } from '../../images/Exit.svg';
+import { ReactComponent as SettingsIcon } from '../../assets/images/settings-icon.svg';
+import { ReactComponent as LanguageIcon } from '../../assets/images/language-switch.svg';
+import { ReactComponent as ExitIcon } from '../../assets/images/Exit.svg';
 
 import {
   SettingsBtnWrapper,

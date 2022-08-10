@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import '../../stylesheet/fonts.css';
-import eclipseGray from '../../images/EllipseGray.png';
-import eclipsePink from '../../images/EllipsePink.png';
-import RegImage from '../../images/RegistrationPageImage.png';
-import RegImageTab from '../../images/RegistrationPageImage_tablet.png';
-import LoginImage from '../../images/loginPageImage_desktop.png';
-import LoginImageTab from '../../images/loginPageImage_tablet.png';
+import eclipseGray from '../../assets/images/EllipseGray.png';
+import eclipsePink from '../../assets/images/EllipsePink.png';
+import RegImage from '../../assets/images/RegistrationPageImage.png';
+import RegImageTab from '../../assets/images/RegistrationPageImage_tablet.png';
+import LoginImage from '../../assets/images/loginPageImage_desktop.png';
+import LoginImageTab from '../../assets/images/loginPageImage_tablet.png';
 
 export const Container = styled.div`
   display: block;
