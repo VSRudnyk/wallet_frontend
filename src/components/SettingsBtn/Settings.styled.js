@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-// import  from 'styled-components';
 
 export const SettingsBtnWrapper = styled.div`
   position: relative;

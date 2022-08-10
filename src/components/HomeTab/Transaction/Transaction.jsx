@@ -57,13 +57,23 @@ const Transaction = ({ transactionsList }) => {
           })}
         </List>
       </TransactionsWrapper>
-      {/* <ButtonAddTransactions /> */}
     </TableContainer>
   );
 };
 
 Transaction.propTypes = {
-  transactionsList: PropTypes.array,
+  transactionsList: PropTypes.arrayOf(
+    PropTypes.shape({
+      balance: PropTypes.number,
+      category: PropTypes.string,
+      comment: PropTypes.string,
+      sum: PropTypes.number,
+      date: PropTypes.string,
+      owner: PropTypes.objectOf(PropTypes.string),
+      type: PropTypes.oneOf(['income', 'expense']),
+      _id: PropTypes.string,
+    })
+  ),
 };
 
 export default Transaction;

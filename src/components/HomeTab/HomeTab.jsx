@@ -1,15 +1,16 @@
 import TransactionMobile from './TransactionMobile/TransactionMobile';
-import Transaction from './Transaction';
+import Transaction from './Transaction/Transaction';
+import PropTypes from 'prop-types';
+
 import { v4 as uuidv4 } from 'uuid';
 import { useTranslation } from 'react-i18next';
-import { HomeTabWrapper, List, ListItem, Text } from './HomeTab.styled';
 import Media from 'react-media';
-// import { ButtonAddTransactions } from 'components/ButtonAddTransactions/ButtonAddTransactions';
 
-import PropTypes from 'prop-types';
+import { HomeTabWrapper, List, ListItem, Text } from './HomeTab.styled';
 
 export const HomeTab = ({ transactionsList }) => {
   const { t } = useTranslation();
+
   return (
     <HomeTabWrapper>
       <Media queries={{ mobile: { maxWidth: 767 } }}>
@@ -33,7 +34,6 @@ export const HomeTab = ({ transactionsList }) => {
           ) : (
             <>
               <Transaction transactionsList={transactionsList} />
-              {/* <ButtonAddTransactions /> */}
             </>
           )
         }
@@ -43,5 +43,16 @@ export const HomeTab = ({ transactionsList }) => {
 };
 
 HomeTab.propTypes = {
-  transactionsList: PropTypes.array,
+  transactionsList: PropTypes.arrayOf(
+    PropTypes.shape({
+      balance: PropTypes.number,
+      category: PropTypes.string,
+      comment: PropTypes.string,
+      sum: PropTypes.number,
+      date: PropTypes.string,
+      owner: PropTypes.objectOf(PropTypes.string),
+      type: PropTypes.oneOf(['income', 'expense']),
+      _id: PropTypes.string,
+    })
+  ),
 };
