@@ -107,7 +107,7 @@ export const DashboardPage = () => {
                 }
               </Media>
             </DashboardFirstSectionWrapper>
-            <DashboardSeparator></DashboardSeparator>
+            <DashboardSeparator pathname={pathname}></DashboardSeparator>
             <DashboardSecondSectionWrapper>
               {pathname === '/wallet_frontend/diagram' && <DiagramTab />}
               {location.pathname === '/wallet_frontend/home' && (
@@ -121,9 +121,6 @@ export const DashboardPage = () => {
           {modalAddTransactionStatus && <ModalAddTransactions />}
         </Container>
       </Dashboard>
-      {/* {location.pathname === '/wallet_frontend/home' && (
-        <ButtonAddTransactions />
-      )} */}
     </>
   );
 };
