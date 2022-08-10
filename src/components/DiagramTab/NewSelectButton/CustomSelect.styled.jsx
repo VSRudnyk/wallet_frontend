@@ -15,6 +15,9 @@ export const SelectWrapper = styled.div`
     
 
 `;
+export const IconSVG = styled.svg`
+    pointer-events: none;
+`;
 export const SelectBtn = styled.button`
     width: 100%;
     height: 100%;
