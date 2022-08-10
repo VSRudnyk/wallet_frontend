@@ -3,10 +3,11 @@ import {
   SelectBtn,
   SelectOptionsList,
   SelectOptionsItem,
+  IconSVG
 } from './CustomSelect.styled';
 import { useState, useEffect, useRef } from 'react';
-import { IconSVG } from 'stylesheet/IconSVG';
 import { useTranslation } from 'react-i18next';
+
 
 export const CustomSelect = ({ items, changeValue }) => {
   const [selectedText, setSelectedTex] = useState(items.tittle);
@@ -56,10 +57,16 @@ export const CustomSelect = ({ items, changeValue }) => {
         <span className="select__button__active-text">
           {t(`diagramTab.optionData.${selectedText}`)}
         </span>
-        {openStatus === false && <IconSVG id="icon-diagram-tab-arrow-down" />}
+        {openStatus === false && 
+          <IconSVG id="icon-diagram-tab-arrow-down" viewBox="0 0 58 32" width="18" height="9">
+            <path d="M3.938 1.881l-2.057 2.057 27.21 27.21 27.21-27.21-2.057-2.057-25.153 25.153z"/>
+          </IconSVG>}
         {openStatus === true && (
-          <IconSVG id="icon-diagram-tab-arrow-down" className="rotated-svg" />
+          <IconSVG id="icon-diagram-tab-arrow-down" className="rotated-svg" viewBox="0 0 58 32" width="18" height="9">
+            <path d="M3.938 1.881l-2.057 2.057 27.21 27.21 27.21-27.21-2.057-2.057-25.153 25.153z"/>
+          </IconSVG>
         )}
+
       </SelectBtn>
 
       {openStatus === true && (
