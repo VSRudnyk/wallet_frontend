@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkwallet_frontend=self.webpackChunkwallet_frontend||[]).push([[789],{286:function(n,e,r){r.r(e);var s=r(5607),c=r(7413),i=r(5030),l=r(3632),t=r(184);e.default=function(){return(0,t.jsx)(l.W2,{children:(0,t.jsxs)(l.Zv,{children:[(0,t.jsx)(s.Z,{query:"(min-width: 768px)",render:function(){return(0,t.jsxs)(l.RF,{children:[(0,t.jsx)(l.yE,{}),(0,t.jsx)(l.xv,{children:"Finance App"})]})}}),(0,t.jsx)(l.n5,{children:(0,t.jsxs)(l.Yb,{children:[(0,t.jsx)(i.Z,{}),(0,t.jsx)(c.U,{})]})})]})})}}}]);
+//# sourceMappingURL=LoginPage.af184eb4.chunk.js.map
