@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { useRegisterMutation } from '../../../redux/authOperation';
 import { Formik, ErrorMessage } from 'formik';
@@ -22,8 +22,8 @@ import { useEffect, useState } from 'react';
 import { useRef } from 'react';
 
 export const FormRegistration = () => {
+  const navigate = useNavigate();
   const [type, setType] = useState('password');
-
   const confirmPassInFocus = useRef();
 
   useEffect(() => {
@@ -89,6 +89,13 @@ export const FormRegistration = () => {
     setPassword('');
     resetForm();
   };
+
+  useEffect(() => {
+    if (!isSuccess) {
+      return;
+    }
+    navigate('/wallet_frontend/login');
+  }, [isSuccess, navigate]);
 
   const FormError = ({ name }) => {
     return (

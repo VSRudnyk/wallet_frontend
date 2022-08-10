@@ -3,6 +3,7 @@ import { authOperation } from './authOperation';
 
 const initialState = {
   user: { name: null, email: null },
+  status: null,
   accessToken: null,
   sid: null,
   isLoggedIn: false,
@@ -27,6 +28,8 @@ export const authSlice = createSlice({
       (state, { payload }) => {
         state.user = payload.data.user;
         state.isLoggedIn = true;
+        state.status = payload.status;
+
       },
     );
     builder.addMatcher(
