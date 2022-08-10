@@ -15,6 +15,9 @@ export const Switch = styled.div`
   cursor: pointer;
   @media screen and (min-width: 768px) {
     top: 48vh;
+    left: 702px;
+  }
+  @media screen and (min-width: 1280px) {
     left: 644px;
   }
 `;
