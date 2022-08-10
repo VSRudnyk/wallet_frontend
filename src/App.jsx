@@ -26,7 +26,7 @@ export const App = () => {
       <Suspense fallback={<Loader color="#4a56e2" size="100px" />}>
         <Routes>
           <Route
-            path="/wallet_frontend/register"
+            path="/register"
             element={
               <PublickRoute>
                 <RegistrationPage />
@@ -34,19 +34,16 @@ export const App = () => {
             }
           />
           <Route
-            path="/wallet_frontend/login"
+            path="/login"
             element={
               <PublickRoute>
                 <LoginPage />
               </PublickRoute>
             }
           />
+          <Route path="/" element={<Navigate to="/login" />} />
           <Route
-            path="/wallet_frontend"
-            element={<Navigate to="/wallet_frontend/login" />}
-          />
-          <Route
-            path="/wallet_frontend/home"
+            path="/home"
             element={
               <PrivatRoute>
                 <DashboardPage />
@@ -54,7 +51,7 @@ export const App = () => {
             }
           />
           <Route
-            path="/wallet_frontend/currency"
+            path="/currency"
             element={
               <PrivatRoute>
                 <DashboardPage />
@@ -63,7 +60,7 @@ export const App = () => {
           />
 
           <Route
-            path="/wallet_frontend/diagram"
+            path="/diagram"
             element={
               <PrivatRoute>
                 <DashboardPage />
