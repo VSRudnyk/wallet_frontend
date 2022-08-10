@@ -29,7 +29,7 @@ export const HomeTabWrapper = styled.div`
 `;
 
 export const List = styled.ul`
-  height: 65vh;
+  height: 60vh;
   width: 277px;
 
   @media (min-width: 768px) {
@@ -51,6 +51,7 @@ export const ListItem = styled.li`
 
 export const Text = styled.p`
   margin-top: 100px;
+  margin-bottom: 100px;
   font-weight: var(--bold);
   font-size: 18px;
   line-height: 27px;

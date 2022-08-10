@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 
 export const Dashboard = styled.main`
-  height: 100%;
+  height: 100vh;
   padding-top: 75px;
   padding-bottom: 15px;
   @media screen and (min-width: 768px) {
     padding-top: 112px;
     padding-bottom: 32px;
+    height: ${props =>
+      props.pathname === '/wallet_frontend/home' ? '100vh' : '100%'};
   }
   @media screen and (min-width: 1280px) {
     padding-top: 126px;
     padding-bottom: 103px;
-    height: ${props =>
-      props.pathname === '/wallet_frontend/home' ? '100vh' : '100%'};
   }
 `;
 
