@@ -7,9 +7,7 @@ export const HomeTabWrapper = styled.div`
   font-weight: var(-regular);
   font-size: 16px;
   line-height: 24px;
-  & > button:nth-child(1) {
-    margin-right: 30px;
-  }
+
   @media (max-width: 767px) {
     overflow-y: auto;
     scrollbar-gutter: stable;
@@ -40,6 +38,7 @@ export const List = styled.ul`
 export const ListItem = styled.li`
   margin-bottom: 8px;
   background-color: transparent;
+
   @media screen and (min-width: 768px) {
     margin: 0;
     padding: 16px 0 15px 0;
