@@ -59,8 +59,8 @@ export const Currency = () => {
         }
         result = currency.data.exchangeRate.filter(
           cur =>
-            cur.currency !== RUB &&
             cur.currency !== USD &&
+            cur.currency !== RUB &&
             cur.currency !== EUR &&
             cur.currency !== PLZ &&
             cur.currency !== UAH &&
@@ -77,7 +77,6 @@ export const Currency = () => {
         setStatus('resolve');
         return setCurrency(result);
       } catch (error) {
-        console.log(error);
         toast.error('Something wrong, try again!');
       }
     }
@@ -115,7 +114,7 @@ export const Currency = () => {
               <TableBodyContainer>
                 <TableBodyList>
                   {currency.length > 0 &&
-                    currency.map(({ currency, purchaseRateNB, saleRateNB }) => {
+                    currency.map(({ currency, purchaseRateNB, saleRate }) => {
                       return (
                         <TableBodyListItem key={uuidv4()}>
                           <TableBodyText>{currency}</TableBodyText>
@@ -123,7 +122,7 @@ export const Currency = () => {
                             {Number(purchaseRateNB).toFixed(2)}
                           </TableBodyText>
                           <TableBodyText>
-                            {Number(saleRateNB).toFixed(2)}
+                            {saleRate?.toFixed(2) || '-'}
                           </TableBodyText>
                         </TableBodyListItem>
                       );
@@ -131,7 +130,6 @@ export const Currency = () => {
 
                   {status === 'pending' && (
                     <Loader color="#e7e5f2" size="15px" />
-                    // #e7e5f2
                   )}
                 </TableBodyList>
               </TableBodyContainer>
@@ -159,7 +157,7 @@ export const Currency = () => {
               <TableBodyContainer>
                 <TableBodyList>
                   {currency.length > 0 &&
-                    currency.map(({ currency, purchaseRateNB, saleRateNB }) => {
+                    currency.map(({ currency, purchaseRateNB, saleRate }) => {
                       return (
                         <TableBodyListItem key={uuidv4()}>
                           <TableBodyText>{currency}</TableBodyText>
@@ -167,7 +165,7 @@ export const Currency = () => {
                             {Number(purchaseRateNB).toFixed(2)}
                           </TableBodyText>
                           <TableBodyText>
-                            {Number(saleRateNB).toFixed(2)}
+                            {saleRate?.toFixed(2) || '-'}
                           </TableBodyText>
                         </TableBodyListItem>
                       );

@@ -3,7 +3,7 @@ import '../../stylesheet/fonts.css';
 
 export const Switch = styled.div`
   position: absolute;
-  bottom: 3vh;
+  bottom: 20px;
   right: 20px;
   border-radius: 50%;
   width: 44px;
@@ -13,13 +13,6 @@ export const Switch = styled.div`
 
   box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
   cursor: pointer;
-  @media screen and (min-width: 768px) {
-    top: 48vh;
-    left: 702px;
-  }
-  @media screen and (min-width: 1280px) {
-    left: 644px;
-  }
 `;
 
 export const SwitchElGor = styled.div`

@@ -35,7 +35,6 @@ export const DashboardFirstSectionWrapper = styled.div`
 `;
 
 export const DashboardSecondSectionWrapper = styled.div`
-  position: relative;
   margin-left: auto;
   margin-right: auto;
 `;

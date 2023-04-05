@@ -47,13 +47,14 @@ export const TableBodyContainer = styled.div`
   padding: 12px 15px 16px 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   @media screen and (min-width: 768px) {
     padding: 16px 15px 12px 20px;
   }
   @media screen and (min-width: 1280px) {
     height: 282px;
-    padding: 20px 61px 20px 58px;
+    /* padding: 20px 61px 20px 58px; */
   }
   background-image: linear-gradient(
       180deg,
