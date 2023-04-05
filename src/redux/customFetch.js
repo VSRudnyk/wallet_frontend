@@ -1,11 +1,11 @@
 import { fetchBaseQuery } from '@reduxjs/toolkit/query';
-import {  setCredentials } from './authSlice';
+import { setCredentials } from './authSlice';
 import { Mutex } from 'async-mutex';
 
 const mutex = new Mutex();
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://wallet-backend-1.herokuapp.com/api/',
+  baseUrl: 'https://wallet-backend-gamma.vercel.app/api',
   prepareHeaders: (headers, { getState }) => {
     const accessToken = getState().auth.accessToken;
     if (accessToken) {
@@ -27,7 +27,7 @@ export const baseQueryWithReauth = async (args, api, extraOptions) => {
           setCredentials({
             ...currentCredential,
             accessToken: currentCredential.refreshToken,
-          }),
+          })
         );
         const refreshResult = await baseQuery(
           {
@@ -39,7 +39,7 @@ export const baseQueryWithReauth = async (args, api, extraOptions) => {
             credentials: 'include',
           },
           api,
-          extraOptions,
+          extraOptions
         );
         if (refreshResult.data) {
           api.dispatch(
@@ -47,10 +47,10 @@ export const baseQueryWithReauth = async (args, api, extraOptions) => {
               ...refreshResult.data.data,
               user: currentCredential.user,
               isLoggedIn: currentCredential.isLoggedIn,
-            }),
+            })
           );
           result = await baseQuery(args, api, extraOptions);
-        } 
+        }
       } finally {
         release();
       }
@@ -61,4 +61,3 @@ export const baseQueryWithReauth = async (args, api, extraOptions) => {
   }
   return result;
 };
-

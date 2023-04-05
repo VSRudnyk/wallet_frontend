@@ -45,7 +45,7 @@ export const Currency = () => {
       let result = null;
       try {
         const currency = await axios(
-          'https://wallet-backend-1.herokuapp.com/api/currency'
+          'https://wallet-backend-gamma.vercel.app/api/currency'
         );
 
         for (let currencyBack of currency.data.exchangeRate) {
@@ -130,7 +130,8 @@ export const Currency = () => {
                     })}
 
                   {status === 'pending' && (
-                    <Loader color="#e7e5f2" size="35px" />
+                    <Loader color="#e7e5f2" size="15px" />
+                    // #e7e5f2
                   )}
                 </TableBodyList>
               </TableBodyContainer>
