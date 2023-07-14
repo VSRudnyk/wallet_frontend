@@ -20,7 +20,6 @@
 The Wallet app is a powerful and user-friendly application built using a modern tech stack including React, React Hook, RTK Query, Styled Components, GitHub, Node.js, MongoDB, Mongoose, Express, and Swagger. It provides a seamless and intuitive experience for managing personal finances. <br/>
       <br/>
       Built by: <a href="https://github.com/VSRudnyk/wallet_frontend/graphs/contributors"><commun>IT</y> team</a>
-
       <br/>
       <br/>
       <a href="https://vsrudnyk.github.io/wallet_frontend/">View Live Website</a>
@@ -29,7 +28,6 @@ The Wallet app is a powerful and user-friendly application built using a modern 
       ·
       <a href="https://github.com/VSRudnyk/wallet_frontend/issues">Request Feature</a>
     </p>
-
   </div>
   
   <!-- TABLE OF CONTENTS -->
@@ -80,13 +78,14 @@ The Wallet app is a powerful and user-friendly application built using a modern 
   
   ### Built With
   
-  - ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=React&logoColor=61DAFB)
+  - ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=React&logoColor=61DAFB&style=plastic)
+  - ![Node.js](https://img.shields.io/badge/NODE.JS-91c63d?style=for-the-badge&logo=node.js&logoColor=white&style=plastic)
 
   <p align="right"><a href="#readme-top">back to top</a></p>
   
   ### Description
   
-  This is the initial version of my portfolio website, built with React. It presents a comprehensive showcase of my projects. The design places a strong emphasis on a mobile-first approach, delivering a professional and polished look through the use of a carefully chosen color palette.
+Wallet is a comprehensive and user-friendly web application designed to simplify personal finance management and provide a secure platform for individuals to track their expenses, budget effectively, and achieve financial goals. With its intuitive interface and robust features, Wallet empowers users to take control of their finances and make informed decisions about their money.
   
   <p align="right"><a href="#readme-top">back to top</a></p>
 
