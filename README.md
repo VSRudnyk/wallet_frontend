@@ -14,12 +14,12 @@
     <a href="https://github.com/VSRudnyk/wallet_frontend">
       <img src="src/images/logo-black.svg" alt="Logo" width="200" height="200">
     </a>
-    <h3 align="center">My React Portfolio</h3>
+    <h3 align="center">Wallet</h3>
     <p align="center">
     <br/>
-This portfolio application was built using React and is designed to showcase my projects. It features a dynamic and visually appealing layout. <br/>
+The Wallet app is a powerful and user-friendly application built using a modern tech stack including React, React Hook, RTK Query, Styled Components, GitHub, Node.js, MongoDB, Mongoose, Express, and Swagger. It provides a seamless and intuitive experience for managing personal finances. <br/>
       <br/>
-      Built by: Vladimir Rudnyk
+      Built by: <commun>IT</y> team
       <br/>
       <br/>
       <a href="https://vsrudnyk.github.io/wallet_frontend/">View Live Website</a>
