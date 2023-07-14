@@ -82,6 +82,8 @@ The Wallet app is a powerful and user-friendly application built using a modern 
   - ![Node.js](https://img.shields.io/badge/NODE.JS-91c63d?style=for-the-badge&logo=node.js&logoColor=white&style=plastic)
   - ![MongoDB](https://img.shields.io/badge/MongoDB-001e2b?style=for-the-badge&logo=mongodb&logoColor=00ed64&style=plastic)
   - ![Styled-components] (https://img.shields.io/badge/styled%20components-001e2b?style=for-the-badge&logo=styledcomponents&logoColor=ffffff&style=plastic)
+  - ![GitHub](https://img.shields.io/badge/GitHub-black?style=for-the-badge&logo=github&logoColor=ffffff&style=plastic)
+  - ![Figma](https://img.shields.io/badge/Figma-474747?style=for-the-badge&logo=figma&logoColor=ffffff&style=plastic)
 
   <p align="right"><a href="#readme-top">back to top</a></p>
   
