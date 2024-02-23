@@ -2,6 +2,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { Loader } from './components/Loader';
 import ErrorPage from './pages/Error';
+
+
 const PrivatRoute = lazy(() =>
   import('./routers/PrivatRouter' /* webpackChunkName: "PrivatRoute" */)
 );
@@ -26,7 +28,7 @@ export const App = () => {
       <Suspense fallback={<Loader color="#4a56e2" size="100px" />}>
         <Routes>
           <Route
-            path="/wallet_frontend/register"
+            path="/testApp/register"
             element={
               <PublickRoute>
                 <RegistrationPage />
@@ -34,7 +36,7 @@ export const App = () => {
             }
           />
           <Route
-            path="/wallet_frontend/login"
+            path="/testApp/login"
             element={
               <PublickRoute>
                 <LoginPage />
@@ -42,34 +44,19 @@ export const App = () => {
             }
           />
           <Route
-            path="/wallet_frontend"
-            element={<Navigate to="/wallet_frontend/login" />}
-          />
-          <Route
-            path="/wallet_frontend/home"
-            element={
-              <PrivatRoute>
-                <DashboardPage />
-              </PrivatRoute>
-            }
-          />
-          <Route
-            path="/wallet_frontend/currency"
-            element={
-              <PrivatRoute>
-                <DashboardPage />
-              </PrivatRoute>
-            }
+            path="/"
+            element={<Navigate to="/testApp/login" />}
           />
 
           <Route
-            path="/wallet_frontend/diagram"
+            path="/testApp/home"
             element={
-              <PrivatRoute>
+              <PublickRoute>
                 <DashboardPage />
-              </PrivatRoute>
+              </PublickRoute>
             }
           />
+
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Suspense>

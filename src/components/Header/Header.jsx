@@ -40,10 +40,9 @@ export const Header = () => {
       <Container>
         <HeaderContainer>
           <ContainerLogo>
-            <NavLink to="/wallet_frontend/home">
+            <NavLink to="/testApp/home">
               <ContainerLogo>
-                <LogoStyle src={Logo} alt="Logo" />
-                <LogoName>Wallet</LogoName>
+                <LogoName>Test App</LogoName>
               </ContainerLogo>
             </NavLink>
           </ContainerLogo>

@@ -1,15 +1,12 @@
 import Media from 'react-media';
 import { FormRegistration } from '../../components/Form';
-import Logo from '../../components/Logo/Logo';
 import {
   ContainerPage,
   FormContainerRegsiter,
-  ImageContainerReg,
   Text,
   ImageSection,
   Container,
   FormWrapper,
-  LogoContainer,
 } from './Page.styled';
 
 const RegistrationPage = () => {
@@ -20,16 +17,12 @@ const RegistrationPage = () => {
           query="(min-width: 768px)"
           render={() => (
             <ImageSection>
-              <ImageContainerReg />
-              <Text>Finance App</Text>
+              <Text>Registration Page</Text>
             </ImageSection>
           )}
         />
         <FormWrapper>
           <FormContainerRegsiter>
-            <LogoContainer>
-              <Logo />
-            </LogoContainer>
             <FormRegistration />
           </FormContainerRegsiter>
         </FormWrapper>

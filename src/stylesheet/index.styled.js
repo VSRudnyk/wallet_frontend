@@ -22,13 +22,11 @@ export const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     backdrop-filter: blur(50px);
   @media screen and (min-width: 768px) {
-    background: url(${BackTab});
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
   @media screen and (min-width: 1280px) {
-    background: url(${BackDes});
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

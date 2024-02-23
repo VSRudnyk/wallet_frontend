@@ -4,5 +4,5 @@ import { authSelectors } from 'redux/selector';
 
 export default function PublickRoute({ children }) {
   const isToken = useSelector(authSelectors.getToken);
-  return <>{isToken ? <Navigate to="/wallet_frontend/home" /> : children}</>;
+  return <>{isToken ? <Navigate to="/testApp/home" /> : children}</>;
 }

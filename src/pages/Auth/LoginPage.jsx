@@ -1,10 +1,8 @@
 import Media from 'react-media';
 import { LoginForm } from '../../components/Form';
-import Logo from '../../components/Logo/Logo';
 import {
   ContainerPage,
   FormContainer,
-  ImageContainerLog,
   Text,
   ImageSection,
   Container,
@@ -19,14 +17,12 @@ const LoginPage = () => {
           query="(min-width: 768px)"
           render={() => (
             <ImageSection>
-              <ImageContainerLog />
-              <Text>Finance App</Text>
+              <Text>Register App</Text>
             </ImageSection>
           )}
         />
         <FormWrapper>
           <FormContainer>
-            <Logo />
             <LoginForm />
           </FormContainer>
         </FormWrapper>

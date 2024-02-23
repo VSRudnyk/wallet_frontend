@@ -59,7 +59,7 @@ export const FormRegistration = () => {
     password: yup
       .string()
       .min(6, 'must be at least 6 characters')
-      .max(12, 'password length must be less than 13 characters')
+      .max(20, 'password length must be less than 20 characters')
       .matches(/^(?!.*\s)/, ' whitespaces are forbidden.')
       .matches(/^(?=.*[0-9])/, 'must contain at least one numeric character')
       .matches(
@@ -94,7 +94,7 @@ export const FormRegistration = () => {
     if (!isSuccess) {
       return;
     }
-    navigate('/wallet_frontend/login');
+    navigate('/testApp/login');
   }, [isSuccess, navigate]);
 
   const FormError = ({ name }) => {
@@ -187,7 +187,7 @@ export const FormRegistration = () => {
           <ToastContainer />
         </FormContainer>
       </Formik>
-      <Link to="/wallet_frontend/login">
+      <Link to="/testApp/login">
         <LoginButtonRegPage type="button">Log in </LoginButtonRegPage>
       </Link>
       <ToastContainer />

@@ -45,7 +45,7 @@ export const LoginForm = () => {
     password: yup
       .string()
       .min(6, 'must be at least 6 characters')
-      .max(12, 'password length must be less than 13 characters')
+      .max(20, 'password length must be less than 20 characters')
       .required(),
   });
 
@@ -109,7 +109,7 @@ export const LoginForm = () => {
           <LoginButtonLogPage type="submit">log in</LoginButtonLogPage>
         </FormContainer>
       </Formik>
-      <Link to="/wallet_frontend/register">
+      <Link to="/testApp/register">
         <RegisterButtonLogPage type="button">register</RegisterButtonLogPage>
       </Link>
     </>
